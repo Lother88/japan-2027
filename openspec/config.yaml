@@ -1,0 +1,60 @@
+schema: spec-driven
+
+context: |
+  Web del itinerario del viaje a Japón (mayo 2027) — SPA solo-frontend, sin base de datos.
+  Stack: Vite 8 + React 19 (React Compiler ACTIVO) + TypeScript 6, gestor pnpm, ESLint 10.
+  Estilos: Tailwind CSS última versión (a instalar). Identidad visual propia japonesa (no plantilla genérica).
+  Mapas: librería de mapas + trazado de itinerarios a elegir en exploración.
+  Contenido del viaje en docs/ (markdown + PDF). Regla UX: SIN SPOILERS (solo nombrar barrio/templo).
+  Doble uso: escritorio (presentación vistosa e interactiva) + móvil (consulta durante el viaje). Responsive, ancho completo.
+  Persistencia de notas/comentarios sin BD (localStorage + export/import JSON, a confirmar en diseño).
+
+strict_tdd: true
+
+# NOTA TDD: la preferencia global activa Strict TDD, pero AÚN NO hay test runner instalado.
+# La primera tarea de infraestructura DEBE instalar Vitest + React Testing Library + jsdom.
+# Hasta que el runner exista, TDD no es ejecutable; tras instalarlo, aplica en cada feature.
+
+testing:
+  strict_tdd: true
+  test_runner:
+    framework: "Vitest (a instalar)"
+    command: "pnpm test"
+    status: NOT_INSTALLED
+  layers:
+    unit: { available: false, tool: "Vitest (a instalar)" }
+    integration: { available: false, tool: "@testing-library/react + jsdom (a instalar)" }
+    e2e: { available: false, tool: "Playwright (opcional, a valorar)" }
+  coverage:
+    available: false
+    command: "vitest --coverage (tras instalar)"
+  quality_tools:
+    linter: { available: true, command: "pnpm lint" }
+    type_checker: { available: true, command: "tsc -b" }
+    formatter: { available: false, command: "Prettier (a valorar)" }
+
+rules:
+  proposal:
+    - Include rollback plan for risky changes
+    - Identify affected modules/packages
+  specs:
+    - Use Given/When/Then format for scenarios
+    - Use RFC 2119 keywords (MUST, SHALL, SHOULD, MAY)
+    - "REGLA DE PRODUCTO: sin spoilers — la UI nombra el lugar (barrio/templo) pero no describe qué se ve dentro"
+  design:
+    - Include sequence diagrams for complex flows
+    - Document architecture decisions with rationale
+    - "Contrastar SIEMPRE versiones/APIs con documentación oficial (Vite 8, React 19, Tailwind, librería de mapas)"
+  tasks:
+    - Group tasks by phase (infrastructure, implementation, testing)
+    - Use hierarchical numbering (1.1, 1.2, etc.)
+    - "Tarea 1 SIEMPRE: instalar y configurar Vitest + RTL antes de implementar features (Strict TDD)"
+  apply:
+    - Follow existing code patterns and conventions
+    - "React Compiler ACTIVO: NO usar useMemo/useCallback manuales salvo necesidad real"
+    - Componentes funcionales, modularizados, clean code, carpetas por feature
+  verify:
+    - Run tests if test infrastructure exists
+    - Compare implementation against every spec scenario
+  archive:
+    - Warn before merging destructive deltas (large removals)
