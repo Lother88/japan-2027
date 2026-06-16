@@ -7,6 +7,7 @@
  *
  * Satisfies MAP-04 (GlobalMap in home), UX-01 (motion animations),
  *   UX-02 (full-bleed map).
+ * Responds to light/dark theme via semantic tokens.
  */
 
 import { lazy, Suspense } from 'react'
@@ -34,6 +35,7 @@ function HeroSection() {
   const fadeIn = useFadeIn()
 
   return (
+    // Hero always uses deep sumi background regardless of theme — it's intentional
     <section className="w-full min-h-[60svh] bg-sumi-900 flex flex-col items-center justify-center text-washi-50 px-4 md:px-8 py-16 md:py-24 relative overflow-hidden">
       {/* Decorative background lines — subtle Japanese aesthetic */}
       <div aria-hidden="true" className="absolute inset-0 opacity-5">
@@ -105,14 +107,14 @@ function MapSection() {
   return (
     <section className="w-full" style={{ height: '50svh', minHeight: '320px' }}>
       <Suspense fallback={
-        <div className="w-full h-full bg-washi-100 border-y border-washi-200 flex items-center justify-center">
-          <p className="font-sans text-sm text-sumi-500">Cargando mapa de ruta…</p>
+        <div className="w-full h-full bg-surface border-y border-border flex items-center justify-center">
+          <p className="font-sans text-sm text-fg-subtle">Cargando mapa de ruta…</p>
         </div>
       }>
         <GlobalMap style={{ width: '100%', height: '100%' }} />
       </Suspense>
-      <div className="flex justify-end px-4 md:px-8 py-3 bg-washi-50 border-b border-washi-200">
-        <Link to="/mapa" className="font-sans text-sm text-urushi-600 hover:underline">
+      <div className="flex justify-end px-4 md:px-8 py-3 bg-bg border-b border-border">
+        <Link to="/mapa" className="font-sans text-sm text-accent hover:underline">
           Ver mapa completo →
         </Link>
       </div>
@@ -127,12 +129,12 @@ function ItineraryPreview() {
   return (
     <section className="w-full px-4 md:px-8 py-12">
       <div className="flex items-center justify-between mb-8">
-        <h2 className="font-display text-2xl md:text-3xl text-sumi-900">
+        <h2 className="font-display text-2xl md:text-3xl text-fg">
           Bloque Tokio · piloto
         </h2>
         <Link
           to="/itinerario"
-          className="font-sans text-sm text-urushi-600 hover:underline"
+          className="font-sans text-sm text-accent hover:underline"
         >
           Ver todo →
         </Link>
@@ -154,21 +156,21 @@ function ItineraryPreview() {
               >
                 <Card className="h-full p-5 group-hover:shadow-md transition-all">
                   <div className="flex items-start justify-between mb-3">
-                    <span className="font-display text-3xl text-urushi-600 leading-none">
+                    <span className="font-display text-3xl text-accent leading-none">
                       {day.id}
                     </span>
-                    <span className="font-sans text-xs text-sumi-500">
+                    <span className="font-sans text-xs text-fg-subtle">
                       {new Date(day.date + 'T00:00:00').toLocaleDateString('es-ES', {
                         day: 'numeric',
                         month: 'short',
                       })}
                     </span>
                   </div>
-                  <h3 className="font-sans text-sm font-medium text-sumi-900 leading-snug">
+                  <h3 className="font-sans text-sm font-medium text-fg leading-snug">
                     {day.title.split('—')[1]?.trim() ?? day.title}
                   </h3>
                   {city && (
-                    <p className="font-sans text-xs text-sumi-500 mt-1">
+                    <p className="font-sans text-xs text-fg-subtle mt-1">
                       {city.name}
                     </p>
                   )}

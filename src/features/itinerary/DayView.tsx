@@ -4,6 +4,7 @@
  * Shows a single day with morning/afternoon time slot blocks.
  * Includes NotesPanel for per-day notes.
  * Satisfies DAY-02, DAY-03, DAY-04, DAY-05, NOSPOIL-02, NOSPOIL-03, NOTE-05
+ * Responds to light/dark theme via semantic tokens.
  */
 
 import { useParams, Link } from 'react-router'
@@ -21,8 +22,8 @@ export default function DayView() {
   if (!day) {
     return (
       <div className="w-full px-4 md:px-8 py-16 text-center">
-        <p className="font-sans text-sumi-700 mb-4">Día no encontrado.</p>
-        <Link to="/itinerario" className="font-sans text-urushi-600 underline">
+        <p className="font-sans text-fg-muted mb-4">Día no encontrado.</p>
+        <Link to="/itinerario" className="font-sans text-accent underline">
           ← Volver al itinerario
         </Link>
       </div>
@@ -52,7 +53,7 @@ export default function DayView() {
         {/* Prev / Next navigation */}
         <nav
           aria-label="Navegación entre días"
-          className="flex items-center justify-between pt-8 border-t border-washi-200"
+          className="flex items-center justify-between pt-8 border-t border-border"
         >
           {prevDay ? (
             <Link to={`/dia/${prevDay.id}`} aria-label={`Día anterior: ${prevDay.title}`}>
@@ -66,7 +67,7 @@ export default function DayView() {
             </Button>
           )}
 
-          <Link to="/itinerario" className="font-sans text-xs text-sumi-500 hover:text-sumi-900">
+          <Link to="/itinerario" className="font-sans text-xs text-fg-subtle hover:text-fg">
             Ver todos
           </Link>
 

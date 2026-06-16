@@ -2,6 +2,7 @@
  * DayCard — summary card for a day in the itinerary list.
  * Shows day number, date, city, up to 2 zones, and a note indicator.
  * Satisfies DAY-01, NOTE-05
+ * Responds to light/dark theme via semantic tokens.
  */
 
 import { Link } from 'react-router'
@@ -27,7 +28,7 @@ export default function DayCard({ day }: DayCardProps) {
     >
       <Card className="h-full p-4 group-hover:shadow-md transition-all">
         <div className="flex items-start justify-between mb-2">
-          <span className="font-display text-2xl text-urushi-600 leading-none">
+          <span className="font-display text-2xl text-accent leading-none">
             {day.id}
           </span>
           <div className="flex items-center gap-1.5 mt-1">
@@ -38,16 +39,16 @@ export default function DayCard({ day }: DayCardProps) {
                 className="w-2 h-2 rounded-full bg-matcha-500 flex-shrink-0"
               />
             )}
-            <span className="font-sans text-xs text-sumi-500">
+            <span className="font-sans text-xs text-fg-subtle">
               {day.date}
             </span>
           </div>
         </div>
-        <h2 className="font-sans text-sm font-medium text-sumi-900 leading-snug mb-1">
+        <h2 className="font-sans text-sm font-medium text-fg leading-snug mb-1">
           {day.title}
         </h2>
         {city && (
-          <p className="font-sans text-xs text-sumi-500">
+          <p className="font-sans text-xs text-fg-subtle">
             {city.name}
           </p>
         )}
@@ -59,7 +60,7 @@ export default function DayCard({ day }: DayCardProps) {
             .map(zr => (
               <span
                 key={zr.zoneId}
-                className="text-xs font-sans text-matcha-700 bg-washi-100 border border-matcha-500 px-1.5 py-0.5 rounded-[var(--radius-paper)]"
+                className="text-xs font-sans text-matcha-700 dark:text-matcha-500 bg-surface border border-matcha-500 px-1.5 py-0.5 rounded-[var(--radius-paper)]"
               >
                 {zr.zoneId}
               </span>

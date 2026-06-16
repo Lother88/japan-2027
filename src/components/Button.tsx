@@ -3,7 +3,7 @@
  *
  * Variants:
  *   primary   — urushi accent (torii red), for main CTAs
- *   secondary — sumi outline, for secondary actions
+ *   secondary — border + fg text, for secondary actions
  *   ghost     — no background, subtle hover
  *
  * Satisfies UX-03: touch targets ≥ 44×44px via min-h / min-w / padding
@@ -23,9 +23,9 @@ const variantStyles: Record<ButtonVariant, string> = {
   primary:
     'bg-urushi-600 text-washi-50 hover:bg-urushi-400 active:bg-urushi-600 border border-transparent',
   secondary:
-    'bg-transparent text-sumi-900 border border-sumi-700 hover:bg-washi-100 active:bg-washi-200',
+    'bg-transparent text-fg border border-fg-muted hover:bg-surface active:bg-border',
   ghost:
-    'bg-transparent text-sumi-700 border border-transparent hover:text-sumi-900 hover:bg-washi-100',
+    'bg-transparent text-fg-muted border border-transparent hover:text-fg hover:bg-surface',
 }
 
 export function Button({

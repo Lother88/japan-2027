@@ -5,6 +5,7 @@
  * NO description field (anti-spoiler).
  *
  * Satisfies ZONE-01 to ZONE-04, NOSPOIL-02, NOSPOIL-03, NOTE-05
+ * Responds to light/dark theme via semantic tokens.
  */
 
 import { useParams, Link, useNavigate } from 'react-router'
@@ -35,7 +36,7 @@ function GoogleMapsLink({ name, coordinates }: { name: string; coordinates?: rea
         'font-sans text-sm font-medium',
         'px-4 py-2 rounded-[var(--radius-card)]',
         'border border-ai-700 text-ai-700',
-        'hover:bg-washi-100 transition-colors',
+        'hover:bg-surface transition-colors',
         'min-h-[44px]',
       ].join(' ')}
       aria-label={`Ver ${name} en Google Maps`}
@@ -59,17 +60,17 @@ export default function ZonePage() {
   if (!zone || zone.citySlug !== citySlug) {
     return (
       <div className="w-full px-4 md:px-8 py-16 text-center">
-        <h1 className="font-display text-2xl text-sumi-900 mb-4">Zona no encontrada</h1>
-        <p className="font-sans text-sumi-700 mb-6">
+        <h1 className="font-display text-2xl text-fg mb-4">Zona no encontrada</h1>
+        <p className="font-sans text-fg-muted mb-6">
           No existe la zona <code className="font-mono">{slug}</code>.
         </p>
         <button
           onClick={() => navigate(-1)}
-          className="font-sans text-urushi-600 underline mr-4"
+          className="font-sans text-accent underline mr-4"
         >
           ← Volver
         </button>
-        <Link to="/itinerario" className="font-sans text-urushi-600 underline">
+        <Link to="/itinerario" className="font-sans text-accent underline">
           Ver itinerario
         </Link>
       </div>
@@ -106,8 +107,8 @@ export default function ZonePage() {
         {coordinates && (
           <section aria-label="Ubicación en mapa">
             <Suspense fallback={
-              <div className="w-full h-48 bg-washi-100 rounded-[var(--radius-card)] border border-washi-200 flex items-center justify-center">
-                <p className="font-sans text-xs text-sumi-500">Cargando mapa…</p>
+              <div className="w-full h-48 bg-surface rounded-[var(--radius-card)] border border-border flex items-center justify-center">
+                <p className="font-sans text-xs text-fg-subtle">Cargando mapa…</p>
               </div>
             }>
               <ZoneMiniMap coordinates={coordinates} name={name} />
@@ -129,10 +130,10 @@ export default function ZonePage() {
         <NotesPanel sectionId={`zone:${zone.id}`} label="Notas de la zona" />
 
         {/* Back link */}
-        <div className="pt-4 border-t border-washi-200">
+        <div className="pt-4 border-t border-border">
           <button
             onClick={() => navigate(-1)}
-            className="font-sans text-sm text-urushi-600 hover:underline min-h-[44px] flex items-center"
+            className="font-sans text-sm text-accent hover:underline min-h-[44px] flex items-center"
           >
             ← Volver
           </button>

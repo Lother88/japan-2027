@@ -5,6 +5,14 @@
 @import "tailwindcss";
 
 /* ─────────────────────────────────────────────
+   Dark mode via .dark class on <html>
+   Syntax confirmed: tailwindcss.com/docs/dark-mode
+   @custom-variant creates a variant that applies
+   when the element or any ancestor has .dark class.
+───────────────────────────────────────────── */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ─────────────────────────────────────────────
    Japanese design system tokens
    Palette: sumi-e (ink) + washi (paper) base
    Accents: sakura / matcha / urushi / ai (indigo)
@@ -29,6 +37,15 @@
   --color-ai-700:     oklch(0.40 0.10 255);
   --color-ai-500:     oklch(0.55 0.10 255);
 
+  /* Semantic tokens — resolve to CSS custom properties */
+  --color-bg:      var(--sem-bg);
+  --color-surface: var(--sem-surface);
+  --color-border:  var(--sem-border);
+  --color-fg:      var(--sem-fg);
+  --color-fg-muted: var(--sem-fg-muted);
+  --color-fg-subtle: var(--sem-fg-subtle);
+  --color-accent:  var(--sem-accent);
+
   /* Tipografía japonesa */
   --font-display: "Zen Old Mincho", "Shippori Mincho", serif;
   --font-sans:    "Zen Kaku Gothic New", system-ui, sans-serif;
@@ -39,15 +56,56 @@
 }
 
 /* ─────────────────────────────────────────────
+   Semantic color variables
+   Light mode (default): washi paper + sumi ink
+   Dark mode (.dark):    sumi ink + washi paper inverted
+   Contrast goal: WCAG AA ≥ 4.5:1
+───────────────────────────────────────────── */
+:root {
+  /* bg: page background */
+  --sem-bg:         oklch(0.97 0.012 90);   /* washi-50 */
+  /* surface: cards, panels */
+  --sem-surface:    oklch(0.94 0.015 85);   /* washi-100 */
+  /* border: dividers, card edges */
+  --sem-border:     oklch(0.90 0.018 85);   /* washi-200 */
+  /* fg: primary text */
+  --sem-fg:         oklch(0.18 0.01 270);   /* sumi-900 */
+  /* fg-muted: secondary text */
+  --sem-fg-muted:   oklch(0.32 0.01 270);   /* sumi-700 */
+  /* fg-subtle: tertiary / timestamps */
+  --sem-fg-subtle:  oklch(0.50 0.01 270);   /* sumi-500 */
+  /* accent: urushi red — CTAs, active states */
+  --sem-accent:     oklch(0.45 0.13 25);    /* urushi-600 */
+}
+
+.dark {
+  /* bg: deep ink background */
+  --sem-bg:         oklch(0.15 0.01 270);   /* deeper than sumi-900 */
+  /* surface: slightly elevated panels */
+  --sem-surface:    oklch(0.20 0.01 270);   /* sumi-900 equivalent */
+  /* border: subtle ink borders */
+  --sem-border:     oklch(0.28 0.01 270);   /* between sumi-700 and sumi-900 */
+  /* fg: light washi text on dark bg — good contrast */
+  --sem-fg:         oklch(0.97 0.012 90);   /* washi-50 */
+  /* fg-muted: slightly dimmed washi */
+  --sem-fg-muted:   oklch(0.90 0.015 85);   /* washi-100 */
+  /* fg-subtle: tertiary / timestamps */
+  --sem-fg-subtle:  oklch(0.70 0.01 90);    /* warm mid-tone */
+  /* accent: brighter urushi for dark bg visibility */
+  --sem-accent:     oklch(0.62 0.13 25);    /* urushi-400 */
+}
+
+/* ─────────────────────────────────────────────
    Base styles
 ───────────────────────────────────────────── */
 html {
   font-family: var(--font-sans);
-  background-color: var(--color-washi-50);
-  color: var(--color-sumi-900);
+  background-color: var(--sem-bg);
+  color: var(--sem-fg);
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 body {

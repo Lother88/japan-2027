@@ -1,7 +1,7 @@
 /**
  * Card — base content card with Japanese paper aesthetic
  *
- * Tokens: washi background, sumi text, radius-card, subtle border
+ * Tokens: semantic bg/border/text — responds to light/dark theme
  * React Compiler active — no manual memo/callback
  */
 
@@ -15,9 +15,9 @@ interface CardProps {
 
 export function Card({ children, className = '', onClick }: CardProps) {
   const base =
-    'bg-washi-50 border border-washi-200 rounded-[var(--radius-card)] shadow-sm transition-shadow'
+    'bg-bg border border-border rounded-[var(--radius-card)] shadow-sm transition-shadow'
   const interactive = onClick
-    ? 'cursor-pointer hover:shadow-md hover:border-sumi-500'
+    ? 'cursor-pointer hover:shadow-md hover:border-fg-muted'
     : ''
 
   return (

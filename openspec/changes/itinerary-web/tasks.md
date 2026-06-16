@@ -125,6 +125,16 @@
 
 > Depends on: Phases 3 + 4 complete.
 
+<!-- THEMING COMPLETED 2026-06-16 by sdd-apply -->
+<!-- Tailwind v4 dark mode: @custom-variant dark (&:where(.dark, .dark *));
+     Confirmed syntax from tailwindcss.com/docs/dark-mode
+     Semantic tokens: --sem-bg/surface/border/fg/fg-muted/fg-subtle/accent
+     in :root (light) and .dark (dark). Exposed as @theme vars: bg, surface, border, fg, fg-muted, fg-subtle, accent.
+     Store: japan2027-theme (Zustand persist). Anti-FOUC inline script in index.html.
+     ThemeToggle in Nav (desktop + mobile). 105 tests pass. -->
+
+- [x] 5.0 **Modo claro/oscuro (light/dark) con toggle**: `@custom-variant dark` en CSS, tokens semánticos (bg/surface/border/fg/fg-muted/fg-subtle/accent), store Zustand+persist (`japan2027-theme`), anti-FOUC en `index.html`, `ThemeToggle` accesible en Nav. Todos los componentes refactorizados a tokens semánticos. 105 tests en verde.
+
 - [ ] 5.1 Añadir animaciones `motion` (`import { motion } from "motion/react"`): fade/slide en `DayCard`, `ZonePage`, `PageHeader`. Respetar `prefers-reduced-motion`. Satisface UX-01.
 - [ ] 5.2 Ajuste responsive final: verificar grid de `ItineraryView` en 375 px y 1440 px, áreas táctiles ≥ 44×44 px en botones prev/next, scroll vertical no bloqueado por mapa en móvil (`cooperativeGestures` en MapLibre si aplica). **[CONFIRM-apply]** opción cooperative gesture en `@vis.gl/react-maplibre`. Satisface UX-02, UX-03, MAP-04.
 - [ ] 5.3 Verificar contraste de paleta: texto sumi-900 sobre washi-50 ≥ 4.5:1. Ajustar valores oklch si necesario. Satisface UX-05.
