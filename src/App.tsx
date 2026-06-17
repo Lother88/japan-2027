@@ -1,10 +1,26 @@
-// Phase 1 placeholder — Router and full layout will be wired in Phase 2
-function App() {
+/**
+ * App — landing del itinerario "Japón 2027" (página única de scroll).
+ *
+ * Composición del diseño: pétalos de sakura de fondo · nav superior · hero con
+ * mapa de la ruta · journey (rail sticky + secciones por día) · footer · botón
+ * para volver arriba.
+ */
+import SakuraPetals from '@/features/landing/SakuraPetals'
+import SiteNav from '@/features/landing/SiteNav'
+import Hero from '@/features/landing/Hero'
+import Journey from '@/features/landing/Journey'
+import SiteFooter from '@/features/landing/SiteFooter'
+import ToTop from '@/features/landing/ToTop'
+
+export default function App() {
   return (
-    <main>
-      <h1>Japón 2027</h1>
-    </main>
+    <>
+      <SakuraPetals />
+      <SiteNav />
+      <Hero />
+      <Journey />
+      <SiteFooter />
+      <ToTop />
+    </>
   )
 }
-
-export default App

@@ -1,25 +1,46 @@
 /**
- * Smoke test — Phase 1 infrastructure validation
- *
- * Verifies that:
- * 1. Vitest + @testing-library/react + jsdom is correctly wired
- * 2. jest-dom matchers are available (toBeInTheDocument)
- * 3. A basic React component renders without crashing
- * 4. Tailwind @theme tokens compile without error (CSS is not loaded in Vitest/jsdom,
- *    but the import chain must not throw at module resolution level)
+ * Smoke test de la landing — valida que la app monta sin romperse.
+ * Mockea maplibre-gl (no hay WebGL en jsdom).
  */
-
 import { render, screen } from '@testing-library/react'
+import { vi } from 'vitest'
 import App from '@/App'
 
-describe('Phase 1 — Infrastructure smoke test', () => {
-  it('renders App without crashing', () => {
+vi.mock('maplibre-gl', () => {
+  class FakeMap {
+    on() { return this }
+    addControl() { return this }
+    addSource() {}
+    addLayer() {}
+    fitBounds() {}
+    remove() {}
+  }
+  class FakeMarker {
+    setLngLat() { return this }
+    addTo() { return this }
+  }
+  class FakeNavigationControl {}
+  class FakeLngLatBounds {
+    extend() { return this }
+  }
+  return {
+    default: {
+      Map: FakeMap,
+      Marker: FakeMarker,
+      NavigationControl: FakeNavigationControl,
+      LngLatBounds: FakeLngLatBounds,
+    },
+  }
+})
+
+describe('Landing — smoke test', () => {
+  it('renderiza el hero con el título Japón', () => {
     render(<App />)
-    expect(screen.getByRole('main')).toBeInTheDocument()
+    expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent('Japón')
   })
 
-  it('renders the page heading', () => {
+  it('renderiza el contenido principal del journey', () => {
     render(<App />)
-    expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent('Japón 2027')
+    expect(screen.getByRole('main')).toBeInTheDocument()
   })
 })

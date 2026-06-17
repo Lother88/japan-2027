@@ -32,6 +32,26 @@ export const zones: readonly Zone[] = [
     },
   },
 
+  // ── Día 26 — Tokyo Skytree (Oshiage, combina con Asakusa) ───────────────
+  {
+    id: 'tokyo-skytree',
+    name: 'Tokyo Skytree',
+    citySlug: 'tokio',
+    coordinates: [139.8107, 35.7101],
+    tags: ['mirador', 'iconico', 'moderno', 'shitamachi'],
+    practical: {
+      access:
+        'Tobu Skytree Line / Metro Hanzomon — Estación Oshiage o Tokyo Skytree. A 20 min a pie o 3 min en metro desde Asakusa',
+      hours: 'Tembo Deck (350 m) y Tembo Galleria (450 m): ~9:00–22:00 (última entrada 21:00)',
+      logistics: [
+        'Subir al atardecer (17:00–19:00 en mayo): vistas con luz y luego iluminado',
+        'Comprar entrada online con antelación (ticket rápido para extranjeros) — grupo de 8',
+        'A los pies está Tokyo Solamachi (centro comercial)',
+        'Se ve gratis e iluminado desde el puente Azuma-bashi (Asakusa)',
+      ],
+    },
+  },
+
   // ── Día 10 — Shibuya ───────────────────────────────────────────────────
   {
     id: 'shibuya',
@@ -646,6 +666,25 @@ export const zones: readonly Zone[] = [
   // ── Osaka ─────────────────────────────────────────────────────────────
 
   {
+    id: 'katsuo-ji',
+    name: 'Katsuo-ji',
+    citySlug: 'osaka',
+    coordinates: [135.4889, 34.8569],
+    tags: ['templo', 'daruma', 'montana', 'historico'],
+    practical: {
+      access:
+        'Metro Midosuji hasta Minoh-Kayano (~35 min) + bus Hankyu (~15–20 min, ~¥400). Domingos/festivos con buses frecuentes',
+      hours: '8:00–17:00 (sáb hasta 18:00); último acceso 30 min antes. Entrada ~¥500 (confirmar)',
+      logistics: [
+        'Templo de montaña famoso por los miles de muñecos daruma (templo de la victoria / buena suerte)',
+        '⚠️ Buses escasos entre semana (1/hora o cada 2h); frecuentes en findes/festivos. Último bus de bajada ~16:48 (dom/festivos), ~16:18 (laborables)',
+        'En mayo no hay hojas de otoño (su pico visual), pero está verde y tranquilo',
+        'Excursión de media jornada desde el norte de Osaka',
+      ],
+    },
+  },
+
+  {
     id: 'dotonbori',
     name: 'Dōtonbori',
     citySlug: 'osaka',
@@ -737,7 +776,50 @@ export const zones: readonly Zone[] = [
     },
   },
 
-  // ── Kamakura ──────────────────────────────────────────────────────────
+  // ── Día 27 — Odaiba (bahía de Tokio, comodín bloque 2) ──────────────────
+  {
+    id: 'odaiba',
+    name: 'Odaiba',
+    citySlug: 'tokio',
+    coordinates: [139.7745, 35.6271],
+    tags: ['bahia', 'ocio', 'moderno', 'compras', 'vistas'],
+    practical: {
+      access:
+        'Yurikamome desde Shimbashi (~15 min, vistas de la bahía) o Rinkai Line hasta Tokyo Teleport',
+      hours:
+        'Centros comerciales: tiendas 11:00–21:00. The Gundam Base (DiverCity, planta 7): ~10:00–21:00',
+      logistics: [
+        '⚠️ La estatua gigante del Unicorn Gundam fue retirada (ago-2026): la plaza de DiverCity estará vacía en may-2027',
+        'Sí sigue The Gundam Base Tokyo (mayor tienda de Gunpla de Japón, DiverCity planta 7)',
+        'Réplica de la Estatua de la Libertad y playa de Odaiba (Seaside Park) con el Rainbow Bridge de fondo: gratis',
+        'Atracciones en radio andable: DiverCity ↔ Aqua City ↔ Decks ↔ Fuji TV (15–20 min a pie)',
+        'Combinable por la tarde con teamLab Planets en Toyosu (Yurikamome ~15 min; reserva online obligatoria)',
+      ],
+    },
+  },
+
+  // ── Día 27 — Kiyosumi-Shirakawa / Fukagawa (mañana, antes de Odaiba) ────
+  {
+    id: 'kiyosumi-fukagawa',
+    name: 'Kiyosumi-Shirakawa y Fukagawa',
+    citySlug: 'tokio',
+    coordinates: [139.798, 35.6818],
+    tags: ['jardin', 'museo', 'historico', 'shitamachi', 'gastronomia'],
+    practical: {
+      access:
+        'Metro Tozai u Ōedo — Monzen-Nakachō; Ōedo o Hanzōmon — Kiyosumi-Shirakawa (1 parada entre sí, ~15 min a pie)',
+      hours:
+        'Jardín Kiyosumi: 9:00–17:00 (última entrada 16:30), ¥150. Fukagawa Edo Museum: ~9:30–17:00 (verificar 2027). Tonkatsu Marushichi: 11:30–17:00',
+      logistics: [
+        'Jardín Kiyosumi: jardín de paseo con gran estanque y piedras para cruzar el agua (isowatari)',
+        'Fukagawa Edo Museum: recreación a tamaño real de un barrio del final de la era Edo',
+        'Comer en Tonkatsu Marushichi (yaki-katsudon; sin reservas, llegar pronto) — ⚠️ cerrado miércoles',
+        'Combina por la tarde con Odaiba (mismo lado este/bahía)',
+      ],
+    },
+  },
+
+  // ── Kamakura (alternativa del día 27, actualmente no asignada) ──────────
 
   {
     id: 'kamakura-daibutsu',

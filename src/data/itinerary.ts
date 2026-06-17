@@ -303,7 +303,7 @@ export const itinerary: readonly Day[] = [
     id: 18,
     date: '2027-05-18',
     citySlug: 'kioto',
-    title: 'Takayama → Kioto — Llegada',
+    title: 'Takayama → Kioto — Llegada y Tō-ji',
     transfers: [
       {
         from: 'Takayama',
@@ -330,8 +330,8 @@ export const itinerary: readonly Day[] = [
       {
         key: 'afternoon',
         label: 'Tarde suave',
-        summary: 'Llegada a Kioto y toma de contacto con la estación y el centro. Tarde tranquila para deshacer maletas.',
-        zones: [{ zoneId: 'kioto-estacion' }],
+        summary: 'Llegada a Kioto y deshacer maletas. Tarde tranquila por la zona de la estación, con un templo histórico de pagoda a 15 min a pie.',
+        zones: [{ zoneId: 'kioto-estacion' }, { zoneId: 'toji' }],
       },
     ],
   },
@@ -401,7 +401,7 @@ export const itinerary: readonly Day[] = [
     id: 21,
     date: '2027-05-21',
     citySlug: 'kioto',
-    title: 'Kioto — Kinkaku-ji, Nishiki y mercadillo de Tō-ji',
+    title: 'Kioto — Kinkaku-ji, Nijō y Nishiki',
     slots: [
       {
         key: 'morning',
@@ -415,11 +415,8 @@ export const itinerary: readonly Day[] = [
       {
         key: 'afternoon',
         label: 'Tarde',
-        summary: 'Mercado cubierto de comida del centro y mercadillo mensual de antigüedades y artesanía junto al templo (cae el día 21).',
-        zones: [
-          { zoneId: 'nishiki' },
-          { zoneId: 'toji' },
-        ],
+        summary: 'Mercado cubierto de comida en el centro de la ciudad para cerrar el bloque de Kioto.',
+        zones: [{ zoneId: 'nishiki' }],
       },
     ],
   },
@@ -472,30 +469,38 @@ export const itinerary: readonly Day[] = [
     ],
   },
 
-  // ── Día 23 — Domingo 23 mayo 2027 — Osaka (noche 2) ──────────────────────
+  // ── Día 23 — Domingo 23 mayo 2027 — Osaka (noche 2), Katsuo-ji ───────────
   {
     id: 23,
     date: '2027-05-23',
     citySlug: 'osaka',
-    title: 'Osaka — Castillo, Kuromon y Shinsekai',
+    title: 'Katsuo-ji (templo de los daruma) y Minami',
+    transfers: [
+      {
+        from: 'Osaka',
+        to: 'Katsuo-ji (Minoh)',
+        mode: 'tren',
+        line: 'Metro Midosuji → Minoh-Kayano + bus Hankyu',
+        duration: '~50–55 min cada sentido',
+        roundTrip: true,
+        notes: [
+          'Domingo: buses frecuentes (entre semana hay 1 cada 1–2 h)',
+          'Último bus de bajada ~16:48 los domingos: no apurar la tarde allí',
+        ],
+      },
+    ],
     slots: [
       {
         key: 'morning',
-        label: 'Mañana',
-        summary: 'Castillo histórico en su parque y mercado cubierto de comida callejera y producto fresco.',
-        zones: [
-          { zoneId: 'osaka-castillo' },
-          { zoneId: 'kuromon' },
-        ],
+        label: 'Mañana / Excursión',
+        summary: 'Templo de montaña al norte de Osaka, sembrado de miles de muñecos daruma. Ir por la mañana y volver a mediodía.',
+        zones: [{ zoneId: 'katsuo-ji' }],
       },
       {
         key: 'afternoon',
         label: 'Tarde',
-        summary: 'Barrio retro con su torre-mirador y la zona de canales y neones para la noche en Osaka.',
-        zones: [
-          { zoneId: 'shinsekai' },
-          { zoneId: 'dotonbori' },
-        ],
+        summary: 'Corazón gastronómico y comercial del sur de Osaka: canales y neones, galerías cubiertas y barrio de moda de segunda mano.',
+        zones: [{ zoneId: 'dotonbori' }],
       },
     ],
   },
@@ -537,12 +542,37 @@ export const itinerary: readonly Day[] = [
     ],
   },
 
-  // ── Día 25 — Martes 25 mayo 2027 — Tokio · bloque 2 (noche 1) ────────────
+  // ── Día 25 — Martes 25 mayo 2027 — Osaka (noche 4) ───────────────────────
   {
     id: 25,
     date: '2027-05-25',
+    citySlug: 'osaka',
+    title: 'Osaka — Castillo, Kuromon y Shinsekai',
+    slots: [
+      {
+        key: 'morning',
+        label: 'Mañana',
+        summary: 'Castillo histórico en su parque y mercado cubierto de comida callejera y producto fresco.',
+        zones: [
+          { zoneId: 'osaka-castillo' },
+          { zoneId: 'kuromon' },
+        ],
+      },
+      {
+        key: 'afternoon',
+        label: 'Tarde',
+        summary: 'Barrio retro con su torre-mirador y, opcionalmente, el distrito otaku de Den Den Town a un paseo.',
+        zones: [{ zoneId: 'shinsekai' }],
+      },
+    ],
+  },
+
+  // ── Día 26 — Miércoles 26 mayo 2027 — Tokio · bloque 2 (noche 1) ─────────
+  {
+    id: 26,
+    date: '2027-05-26',
     citySlug: 'tokio',
-    title: 'Osaka → Tokio — Vuelta a la capital',
+    title: 'Osaka → Tokio — Vuelta y Akihabara',
     transfers: [
       {
         from: 'Osaka',
@@ -566,30 +596,8 @@ export const itinerary: readonly Day[] = [
       {
         key: 'afternoon',
         label: 'Tarde',
-        summary: 'Reencuentro con la zona norte: parque, museos y mercado de barrio para retomar Tokio sin prisa.',
-        zones: [{ zoneId: 'ueno' }],
-      },
-    ],
-  },
-
-  // ── Día 26 — Miércoles 26 mayo 2027 — Tokio · bloque 2 (noche 2) ─────────
-  {
-    id: 26,
-    date: '2027-05-26',
-    citySlug: 'tokio',
-    title: 'Tokio · bloque 2 — Akihabara y segunda mano',
-    slots: [
-      {
-        key: 'morning',
-        label: 'Mañana',
-        summary: 'Distrito de electrónica y cultura otaku, con tiendas especializadas y multiplantas.',
+        summary: 'Distrito de electrónica y cultura otaku, con tiendas especializadas, multiplantas y cadenas de segunda mano (libros, manga, videojuegos).',
         zones: [{ zoneId: 'akihabara' }],
-      },
-      {
-        key: 'afternoon',
-        label: 'Tarde',
-        summary: 'Cadenas de segunda mano (libros, manga, electrónica) y lo que quedó pendiente del este de Tokio.',
-        zones: [{ zoneId: 'asakusa' }],
       },
     ],
   },
@@ -599,62 +607,41 @@ export const itinerary: readonly Day[] = [
     id: 27,
     date: '2027-05-27',
     citySlug: 'tokio',
-    title: 'Comodín — Kamakura (Gran Buda)',
-    transfers: [
-      {
-        from: 'Tokio',
-        to: 'Kamakura',
-        mode: 'tren',
-        line: 'JR Yokosuka Line (Tokio → Kamakura)',
-        duration: '~1h cada sentido',
-        roundTrip: true,
-        notes: [
-          'Opción preferente del día comodín',
-          'Alternativas sin trayecto interurbano: teamLab / Odaiba / Nakano',
-          'Ida y vuelta en el día',
-        ],
-      },
-    ],
+    title: 'Comodín — Fukagawa/Kiyosumi y Odaiba',
     slots: [
       {
         key: 'morning',
         label: 'Mañana',
-        summary: 'Ciudad costera de templos: el gran Buda de bronce al aire libre y templo en ladera con vistas a la bahía.',
-        zones: [
-          { zoneId: 'kamakura-daibutsu' },
-          { zoneId: 'hase-dera' },
-        ],
+        summary: 'Shitamachi del este: jardín japonés de paseo y museo que recrea un barrio de la era Edo, con parada gastronómica local (yaki-katsudon) antes de cruzar a la bahía.',
+        zones: [{ zoneId: 'kiyosumi-fukagawa' }],
       },
       {
         key: 'afternoon',
         label: 'Tarde',
-        summary: 'Calle comercial tradicional de Kamakura y regreso a Tokio. Día comodín flexible según el grupo.',
-        zones: [{ zoneId: 'kamakura-komachi' }],
+        summary: 'Frente marítimo de la bahía: réplica de la Estatua de la Libertad, playa urbana y vistas al Rainbow Bridge, más el centro comercial DiverCity con la tienda Gundam Base.',
+        zones: [{ zoneId: 'odaiba' }],
       },
     ],
   },
 
-  // ── Día 28 — Viernes 28 mayo 2027 — Tokio · bloque 2 (noche 4) ───────────
+  // ── Día 28 — Viernes 28 mayo 2027 — Tokio · bloque 2 (noche 3) ───────────
   {
     id: 28,
     date: '2027-05-28',
     citySlug: 'tokio',
-    title: 'Tokio · bloque 2 — Comodín, compras finales y maletas',
+    title: 'Tokio · bloque 2 — Asakusa, Skytree y compras finales',
     slots: [
       {
         key: 'morning',
         label: 'Mañana',
-        summary: 'Barrios pendientes y de tendencia: distrito de lujo y zona residencial-chic para los últimos paseos.',
-        zones: [
-          { zoneId: 'ginza' },
-          { zoneId: 'daikanyama' },
-        ],
+        summary: 'Lo que quedó pendiente del este de Tokio (barrio histórico de Edo) y compras finales.',
+        zones: [{ zoneId: 'asakusa' }],
       },
       {
         key: 'afternoon',
-        label: 'Tarde',
-        summary: 'Compras finales, recados pendientes y preparación del equipaje para el regreso.',
-        zones: [],
+        label: 'Tarde / atardecer',
+        summary: 'Mirador más alto de la ciudad al atardecer y preparación del equipaje para el regreso.',
+        zones: [{ zoneId: 'tokyo-skytree' }],
       },
     ],
   },

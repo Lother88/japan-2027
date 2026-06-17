@@ -1,119 +1,92 @@
-/* Google Fonts must come first (CSS @import rules must precede all other rules) */
-@import url("https://fonts.googleapis.com/css2?family=Zen+Old+Mincho:wght@400;600;700;900&family=Zen+Kaku+Gothic+New:wght@300;400;500;700&display=swap");
-
-/* Tailwind CSS v4 */
-@import "tailwindcss";
+/* Google Fonts must come first (CSS @import rules must precede all other rules)
+   Shippori Mincho (serif — títulos, números, kanji) + Zen Kaku Gothic New (sans — cuerpo) */
+@import url("https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;600;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap");
 
 /* ─────────────────────────────────────────────
-   Dark mode via .dark class on <html>
-   Syntax confirmed: tailwindcss.com/docs/dark-mode
-   @custom-variant creates a variant that applies
-   when the element or any ancestor has .dark class.
+   Base — paleta washi cálido del diseño Claude Design
+   bg #fbf6f0 · ink #1b2a4a · acentos sakura/oro/onsen
 ───────────────────────────────────────────── */
-@custom-variant dark (&:where(.dark, .dark *));
-
-/* ─────────────────────────────────────────────
-   Japanese design system tokens
-   Palette: sumi-e (ink) + washi (paper) base
-   Accents: sakura / matcha / urushi / ai (indigo)
-   Use accents sparingly — ma (空) principle
-───────────────────────────────────────────── */
-@theme {
-  /* Tinta y papel */
-  --color-sumi-900: oklch(0.18 0.01 270);
-  --color-sumi-700: oklch(0.32 0.01 270);
-  --color-sumi-500: oklch(0.50 0.01 270);
-  --color-washi-50:  oklch(0.97 0.012 90);
-  --color-washi-100: oklch(0.94 0.015 85);
-  --color-washi-200: oklch(0.90 0.018 85);
-
-  /* Acentos estacionales — usados con mesura */
-  --color-sakura-400: oklch(0.80 0.07 10);
-  --color-sakura-200: oklch(0.90 0.04 10);
-  --color-matcha-500: oklch(0.62 0.10 145);
-  --color-matcha-700: oklch(0.45 0.10 145);
-  --color-urushi-600: oklch(0.45 0.13 25);
-  --color-urushi-400: oklch(0.62 0.13 25);
-  --color-ai-700:     oklch(0.40 0.10 255);
-  --color-ai-500:     oklch(0.55 0.10 255);
-
-  /* Semantic tokens — resolve to CSS custom properties */
-  --color-bg:      var(--sem-bg);
-  --color-surface: var(--sem-surface);
-  --color-border:  var(--sem-border);
-  --color-fg:      var(--sem-fg);
-  --color-fg-muted: var(--sem-fg-muted);
-  --color-fg-subtle: var(--sem-fg-subtle);
-  --color-accent:  var(--sem-accent);
-
-  /* Tipografía japonesa */
-  --font-display: "Zen Old Mincho", "Shippori Mincho", serif;
-  --font-sans:    "Zen Kaku Gothic New", system-ui, sans-serif;
-
-  /* Radios sutiles — papel, no material design */
-  --radius-paper: 2px;
-  --radius-card:  4px;
-}
-
-/* ─────────────────────────────────────────────
-   Semantic color variables
-   Light mode (default): washi paper + sumi ink
-   Dark mode (.dark):    sumi ink + washi paper inverted
-   Contrast goal: WCAG AA ≥ 4.5:1
-───────────────────────────────────────────── */
-:root {
-  /* bg: page background */
-  --sem-bg:         oklch(0.97 0.012 90);   /* washi-50 */
-  /* surface: cards, panels */
-  --sem-surface:    oklch(0.94 0.015 85);   /* washi-100 */
-  /* border: dividers, card edges */
-  --sem-border:     oklch(0.90 0.018 85);   /* washi-200 */
-  /* fg: primary text */
-  --sem-fg:         oklch(0.18 0.01 270);   /* sumi-900 */
-  /* fg-muted: secondary text */
-  --sem-fg-muted:   oklch(0.32 0.01 270);   /* sumi-700 */
-  /* fg-subtle: tertiary / timestamps */
-  --sem-fg-subtle:  oklch(0.50 0.01 270);   /* sumi-500 */
-  /* accent: urushi red — CTAs, active states */
-  --sem-accent:     oklch(0.45 0.13 25);    /* urushi-600 */
-}
-
-.dark {
-  /* bg: deep ink background */
-  --sem-bg:         oklch(0.15 0.01 270);   /* deeper than sumi-900 */
-  /* surface: slightly elevated panels */
-  --sem-surface:    oklch(0.20 0.01 270);   /* sumi-900 equivalent */
-  /* border: subtle ink borders */
-  --sem-border:     oklch(0.28 0.01 270);   /* between sumi-700 and sumi-900 */
-  /* fg: light washi text on dark bg — good contrast */
-  --sem-fg:         oklch(0.97 0.012 90);   /* washi-50 */
-  /* fg-muted: slightly dimmed washi */
-  --sem-fg-muted:   oklch(0.90 0.015 85);   /* washi-100 */
-  /* fg-subtle: tertiary / timestamps */
-  --sem-fg-subtle:  oklch(0.70 0.01 90);    /* warm mid-tone */
-  /* accent: brighter urushi for dark bg visibility */
-  --sem-accent:     oklch(0.62 0.13 25);    /* urushi-400 */
-}
-
-/* ─────────────────────────────────────────────
-   Base styles
-───────────────────────────────────────────── */
-html {
-  font-family: var(--font-sans);
-  background-color: var(--sem-bg);
-  color: var(--sem-fg);
-  scroll-behavior: smooth;
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: #fbf6f0;
+  color: #20242e;
+  font-family: 'Zen Kaku Gothic New', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  transition: background-color 0.2s ease, color 0.2s ease;
+  overflow-x: hidden;
+}
+#root { min-height: 100svh; }
+
+/* MapLibre — ajustes tipográficos */
+.maplibregl-ctrl-attrib { font-family: 'Zen Kaku Gothic New', sans-serif; font-size: 9px; }
+.maplibregl-ctrl-group button { border-radius: 6px; }
+
+/* ─────────────────────────────────────────────
+   Animaciones (keyframes del diseño)
+───────────────────────────────────────────── */
+@keyframes ignSway   { 0%,100% { transform: rotate(-1.5deg); } 50% { transform: rotate(1.5deg); } }
+@keyframes ignFloat  { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-14px); } }
+@keyframes ignFloat2 { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-9px); } }
+@keyframes ignPulse  { 0%,100% { transform: scale(1); opacity: .42; } 50% { transform: scale(1.05); opacity: .55; } }
+@keyframes ignBounce { 0%,100% { transform: translateY(0); opacity: .55; } 50% { transform: translateY(9px); opacity: 1; } }
+@keyframes ignSteam  { 0% { transform: translateY(0) scale(1); opacity: 0; } 20% { opacity: .55; } 100% { transform: translateY(-70px) scale(1.7); opacity: 0; } }
+@keyframes ignDrift  { 0% { background-position: 0 0; } 100% { background-position: 600px 0; } }
+
+/* ─────────────────────────────────────────────
+   Responsive — mismos atributos data-* que usan los componentes
+───────────────────────────────────────────── */
+@media (max-width: 860px) {
+  [data-hero-grid]   { flex-direction: column !important; gap: 28px !important; padding-top: 96px !important; }
+  [data-hero-text]   { text-align: center !important; align-items: center !important; max-width: none !important; }
+  [data-hero-map]    { width: 100% !important; height: 54vh !important; min-height: 340px !important; }
+  [data-eyebrow]     { position: static !important; justify-content: center !important; margin: 0 auto 4px !important; }
+  [data-nav-meta]    { display: none !important; }
+  [data-journey]     { flex-direction: column !important; }
+  [data-nav]         { display: none !important; }
+  [data-rail]        { position: sticky !important; top: 0 !important; width: 100% !important; height: auto !important; flex-direction: row !important; align-items: center !important; gap: 12px !important; padding: 10px 14px !important; background: rgba(251,246,240,.94) !important; backdrop-filter: blur(12px); border-right: none !important; border-bottom: 1px solid #e7ddcc !important; z-index: 70; }
+  [data-day-nav]     { display: flex !important; }
+  [data-prog-vertical]   { display: none !important; }
+  [data-prog-horizontal] { display: flex !important; }
+  [data-rail-num]    { font-size: 46px !important; }
+  [data-rail-kanji]  { display: none !important; }
+  [data-rail-block]  { align-items: flex-start !important; }
+  [data-day-inner]   { padding-left: 22px !important; padding-right: 22px !important; }
+  [data-kanji]       { font-size: 34vw !important; opacity: .045 !important; }
+  [data-illus]       { opacity: .5 !important; }
+  [data-teaser-grid] { grid-template-columns: 1fr !important; }
+  [data-sakura-branch] { width: 62vw !important; }
+}
+@media (min-width: 861px) {
+  [data-prog-horizontal] { display: none; }
+  [data-day-nav]         { display: none; }
 }
 
-body {
-  margin: 0;
+/* ─────────────────────────────────────────────
+   Spoiler "El lugar" — <details> con animación de despliegue
+───────────────────────────────────────────── */
+details[data-spoiler] > summary { list-style: none; }
+details[data-spoiler] > summary::-webkit-details-marker { display: none; }
+details[data-spoiler] > summary::marker { content: ""; }
+details[data-spoiler] [data-spoiler-hide] { display: none; }
+details[data-spoiler][open] [data-spoiler-show] { display: none; }
+details[data-spoiler][open] [data-spoiler-hide] { display: inline; }
+details[data-spoiler] [data-spoiler-chev] { transition: transform .2s ease; }
+details[data-spoiler][open] [data-spoiler-chev] { transform: rotate(180deg); }
+details[data-spoiler] > summary:hover [data-spoiler-hint] { opacity: .72; }
+:root { interpolate-size: allow-keywords; }
+details[data-spoiler]::details-content {
+  height: 0;
+  overflow: clip;
+  opacity: 0;
+  transition: height .55s cubic-bezier(.2,0,0,1), opacity .4s ease .08s, content-visibility .55s allow-discrete;
+  transition-behavior: allow-discrete;
 }
+details[data-spoiler][open]::details-content { height: auto; opacity: 1; }
 
-#root {
-  min-height: 100svh;
-  display: flex;
-  flex-direction: column;
+/* Respeta reduce-motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; }
+  html { scroll-behavior: auto; }
 }
