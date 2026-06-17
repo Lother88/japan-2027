@@ -19,7 +19,7 @@ export default function Journey() {
         position: 'relative',
         display: 'flex',
         alignItems: 'flex-start',
-        background: '#fbf6f0',
+        background: 'var(--paper)',
       }}
     >
       <DayRail days={itinerary} activeIndex={activeIndex} progress={progress} />

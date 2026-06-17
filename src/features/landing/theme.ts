@@ -2,27 +2,31 @@
  * Tokens de diseño — "Itinerario Japón tres semanas" (handoff Claude Design)
  *
  * Paleta washi cálido + identidades por ciudad y dos temas de día (warm / onsen).
- * Todos los valores reproducen el diseño original (.dc.html).
+ * Los colores son referencias a variables CSS (`var(--token)`) definidas en
+ * `index.css` (`:root` claro + `[data-theme="dark"]` oscuro), de modo que todos
+ * los componentes que consumen estos tokens se adaptan al tema automáticamente.
+ * Solo permanecen hex literales los acentos decorativos fijos (sakura) y las
+ * tarjetas de trayecto, que son oscuras en ambos temas.
  */
 
-// ── Paleta base ───────────────────────────────────────────────────────────────
+// ── Paleta base (referencias a variables CSS de index.css) ─────────────────────
 export const palette = {
-  bg: '#fbf6f0',
-  ink: '#1b2a4a',
-  inkDeep: '#14203a',
-  paper: '#fffdf9',
-  paperSoft: '#fdf8f1',
-  border: '#ece2d2',
-  text: '#20242e',
-  body: '#42475a',
-  muted: '#5a5e6b',
-  subtle: '#8a8170',
-  gold: '#b48a35',
-  goldLine: '#c79a44',
-  red: '#c24a5a',
-  redBright: '#e0564b',
+  bg: 'var(--paper)',
+  ink: 'var(--ink)',
+  inkDeep: 'var(--primary-press)',
+  paper: 'var(--surface)',
+  paperSoft: 'var(--surface-warm)',
+  border: 'var(--border)',
+  text: 'var(--ink)',
+  body: 'var(--body)',
+  muted: 'var(--slate)',
+  subtle: 'var(--muted2)',
+  gold: 'var(--amber)',
+  goldLine: 'var(--amber-deep)',
+  red: 'var(--coral)',
+  redBright: 'var(--coral2)',
   sakura: '#f6c2d2',
-  green: '#3f6f5f',
+  green: 'var(--green)',
   greenDeep: '#234a40',
 } as const
 
@@ -30,26 +34,30 @@ export const palette = {
 export interface CityMeta {
   /** Kanji para el watermark de fondo y el rail */
   readonly kanji: string
-  /** Color del punto en la barra de progreso (variedad visual por ciudad) */
+  /**
+   * Color de acento de la ciudad (punto de progreso, ticks del rail). Es una
+   * variable CSS para que cambie con el tema; usa `color-mix()` si necesitas
+   * derivar una versión con alpha (p. ej. tintes de fondo).
+   */
   readonly dot: string
 }
 
 /** Kanji estándar de cada ciudad/destino (nombres propios, no spoilers). */
 export const cityMeta: Record<string, CityMeta> = {
-  tokio: { kanji: '東京', dot: '#1b2a4a' },
-  takaragawa: { kanji: '宝川', dot: '#3f6f5f' },
-  kanazawa: { kanji: '金沢', dot: '#b08534' },
-  takayama: { kanji: '高山', dot: '#8a5a3b' },
-  shirakawago: { kanji: '白川郷', dot: '#6f8f5f' },
-  kioto: { kanji: '京都', dot: '#c24a5a' },
-  osaka: { kanji: '大阪', dot: '#e0564b' },
-  nara: { kanji: '奈良', dot: '#b08534' },
-  hiroshima: { kanji: '広島', dot: '#c24a5a' },
-  kamakura: { kanji: '鎌倉', dot: '#3f6f5f' },
+  tokio: { kanji: '東京', dot: 'var(--ink)' },
+  takaragawa: { kanji: '宝川', dot: 'var(--green)' },
+  kanazawa: { kanji: '金沢', dot: 'var(--gold)' },
+  takayama: { kanji: '高山', dot: 'var(--brown)' },
+  shirakawago: { kanji: '白川郷', dot: 'var(--green)' },
+  kioto: { kanji: '京都', dot: 'var(--coral)' },
+  osaka: { kanji: '大阪', dot: 'var(--coral2)' },
+  nara: { kanji: '奈良', dot: 'var(--gold)' },
+  hiroshima: { kanji: '広島', dot: 'var(--coral)' },
+  kamakura: { kanji: '鎌倉', dot: 'var(--green)' },
 }
 
 /** Fallback si una ciudad no estuviera mapeada. */
-export const fallbackCityMeta: CityMeta = { kanji: '日本', dot: '#1b2a4a' }
+export const fallbackCityMeta: CityMeta = { kanji: '日本', dot: 'var(--ink)' }
 
 export function getCityMeta(slug: string): CityMeta {
   return cityMeta[slug] ?? fallbackCityMeta
@@ -89,21 +97,21 @@ export interface ThemeTokens {
 
 export const themes: Record<DayTheme, ThemeTokens> = {
   warm: {
-    eyebrow: '#b48a35',
-    heading: '#c24a5a',
-    morningDot: '#b48a35',
-    afternoonDot: '#c24a5a',
-    tagBg: '#f3ead8',
-    tagText: '#7a6a4e',
-    badgeBg: '#fbe3ea',
-    badgeText: '#c24a5a',
-    spoilerBg: '#fbf3e6',
-    spoilerBorder: '#f0e4cf',
-    spoilerAccent: '#b48a35',
-    factBorder: '#efe4cf',
-    factLabel: '#a99066',
-    noteDot: '#e0564b',
-    divider: '#f1e8d8',
+    eyebrow: 'var(--amber)',
+    heading: 'var(--coral)',
+    morningDot: 'var(--amber)',
+    afternoonDot: 'var(--coral)',
+    tagBg: 'var(--wash-amber)',
+    tagText: 'var(--muted)',
+    badgeBg: 'var(--wash-pink)',
+    badgeText: 'var(--coral)',
+    spoilerBg: 'var(--wash-amber-soft)',
+    spoilerBorder: 'var(--border-amber2)',
+    spoilerAccent: 'var(--amber)',
+    factBorder: 'var(--border-amber2)',
+    factLabel: 'var(--muted-amber)',
+    noteDot: 'var(--coral2)',
+    divider: 'var(--border-amber)',
     transferBg: '#1b2a4a',
     transferText: '#eaf0fb',
     transferEyebrow: '#9fb0d0',
@@ -112,21 +120,21 @@ export const themes: Record<DayTheme, ThemeTokens> = {
     transferIconStroke: '#f6c2d2',
   },
   onsen: {
-    eyebrow: '#3f6f5f',
-    heading: '#3f6f5f',
-    morningDot: '#3f6f5f',
-    afternoonDot: '#3f6f5f',
-    tagBg: '#e4efe9',
-    tagText: '#3f6f5f',
-    badgeBg: '#dfeee7',
-    badgeText: '#3f6f5f',
-    spoilerBg: '#e9f1ec',
-    spoilerBorder: '#d7e6de',
-    spoilerAccent: '#3f6f5f',
-    factBorder: '#d7e6de',
+    eyebrow: 'var(--green)',
+    heading: 'var(--green)',
+    morningDot: 'var(--green)',
+    afternoonDot: 'var(--green)',
+    tagBg: 'var(--wash-green)',
+    tagText: 'var(--green)',
+    badgeBg: 'var(--wash-green)',
+    badgeText: 'var(--green)',
+    spoilerBg: 'var(--wash-green2)',
+    spoilerBorder: 'var(--border-green)',
+    spoilerAccent: 'var(--green)',
+    factBorder: 'var(--border-green)',
     factLabel: '#6f9286',
-    noteDot: '#3f6f5f',
-    divider: '#f1e8d8',
+    noteDot: 'var(--green)',
+    divider: 'var(--border-amber)',
     transferBg: '#234a40',
     transferText: '#e8f1ec',
     transferEyebrow: '#9ec7b7',

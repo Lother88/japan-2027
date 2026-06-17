@@ -26,7 +26,8 @@ describe('theme — helpers de fecha', () => {
 describe('theme — identidad por ciudad', () => {
   it('getCityMeta devuelve kanji y color por ciudad', () => {
     expect(getCityMeta('tokio').kanji).toBe('東京')
-    expect(getCityMeta('kioto').dot).toBe('#c24a5a')
+    // El color de acento es una variable CSS para adaptarse al tema claro/oscuro
+    expect(getCityMeta('kioto').dot).toBe('var(--coral)')
   })
 
   it('getCityMeta usa fallback para ciudad desconocida', () => {
@@ -39,7 +40,7 @@ describe('theme — identidad por ciudad', () => {
   })
 
   it('tokensForCity onsen usa la familia verde', () => {
-    expect(tokensForCity('takaragawa').heading).toBe('#3f6f5f')
-    expect(tokensForCity('tokio').heading).toBe('#c24a5a')
+    expect(tokensForCity('takaragawa').heading).toBe('var(--green)')
+    expect(tokensForCity('tokio').heading).toBe('var(--coral)')
   })
 })

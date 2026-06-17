@@ -3,19 +3,49 @@
 @import url("https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;600;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap");
 
 /* ─────────────────────────────────────────────
-   Base — paleta washi cálido del diseño Claude Design
-   bg #fbf6f0 · ink #1b2a4a · acentos sakura/oro/onsen
+   Tokens de diseño — variables CSS (Claude Design)
+   Tema claro (:root) + tema oscuro ([data-theme="dark"]).
+   El cambio de tema lo gestiona useThemeMode (data-theme en <html>).
+───────────────────────────────────────────── */
+:root {
+  --paper:#fbf6f0; --surface:#fffdf9; --surface-warm:#fdf8f1; --surface-sun:#f6efe4;
+  --ink:#1b2a4a; --body:#42475a; --muted:#7a6a4e; --muted2:#8a8170; --muted-amber:#a99066; --slate:#5a5e6b;
+  --border:#ece2d2; --border-2:#e7ddcc; --border-amber:#f1e8d8; --border-amber2:#efe4cf; --border-green:#d7e6de; --border-cream:#e2d8c7;
+  --wash-amber:#f3ead8; --wash-amber-soft:#fbf3e6; --wash-pink:#fbe3ea; --wash-green:#e4efe9; --wash-green2:#e9f1ec; --chip-cream:#e0d7c6;
+  --coral:#c24a5a; --coral2:#e0564b; --amber:#b48a35; --amber-deep:#c79a44; --green:#3f6f5f; --brown:#8a5a3b; --gold:#b08534;
+  --primary-fill:#1b2a4a; --primary-press:#14203a;
+  --hero-1:#fdf8f1; --hero-2:#fbf6f0; --hero-3:#f6efe4;
+  --nav-bg:251,246,240; --tick-idle:#ddd2bf; --tick-idle-label:#a99e88; --map-line:#1b2a4a;
+  color-scheme: light;
+  /* anima la altura 'auto' del spoiler <details> */
+  interpolate-size: allow-keywords;
+}
+[data-theme="dark"] {
+  --paper:#12141b; --surface:#1b1f2c; --surface-warm:#1f2434; --surface-sun:#23202b;
+  --ink:#f1ece1; --body:#c3bdaf; --muted:#9d9588; --muted2:#90897a; --muted-amber:#b39c70; --slate:#9aa0ad;
+  --border:#2e3340; --border-2:#2e3340; --border-amber:#352f20; --border-amber2:#352f20; --border-green:#26342c; --border-cream:#332f27;
+  --wash-amber:#241f15; --wash-amber-soft:#221d13; --wash-pink:#2a1a20; --wash-green:#15231d; --wash-green2:#15231d; --chip-cream:#2a261d;
+  --coral:#ff7a6f; --coral2:#ff6f62; --amber:#e2a743; --amber-deep:#e2a743; --green:#76b89a; --brown:#c89a6a; --gold:#d9a948;
+  --primary-fill:#b23a36; --primary-press:#8e2c29;
+  --hero-1:#1a1e2c; --hero-2:#13151d; --hero-3:#0e1017;
+  --nav-bg:18,20,27; --tick-idle:#3a3f4d; --tick-idle-label:#7e7a70; --map-line:#ff8a5c;
+  color-scheme: dark;
+}
+
+/* ─────────────────────────────────────────────
+   Base
 ───────────────────────────────────────────── */
 * { box-sizing: border-box; }
 html, body { margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; transition: background .55s ease, background-color .55s ease; }
 body {
-  background: #fbf6f0;
-  color: #20242e;
+  background: var(--paper);
+  color: var(--body);
   font-family: 'Zen Kaku Gothic New', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
+  transition: background .55s ease, background-color .55s ease, color .55s ease;
 }
 #root { min-height: 100svh; }
 
@@ -33,6 +63,36 @@ body {
 @keyframes ignBounce { 0%,100% { transform: translateY(0); opacity: .55; } 50% { transform: translateY(9px); opacity: 1; } }
 @keyframes ignSteam  { 0% { transform: translateY(0) scale(1); opacity: 0; } 20% { opacity: .55; } 100% { transform: translateY(-70px) scale(1.7); opacity: 0; } }
 @keyframes ignDrift  { 0% { background-position: 0 0; } 100% { background-position: 600px 0; } }
+@keyframes ignGlow   { 0%,100% { opacity: .5; } 50% { opacity: .92; } }
+@keyframes ignSwayL  { 0%,100% { transform: rotate(-3.2deg); } 50% { transform: rotate(3.2deg); } }
+@keyframes ignSwayR  { 0%,100% { transform: rotate(2.6deg); } 50% { transform: rotate(-2.6deg); } }
+
+/* ─────────────────────────────────────────────
+   Decoraciones día / noche (se intercambian con el tema)
+───────────────────────────────────────────── */
+[data-day-decor]   { transition: opacity .6s ease; }
+[data-night-decor] { opacity: 0; visibility: hidden; transition: opacity .6s ease, visibility .6s ease; }
+[data-theme="dark"] [data-day-decor]   { opacity: 0 !important; visibility: hidden; transition: opacity .6s ease, visibility .6s ease; }
+[data-theme="dark"] [data-night-decor] { opacity: 1; visibility: visible; }
+
+/* Toggle de tema — icono sol/luna según tema */
+[data-ttoggle] [data-ic-sun] { display: none; }
+[data-theme="dark"] [data-ttoggle] [data-ic-sun]  { display: block; }
+[data-theme="dark"] [data-ttoggle] [data-ic-moon] { display: none; }
+
+/* Leyenda del mapa, watermark y scroll-cue sensibles al tema */
+[data-legend]    { background: rgba(255,253,249,.94); }
+[data-theme="dark"] [data-legend] { background: rgba(24,27,38,.9); }
+[data-watermark] { color: rgba(27,42,74,.16); }
+[data-theme="dark"] [data-watermark] { color: rgba(232,238,248,.16); }
+[data-scrollcue] { color: var(--ink); }
+[data-theme="dark"] [data-scrollcue] {
+  color: #ffe2a0;
+  text-shadow: 0 1px 7px rgba(0,0,0,.9);
+  background: radial-gradient(closest-side at 50% 46%, rgba(8,6,10,.62) 0%, rgba(8,6,10,.45) 34%, rgba(8,6,10,.22) 58%, rgba(8,6,10,.08) 76%, rgba(8,6,10,0) 100%);
+  padding: 20px 60px 14px;
+}
+[data-theme="dark"] [data-scrollcue] svg { filter: drop-shadow(0 0 6px rgba(255,160,60,.5)); }
 
 /* ─────────────────────────────────────────────
    Responsive — mismos atributos data-* que usan los componentes
@@ -45,7 +105,7 @@ body {
   [data-nav-meta]    { display: none !important; }
   [data-journey]     { flex-direction: column !important; }
   [data-nav]         { display: none !important; }
-  [data-rail]        { position: sticky !important; top: 0 !important; width: 100% !important; height: auto !important; flex-direction: row !important; align-items: center !important; gap: 12px !important; padding: 10px 14px !important; background: rgba(251,246,240,.94) !important; backdrop-filter: blur(12px); border-right: none !important; border-bottom: 1px solid #e7ddcc !important; z-index: 70; }
+  [data-rail]        { position: sticky !important; top: 0 !important; width: 100% !important; height: auto !important; flex-direction: row !important; align-items: center !important; gap: 12px !important; padding: 10px 14px !important; background: rgba(var(--nav-bg),.94) !important; backdrop-filter: blur(12px); border-right: none !important; border-bottom: 1px solid var(--border-2) !important; z-index: 70; }
   [data-day-nav]     { display: flex !important; }
   [data-prog-vertical]   { display: none !important; }
   [data-prog-horizontal] { display: flex !important; }
@@ -75,7 +135,6 @@ details[data-spoiler][open] [data-spoiler-hide] { display: inline; }
 details[data-spoiler] [data-spoiler-chev] { transition: transform .2s ease; }
 details[data-spoiler][open] [data-spoiler-chev] { transform: rotate(180deg); }
 details[data-spoiler] > summary:hover [data-spoiler-hint] { opacity: .72; }
-:root { interpolate-size: allow-keywords; }
 details[data-spoiler]::details-content {
   height: 0;
   overflow: clip;

@@ -7,20 +7,18 @@
     <title>Japón 2027</title>
     <!--
       Anti-FOUC theme script: runs synchronously before React mounts.
-      Reads persisted theme from localStorage (Zustand persist key: japan2027-theme)
-      and falls back to prefers-color-scheme. Adds .dark to <html> if needed.
+      Reads the persisted theme from localStorage (key: jp-theme) and falls back
+      to prefers-color-scheme. Sets data-theme="dark" on <html> if needed so the
+      CSS variables in index.css resolve to the dark palette before first paint.
     -->
     <script>
       (function () {
         try {
-          var stored = localStorage.getItem('japan2027-theme');
-          var theme = stored ? JSON.parse(stored).state.theme : null;
-          if (!theme) {
+          var theme = localStorage.getItem('jp-theme');
+          if (theme !== 'light' && theme !== 'dark') {
             theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
           }
-          if (theme === 'dark') {
-            document.documentElement.classList.add('dark');
-          }
+          document.documentElement.setAttribute('data-theme', theme);
         } catch (e) {
           // Fail silently — worst case: brief flash on first load
         }

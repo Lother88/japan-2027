@@ -13,10 +13,10 @@ export default function ToTop() {
       onClick={scrollTop}
       aria-label="Volver arriba"
       onMouseEnter={(e) => {
-        e.currentTarget.style.background = '#14203a'
+        e.currentTarget.style.background = 'var(--primary-press)'
       }}
       onMouseLeave={(e) => {
-        e.currentTarget.style.background = '#1b2a4a'
+        e.currentTarget.style.background = 'var(--primary-fill)'
       }}
       style={{
         position: 'fixed',
@@ -29,7 +29,7 @@ export default function ToTop() {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        background: '#1b2a4a',
+        background: 'var(--primary-fill)',
         color: '#fdf3e7',
         border: 'none',
         cursor: 'pointer',

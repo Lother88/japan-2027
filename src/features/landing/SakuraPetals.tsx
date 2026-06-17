@@ -63,6 +63,14 @@ export default function SakuraPetals() {
 
     let raf = 0
     const draw = () => {
+      // En modo oscuro no se pintan pétalos (fiel al diseño). Se lee el atributo
+      // directamente para no reiniciar el efecto al cambiar de tema: al pasar a
+      // oscuro deja de pintar y al volver a claro reanuda en el siguiente frame.
+      if (document.documentElement.getAttribute('data-theme') === 'dark') {
+        ctx.clearRect(0, 0, c.width, c.height)
+        raf = requestAnimationFrame(draw)
+        return
+      }
       const w = W()
       const h = H()
       ctx.clearRect(0, 0, w, h)

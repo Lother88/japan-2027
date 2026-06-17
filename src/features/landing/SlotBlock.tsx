@@ -82,8 +82,8 @@ export default function SlotBlock({ slot, tokens }: Props) {
         {/* Summary card */}
         <div
           style={{
-            background: '#fffdf9',
-            border: '1px solid #ece2d2',
+            background: 'var(--surface)',
+            border: '1px solid var(--border)',
             borderRadius: 14,
             padding: '20px 22px',
           }}
@@ -94,7 +94,7 @@ export default function SlotBlock({ slot, tokens }: Props) {
               fontFamily: fontSans,
               fontSize: 15,
               lineHeight: 1.65,
-              color: '#42475a',
+              color: 'var(--body)',
             }}
           >
             {slot.summary}

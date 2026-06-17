@@ -30,7 +30,7 @@ export default function ZoneCard({ zone, tokens }: Props) {
   if (logistics && logistics.length > 0) infoRows.push('logistics')
 
   return (
-    <div style={{ background: '#fffdf9', border: '1px solid #ece2d2', borderRadius: 14, overflow: 'hidden' }}>
+    <div style={{ background: 'var(--surface)', border: '1px solid var(--border)', borderRadius: 14, overflow: 'hidden' }}>
       {/* ── Cabecera: badge + nombre + tags ── */}
       <div style={{ display: 'flex', alignItems: 'flex-start', gap: 13, padding: '18px 22px 14px' }}>
         <span
@@ -53,7 +53,7 @@ export default function ZoneCard({ zone, tokens }: Props) {
           {badge}
         </span>
         <div style={{ flex: 1 }}>
-          <div style={{ fontFamily: fontSerif, fontSize: 20, fontWeight: 600, color: '#1b2a4a' }}>{zone.name}</div>
+          <div style={{ fontFamily: fontSerif, fontSize: 20, fontWeight: 600, color: 'var(--ink)' }}>{zone.name}</div>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6, marginTop: 8 }}>
             {zone.tags.map((tag) => (
               <span
@@ -162,18 +162,18 @@ export default function ZoneCard({ zone, tokens }: Props) {
                     borderTop: i === 0 ? undefined : `1px solid ${tokens.spoilerBorder}`,
                   }}
                 >
-                  <div style={{ fontFamily: fontSerif, fontSize: 16, fontWeight: 700, color: '#1b2a4a' }}>{poi.nombre}</div>
+                  <div style={{ fontFamily: fontSerif, fontSize: 16, fontWeight: 700, color: 'var(--ink)' }}>{poi.nombre}</div>
                   <div style={{ fontFamily: fontSans, fontSize: 12.5, fontWeight: 600, color: tokens.spoilerAccent, marginTop: 2 }}>
                     {poi.queEs}
                   </div>
-                  <p style={{ margin: '8px 0 0', fontFamily: fontSans, fontSize: 13.5, lineHeight: 1.62, color: '#42475a' }}>
+                  <p style={{ margin: '8px 0 0', fontFamily: fontSans, fontSize: 13.5, lineHeight: 1.62, color: 'var(--body)' }}>
                     {poi.historia}
                   </p>
-                  <p style={{ margin: '8px 0 0', fontFamily: fontSans, fontSize: 13.5, lineHeight: 1.62, color: '#42475a' }}>
+                  <p style={{ margin: '8px 0 0', fontFamily: fontSans, fontSize: 13.5, lineHeight: 1.62, color: 'var(--body)' }}>
                     {poi.significado}
                   </p>
                   {poi.datoCurioso && (
-                    <div style={{ marginTop: 10, padding: '9px 12px', background: '#fffdf9', border: `1px solid ${tokens.factBorder}`, borderRadius: 8 }}>
+                    <div style={{ marginTop: 10, padding: '9px 12px', background: 'var(--surface)', border: `1px solid ${tokens.factBorder}`, borderRadius: 8 }}>
                       <div
                         style={{
                           fontFamily: fontSans,
@@ -187,7 +187,7 @@ export default function ZoneCard({ zone, tokens }: Props) {
                       >
                         Dato curioso
                       </div>
-                      <div style={{ fontFamily: fontSans, fontSize: 13, lineHeight: 1.5, color: '#42475a' }}>{poi.datoCurioso}</div>
+                      <div style={{ fontFamily: fontSans, fontSize: 13, lineHeight: 1.5, color: 'var(--body)' }}>{poi.datoCurioso}</div>
                     </div>
                   )}
                 </div>
@@ -238,7 +238,7 @@ export default function ZoneCard({ zone, tokens }: Props) {
                 >
                   Acceso
                 </div>
-                <div style={{ fontFamily: fontSans, fontSize: 13.5, color: '#42475a', lineHeight: 1.5 }}>{access}</div>
+                <div style={{ fontFamily: fontSans, fontSize: 13.5, color: 'var(--body)', lineHeight: 1.5 }}>{access}</div>
               </div>
             </div>
           )}
@@ -281,7 +281,7 @@ export default function ZoneCard({ zone, tokens }: Props) {
                 >
                   Horario
                 </div>
-                <div style={{ fontFamily: fontSans, fontSize: 13.5, color: '#42475a', lineHeight: 1.5 }}>{hours}</div>
+                <div style={{ fontFamily: fontSans, fontSize: 13.5, color: 'var(--body)', lineHeight: 1.5 }}>{hours}</div>
               </div>
             </div>
           )}
@@ -305,7 +305,7 @@ export default function ZoneCard({ zone, tokens }: Props) {
                 {logistics.map((nota, i) => (
                   <li
                     key={i}
-                    style={{ display: 'flex', gap: 9, fontFamily: fontSans, fontSize: 13.5, color: '#42475a', lineHeight: 1.45 }}
+                    style={{ display: 'flex', gap: 9, fontFamily: fontSans, fontSize: 13.5, color: 'var(--body)', lineHeight: 1.45 }}
                   >
                     <span
                       style={{ flex: 'none', width: 5, height: 5, borderRadius: '50%', background: tokens.noteDot, marginTop: 6 }}

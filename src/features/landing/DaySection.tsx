@@ -48,12 +48,8 @@ export default function DaySection({ day, index }: DaySectionProps) {
       : { left: '-2%', right: 'auto' }
 
   // Tinte de fondo muy suave del color de la ciudad
-  // Convierte hex a rgb para poder usar opacidad
-  const dot = meta.dot
-  const r = parseInt(dot.slice(1, 3), 16)
-  const g = parseInt(dot.slice(3, 5), 16)
-  const b = parseInt(dot.slice(5, 7), 16)
-  const tint = `rgba(${r},${g},${b},0.05)`
+  // meta.dot ahora es var(--token): mezclamos con color-mix en vez de hex→rgb
+  const tint = `color-mix(in srgb, ${meta.dot} 6%, transparent)`
 
   const transfers = day.transfers ?? []
   const slots = day.slots
@@ -78,7 +74,7 @@ export default function DaySection({ day, index }: DaySectionProps) {
           fontFamily: fontSerif,
           fontWeight: 800,
           fontSize: 'clamp(140px,18vw,260px)',
-          color: 'rgba(27,42,74,.05)',
+          color: `color-mix(in srgb, ${meta.dot} 7%, transparent)`,
           writingMode: 'vertical-rl',
           zIndex: 0,
           pointerEvents: 'none',
@@ -119,7 +115,7 @@ export default function DaySection({ day, index }: DaySectionProps) {
                   fontFamily: fontSerif,
                   fontWeight: 800,
                   fontSize: 'clamp(40px,6vw,64px)',
-                  color: '#1b2a4a',
+                  color: 'var(--ink)',
                   lineHeight: 1,
                 }}
               >

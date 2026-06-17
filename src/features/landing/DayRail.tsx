@@ -61,8 +61,8 @@ export default function DayRail({ days, activeIndex, progress }: DayRailProps) {
         justifyContent: 'center',
         gap: '22px',
         padding: '30px 20px 40px',
-        borderRight: '1px solid #ece2d2',
-        background: '#fdf8f1',
+        borderRight: '1px solid var(--border)',
+        background: 'var(--surface-warm)',
         zIndex: 5,
       }}
     >
@@ -79,9 +79,9 @@ export default function DayRail({ days, activeIndex, progress }: DayRailProps) {
           borderRadius: '50%',
           alignItems: 'center',
           justifyContent: 'center',
-          background: '#fffdf9',
-          border: '1px solid #e2d8c7',
-          color: '#1b2a4a',
+          background: 'var(--surface)',
+          border: '1px solid var(--border-cream)',
+          color: 'var(--ink)',
           cursor: 'pointer',
           ...prevDisabledStyle,
         }}
@@ -117,7 +117,7 @@ export default function DayRail({ days, activeIndex, progress }: DayRailProps) {
             fontFamily: fontSerif,
             fontSize: '40px',
             lineHeight: 1,
-            color: 'rgba(27,42,74,.13)',
+            color: 'color-mix(in srgb, var(--ink) 13%, transparent)',
             fontWeight: 800,
             marginBottom: '6px',
           }}
@@ -129,7 +129,7 @@ export default function DayRail({ days, activeIndex, progress }: DayRailProps) {
             fontSize: '11px',
             letterSpacing: '.2em',
             textTransform: 'uppercase',
-            color: '#b48a35',
+            color: 'var(--amber)',
             fontWeight: 700,
           }}
         >
@@ -142,7 +142,7 @@ export default function DayRail({ days, activeIndex, progress }: DayRailProps) {
             fontWeight: 800,
             fontSize: '74px',
             lineHeight: 0.9,
-            color: '#1b2a4a',
+            color: 'var(--ink)',
           }}
         >
           {activeNum}
@@ -151,7 +151,7 @@ export default function DayRail({ days, activeIndex, progress }: DayRailProps) {
           style={{
             fontFamily: fontSerif,
             fontSize: '22px',
-            color: '#c24a5a',
+            color: 'var(--coral)',
             fontWeight: 600,
           }}
         >
@@ -160,7 +160,7 @@ export default function DayRail({ days, activeIndex, progress }: DayRailProps) {
         <span
           style={{
             fontSize: '13px',
-            color: '#8a8170',
+            color: 'var(--muted2)',
             letterSpacing: '.04em',
           }}
         >
@@ -182,7 +182,7 @@ export default function DayRail({ days, activeIndex, progress }: DayRailProps) {
           style={{
             position: 'relative',
             width: '3px',
-            background: '#ece2d2',
+            background: 'var(--chip-cream)',
             borderRadius: '2px',
           }}
         >
@@ -192,7 +192,7 @@ export default function DayRail({ days, activeIndex, progress }: DayRailProps) {
               top: 0,
               left: 0,
               width: '100%',
-              background: 'linear-gradient(180deg,#c24a5a,#e0564b)',
+              background: 'linear-gradient(180deg,var(--coral),var(--coral2))',
               borderRadius: '2px',
               height: progressPct,
               transition: 'height .15s linear',
@@ -220,11 +220,11 @@ export default function DayRail({ days, activeIndex, progress }: DayRailProps) {
               width: `${size}px`,
               height: `${size}px`,
               borderRadius: '50%',
-              background: passed ? col : '#ddd2bf',
+              background: passed ? col : 'var(--tick-idle)',
               transition: 'all .25s ease',
               ...(isActive
                 ? {
-                    border: '2px solid #fbf6f0',
+                    border: '2px solid var(--paper)',
                     boxShadow: `0 0 0 2px ${col}`,
                   }
                 : {}),
@@ -253,7 +253,7 @@ export default function DayRail({ days, activeIndex, progress }: DayRailProps) {
                   style={{
                     fontSize: '11px',
                     fontWeight: isActive ? 700 : 500,
-                    color: isActive ? col : '#a99e88',
+                    color: isActive ? col : 'var(--tick-idle-label)',
                     transition: 'color .25s ease',
                     fontVariantNumeric: 'tabular-nums',
                   }}
@@ -281,7 +281,7 @@ export default function DayRail({ days, activeIndex, progress }: DayRailProps) {
           style={{
             position: 'relative',
             height: '4px',
-            background: '#ece2d2',
+            background: 'var(--chip-cream)',
             borderRadius: '2px',
           }}
         >
@@ -291,14 +291,14 @@ export default function DayRail({ days, activeIndex, progress }: DayRailProps) {
               left: 0,
               top: 0,
               height: '100%',
-              background: 'linear-gradient(90deg,#c24a5a,#e0564b)',
+              background: 'linear-gradient(90deg,var(--coral),var(--coral2))',
               borderRadius: '2px',
               width: progressPct,
               transition: 'width .15s linear',
             }}
           />
         </div>
-        <span style={{ fontSize: '11px', color: '#8a8170' }}>
+        <span style={{ fontSize: '11px', color: 'var(--muted2)' }}>
           {activeCityName} · {activeDate}
         </span>
       </div>

@@ -32,7 +32,7 @@ export default function Hero() {
         position: 'relative',
         minHeight: '100vh',
         overflow: 'hidden',
-        background: 'linear-gradient(180deg,#fdf8f1 0%,#fbf6f0 60%,#f6efe4 100%)',
+        background: 'linear-gradient(180deg,var(--hero-1) 0%,var(--hero-2) 60%,var(--hero-3) 100%)',
       }}
     >
       <HeroDecor />
@@ -64,13 +64,13 @@ export default function Hero() {
             gap: '12px',
           }}
         >
-          <span style={{ width: '34px', height: '1.5px', background: '#c79a44' }} />
+          <span style={{ width: '34px', height: '1.5px', background: 'var(--amber-deep)' }} />
           <span
             style={{
               fontSize: '12px',
               letterSpacing: '.26em',
               textTransform: 'uppercase',
-              color: '#b48a35',
+              color: 'var(--amber)',
               fontWeight: 700,
             }}
           >
@@ -96,7 +96,7 @@ export default function Hero() {
               fontSize: 'clamp(64px,11vw,148px)',
               lineHeight: 0.92,
               letterSpacing: '-.02em',
-              color: '#1b2a4a',
+              color: 'var(--ink)',
               margin: 0,
             }}
           >
@@ -108,7 +108,7 @@ export default function Hero() {
               fontFamily: "'Shippori Mincho', serif",
               fontWeight: 500,
               fontSize: 'clamp(20px,2.6vw,32px)',
-              color: '#c24a5a',
+              color: 'var(--coral)',
               margin: '14px 0 0',
               lineHeight: 1.25,
             }}
@@ -120,14 +120,14 @@ export default function Hero() {
             style={{
               fontSize: 'clamp(15px,1.6vw,17px)',
               lineHeight: 1.65,
-              color: '#5a5e6b',
+              color: 'var(--slate)',
               margin: '22px 0 0',
               maxWidth: '430px',
             }}
           >
             Ruta redonda por Narita atravesando ciudades, Alpes japoneses, onsen de
             montaña y la antigua capital. Un viaje con el eje puesto en la{' '}
-            <strong style={{ color: '#1b2a4a', fontWeight: 700 }}>cultura</strong>.
+            <strong style={{ color: 'var(--ink)', fontWeight: 700 }}>cultura</strong>.
           </p>
 
           {/* Stat chips */}
@@ -139,8 +139,8 @@ export default function Hero() {
                   display: 'flex',
                   flexDirection: 'column',
                   padding: '11px 18px',
-                  background: '#fffdf9',
-                  border: '1px solid #ece2d2',
+                  background: 'var(--surface)',
+                  border: '1px solid var(--border)',
                   borderRadius: '12px',
                 }}
               >
@@ -149,12 +149,12 @@ export default function Hero() {
                     fontFamily: "'Shippori Mincho', serif",
                     fontWeight: 700,
                     fontSize: '22px',
-                    color: '#1b2a4a',
+                    color: 'var(--ink)',
                   }}
                 >
                   {valor}
                 </span>
-                <span style={{ fontSize: '11px', color: '#8a8170', letterSpacing: '.06em' }}>
+                <span style={{ fontSize: '11px', color: 'var(--muted2)', letterSpacing: '.06em' }}>
                   {etiqueta}
                 </span>
               </div>
@@ -165,11 +165,11 @@ export default function Hero() {
           <button
             onClick={scrollToJourney}
             onMouseEnter={(e) => {
-              e.currentTarget.style.background = '#14203a'
+              e.currentTarget.style.background = 'var(--primary-press)'
               e.currentTarget.style.transform = 'translateY(-1px)'
             }}
             onMouseLeave={(e) => {
-              e.currentTarget.style.background = '#1b2a4a'
+              e.currentTarget.style.background = 'var(--primary-fill)'
               e.currentTarget.style.transform = 'translateY(0)'
             }}
             style={{
@@ -177,7 +177,7 @@ export default function Hero() {
               display: 'inline-flex',
               alignItems: 'center',
               gap: '11px',
-              background: '#1b2a4a',
+              background: 'var(--primary-fill)',
               color: '#fdf3e7',
               border: 'none',
               borderRadius: '10px',
@@ -214,10 +214,10 @@ export default function Hero() {
             height: 'min(66vh,640px)',
             position: 'relative',
             borderRadius: '18px',
-            border: '1px solid #e2d8c7',
+            border: '1px solid var(--border-cream)',
             boxShadow: '0 22px 50px -24px rgba(27,42,74,.4)',
             overflow: 'hidden',
-            background: '#eef0ee',
+            background: 'var(--wash-green2)',
           }}
         >
           <Suspense fallback={null}>
@@ -238,9 +238,9 @@ export default function Hero() {
             }}
           >
             <div
+              data-legend
               style={{
-                background: 'rgba(255,253,249,.94)',
-                border: '1px solid #e7ddcc',
+                border: '1px solid var(--border-2)',
                 borderRadius: '9px',
                 padding: '9px 13px',
                 boxShadow: '0 4px 14px -6px rgba(0,0,0,.25)',
@@ -251,7 +251,7 @@ export default function Hero() {
                   fontFamily: "'Shippori Mincho', serif",
                   fontWeight: 700,
                   fontSize: '14px',
-                  color: '#1b2a4a',
+                  color: 'var(--ink)',
                   marginBottom: '7px',
                 }}
               >
@@ -263,12 +263,12 @@ export default function Hero() {
                   alignItems: 'center',
                   gap: '7px',
                   fontSize: '11.5px',
-                  color: '#5a5e6b',
+                  color: 'var(--slate)',
                   marginBottom: '4px',
                 }}
               >
                 <span
-                  style={{ width: '18px', height: '3px', borderRadius: '2px', background: '#1b2a4a' }}
+                  style={{ width: '18px', height: '3px', borderRadius: '2px', background: 'var(--coral2)' }}
                 />
                 Recorrido principal
               </div>
@@ -278,14 +278,14 @@ export default function Hero() {
                   alignItems: 'center',
                   gap: '7px',
                   fontSize: '11.5px',
-                  color: '#5a5e6b',
+                  color: 'var(--slate)',
                 }}
               >
                 <span
                   style={{
                     width: '18px',
                     height: 0,
-                    borderTop: '2px dashed #c79a44',
+                    borderTop: '2px dashed var(--amber-deep)',
                     display: 'inline-block',
                   }}
                 />
@@ -296,6 +296,7 @@ export default function Hero() {
 
           {/* Watermark */}
           <div
+            data-watermark
             aria-hidden="true"
             style={{
               position: 'absolute',
@@ -304,7 +305,6 @@ export default function Hero() {
               zIndex: 5,
               fontFamily: "'Shippori Mincho', serif",
               fontSize: '30px',
-              color: 'rgba(27,42,74,.16)',
               fontWeight: 800,
               pointerEvents: 'none',
             }}
@@ -316,6 +316,7 @@ export default function Hero() {
 
       {/* Indicador de scroll */}
       <div
+        data-scrollcue
         onClick={scrollToJourney}
         style={{
           position: 'absolute',
@@ -335,7 +336,6 @@ export default function Hero() {
             fontSize: '10.5px',
             letterSpacing: '.22em',
             textTransform: 'uppercase',
-            color: '#8a8170',
           }}
         >
           Desplázate
@@ -346,7 +346,7 @@ export default function Hero() {
           height="20"
           viewBox="0 0 24 24"
           fill="none"
-          stroke="#c24a5a"
+          stroke="currentColor"
           strokeWidth={2.2}
           strokeLinecap="round"
           strokeLinejoin="round"
