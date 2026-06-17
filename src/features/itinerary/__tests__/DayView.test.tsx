@@ -76,8 +76,8 @@ describe('DayView', () => {
   })
 
   it('no next button on last day', () => {
-    renderDayView('12')
-    // Last pilot day is 12; there is no day 13 yet
+    renderDayView('29')
+    // Day 29 is the last day in the itinerary (Regreso)
     const nextBtn = screen.queryByRole('link', { name: /día siguiente/i })
     expect(nextBtn).not.toBeInTheDocument()
   })
@@ -90,5 +90,35 @@ describe('DayView', () => {
   it('renders a notes panel (NOTE-05)', () => {
     renderDayView('9')
     expect(screen.getByRole('textbox')).toBeInTheDocument()
+  })
+
+  // ── Transfer block tests ─────────────────────────────────────────────────
+
+  it('shows TransferBlock when day has transfers (day 13)', () => {
+    // Day 13 has transfers: Tokio → Takaragawa Onsen
+    renderDayView('13')
+    // The transfer section has aria-label "Trayecto del día"
+    expect(screen.getByRole('region', { name: /trayecto del día/i })).toBeInTheDocument()
+  })
+
+  it('shows transfer from→to when day has transfers (day 13)', () => {
+    renderDayView('13')
+    // The leg article has aria-label "Tramo 1: Tokio a Takaragawa Onsen (Minakami) en Shinkansen"
+    expect(screen.getByRole('article', { name: /tramo 1.*tokio.*takaragawa/i })).toBeInTheDocument()
+  })
+
+  it('does NOT show TransferBlock when day has no transfers (day 10)', () => {
+    // Day 10 has no transfers
+    renderDayView('10')
+    expect(screen.queryByRole('region', { name: /trayecto del día/i })).not.toBeInTheDocument()
+  })
+
+  it('shows both legs for multi-leg transfer day (day 22: Kioto→Nara→Osaka)', () => {
+    renderDayView('22')
+    // Day 22 has 2 transfer legs
+    const articles = screen.getAllByRole('article', { name: /tramo/i })
+    expect(articles.length).toBeGreaterThanOrEqual(2)
+    expect(screen.getByRole('article', { name: /tramo 1.*kioto.*nara/i })).toBeInTheDocument()
+    expect(screen.getByRole('article', { name: /tramo 2.*nara.*osaka/i })).toBeInTheDocument()
   })
 })

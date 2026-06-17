@@ -12,6 +12,7 @@ import { getDay } from '@/data'
 import { PageHeader } from '@/components/PageHeader'
 import { Button } from '@/components/Button'
 import TimeSlotBlock from './TimeSlotBlock'
+import TransferBlock from './TransferBlock'
 import NotesPanel from '@/features/notes/NotesPanel'
 
 export default function DayView() {
@@ -42,6 +43,11 @@ export default function DayView() {
       />
 
       <div className="px-4 md:px-8 py-8 space-y-8">
+        {/* Transfer block — only when the day has inter-city or day-trip legs */}
+        {day.transfers && day.transfers.length > 0 && (
+          <TransferBlock transfers={day.transfers} />
+        )}
+
         {/* Time slot blocks */}
         {day.slots.map(slot => (
           <TimeSlotBlock key={slot.key} slot={slot} />

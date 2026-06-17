@@ -45,4 +45,20 @@ export const cities: readonly City[] = [
     name: 'Osaka',
     center: [135.5023, 34.6937], // Osaka city center / Namba area
   },
+  // ── Day-trip destinations (no pernocta; centros para zonas y mini-mapas) ──
+  {
+    slug: 'nara',
+    name: 'Nara',
+    center: [135.8048, 34.6851], // Nara Park / Tōdai-ji area
+  },
+  {
+    slug: 'hiroshima',
+    name: 'Hiroshima',
+    center: [132.4536, 34.3955], // Peace Memorial Park area
+  },
+  {
+    slug: 'kamakura',
+    name: 'Kamakura',
+    center: [139.5467, 35.3192], // Kamakura station / Daibutsu area
+  },
 ] as const

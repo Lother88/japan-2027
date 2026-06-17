@@ -19,12 +19,13 @@ export default function DayCard({ day }: DayCardProps) {
   const city = getCity(day.citySlug)
   const { note } = useNotes(`day:${day.id}`)
   const hasNote = note.length > 0
+  const hasTransfers = (day.transfers?.length ?? 0) > 0
 
   return (
     <Link
       to={`/dia/${day.id}`}
       className="block group"
-      aria-label={`Día ${day.id} — ${day.title}${hasNote ? ' (con nota)' : ''}`}
+      aria-label={`Día ${day.id} — ${day.title}${hasTransfers ? ' (con trayecto)' : ''}${hasNote ? ' (con nota)' : ''}`}
     >
       <Card className="h-full p-4 group-hover:shadow-md transition-all">
         <div className="flex items-start justify-between mb-2">
@@ -32,6 +33,15 @@ export default function DayCard({ day }: DayCardProps) {
             {day.id}
           </span>
           <div className="flex items-center gap-1.5 mt-1">
+            {hasTransfers && (
+              <span
+                aria-label={`Día ${day.id} incluye trayecto entre ciudades`}
+                title="Incluye trayecto"
+                className="font-sans text-xs text-accent leading-none flex-shrink-0"
+              >
+                🚄
+              </span>
+            )}
             {hasNote && (
               <span
                 aria-label={`Nota guardada para el día ${day.id}`}

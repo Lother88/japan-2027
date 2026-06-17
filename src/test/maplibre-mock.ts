@@ -76,6 +76,7 @@ export const Source = vi.fn(({ children, ...rest }: SourceProps) =>
     'div',
     {
       'data-testid': 'mock-source',
+      'data-source-id': rest.id,
       'data-source-type': rest.type,
       'data-source-data': rest.data ? JSON.stringify(rest.data) : undefined,
     },
@@ -84,7 +85,11 @@ export const Source = vi.fn(({ children, ...rest }: SourceProps) =>
 )
 
 export const Layer = vi.fn(({ ...rest }: LayerProps) =>
-  createElement('div', { 'data-testid': 'mock-layer', ...rest }),
+  createElement('div', {
+    'data-testid': 'mock-layer',
+    'data-layer-id': rest.id,
+    'data-layer-type': rest.type,
+  }),
 )
 
 export const Popup = vi.fn(({ children, ...rest }: { children?: ReactNode }) =>

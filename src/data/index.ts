@@ -9,14 +9,16 @@ export { cities } from './cities'
 export { itinerary } from './itinerary'
 export { zones } from './zones'
 export { routeOrder } from './route'
-export type { City, Day, Zone, ZoneRef, TimeSlot, ZonePractical, LngLat, SlotKey } from './types'
+export { excursions } from './excursions'
+export type { City, Day, Zone, ZoneRef, TimeSlot, ZonePractical, LngLat, SlotKey, Transfer, TransferMode, Excursion } from './types'
 
 import { cities } from './cities'
 import { itinerary } from './itinerary'
 import { zones } from './zones'
 import { routeOrder } from './route'
-import { buildRouteLineStringFromCities } from '@/lib/geo'
-import type { City, Day, Zone } from './types'
+import { excursions } from './excursions'
+import { buildRouteLineStringFromCities, buildExcursionLineStrings } from '@/lib/geo'
+import type { City, Day, Excursion, Zone } from './types'
 
 // ── Lookup helpers ───────────────────────────────────────────────────────────
 
@@ -60,4 +62,25 @@ export function zonesForDay(dayId: number): Zone[] {
  */
 export function buildRouteLineString() {
   return buildRouteLineStringFromCities(cities, routeOrder)
+}
+
+/**
+ * Build one GeoJSON LineString per excursion (base city → destination).
+ * Used by the global map to draw day-trips (Shirakawa-go, Hiroshima) apart
+ * from the main round route.
+ */
+export function buildExcursionLines() {
+  return buildExcursionLineStrings(cities, excursions)
+}
+
+/** Destination cities of the excursions (for separate map markers). */
+export function excursionCities(): City[] {
+  return excursions
+    .map(ex => cities.find(c => c.slug === ex.toSlug))
+    .filter((c): c is City => c !== undefined)
+}
+
+/** Get an Excursion by id. Returns undefined if not found. */
+export function getExcursion(id: string): Excursion | undefined {
+  return excursions.find(e => e.id === id)
 }
