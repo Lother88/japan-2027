@@ -50,7 +50,7 @@ export const context: Record<string, readonly ContextEntry[]> = {
     {
       nombre: 'Kaminarimon y Nakamise-dōri',
       queEs: 'Kaminarimon es la gran puerta exterior de Sensō-ji, símbolo de Asakusa. Nakamise-dōri es el paseo comercial de 250 m que la une con la puerta interior Hōzōmon.',
-      historia: `Puerta construida originalmente en 942 d.C.; la versión actual es de 1960, donada por Konosuke Matsushita (fundador de Panasonic) tras curarse de una enfermedad. El farol rojo central mide 3,9 m y pesa ~700 kg (artesanos de Kioto). Nakamise tiene ~89 puestos; los primeros se establecieron en el Edo, cuando el templo autorizó a vender en el recinto.`,
+      historia: `Puerta construida originalmente en 941 d.C.; la versión actual es de 1960, donada por Konosuke Matsushita (fundador de Panasonic) tras curarse de una enfermedad. El farol rojo central mide 3,9 m y pesa ~700 kg (artesanos de Kioto). Nakamise tiene ~89 puestos; los primeros se establecieron en el Edo, cuando el templo autorizó a vender en el recinto.`,
       significado: `Entrada ritual a uno de los recintos sagrados de Tokio. Las estatuas que flanquean el farol son Fūjin (viento) y Raijin (trueno), guardianes. Muchas tiendas de Nakamise llevan generaciones en la misma familia.`,
       datoCurioso: `En la base del gran farol, visibles solo desde dentro de la puerta, hay tallas de dragones dorados (Tenryū y Kinryū).`,
       fuentes: [
@@ -99,7 +99,7 @@ export const context: Record<string, readonly ContextEntry[]> = {
     {
       nombre: 'Estatua de Hachikō (ハチ公像)',
       queEs: 'Escultura de bronce de un perro Akita frente a la salida Hachikō de Shibuya, que conmemora a un perro real famoso por su lealtad.',
-      historia: `Hachikō (nacido en 1923) acompañaba cada día a su dueño, el profesor Hidesaburō Ueno, a la estación. El profesor murió en mayo de 1925; Hachikō volvió a la estación cada tarde durante nueve años, once meses y quince días, hasta su muerte el 8 mar 1935. La primera estatua (1934, con Hachikō presente) se fundió en la guerra; la actual es de 1948.`,
+      historia: `Hachikō (nacido en 1923) acompañaba cada día a su dueño, el profesor Hidesaburō Ueno, a la estación. El profesor murió en mayo de 1925; Hachikō volvió a la estación cada tarde durante casi diez años (nueve años y nueve meses), hasta su muerte el 8 mar 1935. La primera estatua (1934, con Hachikō presente) se fundió en la guerra; la actual es de 1948.`,
       significado: `Encarna chūgi (lealtad) y giri (deber moral), virtudes clave en la cultura japonesa. Hoy es uno de los puntos de encuentro más usados de Tokio.`,
       datoCurioso: `El Asahi Shimbun publicó en 1932 un artículo que lo hizo famoso en vida; la gente iba a la estación expresamente a verlo.`,
       fuentes: [
@@ -151,7 +151,7 @@ export const context: Record<string, readonly ContextEntry[]> = {
     {
       nombre: 'Tokyo Metropolitan Government Building — Mirador',
       queEs: 'Sede del gobierno metropolitano de Tokio, con dos miradores gratuitos a 202 m en la Torre nº 1.',
-      historia: `Construido entre abril de 1988 y marzo de 1991, diseño de Kenzō Tange. La torre principal (243 m, 48 plantas) se divide en dos torreones desde el piso 33. Fue el edificio más alto de Tokio hasta 2007.`,
+      historia: `Construido entre 1988 y 1990 (inaugurado en 1991), diseño de Kenzō Tange. La torre principal (243 m, 48 plantas) se divide en dos torreones desde el piso 33. Fue el edificio más alto de Tokio hasta 2007.`,
       significado: `El diseño de Tange fusiona la catedral gótica (torreones dobles) con motivos de circuitos integrados. Es una de las mejores vistas panorámicas de Tokio sin coste, con el Fuji en días claros.`,
       datoCurioso: `En días despejados se ve el Fuji a más de 90 km. Los miradores cierran en días alternos (norte los martes, sur los miércoles) para que siempre haya uno abierto.`,
       fuentes: [
@@ -355,9 +355,9 @@ export const context: Record<string, readonly ContextEntry[]> = {
     {
       nombre: 'Akihabara ("Electric Town")',
       queEs: 'Barrio del centro de Tokio, primero el mayor hub de electrónica de Japón y hoy capital global de la cultura otaku (anime, manga, videojuegos retro, figuras, maid cafés). Los locales lo llaman "Akiba".',
-      historia: `En 1869 un incendio arrasó la zona; los vecinos erigieron un santuario a una deidad del fuego llamada "Akiba". La estación abrió en 1890. Tras la 2ª Guerra Mundial surgió un mercado negro de componentes eléctricos (semilla del "Electric Town"); en los 50 se legalizó y vendió electrodomésticos; en los 80 se centró en ordenadores (primeros otaku); en los 90-2000 cedió espacio al anime/manga/videojuegos.`,
+      historia: `En 1869 un incendio arrasó la zona; los vecinos erigieron un santuario a una deidad del fuego llamada "Akiba". La estación abrió en 1890 (de mercancías; pasajeros desde 1925). Tras la 2ª Guerra Mundial surgió un mercado negro de componentes eléctricos (semilla del "Electric Town"); en los 50 se legalizó y vendió electrodomésticos; en los 80 se centró en ordenadores (primeros otaku); en los 90-2000 cedió espacio al anime/manga/videojuegos.`,
       significado: `Resume la trayectoria del Japón moderno: de la escasez posbélica al milagro económico y al poder cultural blando global del anime. El grupo idol AKB48 toma su nombre del barrio.`,
-      datoCurioso: `El nombre "Akihabara" es un error burocrático fosilizado: el lugar se llamaba Akiba; al registrar la estación en 1890 lo transcribieron mal como "Akihabara". Los locales siguen diciendo "Akiba".`,
+      datoCurioso: `El nombre procede del santuario a la deidad del fuego "Akiba" erigido tras el incendio de 1869, más el sufijo -hara ("campo/llanura"). Los locales siguen llamando al barrio simplemente "Akiba".`,
       fuentes: [
         { label: 'Japan-guide.com', url: 'https://www.japan-guide.com/e/e3003.html' },
         { label: 'GO TOKYO', url: 'https://www.gotokyo.org/en/destinations/central-tokyo/akihabara/index.html' },
@@ -416,7 +416,7 @@ export const context: Record<string, readonly ContextEntry[]> = {
     {
       nombre: 'Tomioka Hachimangū (富岡八幡宮)',
       queEs: 'El mayor santuario dedicado a Hachiman (deidad de las artes marciales) de Tokio, en Fukagawa (Koto). Cuna del sumo profesional.',
-      historia: `Fundado en 1627 sobre terreno ganado al mar, con patrocinio directo del shogunato Tokugawa. En 1684, el shogunato autorizó torneos anuales de kanjin-zumō (sumo benéfico) en sus terrenos, a cargo del exsamurái Ikazuchi Gondayu, que codificó las reglas, el dohyō y el sistema de ranking (banzuke) vigentes hoy. Se celebraron aquí ~100 años, hasta el traslado a Ryōgoku.`,
+      historia: `Fundado en 1627 sobre terreno ganado al mar, con patrocinio directo del shogunato Tokugawa. En 1684, el shogunato autorizó torneos anuales de kanjin-zumō (sumo benéfico) en sus terrenos, a cargo del exsamurái Ikazuchi Gondayu, que codificó las reglas, el dohyō y el sistema de ranking (banzuke) vigentes hoy. Se celebraron aquí unos 150 años, hasta que en 1833 los torneos se centralizaron en el Ekōin (Ryōgoku).`,
       significado: `Reconocido como el lugar de nacimiento del sumo profesional organizado (ōzumō) en Edo. Cuando un luchador es promovido a yokozuna, realiza su ritual de entrada al ring (dohyō-iri) en este santuario.`,
       datoCurioso: `En 1900 erigió una Piedra de los Yokozuna (3,5 m, 20 toneladas) con los nombres de cada gran campeón. Posee además un mikoshi valorado en más de 1.000 millones de yenes, decorado con oro, diamantes y rubíes.`,
       fuentes: [
@@ -429,7 +429,7 @@ export const context: Record<string, readonly ContextEntry[]> = {
     {
       nombre: 'Estatua de la Libertad + Rainbow Bridge',
       queEs: 'Réplica permanente de la Estatua de la Libertad (escala 1:7) frente al Rainbow Bridge, uno de los encuadres fotográficos más icónicos de Tokio.',
-      historia: `En 1998, por el "Año de Francia en Japón", Francia prestó la estatua original de la Île des Cygnes de París (única vez que salió de Francia), expuesta en Odaiba hasta enero de 1999. Por su éxito, Tokio encargó una réplica permanente, inaugurada el 22 dic 2000. El Rainbow Bridge se inauguró el 26 ago 1993 (798 m, torres de 126 m), transportando autopista, carretera, el monorraíl Yurikamome y peatones en dos niveles.`,
+      historia: `En 1998, por el "Año de Francia en Japón", Francia prestó la estatua original de la Île des Cygnes de París (única vez que salió de Francia), expuesta en Odaiba hasta la primavera de 1999. Por su éxito, Tokio encargó una réplica permanente, inaugurada el 22 dic 2000. El Rainbow Bridge se inauguró el 26 ago 1993 (798 m, torres de 126 m), transportando autopista, carretera, el monorraíl Yurikamome y peatones en dos niveles.`,
       significado: `El Rainbow Bridge hizo posible Odaiba como destino público: convirtió un islote industrial en distrito de ocio y medios. Sin él, no existirían el Fuji TV, la Estatua ni el Odaiba actual.`,
       datoCurioso: `El nombre "Rainbow Bridge" se eligió por concurso público de sugerencias ciudadanas — el nombre oficial japonés ("Puente de conexión del puerto de Tokio") no lo usa nadie.`,
       fuentes: [
@@ -441,7 +441,7 @@ export const context: Record<string, readonly ContextEntry[]> = {
     {
       nombre: 'Fuji TV Building (フジテレビ本社ビル)',
       queEs: 'Sede de la cadena Fuji TV, reconocible por la gran esfera de titanio suspendida entre sus dos torres.',
-      historia: `Arquitecto: Kenzō Tange (uno de sus últimos grandes proyectos antes de morir en 2005). Construido entre mayo de 1993 y junio de 1996; Fuji TV se trasladó aquí el 10 mar 1997. 25 plantas, 123,45 m. La esfera Hachitama (32 m de diámetro, titanio, 1.350 toneladas) está suspendida a 100 m entre las dos torres; alberga un observatorio.`,
+      historia: `Arquitecto: Kenzō Tange (uno de sus últimos grandes proyectos antes de morir en 2005). Construido entre mayo de 1993 y junio de 1996; Fuji TV se trasladó aquí el 10 mar 1997. La esfera Hachitama (32 m de diámetro, titanio, 1.350 toneladas) está suspendida a 100 m entre las dos torres; alberga un observatorio. 27 plantas, 123,45 m.`,
       significado: `Fuji TV es una de las cinco cadenas nacionales y emisora histórica de anime global (One Piece, Dragon Ball Z). El edificio catalizó la transformación de Odaiba de zona industrial a distrito mediático.`,
       datoCurioso: `Izar y fijar la esfera (1.350 t a 100 m entre dos torres asimétricas) fue un desafío de ingeniería que se convirtió en caso de estudio, con cálculos propios de ingeniería aeroespacial.`,
       fuentes: [
@@ -455,8 +455,8 @@ export const context: Record<string, readonly ContextEntry[]> = {
   'takaragawa-onsen': [
     {
       nombre: 'Takaragawa Onsen — Ryokan Ōsenkaku (宝川温泉)',
-      queEs: 'Ryokan tradicional (ikkengyokan, único establecimiento en su manantial) en un valle cerrado de Gunma, con cuatro enormes piscinas al aire libre (rotenburo) sobre las orillas del río Takaragawa. También funciona como balneario de día (higaeri).',
-      historia: `Fundación del ryokan Ōsenkaku en 1923 (Taisho 12). ⚠️ Algunas guías en inglés citan "1940" por error: ese año es la construcción del primer gran rotenburo (Maka-no-Yu), no la fundación. En 1955, el edificio principal actual; en 1970, la apertura del Maya-no-Yu (único baño exclusivo para mujeres). El río Takaragawa ("río del tesoro") debe su nombre a la minería de cobre en sus orillas desde el período Edo. Los cuatro baños suman ~470 tatami (~850-900 m²); caudal natural de 1.800 litros/min de cuatro manantiales propios.`,
+      queEs: 'Ryokan tradicional (ikkengyokan, único establecimiento en su manantial) en un valle cerrado de Gunma, con grandes piscinas al aire libre (rotenburo) sobre las orillas del río Takaragawa. También funciona como balneario de día (higaeri).',
+      historia: `Fundación del ryokan Ōsenkaku en 1923 (Taisho 12). ⚠️ Algunas guías en inglés citan "1940" por error: ese año es la construcción del primer gran rotenburo (Maka-no-Yu), no la fundación. En 1955, el edificio principal actual; en 1970, la apertura del Maya-no-Yu (único baño exclusivo para mujeres). El río Takaragawa ("río del tesoro") debe su nombre a la minería de cobre en sus orillas desde el período Edo. Los baños suman ~470 tatami (~850-900 m²); caudal natural de 1.800 litros/min de cuatro manantiales propios.`,
       significado: `Ejemplo paradigmático de tres categorías culturales: hikyō onsen ("manantial secreto remoto"), ikkengyokan (una sola familia custodia el manantial) y konyoku (baño mixto tradicional, muy reducido tras las reformas Meiji de 1868). El JTB lo describe como "pionero del boom de los onsen secretos de Japón".`,
       datoCurioso: `Hacia 2005, pilotos y azafatas en escala en Narita lo descubrieron y lo difundieron por sus redes profesionales internacionales, antes de cualquier cobertura editorial en inglés. En 2014, el baño Kodakara-no-Yu fue escenario de rodaje de Thermae Romae II.`,
       fuentes: [
@@ -471,7 +471,7 @@ export const context: Record<string, readonly ContextEntry[]> = {
     {
       nombre: 'Higashi Chaya (東茶屋街)',
       queEs: 'El mayor de los tres distritos históricos de casas de té (chayamachi) de Kanazawa, al este del río Asano. Un ochaya no es una cafetería: es un local exclusivo donde geiko (geishas de Kanazawa) entretienen con danza, canto y shamisen.',
-      historia: `En 1820 (Bunsei 3), el daimio Maeda Narinaga otorga autorización oficial y consolida aquí las casas de geiko de la ciudad. El 14 nov 2001 fue designado Distrito de Preservación de Grupos de Edificios Tradicionales de Importancia (máxima categoría nacional), el primero de este tipo en Ishikawa. Conserva su trazado de 1820: ~140 edificios en 1,8 ha. La Ochaya Shima (~1830) es Bien Cultural Importante Nacional y hoy museo.`,
+      historia: `En 1820 (Bunsei 3), el daimio Maeda Narinaga otorga autorización oficial y consolida aquí las casas de geiko de la ciudad. El 14 nov 2001 fue designado Distrito de Preservación de Grupos de Edificios Tradicionales de Importancia (máxima categoría nacional), el primero de este tipo en Ishikawa. Conserva su trazado de 1820: ~140 edificios en 1,8 ha. La Ochaya Shima (1820) es Bien Cultural Importante Nacional y hoy museo.`,
       significado: `Uno de los tres únicos distritos de casas de té de Japón con designación patrimonial nacional (con Gion en Kioto y Kazuemachi en la propia Kanazawa). Inseparable de la riqueza del Dominio de Kaga, el feudo más rico de Japón fuera del shogunato. Los ochaya activos aplican ichigensan okotowari (no se admite a nuevos clientes sin presentación de un habitual).`,
       datoCurioso: `La celosía de madera de las fachadas (kimusuko, "jaula de insectos") tiene listones trapezoidales que crean visión unidireccional: desde dentro se ve la calle; desde la calle, el interior queda oculto. En el Edo, solo las casas de geiko podían tener dos plantas en Kanazawa.`,
       fuentes: [
@@ -486,7 +486,7 @@ export const context: Record<string, readonly ContextEntry[]> = {
     {
       nombre: 'Kenroku-en (兼六園)',
       queEs: 'Jardín histórico del período Edo de 11,4 ha, jardín exterior del Castillo de Kanazawa, desarrollado por los daimios Maeda durante más de dos siglos. Uno de los "Tres Grandes Jardines de Japón".',
-      historia: `En 1676, el quinto daimio Maeda Tsunanori construye la casa Renchiochin con su jardín (núcleo inicial); en 1759 un gran incendio lo destruye casi por completo y en 1774 empieza la restauración. En 1822, el duodécimo daimio Maeda Narinaga lo amplía; el nombre lo inspira el clásico chino "Crónicas de los Famosos Jardines de Luoyang": Ken-roku-en = jardín que "posee juntos los seis" atributos (amplitud, recogimiento, artificiosidad, antigüedad, agua y vistas panorámicas), agrupados en tres pares de contrarios. Apertura pública oficial el 7 may 1874. Contiene ~8.750 árboles de 183 especies.`,
+      historia: `En 1676, el quinto daimio Maeda Tsunanori construye la casa Renchiochin con su jardín (núcleo inicial); en 1759 un gran incendio lo destruye casi por completo y en 1774 empieza la restauración. En 1822, el undécimo daimio Maeda Narinaga lo amplía; el nombre lo inspira el clásico chino "Crónicas de los Famosos Jardines de Luoyang": Ken-roku-en = jardín que "posee juntos los seis" atributos (amplitud, recogimiento, artificiosidad, antigüedad, agua y vistas panorámicas), agrupados en tres pares de contrarios. Apertura pública oficial el 7 may 1874. Contiene ~8.750 árboles de 183 especies.`,
       significado: `Su hazaña teórica es reunir los seis atributos a la vez, cuando los tres pares se excluyen mutuamente. Es también un monumento de ingeniería hidráulica: su canal de alimentación (s. XVII) recorre más de 10 km desde el río Saigawa y sigue funcionando.`,
       datoCurioso: `Su fuente (1861) es la más antigua de Japón que funciona por presión natural: opera mediante sifón inverso (el estanque Kasumigaike está más alto que la salida), sin mecanismo alguno; brota a ~3,5 m. Se diseñó para probar el abastecimiento de agua al castillo.`,
       fuentes: [
@@ -530,7 +530,7 @@ export const context: Record<string, readonly ContextEntry[]> = {
   omicho: [
     {
       nombre: 'Mercado Ōmichō (近江町市場)',
-      queEs: 'Red de calles cubiertas con ~170 tiendas en 2,8 ha, el mayor mercado de alimentación fresca de Kanazawa y principal proveedor de pescado del Mar del Japón de la prefectura.',
+      queEs: 'Red de calles cubiertas con ~180 tiendas en 2,8 ha, el mayor mercado de alimentación fresca de Kanazawa y principal proveedor de pescado del Mar del Japón de la prefectura.',
       historia: `Fundación oficial en 1721 (Kyōhō 6) al consolidarse mercados dispersos en la ubicación actual (el 300 aniversario se celebró en 2021); como antecedente, un incendio de 1690 fusiona y reubica dos mercados de pescado. Durante el Edo fue proveedor oficial (gozensho) del castillo y el Dominio de Kaga. En 1904 se registra oficialmente el nombre "Ōmichō Ichiba" (por los mercaderes de la provincia de Ōmi que se asentaron). En 2009 se añade un edificio moderno anexo (73 tiendas más).`,
       significado: `Su apodo oficial es "la cocina de los ciudadanos de Kanazawa". Por la mañana abastece a los hogares; al mediodía se llena de visitantes que comen kaisendon. Producto estrella de invierno: la centolla de nieve Kanou Kani y el Nodoguro (mero de garganta negra).`,
       datoCurioso: `La kobako gani (hembra de la centolla de nieve de Ishikawa) tiene temporada legal de exactamente 54 días al año (6 nov – 29 dic), fijada por ordenanza coincidiendo con el inicio tradicional del invierno (Rittō). Fuera de esa ventana, no existe legalmente en el comercio.`,
@@ -574,8 +574,8 @@ export const context: Record<string, readonly ContextEntry[]> = {
     {
       nombre: 'Takayama Jinya (高山陣屋)',
       queEs: 'Residencia administrativa y sede de gobierno de la era Edo; el único edificio principal de su tipo (de ~60 que existieron en Japón) que se conserva intacto. Hoy museo.',
-      historia: `Origen en 1615 (residencia del clan Kanamori, señores de Hida). En 1692 el shogunato Tokugawa toma el control directo de Hida, expulsa a los Kanamori y establece la jinya como sede del gobernador. Durante 176 años (1692–1868), 25 generaciones de gobernadores administraron justicia, fiscalidad y gestión forestal. En uso oficial hasta 1969; monumento histórico nacional en 1929; restaurado a su aspecto Edo en 1996.`,
-      significado: `El shogunato tomó Hida por sus enormes bosques de hinoki y pino, indispensables para construir en Edo — demasiado valiosos para un señor local. La Jinya es el símbolo del poder central sobre los recursos naturales en el Japón feudal. Su granero de arroz (s. XVII) es el mayor granero tradicional de arroz de Japón.`,
+      historia: `Origen en 1615 (residencia del clan Kanamori, señores de Hida). En 1692 el shogunato Tokugawa toma el control directo de Hida, expulsa a los Kanamori y establece la jinya como sede del gobernador. Durante casi dos siglos (1692–1871), 25 generaciones de gobernadores administraron justicia, fiscalidad y gestión forestal. En uso oficial hasta 1969; monumento histórico nacional en 1929; restaurado a su aspecto Edo en 1996.`,
+      significado: `El shogunato tomó Hida por sus enormes bosques de hinoki y pino, indispensables para construir en Edo — demasiado valiosos para un señor local. La Jinya es el símbolo del poder central sobre los recursos naturales en el Japón feudal. Su granero de arroz (s. XVII) es uno de los mayores graneros tradicionales de arroz de Japón.`,
       datoCurioso: `Conserva una sala de interrogatorios (gōmon-ba) con instrumental y disposición originales — recordatorio de que la justicia Edo era expeditiva y las confesiones (a menudo bajo presión) eran prueba definitiva.`,
       fuentes: [
         { label: 'Web oficial (Prefectura de Gifu)', url: 'https://jinya.gifu.jp/en/about/' },
@@ -588,7 +588,7 @@ export const context: Record<string, readonly ContextEntry[]> = {
       nombre: 'Shirakawa-go — aldea de Ogimachi (白川郷・荻町)',
       queEs: 'Aldea en un valle alpino del río Shō (Gifu) con la mayor concentración del mundo de casas gasshō-zukuri, inscrita en la Lista del Patrimonio Mundial UNESCO en 1995 junto con Gokayama (Toyama).',
       historia: `Ogimachi agrupa unas 59 casas gasshō-zukuri en activo. Distrito de Preservación desde 1976; inscripción UNESCO el 9 dic 1995 (criterios C(iv) y C(v): arquitectura vernácula sobresaliente y asentamiento humano excepcional adaptado a su entorno). Las casas más antiguas superan los 250 años; algunas (Wada, Nagase) son visitables.`,
-      significado: `El gasshō-zukuri es una respuesta al entorno: tejados a dos aguas con pendiente de 60° para que la nieve (hasta 4 m) resbale; los desvanes amplios servían para criar gusanos de seda con el calor del hogar. Gasshō ("manos en oración") describe el tejado como palmas juntas. La comunidad se rige por tres principios voluntarios: "No vender, no alquilar, no destruir". El retechado colectivo (yui) es testimonio vivo de solidaridad comunitaria.`,
+      significado: `El gasshō-zukuri es una respuesta al entorno: tejados a dos aguas con pendiente de 60° para que la nieve (hasta unos 3 m) resbale; los desvanes amplios servían para criar gusanos de seda con el calor del hogar. Gasshō ("manos en oración") describe el tejado como palmas juntas. La comunidad se rige por tres principios voluntarios: "No vender, no alquilar, no destruir". El retechado colectivo (yui) es testimonio vivo de solidaridad comunitaria.`,
       datoCurioso: `Retechar una sola casa requiere 200–300 personas y puede llevar un día entero; los vecinos se turnan sin cobro (yui), transmitiendo además el conocimiento técnico a los jóvenes.`,
       fuentes: [
         { label: 'Asociación de Turismo (oficial)', url: 'https://shirakawa-go.gr.jp/en/highlights/' },
@@ -600,7 +600,7 @@ export const context: Record<string, readonly ContextEntry[]> = {
   'hida-no-sato': [
     {
       nombre: 'Hida no Sato — Hida Folk Village (飛騨の里)',
-      queEs: 'Museo al aire libre (1971) que reúne más de 30 edificios tradicionales de la región de Hida, trasladados desde sus emplazamientos originales a un entorno de 54.000 m² a las afueras de Takayama.',
+      queEs: 'Museo al aire libre (1971) que reúne más de 30 edificios tradicionales de la región de Hida, trasladados desde sus emplazamientos originales a un entorno de unos 99.000 m² a las afueras de Takayama.',
       historia: `Todos los edificios son del período Edo (1603–1868), con 100–500 años de antigüedad. Se concibió como respuesta a la pérdida de patrimonio rural en la modernización de los años 60; varias casas gasshō-zukuri proceden de Shirakawa-go, trasladadas antes de su protección oficial. Incluye residencia del jefe de aldea, cabañas de madereros, graneros y casas con interiores originales (telares, utensilios, herramientas de sericultura).`,
       significado: `A diferencia de Shirakawa-go (casas habitadas), aquí se accede al interior completo de los edificios y sus contenidos, explicando la vida cotidiana alpina preindustrial. Es el complemento pedagógico ideal: allá el conjunto vivo en su paisaje, aquí cada tipo de construcción en detalle.`,
       datoCurioso: `Cada mañana se encienden los hogares interiores (irori): el humo no es teatro, es el sistema de preservación de vigas y paja del tejado, igual que en las casas reales. El museo es literalmente "vivo": sin ese humo, las estructuras se deteriorarían.`,
@@ -630,7 +630,7 @@ export const context: Record<string, readonly ContextEntry[]> = {
     {
       nombre: 'Higashi Honganji (東本願寺)',
       queEs: 'Templo cabecera de la rama Shinshu Otani-ha del budismo Jōdo Shinshū (Tierra Pura). Su Salón Goei-dō es una de las estructuras de madera más grandes del planeta.',
-      historia: `Linaje desde 1272 (capilla funeraria de Shinran). El templo actual fue creado en 1602 por Tokugawa Ieyasu, que dividió la influyente secta Jōdo Shinshū en dos ramas rivales para reducir su poder. Destruido por incendios cuatro veces; edificio actual completado en 1895 (Meiji). El Goei-dō mide 76 × 58 × 38 m.`,
+      historia: `Linaje desde 1272 (capilla funeraria de Shinran). El templo actual nació en 1602 (terreno donado por Tokugawa Ieyasu; establecido en 1603), al dividir Ieyasu la influyente secta Jōdo Shinshū en dos ramas rivales para reducir su poder. Destruido por incendios cuatro veces; edificio actual completado en 1895 (Meiji). El Goei-dō mide 76 × 58 × 38 m.`,
       significado: `Uno de los ejemplos más impresionantes de arquitectura religiosa de madera del mundo. Su escisión ordenada por Ieyasu refleja cómo el poder político manipuló la religión. No es UNESCO (sí su "gemelo" Nishi Honganji, a 700 m).`,
       datoCurioso: `En la reconstrucción de 1895 no había cuerdas comerciales lo bastante resistentes para izar los maderos: miles de devotas donaron su cabello y se fabricaron 53 cuerdas de cabello humano. Una de 69 m y 375 kg se conserva en una vitrina del recinto.`,
       fuentes: [
@@ -667,7 +667,7 @@ export const context: Record<string, readonly ContextEntry[]> = {
     {
       nombre: 'Kiyomizu-dera (清水寺) · UNESCO',
       queEs: 'Templo budista del s. VIII en la ladera del monte Otowa, célebre por su plataforma de madera sobre el vacío, construida sin un solo clavo metálico.',
-      historia: `Fundado en 778 por el monje Kenshin; primer pabellón formal en 798. El edificio actual fue reconstruido en 1631-1633 por orden del shogun Tokugawa Iemitsu; el pabellón principal es Tesoro Nacional. El manantial Otowa se divide en tres canales (longevidad, amor, estudios). UNESCO (componente n.º 4), 1994.`,
+      historia: `Fundado en 778 por el monje Kenshin; primer pabellón formal en 798. El edificio actual fue reconstruido hacia 1633 (tras el incendio de 1629) por orden del shogun Tokugawa Iemitsu; el pabellón principal es Tesoro Nacional. El manantial Otowa se divide en tres canales (longevidad, amor, estudios). UNESCO (componente n.º 4), 1994.`,
       significado: `La plataforma (butai) se alza ~13 m sobre el bosque, sostenida por 18 pilares de zelkova de más de 400 años ensamblados con la técnica kakezukuri sin clavos. Ejemplo supremo de arquitectura sagrada integrada en el paisaje.`,
       datoCurioso: `En el Edo se creía que sobrevivir al salto desde la plataforma concedía un deseo. Se documentan 234 saltos (supervivencia ~85% gracias a los árboles). Se prohibió en 1872. De ahí el dicho "saltar desde el escenario de Kiyomizu" (tomar una gran decisión).`,
       fuentes: [
@@ -761,7 +761,7 @@ export const context: Record<string, readonly ContextEntry[]> = {
     {
       nombre: 'Kinkaku-ji — Pabellón Dorado (金閣寺) · UNESCO',
       queEs: 'Templo zen Rinzai cuyo pabellón, recubierto de pan de oro, se refleja en el estanque Kyōko-chi. Nombre oficial: Rokuon-ji.',
-      historia: `El shōgun Ashikaga Yoshimitsu lo construyó como villa de retiro desde 1397; tras su muerte se convirtió en templo zen. Combina tres estilos por piso (aristocrático shinden, samurái bukke y sala zen china). En julio de 1950 un monje de 21 años lo incendió por completo (suceso ficcionalizado por Yukio Mishima en El pabellón de oro, 1956). Reconstruido en 1955. UNESCO desde 1994.`,
+      historia: `El shōgun Ashikaga Yoshimitsu lo construyó como villa de retiro desde 1397; tras su muerte se convirtió en templo zen. Combina tres estilos por piso (aristocrático shinden, samurái bukke y sala zen china). En julio de 1950 un monje de 22 años lo incendió por completo (suceso ficcionalizado por Yukio Mishima en El pabellón de oro, 1956). Reconstruido en 1955. UNESCO desde 1994.`,
       significado: `Encarna la "Cultura Kitayama" del Muromachi: fusión de lo cortesano, lo samurái y lo zen. Los tres estilos por piso son una declaración de que todas las tradiciones confluyen.`,
       datoCurioso: `Es probablemente la imagen de Japón más fotografiada del mundo. La destrucción de 1950 y la reconstrucción de 1955 son parte inseparable de su historia y del significado de la novela de Mishima.`,
       fuentes: [
@@ -775,7 +775,7 @@ export const context: Record<string, readonly ContextEntry[]> = {
       queEs: 'Templo zen (Myōshin-ji/Rinzai) famoso por su jardín kare-sansui: 15 piedras sobre gravilla blanca rastrillada, sin una sola planta. El jardín zen más célebre del mundo.',
       historia: `Villa aristocrática Heian convertida en templo zen en 1450. La fecha exacta y el autor del jardín son desconocidos. El muro de barro ocre (siglos de aceite de colza absorbido) forma parte de la composición. UNESCO desde 1994.`,
       significado: `En apenas 25 × 10 m, ha influido en el diseño y el pensamiento estético mundial. Las 15 piedras se agrupan de modo que desde cualquier punto al menos una queda oculta; según la tradición zen, solo quien alcanza la iluminación las ve todas.`,
-      datoCurioso: `La Reina Isabel II lo visitó en 1975 y, impresionada, pidió una réplica en Buckingham. La puerta este (reservada a enviados imperiales) se abrió especialmente para ella.`,
+      datoCurioso: `La Reina Isabel II lo visitó en 1975 y su visita disparó la fama internacional del jardín. Para recibirla se usó la puerta este, reservada a enviados imperiales.`,
       fuentes: [
         { label: 'Web oficial', url: 'http://www.ryoanji.jp/smph/eng/garden/index.html' },
         { label: 'UNESCO 688', url: 'https://whc.unesco.org/en/list/688/' },
@@ -787,7 +787,7 @@ export const context: Record<string, readonly ContextEntry[]> = {
     {
       nombre: 'Castillo Nijō (二条城) · UNESCO',
       queEs: 'Castillo-palacio en el centro de Kioto, residencia oficial del shogunato Tokugawa en la ciudad imperial. Sus palacios son los mejores ejemplos conservados de arquitectura palacial feudal japonesa.',
-      historia: `Mandado construir en 1603 por Tokugawa Ieyasu; ampliado por Iemitsu (1624–1626) para la visita del Emperador Go-Mizuno-o. El 13 oct 1867, el último shōgun Yoshinobu anunció aquí la devolución del poder al Emperador — fin del período Edo (264 años). UNESCO desde 1994.`,
+      historia: `Mandado construir en 1603 por Tokugawa Ieyasu; ampliado por Iemitsu (1624–1626) para la visita del Emperador Go-Mizuno-o. El 14 oct 1867, el último shōgun Yoshinobu anunció aquí la devolución del poder al Emperador — fin del período Edo (265 años). UNESCO desde 1994.`,
       significado: `Único castillo donde se proclamó tanto el inicio (1603) como el fin (1867) de todo un período histórico. Sus salas de tatami y puertas pintadas son paradigma del arte Momoyama y primer Edo.`,
       datoCurioso: `El Palacio Ninomaru tiene "suelos ruiseñor" (uguisubari): tablones diseñados para crujir al pisarlos, como medida de seguridad contra intrusos. Es imposible caminar en silencio.`,
       fuentes: [
@@ -816,9 +816,9 @@ export const context: Record<string, readonly ContextEntry[]> = {
     {
       nombre: 'Tōdai-ji y el Gran Buda (東大寺・大仏) · UNESCO',
       queEs: 'Templo budista del s. VIII y sede del Gran Buda de bronce sedente más grande de Japón, alojado en el Daibutsu-den, uno de los mayores edificios de madera del mundo.',
-      historia: `Orígenes en Kinshō-ji (728). En 743 el emperador Shōmu ordenó la imagen colosal del Buda Vairocana; la estatua se completó en 749 y el Gran Pabellón en 751 (consagración en 752). El monje Gyōki organizó donaciones populares (~2,6 millones de personas). El Daibutsu-den actual es del Edo (finales s. XVII): 57 × 50,5 × 48,7 m, pero solo dos tercios del tamaño original. El Gran Buda mide ~14,98 m sentado (orejas de 2,54 m). UNESCO desde 1998 ("Monumentos Históricos de la Antigua Nara").`,
+      historia: `Orígenes en Kinshō-ji (728). En 743 el emperador Shōmu ordenó la imagen colosal del Buda Vairocana; la estatua se completó hacia 751 y la ceremonia de consagración (apertura de ojos) se celebró en 752. El monje Gyōki organizó donaciones populares (~2,6 millones de personas). El Daibutsu-den actual es del Edo (finales s. XVII): 57 × 50,5 × 48,7 m, pero solo dos tercios del tamaño original. El Gran Buda mide ~14,98 m sentado (orejas de 2,54 m). UNESCO desde 1998 ("Monumentos Históricos de la Antigua Nara").`,
       significado: `Concebido como cabeza de todos los templos provinciales de Japón, encarna la unificación espiritual del país bajo el budismo en la era Nara (710-784). La capital se trasladó en 784 en parte para reducir su enorme influencia política.`,
-      datoCurioso: `El Daibutsu-den actual ya es solo el 67% del edificio original del s. VIII — el original era una estructura de madera de dimensiones casi inimaginables para la época.`,
+      datoCurioso: `El Daibutsu-den actual conserva unos dos tercios de la anchura del original del s. VIII (la fachada pasó de 11 a 7 crujías) y aun así es uno de los mayores edificios de madera del mundo.`,
       fuentes: [
         { label: 'Web oficial Tōdai-ji', url: 'https://www.todaiji.or.jp/en/history/narajidai/' },
         { label: 'Daibutsu-den (oficial)', url: 'https://www.todaiji.or.jp/en/information/daibutsuden/' },
@@ -854,7 +854,7 @@ export const context: Record<string, readonly ContextEntry[]> = {
     {
       nombre: 'Kasuga Taisha (春日大社)',
       queEs: 'Gran santuario sintoísta (768), tutelar del clan Fujiwara, famoso por sus más de 3.000 linternas de piedra y bronce.',
-      historia: `Fundado en 768 por la emperatriz Shōtoku, con la capital de Nara. Santuario protector de los Fujiwara. Más de 2.000 linternas de piedra y más de 1.000 de bronce, muchas donadas por fieles (incluidos samuráis del período de los Estados Combatientes). Se encienden solo dos veces al año (festival Mantōrō, febrero y agosto, celebrado más de 800 años). UNESCO desde 1998 (con el bosque primigenio de Kasugayama).`,
+      historia: `Fundado en 768 por orden de la emperatriz Shōtoku (ejecutado por Fujiwara no Nagate), con la capital de Nara. Santuario protector de los Fujiwara. Más de 2.000 linternas de piedra y más de 1.000 de bronce, muchas donadas por fieles (incluidos samuráis del período de los Estados Combatientes). Se encienden solo dos veces al año (festival Mantōrō, febrero y agosto, celebrado más de 800 años). UNESCO desde 1998 (con el bosque primigenio de Kasugayama).`,
       significado: `Vínculo entre el poder imperial-aristocrático y el sintoísmo. El bosque sagrado de Kasugayama lleva más de 1.000 años como zona prohibida, uno de los bosques primigenios mejor conservados de Japón.`,
       datoCurioso: `Tiene 62 santuarios auxiliares en sus terrenos y ~3.000 santuarios dependientes por todo Japón.`,
       fuentes: [
@@ -951,7 +951,7 @@ export const context: Record<string, readonly ContextEntry[]> = {
     {
       nombre: 'Shinsekai y la torre Tsūtenkaku (新世界・通天閣)',
       queEs: 'Barrio retro-urbano nacido en 1903 como parque de atracciones inspirado en París y Coney Island, con la torre Tsūtenkaku (103 m) como hito central. Imagen de la Osaka popular y trabajadora.',
-      historia: `Desarrollado en 1903 con la 5ª Exposición Industrial Nacional. El diseño dividía el barrio en dos: norte estilo París, sur estilo Coney Island (con el parque Luna Park). La primera Tsūtenkaku (1912, 64 m) fusionaba la Torre Eiffel sobre el Arco de Triunfo; fue la estructura más alta del Oriente. Desmantelada en la 2ª Guerra Mundial (metales donados al esfuerzo bélico) y reconstruida en 1956 (103 m). En la torre vive el Billiken, estatua de la suerte llegada también en 1912.`,
+      historia: `Surgió en 1912 sobre los terrenos de la 5ª Exposición Industrial Nacional de 1903 (celebrada en la vecina Tennōji). El diseño dividía el barrio en dos: norte estilo París, sur estilo Coney Island (con el parque Luna Park). La primera Tsūtenkaku (1912, 64 m) fusionaba la Torre Eiffel sobre el Arco de Triunfo; fue una de las estructuras más altas de Asia de su época. Desmantelada en la 2ª Guerra Mundial (metales donados al esfuerzo bélico) y reconstruida en 1956 (103 m). En la torre vive el Billiken, estatua de la suerte llegada también en 1912.`,
       significado: `Reverso popular de la Osaka del Castillo y Dōtonbori. Primer barrio de atracciones planificado del Japón moderno; tras décadas de decadencia, hoy renace como destino retro. Sus restaurantes de kushikatsu (¡sin mojar dos veces en la salsa!) son patrimonio gastronómico.`,
       datoCurioso: `La primera Tsūtenkaku (1912) —Torre Eiffel sobre Arco de Triunfo— fue tan literal que causó perplejidad en la prensa internacional; su barrio imitaba París al norte y Coney Island al sur (la fascinación del Japón Meiji por "inventar Occidente").`,
       fuentes: [
@@ -965,7 +965,7 @@ export const context: Record<string, readonly ContextEntry[]> = {
       queEs: 'Templo budista fundado en 593 por el Príncipe Shōtoku; considerado el primer templo budista construido y patrocinado oficialmente por el Estado japonés.',
       historia: `Fundado en 593 por el Príncipe Shōtoku, figura central en la introducción oficial del budismo. Anterior en más de un siglo a los grandes templos de Nara. Su planta (pagoda, Kondō y Kōdō alineados en eje sur-norte, rodeados de un corredor) es el prototipo shitennōji-shiki garan, el layout de templo más antiguo de Japón. Ha sido reconstruido fielmente tras incendios y guerras durante 14 siglos (edificios actuales de la era Shōwa). El nombre alude a los Cuatro Reyes Celestiales (Shitennō).`,
       significado: `Punto cero del budismo como institución de Estado en Japón. Su fundación precede a la Constitución de los Diecisiete Artículos del propio Shōtoku (604) y a la capital de Nara (710).`,
-      datoCurioso: `Pese a ser el templo budista estatal más antiguo, durante más de 1.300 años no estuvo adscrito a ninguna secta: convivían y se estudiaban las ocho principales escuelas del budismo, algo sin equivalente en la historia religiosa de Japón.`,
+      datoCurioso: `Tras la 2ª Guerra Mundial se independizó para fundar su propia escuela, la secta Wa (和宗), en lugar de seguir adscrito a las grandes ramas budistas (históricamente estuvo vinculado al Tendai).`,
       fuentes: [
         { label: 'OSAKA-INFO', url: 'https://osaka-info.jp/en/spot/shitennoji/' },
         { label: 'Japan-guide.com', url: 'https://www.japan-guide.com/e/e4011.html' },
@@ -981,7 +981,7 @@ export const context: Record<string, readonly ContextEntry[]> = {
     {
       nombre: 'Parque Memorial de la Paz (平和記念公園)',
       queEs: 'Gran explanada conmemorativa en el antiguo centro de Hiroshima, dedicada a la memoria de las víctimas de la bomba atómica del 6 de agosto de 1945 y al llamamiento por la paz.',
-      historia: `Trazado sobre la zona arrasada por la bomba. Reúne el Cenotafio —un arco bajo el que descansa el registro con más de 220.000 nombres de víctimas—, la Llama de la Paz y el Monumento a los Niños de la Paz, inspirado en Sadako Sasaki y sus grullas de papel. Entrada gratuita; abierto siempre.`,
+      historia: `Trazado sobre la zona arrasada por la bomba. Reúne el Cenotafio —un arco que guarda el registro de víctimas, que supera los 340.000 nombres y sigue creciendo cada año—, la Llama de la Paz y el Monumento a los Niños de la Paz, inspirado en Sadako Sasaki y sus grullas de papel. Entrada gratuita; abierto siempre.`,
       significado: `El eje visual entre el Cenotafio y la Cúpula de la Bomba Atómica es la imagen icónica de la ciudad y uno de los espacios de memoria más impactantes del mundo.`,
       datoCurioso: `El Monumento a los Niños de la Paz nace de la historia de Sadako Sasaki, que plegó grullas de papel mientras enfermaba de leucemia por la radiación; hoy llegan grullas de todo el mundo.`,
       fuentes: [

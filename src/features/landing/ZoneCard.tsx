@@ -190,33 +190,6 @@ export default function ZoneCard({ zone, tokens }: Props) {
                       <div style={{ fontFamily: fontSans, fontSize: 13, lineHeight: 1.5, color: '#42475a' }}>{poi.datoCurioso}</div>
                     </div>
                   )}
-                  {poi.fuentes.length > 0 && (
-                    <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '4px 10px', marginTop: 9 }}>
-                      <span
-                        style={{
-                          fontFamily: fontSans,
-                          fontSize: 9.5,
-                          letterSpacing: '0.08em',
-                          textTransform: 'uppercase',
-                          color: tokens.factLabel,
-                          fontWeight: 700,
-                        }}
-                      >
-                        Fuentes
-                      </span>
-                      {poi.fuentes.map((f) => (
-                        <a
-                          key={f.url}
-                          href={f.url}
-                          target="_blank"
-                          rel="noreferrer"
-                          style={{ fontFamily: fontSans, fontSize: 12, color: tokens.heading, textDecoration: 'underline', textUnderlineOffset: 2 }}
-                        >
-                          {f.label}
-                        </a>
-                      ))}
-                    </div>
-                  )}
                 </div>
               ))}
             </div>
