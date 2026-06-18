@@ -3,7 +3,7 @@
  * Contiene HeroDecor, el texto con stats derivadas de datos,
  * el mapa HeroMap y los controles de scroll.
  */
-import { lazy, Suspense } from 'react'
+import { lazy, Suspense, useCallback, useState } from 'react'
 import HeroDecor from '@/features/landing/HeroDecor'
 import { scrollToJourney } from '@/features/landing/scroll'
 import { itinerary, excursions } from '@/data'
@@ -16,16 +16,21 @@ const HeroMap = lazy(() => import('@/features/map/HeroMap'))
 const dias = itinerary.length
 const bases = new Set(itinerary.map((d) => d.citySlug)).size
 const excursionesCount = excursions.length
-const viajeros = 8
+const viajeros = 10
 
-const chips: Array<{ valor: number; etiqueta: string }> = [
-  { valor: dias, etiqueta: 'días' },
-  { valor: bases, etiqueta: 'bases' },
-  { valor: excursionesCount, etiqueta: 'excursiones' },
-  { valor: viajeros, etiqueta: 'viajeros' },
+const chips: Array<{ valor: number; etiqueta: string; accent: string }> = [
+  { valor: dias, etiqueta: 'días', accent: 'var(--amber)' },
+  { valor: bases, etiqueta: 'bases', accent: 'var(--coral)' },
+  { valor: excursionesCount, etiqueta: 'excursiones', accent: 'var(--green)' },
+  { valor: viajeros, etiqueta: 'viajeros', accent: 'var(--coral2)' },
 ]
 
 export default function Hero() {
+  // El mapa avisa cuando entra/sale de pantalla completa: con el mapa maximizado
+  // ocultamos el indicador de scroll (queda por encima del overlay por stacking).
+  const [mapExpanded, setMapExpanded] = useState(false)
+  const toggleMap = useCallback(() => setMapExpanded((v) => !v), [])
+
   return (
     <header
       style={{
@@ -109,7 +114,7 @@ export default function Hero() {
               fontWeight: 500,
               fontSize: 'clamp(20px,2.6vw,32px)',
               color: 'var(--coral)',
-              margin: '14px 0 0',
+              margin: '28px 0 0',
               lineHeight: 1.25,
             }}
           >
@@ -125,36 +130,53 @@ export default function Hero() {
               maxWidth: '430px',
             }}
           >
-            Ruta redonda por Narita atravesando ciudades, Alpes japoneses, onsen de
-            montaña y la antigua capital. Un viaje con el eje puesto en la{' '}
-            <strong style={{ color: 'var(--ink)', fontWeight: 700 }}>cultura</strong>.
+            Ruta completa por todos los aspectos de Japón,{' '}
+            <strong style={{ color: 'var(--ink)', fontWeight: 700 }}>
+              lo moderno y lo tradicional
+            </strong>
+            , recorriendo los lugares que nos ofrece el país del sol naciente.
           </p>
 
           {/* Stat chips */}
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px', marginTop: '30px' }}>
-            {chips.map(({ valor, etiqueta }) => (
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px', marginTop: '30px' }}>
+            {chips.map(({ valor, etiqueta, accent }) => (
               <div
                 key={etiqueta}
                 style={{
                   display: 'flex',
                   flexDirection: 'column',
-                  padding: '11px 18px',
-                  background: 'var(--surface)',
-                  border: '1px solid var(--border)',
-                  borderRadius: '12px',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  textAlign: 'center',
+                  minWidth: '84px',
+                  padding: '14px 16px',
+                  background: 'linear-gradient(160deg,var(--surface) 0%,var(--surface-warm) 100%)',
+                  border: `1px solid color-mix(in srgb, ${accent} 34%, var(--border))`,
+                  borderRadius: '14px',
+                  boxShadow: '0 12px 26px -18px rgba(27,42,74,.4)',
                 }}
               >
                 <span
                   style={{
                     fontFamily: "'Shippori Mincho', serif",
-                    fontWeight: 700,
-                    fontSize: '22px',
-                    color: 'var(--ink)',
+                    fontWeight: 800,
+                    fontSize: '30px',
+                    lineHeight: 1,
+                    color: accent,
                   }}
                 >
                   {valor}
                 </span>
-                <span style={{ fontSize: '11px', color: 'var(--muted2)', letterSpacing: '.06em' }}>
+                <span
+                  style={{
+                    marginTop: '7px',
+                    fontSize: '10.5px',
+                    letterSpacing: '.14em',
+                    textTransform: 'uppercase',
+                    fontWeight: 700,
+                    color: 'var(--muted2)',
+                  }}
+                >
                   {etiqueta}
                 </span>
               </div>
@@ -221,7 +243,7 @@ export default function Hero() {
           }}
         >
           <Suspense fallback={null}>
-            <HeroMap />
+            <HeroMap expanded={mapExpanded} onToggleExpand={toggleMap} />
           </Suspense>
 
           {/* Leyenda */}
@@ -314,47 +336,49 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Indicador de scroll */}
-      <div
-        data-scrollcue
-        onClick={scrollToJourney}
-        style={{
-          position: 'absolute',
-          bottom: '80px',
-          left: '50%',
-          transform: 'translateX(-50%)',
-          zIndex: 6,
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          gap: '6px',
-          cursor: 'pointer',
-        }}
-      >
-        <span
+      {/* Indicador de scroll (oculto con el mapa a pantalla completa) */}
+      {!mapExpanded && (
+        <div
+          data-scrollcue
+          onClick={scrollToJourney}
           style={{
-            fontSize: '10.5px',
-            letterSpacing: '.22em',
-            textTransform: 'uppercase',
+            position: 'absolute',
+            bottom: '80px',
+            left: '50%',
+            transform: 'translateX(-50%)',
+            zIndex: 6,
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            gap: '6px',
+            cursor: 'pointer',
           }}
         >
-          Desplázate
-        </span>
-        <svg
-          aria-hidden="true"
-          width="20"
-          height="20"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth={2.2}
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          style={{ animation: 'ignBounce 2s ease-in-out infinite' }}
-        >
-          <path d="M12 5v14M5 12l7 7 7-7" />
-        </svg>
-      </div>
+          <span
+            style={{
+              fontSize: '10.5px',
+              letterSpacing: '.22em',
+              textTransform: 'uppercase',
+            }}
+          >
+            Desplázate
+          </span>
+          <svg
+            aria-hidden="true"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth={2.2}
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            style={{ animation: 'ignBounce 2s ease-in-out infinite' }}
+          >
+            <path d="M12 5v14M5 12l7 7 7-7" />
+          </svg>
+        </div>
+      )}
     </header>
   )
 }

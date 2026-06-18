@@ -8,11 +8,13 @@ import App from '@/App'
 
 vi.mock('maplibre-gl', () => {
   class FakeMap {
+    cooperativeGestures = { enable() {}, disable() {} }
     on() { return this }
     addControl() { return this }
     addSource() {}
     addLayer() {}
     fitBounds() {}
+    resize() {}
     remove() {}
   }
   class FakeMarker {

@@ -22,7 +22,7 @@ import { useThemeMode, type ThemeMode } from '@/features/landing/useThemeMode'
 /** Ciudades de pernocta en orden de ruta (dedup: Tokio aparece 2 veces). */
 const ROUTE_CITY_SLUGS = ['tokio', 'takaragawa', 'kanazawa', 'takayama', 'kioto', 'osaka']
 /** Destinos de excursión / day-trip (sin pernocta). */
-const EXCURSION_CITY_SLUGS = ['shirakawago', 'hiroshima', 'nara', 'kamakura']
+const EXCURSION_CITY_SLUGS = ['shirakawago', 'hiroshima', 'nara']
 
 function citiesBySlugs(slugs: string[]) {
   return slugs
@@ -34,6 +34,24 @@ const routeFeature = buildRouteLineString()
 const excursionFeatures = buildExcursionLines()
 const routeCities = citiesBySlugs(ROUTE_CITY_SLUGS)
 const excursionCitiesList = citiesBySlugs(EXCURSION_CITY_SLUGS)
+
+/** Encuadra el mapa sobre toda la ruta + extremos de excursión (instantáneo). */
+function fitToRoute(m: maplibregl.Map) {
+  const bounds = new maplibregl.LngLatBounds()
+  routeFeature.geometry.coordinates.forEach((c) => bounds.extend(c as [number, number]))
+  excursionCitiesList.forEach((c) => bounds.extend([c.center[0], c.center[1]]))
+  m.fitBounds(bounds, { padding: { top: 54, bottom: 54, left: 54, right: 54 }, duration: 0 })
+}
+
+/**
+ * Gestos según el modo. Maximizado → rueda con zoom directo (movilidad plena).
+ * Minimizado → gestos cooperativos (la rueda hace scroll de la página; el zoom
+ * pide Ctrl/⌘ + rueda), para no secuestrar el scroll cuando el mapa está embebido.
+ */
+function applyGestureMode(m: maplibregl.Map, expanded: boolean) {
+  if (expanded) m.cooperativeGestures?.disable()
+  else m.cooperativeGestures?.enable()
+}
 
 /** Estilo raster CARTO según tema: `dark_all` en oscuro, `light_all` en claro. */
 function buildCartoStyle(mode: ThemeMode) {
@@ -86,8 +104,20 @@ function makeMarkerEl(label: string, kind: 'city' | 'exc', mode: ThemeMode): HTM
   return el
 }
 
-export default function HeroMap() {
+interface HeroMapProps {
+  /** Si el mapa ocupa toda la pantalla (controlado por el contenedor). */
+  expanded: boolean
+  /** Alterna el modo pantalla completa. */
+  onToggleExpand: () => void
+}
+
+export default function HeroMap({ expanded, onToggleExpand }: HeroMapProps) {
   const containerRef = useRef<HTMLDivElement>(null)
+  const mapRef = useRef<maplibregl.Map | null>(null)
+  // Valor vivo de `expanded` para el efecto de creación (deps [mode]): al recrear
+  // el mapa por cambio de tema, aplica los gestos correctos sin recrearse al maximizar.
+  const expandedRef = useRef(expanded)
+  expandedRef.current = expanded
   const { mode } = useThemeMode()
 
   // El efecto depende de `mode`: al cambiar de tema se limpia el mapa anterior
@@ -116,7 +146,12 @@ export default function HeroMap() {
     }
 
     const m = map
-    m.addControl(new maplibregl.NavigationControl({ showCompass: false }), 'top-right')
+    mapRef.current = m
+    // Si se recrea estando maximizado (cambio de tema), conserva la rueda directa.
+    applyGestureMode(m, expandedRef.current)
+    // Zoom abajo-derecha: deja libre la esquina superior derecha para el botón
+    // de maximizar.
+    m.addControl(new maplibregl.NavigationControl({ showCompass: false }), 'bottom-right')
 
     m.on('load', () => {
       // Ruta principal
@@ -154,10 +189,7 @@ export default function HeroMap() {
       })
 
       // Encuadre incluyendo extremos de excursión
-      const bounds = new maplibregl.LngLatBounds()
-      routeFeature.geometry.coordinates.forEach((c) => bounds.extend(c as [number, number]))
-      excursionCitiesList.forEach((c) => bounds.extend([c.center[0], c.center[1]]))
-      m.fitBounds(bounds, { padding: { top: 54, bottom: 54, left: 54, right: 54 }, duration: 0 })
+      fitToRoute(m)
     })
 
     return () => {
@@ -166,8 +198,100 @@ export default function HeroMap() {
       } catch {
         /* noop */
       }
+      mapRef.current = null
     }
   }, [mode])
 
-  return <div ref={containerRef} aria-label="Mapa de la ruta por Japón" style={{ position: 'absolute', inset: 0 }} />
+  // Al alternar maximizado: ajusta los gestos (rueda directa solo en pantalla
+  // completa), avisa a MapLibre del cambio de tamaño (resize) y reencuadra la ruta.
+  useEffect(() => {
+    const m = mapRef.current
+    if (!m) return
+    applyGestureMode(m, expanded)
+    const raf = requestAnimationFrame(() => {
+      m.resize()
+      fitToRoute(m)
+    })
+    return () => cancelAnimationFrame(raf)
+  }, [expanded])
+
+  // Mientras está a pantalla completa: bloquea el scroll del body y Esc cierra.
+  useEffect(() => {
+    if (!expanded) return
+    const prevOverflow = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') onToggleExpand()
+    }
+    window.addEventListener('keydown', onKey)
+    return () => {
+      document.body.style.overflow = prevOverflow
+      window.removeEventListener('keydown', onKey)
+    }
+  }, [expanded, onToggleExpand])
+
+  // Colores del botón según tema (mismos valores que los markers).
+  const dark = mode === 'dark'
+  const btnBg = dark ? 'rgba(29,32,48,.92)' : 'rgba(255,253,249,.92)'
+  const btnFg = dark ? '#f1ece1' : '#1b2a4a'
+  const btnBorder = dark ? 'rgba(241,236,225,.18)' : 'rgba(27,42,74,.16)'
+
+  return (
+    <div
+      style={
+        expanded
+          ? { position: 'fixed', inset: 0, zIndex: 1000, background: 'var(--surface)' }
+          : { position: 'absolute', inset: 0 }
+      }
+    >
+      <div ref={containerRef} aria-label="Mapa de la ruta por Japón" style={{ position: 'absolute', inset: 0 }} />
+
+      <button
+        type="button"
+        onClick={onToggleExpand}
+        aria-label={expanded ? 'Cerrar pantalla completa del mapa' : 'Ver el mapa a pantalla completa'}
+        title={expanded ? 'Cerrar (Esc)' : 'Pantalla completa'}
+        onMouseEnter={(e) => (e.currentTarget.style.transform = 'translateY(-1px)')}
+        onMouseLeave={(e) => (e.currentTarget.style.transform = 'translateY(0)')}
+        style={{
+          position: 'absolute',
+          top: '14px',
+          right: '14px',
+          zIndex: 6,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          width: '36px',
+          height: '36px',
+          padding: 0,
+          background: btnBg,
+          color: btnFg,
+          border: '1px solid ' + btnBorder,
+          borderRadius: '9px',
+          cursor: 'pointer',
+          boxShadow: '0 4px 14px -6px rgba(0,0,0,.35)',
+          backdropFilter: 'blur(6px)',
+          transition: 'transform .15s ease',
+        }}
+      >
+        <svg
+          aria-hidden="true"
+          width="18"
+          height="18"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth={2.2}
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          {expanded ? (
+            <path d="M18 6 6 18M6 6l12 12" />
+          ) : (
+            <path d="M8 3H5a2 2 0 0 0-2 2v3m13-5h3a2 2 0 0 1 2 2v3M8 21H5a2 2 0 0 1-2-2v-3m13 5h3a2 2 0 0 0 2-2v-3" />
+          )}
+        </svg>
+      </button>
+    </div>
+  )
 }

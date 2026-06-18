@@ -53,7 +53,6 @@ export const cityMeta: Record<string, CityMeta> = {
   osaka: { kanji: '大阪', dot: 'var(--coral2)' },
   nara: { kanji: '奈良', dot: 'var(--gold)' },
   hiroshima: { kanji: '広島', dot: 'var(--coral)' },
-  kamakura: { kanji: '鎌倉', dot: 'var(--green)' },
 }
 
 /** Fallback si una ciudad no estuviera mapeada. */

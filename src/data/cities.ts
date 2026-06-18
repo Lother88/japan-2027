@@ -56,9 +56,4 @@ export const cities: readonly City[] = [
     name: 'Hiroshima',
     center: [132.4536, 34.3955], // Peace Memorial Park area
   },
-  {
-    slug: 'kamakura',
-    name: 'Kamakura',
-    center: [139.5467, 35.3192], // Kamakura station / Daibutsu area
-  },
 ] as const

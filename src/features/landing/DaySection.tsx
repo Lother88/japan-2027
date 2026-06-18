@@ -86,7 +86,7 @@ export default function DaySection({ day, index }: DaySectionProps) {
       </div>
 
       {/* Ilustración decorativa */}
-      <DayIllustration kind={pickIllustration(day.citySlug, day.id)} side={side} />
+      <DayIllustration kind={pickIllustration(day.citySlug, day.id)} side={side} seed={day.id} />
 
       {/* Contenido principal */}
       <div
