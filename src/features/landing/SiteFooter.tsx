@@ -80,7 +80,7 @@ export default function SiteFooter() {
                 color: '#9fb0d0',
               }}
             >
-              Ruta redonda por Narita · 8 → 29 mayo 2027 · 20 noches · 8 viajeros · eje cultura.
+              Ruta redonda por Narita · 8 → 29 mayo 2027 · 20 noches · 4 viajeros · eje cultura.
             </p>
           </div>
 

@@ -3,12 +3,17 @@
  *
  * Aplica `data-theme` en <html> (las variables CSS de index.css resuelven la
  * paleta), persiste la elección en localStorage['jp-theme'] y expone `toggle`,
- * que dispara la animación de abanico (themeFan) e intercambia el tema a mitad
- * del barrido. Si el usuario prefiere movimiento reducido, hace el cambio directo.
+ * que dispara la transición ligera (themeTransition: disco "sol naciente") e
+ * intercambia el tema bajo la cobertura. Si el usuario prefiere movimiento
+ * reducido, hace el cambio directo.
  */
 import { useCallback, useEffect, useRef, useState } from 'react'
 import type { ReactNode } from 'react'
-import { buildFan, playFanSwap, type FanHandles } from '@/features/landing/themeFan'
+import {
+  buildThemeOverlay,
+  playThemeSwap,
+  type ThemeOverlayHandles,
+} from '@/features/landing/themeTransition'
 import {
   ThemeModeContext,
   THEME_STORAGE_KEY,
@@ -19,8 +24,8 @@ import {
 export function ThemeModeProvider({ children }: { children: ReactNode }) {
   const [mode, setMode] = useState<ThemeMode>(readInitialMode)
   const modeRef = useRef(mode)
-  const fanRootRef = useRef<HTMLDivElement | null>(null)
-  const fanRef = useRef<FanHandles | null>(null)
+  const overlayRootRef = useRef<HTMLDivElement | null>(null)
+  const overlayRef = useRef<ThemeOverlayHandles | null>(null)
   const busyRef = useRef(false)
 
   // Sincroniza el ref, aplica data-theme y persiste cuando cambia el tema
@@ -34,10 +39,10 @@ export function ThemeModeProvider({ children }: { children: ReactNode }) {
     }
   }, [mode])
 
-  // Construye el abanico una sola vez
+  // Construye el overlay de transición una sola vez
   useEffect(() => {
-    if (fanRootRef.current && !fanRef.current) {
-      fanRef.current = buildFan(fanRootRef.current)
+    if (overlayRootRef.current && !overlayRef.current) {
+      overlayRef.current = buildThemeOverlay(overlayRootRef.current)
     }
   }, [])
 
@@ -47,14 +52,14 @@ export function ThemeModeProvider({ children }: { children: ReactNode }) {
     const reduced =
       typeof window !== 'undefined' &&
       window.matchMedia('(prefers-reduced-motion: reduce)').matches
-    const fan = fanRef.current
-    if (!fan || reduced) {
+    const overlay = overlayRef.current
+    if (!overlay || reduced) {
       setMode(next)
       return
     }
-    // Anima el abanico y aplica el swap a mitad del barrido.
+    // Reproduce la transición y aplica el swap bajo la cobertura.
     busyRef.current = true
-    playFanSwap(fan, () => setMode(next)).finally(() => {
+    playThemeSwap(overlay, () => setMode(next)).finally(() => {
       busyRef.current = false
     })
   }, [])
@@ -62,7 +67,7 @@ export function ThemeModeProvider({ children }: { children: ReactNode }) {
   return (
     <ThemeModeContext.Provider value={{ mode, toggle }}>
       {children}
-      <div ref={fanRootRef} aria-hidden="true" />
+      <div ref={overlayRootRef} aria-hidden="true" />
     </ThemeModeContext.Provider>
   )
 }

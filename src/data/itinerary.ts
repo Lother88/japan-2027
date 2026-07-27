@@ -34,7 +34,7 @@ export const itinerary: readonly Day[] = [
         notes: [
           'Llegada del vuelo ~12:45',
           'Comprar/activar Suica o Pasmo en el aeropuerto',
-          'Grupo de 8: prever tiempo en migración y equipajes',
+          'Grupo de 4: prever tiempo en migración y equipajes',
         ],
       },
     ],
@@ -661,7 +661,7 @@ export const itinerary: readonly Day[] = [
         duration: '~1h',
         notes: [
           'Vuelo a las 18:00 — estar en el aeropuerto ~15:00',
-          'Grupo de 8: prever facturación y devolución de Suica/equipaje',
+          'Grupo de 4: prever facturación y devolución de Suica/equipaje',
         ],
       },
     ],

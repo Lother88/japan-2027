@@ -26,3 +26,4 @@ dist-ssr
 # Design handoff artifacts (Claude Design)
 *-handoff.zip
 .design-handoff*/
+/.atl/

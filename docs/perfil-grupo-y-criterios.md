@@ -1,13 +1,13 @@
 # 👥 Perfil del grupo y criterios de selección — Viaje Japón 2027
 
 > **Documento de referencia.** Marca CÓMO se valora cada barrio/ciudad. Leerlo antes de decidir el itinerario.
-> **Última actualización:** 15 jun 2026.
+> **Última actualización:** 24 jul 2026.
 
 ---
 
 ## 🧑‍🤝‍🧑 Composición y perfil del grupo
 
-- Grupo de amigos. Coordinador: **Manuel** (ya viajó a Japón en 2025; conoce el terreno).
+- **Grupo de 4 amigos.** Coordinador: **Manuel** (ya viajó a Japón en 2025; conoce el terreno).
 - **VARIOS miembros NO han ido nunca a Japón** y **NO son especialmente otakus / fans del anime**.
 - **Conclusión:** el viaje **NO debe centrarse en lo otaku**. El **EJE es la CULTURA** (templos, historia, gastronomía, iconos imprescindibles, paisaje y experiencias). Lo otaku/anime/compras de 2.ª mano (Book Off / Hard Off, Pokémon Centers, retro gaming, vintage) **sigue siendo parte del viaje**, pero como **COMPLEMENTO**, no como núcleo.
 

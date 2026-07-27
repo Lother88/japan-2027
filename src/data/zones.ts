@@ -45,7 +45,7 @@ export const zones: readonly Zone[] = [
       hours: 'Tembo Deck (350 m) y Tembo Galleria (450 m): ~9:00–22:00 (última entrada 21:00)',
       logistics: [
         'Subir al atardecer (17:00–19:00 en mayo): vistas con luz y luego iluminado',
-        'Comprar entrada online con antelación (ticket rápido para extranjeros) — grupo de 8',
+        'Comprar entrada online con antelación (ticket rápido para extranjeros) — grupo de 4',
         'A los pies está Tokyo Solamachi (centro comercial)',
         'Se ve gratis e iluminado desde el puente Azuma-bashi (Asakusa)',
       ],

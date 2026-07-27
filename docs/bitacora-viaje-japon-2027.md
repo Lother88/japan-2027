@@ -1,7 +1,7 @@
 # 🗾 Cuaderno de Bitácora — Viaje a Japón 2027
 
-> **Gestor del viaje:** Manuel · **Grupo:** amigos (primerizos en Japón) · **Año objetivo:** 2027
-> **Documento creado:** 14 de junio de 2026 · **Última actualización:** 15 de junio de 2026
+> **Gestor del viaje:** Manuel · **Grupo:** 4 amigos (primerizos en Japón) · **Año objetivo:** 2027
+> **Documento creado:** 14 de junio de 2026 · **Última actualización:** 24 de julio de 2026
 > **Propósito:** registro vivo de toda la investigación para planificar el viaje. Se irá ampliando a medida que avancemos.
 
 ---
@@ -265,6 +265,8 @@ Golden Route + Japón Central + Kansai profundo: Tokio + day trips (5) · Hakone
 - **Truco "open-jaw" (recomendado):** entrar por Tokio y salir por Osaka-Kansai (o viceversa).
 - **Cuándo comprar:** **4-8 meses** de antelación; evitar Golden Week, verano y Año Nuevo.
 
+> **🔄 Actualización 24 jul 2026 (cotización en vivo, 4 viajeros, fechas 8→29 may 2027, con maleta):** el redondo **BCN⇄Narita** más barato está en **~890 €/pp** con **Cathay Pacific** (1 escala en Hong Kong, ida ~1h15), maleta incluida. Verificado en Skyscanner, Google Flights, Kayak y Momondo (todos convergen ~890-897 €). Con criterio de **escala ≤3 h**, el redondo por Narita sigue ganando (890 €); los open-jaw "entrar Tokio/salir Osaka" se disparan a 1.211-1.439 €. **Haneda** cuesta casi lo mismo que Narita con Cathay pero está más cerca del centro. El suelo ha **bajado ~73-100 €** desde jun 2026 → conviene **esperar y comprar en oct 2026-ene 2027**. Detalle completo en [vuelos-cotizacion-en-vivo-jul2026.md](vuelos-cotizacion-en-vivo-jul2026.md).
+
 ### Idioma y etiqueta básica
 
 - Inglés limitado fuera de zonas turísticas. Útil **Google Translate** (cámara para menús/carteles).
@@ -376,7 +378,7 @@ Golden Route + Japón Central + Kansai profundo: Tokio + day trips (5) · Hakone
 
 - [ ] **Fechas / mes de viaje 2027** (recomendado: 2.ª quincena de mayo o 1.ª quincena de noviembre; evitar Golden Week 26 abr–5 may).
 - [ ] **Duración total del viaje** (define qué itinerario aplica: 7 / 10 / 14 / 21 días).
-- [ ] **Número de personas** y composición del grupo.
+- [x] **Número de personas:** **4 viajeros** (confirmado 24 jul 2026; antes se barajaban 8).
 - [ ] **Presupuesto por persona** (lo marcará quien tenga menos margen).
 - [ ] **Intereses prioritarios** (cultura/templos, gastronomía, naturaleza, anime/compras, vida nocturna, onsen…).
 - [ ] **Nivel de alojamiento** y preferencia (hoteles vs. apartamento de grupo vs. ryokan).

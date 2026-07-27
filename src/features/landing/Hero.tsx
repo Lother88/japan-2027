@@ -16,7 +16,7 @@ const HeroMap = lazy(() => import('@/features/map/HeroMap'))
 const dias = itinerary.length
 const bases = new Set(itinerary.map((d) => d.citySlug)).size
 const excursionesCount = excursions.length
-const viajeros = 10
+const viajeros = 4
 
 const chips: Array<{ valor: number; etiqueta: string; accent: string }> = [
   { valor: dias, etiqueta: 'días', accent: 'var(--amber)' },
