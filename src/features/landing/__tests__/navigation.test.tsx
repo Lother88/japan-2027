@@ -58,6 +58,20 @@ describe('DayRail — navegación por días', () => {
     expect(links.filter((l) => l.hasAttribute('aria-current'))).toHaveLength(1)
   })
 
+  it('la cabecera del rail usa el número real del día y la posición como «N de 21»', () => {
+    const i = 3
+    render(<DayRail days={itinerary} activeIndex={i} progress={0.2} />)
+    const block = document.querySelector('[data-rail-block]')
+    expect(block).not.toBeNull()
+    const text = block!.textContent ?? ''
+    // El número grande es el del día (como en «Día 12» de la sección), no la posición.
+    expect(block!.querySelector('[data-rail-num]')).toHaveTextContent(pad2(itinerary[i].id))
+    expect(text).toContain(`${i + 1} de ${itinerary.length}`)
+    // Sin la doble numeración «Día 04 / 21» frente a «12».
+    expect(text).not.toMatch(/\d+\s*\/\s*\d+/)
+    expect(text).not.toContain(`Día ${pad2(i + 1)}`)
+  })
+
   it('anterior/siguiente (móvil) son enlaces al día adyacente', () => {
     render(<DayRail days={itinerary} activeIndex={1} progress={0} />)
     const nav = screen.getByRole('navigation', { name: /días/i })
@@ -77,6 +91,19 @@ describe('DaySection — ancla del día', () => {
     const section = container.querySelector('section')
     expect(section).toHaveAttribute('id', `dia-${pad2(day.id)}`)
     expect(section).toHaveAttribute('data-day', String(day.id))
+  })
+})
+
+describe('DaySection — subtítulo', () => {
+  it('no parte los nombres con guion (Shirakawa-go) al final de línea', () => {
+    const day = itinerary.find((d) => d.title.includes('Shirakawa-go'))
+    if (!day) throw new Error('falta el día de Shirakawa-go')
+    const { container } = render(<DaySection day={day} index={0} />)
+    const h2 = container.querySelector('h2')
+    expect(h2).toHaveTextContent('Excursión a Shirakawa-go y Hida no Sato')
+    const word = [...(h2?.querySelectorAll('span') ?? [])].find((s) => s.textContent === 'Shirakawa-go')
+    expect(word, 'Shirakawa-go va en un span sin cortes').toBeDefined()
+    expect(word).toHaveStyle({ whiteSpace: 'nowrap' })
   })
 })
 

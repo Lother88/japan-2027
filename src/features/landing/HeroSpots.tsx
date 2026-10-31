@@ -3,9 +3,10 @@
  * una con su spot isométrico (calendario, machiya, billete JR, maletas).
  *
  * Los spots van en el chunk del hero y sus cajas de 56×56 están reservadas desde el primer
- * render. El flotado al pasar el ratón es CSS (index.css, `[data-ticket-cell]`). Las cifras son
- * texto grande (30 px en negrita): cada acento pasa ≥ 3:1 sobre --surface y «días» usa
- * --amber-text (--amber se queda para las rampas de los SVG).
+ * render. El flotado al pasar el ratón es CSS (index.css, `[data-ticket-cell]`). Cada cifra pasa
+ * ≥ 4,5:1 sobre --surface en ambos temas (sin depender de la excepción de texto grande):
+ * «días» usa --amber-text y «viajeros» --coral2-text; --amber y --coral2 se quedan para las
+ * rampas de los SVG.
  */
 import { tripSummary } from '@/data/trip'
 import LazyIso from '@/features/landing/hero-art/LazyIso'
@@ -17,7 +18,7 @@ const cells: Array<{ valor: number; etiqueta: string; accent: string; spot: Hero
   { valor: trip.days, etiqueta: 'días', accent: 'var(--amber-text)', spot: 'koyomi' },
   { valor: trip.bases, etiqueta: 'bases', accent: 'var(--coral)', spot: 'machiya' },
   { valor: trip.excursions, etiqueta: 'excursiones', accent: 'var(--green)', spot: 'kippu' },
-  { valor: trip.travelers, etiqueta: 'viajeros', accent: 'var(--coral2)', spot: 'maletas' },
+  { valor: trip.travelers, etiqueta: 'viajeros', accent: 'var(--coral2-text)', spot: 'maletas' },
 ]
 
 export default function HeroSpots() {

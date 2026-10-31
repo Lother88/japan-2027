@@ -6,6 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Japón 2027</title>
     <!--
+      Google Fonts desde el HTML (no con @import en index.css): la hoja se pide en paralelo
+      con el bundle en vez de esperar al CSS. Solo los pesos usados: Shippori Mincho
+      500/600/700/800 y Zen Kaku Gothic New 400/500/700 (no tiene 600: los 600 de sans
+      resuelven a 700). Los fallbacks con métricas ajustadas están en index.css.
+    -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;600;700;800&amp;family=Zen+Kaku+Gothic+New:wght@400;500;700&amp;display=swap" />
+    <!--
       Anti-FOUC theme script: runs synchronously before React mounts.
       Reads the persisted theme from localStorage (key: jp-theme) and falls back
       to prefers-color-scheme. Sets data-theme="dark" on <html> if needed so the

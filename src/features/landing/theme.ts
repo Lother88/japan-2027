@@ -148,8 +148,8 @@ export function tokensForCity(slug: string): ThemeTokens {
 }
 
 // ── Tipografía ────────────────────────────────────────────────────────────────
-export const fontSerif = "'Shippori Mincho', serif"
-export const fontSans = "'Zen Kaku Gothic New', sans-serif"
+export const fontSerif = 'var(--font-serif)'
+export const fontSans = 'var(--font-sans)'
 
 // ── Fechas (es-ES, parseo determinista en UTC) ────────────────────────────────
 const WEEKDAYS_LONG = ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado']

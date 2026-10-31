@@ -1,6 +1,82 @@
-/* Google Fonts must come first (CSS @import rules must precede all other rules)
-   Shippori Mincho (serif — títulos, números, kanji) + Zen Kaku Gothic New (sans — cuerpo) */
-@import url("https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;600;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap");
+/* ─────────────────────────────────────────────
+   Fuentes: Shippori Mincho (serif — títulos, números, kanji) + Zen Kaku Gothic New (sans —
+   cuerpo). Las carga index.html con <link> (preconnect + hoja, solo los pesos usados), no un
+   @import aquí: así la hoja de Google no espera a este CSS.
+
+   Fallbacks con métricas ajustadas: mientras llegan las fuentes (display=swap) se pinta con
+   Times New Roman / Arial escaladas y con el mismo ascent/descent, de modo que el cambio de
+   fuente no mueve el texto (CLS). Medido en Chrome con canvas.measureText sobre el texto del
+   hero: Shippori 800 ≈ 1,17 × Times bold de ancho; Zen Kaku 400 ≈ 0,975 × Arial; ambas con
+   ascent 1,16 em y descent 0,29 em (los overrides se dividen por size-adjust).
+───────────────────────────────────────────── */
+@font-face {
+  font-family: 'Shippori Mincho Fallback';
+  src: local('Times New Roman'), local('Times'), local('Liberation Serif'), local('Tinos');
+  size-adjust: 117%;
+  ascent-override: 99.1%;
+  descent-override: 24.8%;
+  line-gap-override: 0%;
+}
+@font-face {
+  font-family: 'Zen Kaku Gothic New Fallback';
+  src: local('Arial'), local('Helvetica'), local('Liberation Sans'), local('Arimo');
+  size-adjust: 97.5%;
+  ascent-override: 119%;
+  descent-override: 29.7%;
+  line-gap-override: 0%;
+}
+
+/* ─────────────────────────────────────────────
+   Escala tipográfica (tokens @theme de Tailwind v4; `static` los emite siempre en :root,
+   también los que solo se usan desde estilos inline). Nombres con la convención de Tailwind:
+   --text-X (tamaño), --text-X--line-height y --text-X--letter-spacing.
+   Ojo: el plugin de Tailwind solo compila este fichero si usa alguna función suya; el
+   `--theme(--font-sans)` del body es lo que lo activa (no se importa preflight ni utilidades).
+───────────────────────────────────────────── */
+@theme static {
+  --font-serif: 'Shippori Mincho', 'Shippori Mincho Fallback', serif;
+  --font-sans: 'Zen Kaku Gothic New', 'Zen Kaku Gothic New Fallback', sans-serif;
+
+  /* H1 «Japón» del hero (escritorio) y su versión de teléfono (≤ 760 px, más grande) */
+  --text-display: clamp(64px, 10vw, 148px);
+  --text-display--line-height: .92;
+  --text-display--letter-spacing: -.02em;
+  --text-display-compact: clamp(88px, 27vw, 128px);
+  /* Títulos de sección («La ruta») */
+  --text-h2: clamp(30px, 3.4vw, 44px);
+  --text-h2--line-height: 1.05;
+  /* «Día NN» de la cabecera de cada día */
+  --text-day-num: clamp(40px, 6vw, 64px);
+  --text-day-num--line-height: 1;
+  /* Subtítulo del día (h2): ≤ 2 líneas junto a la ilustración */
+  --text-day-title: clamp(24px, 3vw, 30px);
+  --text-day-title--line-height: 1.2;
+  /* Subtítulo coral del hero */
+  --text-subtitle: clamp(20px, 2.4vw, 32px);
+  --text-subtitle--line-height: 1.25;
+  /* Párrafo de entrada del hero */
+  --text-lead: clamp(15px, 1.4vw, 17px);
+  --text-lead--line-height: 1.65;
+  /* Cuerpo de las franjas del día */
+  --text-body: 15px;
+  --text-body--line-height: 1.65;
+  /* Cifras de la tira de billete */
+  --text-numeral: 30px;
+  --text-numeral--line-height: 1;
+  /* Kanji de fondo de cada día */
+  --text-watermark: clamp(140px, 18vw, 260px);
+  --text-watermark--line-height: 1;
+  /* Etiquetas en mayúsculas: eyebrow (fechas), label (rail, pie, aviso de scroll), caption */
+  --text-eyebrow: 12px;
+  --text-eyebrow--line-height: 1.45;
+  --text-eyebrow--letter-spacing: .2em;
+  --text-label: 11px;
+  --text-label--line-height: 1.45;
+  --text-label--letter-spacing: .16em;
+  --text-caption: 10px;
+  --text-caption--line-height: 1.45;
+  --text-caption--letter-spacing: .1em;
+}
 
 /* ─────────────────────────────────────────────
    Tokens de diseño — variables CSS (Claude Design)
@@ -19,6 +95,9 @@
   /* Texto ámbar con AA (≥ 4,5:1). --amber NO se toca: las rampas de las ilustraciones
      isométricas derivan de su hex; los textos usan --amber-text. */
   --amber-text:#816326;
+  /* Coral vivo para texto (≥ 4,5:1 sobre --surface): cifra «viajeros» de la tira de billete.
+     --coral2 tampoco se toca (rampas de las ilustraciones). */
+  --coral2-text:#bc483f;
   /* Anillo de foco (≥ 3:1 sobre los fondos de la página) */
   --focus-ring:#b23a36;
   color-scheme: light;
@@ -35,6 +114,7 @@
   --nav-bg:18,20,27; --tick-idle:#3a3f4d; --tick-idle-label:#908c82; --map-line:#ff8a5c;
   --lantern-body:#ff6f62; --lantern-body-hover:#ff8a7f; --lantern-ring:rgba(0,0,0,.22); --lantern-cap:rgba(0,0,0,.5);
   --amber-text:#e2a743;
+  --coral2-text:#ff6f62;
   --focus-ring:#ffd27a;
   color-scheme: dark;
 }
@@ -48,7 +128,7 @@ html { scroll-behavior: smooth; transition: background .55s ease, background-col
 body {
   background: var(--paper);
   color: var(--body);
-  font-family: 'Zen Kaku Gothic New', sans-serif;
+  font-family: --theme(--font-sans);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
@@ -134,15 +214,62 @@ body {
   html { scrollbar-width: thin; scrollbar-color: var(--lantern-body) transparent; }
 }
 
-/* MapLibre — ajustes tipográficos */
-.maplibregl-ctrl-attrib { font-family: 'Zen Kaku Gothic New', sans-serif; font-size: 9px; }
-.maplibregl-ctrl-group button { border-radius: 6px; }
-/* Foco dentro del mapa: el contenedor recorta (overflow:hidden), así que el anillo va
-   hacia dentro; se sustituye el halo azul de MapLibre por el anillo del sitio. */
-.maplibregl-canvas:focus-visible { outline-offset: -3px; }
-.maplibregl-ctrl button:focus-visible,
-.maplibregl-ctrl-attrib summary:focus-visible,
-.maplibregl-ctrl-attrib a:focus-visible { outline-offset: -2px; box-shadow: none !important; }
+/* MapLibre — controles con los tokens del sitio (en oscuro dejan de ser blancos).
+   maplibre-gl.css llega DESPUÉS (con el chunk lazy del mapa) y empata en especificidad, así
+   que todo va bajo [data-route-map]. Los iconos de MapLibre son imágenes con relleno fijo
+   (#333): los de zoom pasan a máscara pintada con --ink; el «i» de la atribución, que es el
+   propio <summary> enfocable (una máscara taparía su anillo de foco), lleva el icono con el
+   relleno de --ink de cada tema (#1b2a4a / #f1ece1). */
+[data-route-map] .maplibregl-ctrl-attrib { font-family: var(--font-sans); font-size: 9px; }
+[data-route-map] .maplibregl-ctrl-group:not(:empty) {
+  background: var(--surface);
+  border-radius: 9px;
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--ink) 16%, transparent), 0 4px 14px -6px rgba(0,0,0,.35);
+}
+[data-route-map] .maplibregl-ctrl-group button { border-radius: 6px; }
+[data-route-map] .maplibregl-ctrl-group button + button { border-top-color: var(--border-2); }
+@media (hover: hover) {
+  [data-route-map] .maplibregl-ctrl button:not(:disabled):hover { background-color: color-mix(in srgb, var(--ink) 8%, transparent); }
+}
+[data-route-map] .maplibregl-ctrl button:not(:disabled):active { background-color: color-mix(in srgb, var(--ink) 12%, transparent); }
+[data-route-map] .maplibregl-ctrl button.maplibregl-ctrl-zoom-in .maplibregl-ctrl-icon,
+[data-route-map] .maplibregl-ctrl button.maplibregl-ctrl-zoom-out .maplibregl-ctrl-icon {
+  background: var(--ink);
+  -webkit-mask: var(--map-icon) center / 29px 29px no-repeat;
+  mask: var(--map-icon) center / 29px 29px no-repeat;
+}
+[data-route-map] .maplibregl-ctrl button.maplibregl-ctrl-zoom-in .maplibregl-ctrl-icon { --map-icon: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='29' height='29' viewBox='0 0 29 29'%3E%3Cpath d='M14.5 8.5c-.75 0-1.5.75-1.5 1.5v3h-3c-.75 0-1.5.75-1.5 1.5S9.25 16 10 16h3v3c0 .75.75 1.5 1.5 1.5S16 19.75 16 19v-3h3c.75 0 1.5-.75 1.5-1.5S19.75 13 19 13h-3v-3c0-.75-.75-1.5-1.5-1.5'/%3E%3C/svg%3E"); }
+[data-route-map] .maplibregl-ctrl button.maplibregl-ctrl-zoom-out .maplibregl-ctrl-icon { --map-icon: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='29' height='29' viewBox='0 0 29 29'%3E%3Cpath d='M10 13c-.75 0-1.5.75-1.5 1.5S9.25 16 10 16h9c.75 0 1.5-.75 1.5-1.5S19.75 13 19 13z'/%3E%3C/svg%3E"); }
+/* Atribución (desplegada o compacta): píldora --surface con texto del tema */
+[data-route-map] .maplibregl-ctrl.maplibregl-ctrl-attrib,
+[data-route-map] .maplibregl-ctrl-attrib.maplibregl-compact {
+  background-color: color-mix(in srgb, var(--surface) 92%, transparent);
+  color: var(--body);
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--ink) 12%, transparent);
+}
+[data-route-map] .maplibregl-ctrl-attrib a { color: var(--ink); }
+[data-route-map] .maplibregl-ctrl-attrib .maplibregl-ctrl-attrib-button {
+  background-color: transparent;
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='%231b2a4a' fill-rule='evenodd' viewBox='0 0 20 20'%3E%3Cpath d='M4 10a6 6 0 1 0 12 0 6 6 0 1 0-12 0m5-3a1 1 0 1 0 2 0 1 1 0 1 0-2 0m0 3a1 1 0 1 1 2 0v3a1 1 0 1 1-2 0'/%3E%3C/svg%3E");
+}
+[data-theme="dark"] [data-route-map] .maplibregl-ctrl-attrib .maplibregl-ctrl-attrib-button {
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='%23f1ece1' fill-rule='evenodd' viewBox='0 0 20 20'%3E%3Cpath d='M4 10a6 6 0 1 0 12 0 6 6 0 1 0-12 0m5-3a1 1 0 1 0 2 0 1 1 0 1 0-2 0m0 3a1 1 0 1 1 2 0v3a1 1 0 1 1-2 0'/%3E%3C/svg%3E");
+}
+/* Alto contraste del sistema: los iconos enmascarados se pintan con el color de texto de botón */
+@media (forced-colors: active) {
+  [data-route-map] .maplibregl-ctrl button .maplibregl-ctrl-icon { forced-color-adjust: none; background: ButtonText; }
+}
+/* Foco dentro del mapa: el contenedor recorta (overflow:hidden), así que el anillo va hacia
+   dentro. MapLibre quita el outline de sus botones y pone un halo azul: se devuelve el anillo
+   del sitio. */
+[data-route-map] .maplibregl-canvas:focus-visible { outline: 3px solid var(--focus-ring); outline-offset: -3px; }
+[data-route-map] .maplibregl-ctrl button:focus-visible,
+[data-route-map] .maplibregl-ctrl-attrib summary:focus-visible,
+[data-route-map] .maplibregl-ctrl-attrib a:focus-visible {
+  outline: 3px solid var(--focus-ring);
+  outline-offset: -2px;
+  box-shadow: none !important;
+}
 
 /* Leyenda y marca de agua del mapa («La ruta»), sensibles al tema */
 [data-legend]    { background: rgba(255,253,249,.94); }
@@ -207,15 +334,16 @@ body {
 [data-ticket-cell] + [data-ticket-cell] { border-left: 1.5px dashed var(--border-2); }
 [data-ticket-num] {
   margin-top: 4px;
-  font-family: 'Shippori Mincho', serif;
+  font-family: var(--font-serif);
   font-weight: 800;
-  font-size: 30px;
-  line-height: 1;
+  font-size: var(--text-numeral);
+  line-height: var(--text-numeral--line-height);
 }
 [data-ticket-label] {
   margin-top: 6px;
-  font-size: 10px;
-  letter-spacing: .1em;
+  font-size: var(--text-caption);
+  line-height: var(--text-caption--line-height);
+  letter-spacing: var(--text-caption--letter-spacing);
   text-transform: uppercase;
   font-weight: 700;
   color: var(--muted2);
@@ -294,7 +422,7 @@ button[data-scrollcue] {
   [data-hero-art] { max-width: 520px; }
   [data-hero-copy] { width: 100%; align-items: center; text-align: center; padding: 8px 0 0; }
   /* Titular más grande en el teléfono: el H1 sigue siendo el LCP (por encima del párrafo) */
-  [data-hero-copy] h1 { font-size: clamp(88px, 27vw, 128px) !important; }
+  [data-hero-copy] h1 { font-size: var(--text-display-compact) !important; }
   [data-art="banda"] { aspect-ratio: auto; height: 96px; }
   [data-route-head] { gap: 12px; }
 }
@@ -364,6 +492,24 @@ details[data-spoiler][open]::details-content { height: auto; opacity: 1; }
    (DayIllustration pone data-paused con un IntersectionObserver). !important porque el
    <style> de cada SVG redefine `animation` en su clase. */
 [data-illus][data-paused] * { animation-play-state: paused !important; }
+
+/* Parallax del kanji de fondo de cada día: animación ligada a su paso por el viewport
+   (scroll-driven, en el compositor), no JS midiendo en cada frame. Recorrido equivalente al
+   antiguo data-parallax="0.14": desplazamiento = -0,14 × (centro − mitad del viewport), así
+   que va de -0,07 × (100vh + alto) al entrar a +0,07 × (100vh + alto) al salir.
+   Sin soporte o con reduce-motion, el kanji se queda quieto (nada que degradar). */
+@keyframes kanji-drift {
+  from { translate: 0 calc(-.07 * (100vh + 100%)); }
+  to   { translate: 0 calc(.07 * (100vh + 100%)); }
+}
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    [data-kanji] {
+      animation: kanji-drift linear both;
+      animation-timeline: view();
+    }
+  }
+}
 
 /* Respeta reduce-motion */
 @media (prefers-reduced-motion: reduce) {

@@ -4,11 +4,13 @@
  * Portado de handleScroll del diseño. En un único listener de scroll (con rAF):
  *  - calcula el día activo (sección [data-day] cuyo top cruza el 42% del viewport)
  *  - calcula el progreso 0..1 dentro del contenedor [data-journey]
- *  - aplica parallax a los elementos [data-parallax]
  *  - alterna la visibilidad del botón [data-totop] (oculto → `inert`, fuera del Tab)
  *
  * Devuelve { activeIndex, progress } para alimentar el rail. activeIndex es el
  * índice (0-based) de la sección de día en orden de DOM.
+ *
+ * El parallax del kanji de fondo ya no pasa por aquí: es CSS scroll-driven
+ * (`animation-timeline: view()` en index.css).
  */
 import { useEffect, useState } from 'react'
 
@@ -57,17 +59,8 @@ export function useScrollJourney(): JourneyState {
           : prev,
       )
 
-      // parallax
-      const vh = window.innerHeight
-      document.querySelectorAll<HTMLElement>('[data-parallax]').forEach((el) => {
-        const speed = parseFloat(el.getAttribute('data-parallax') || '0.1') || 0.1
-        const r = el.getBoundingClientRect()
-        const center = r.top + r.height / 2
-        const d = center - vh / 2
-        el.style.transform = 'translateY(' + (-d * speed).toFixed(1) + 'px)'
-      })
-
       // botón volver arriba
+      const vh = window.innerHeight
       const top = document.querySelector<HTMLElement>('[data-totop]')
       if (top) {
         const vis = window.scrollY > vh * 0.6

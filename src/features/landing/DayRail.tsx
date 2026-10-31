@@ -1,8 +1,9 @@
 /**
  * DayRail — navegación sticky del journey (`<nav aria-label="Días del viaje">`).
  *
- * Escritorio: día activo (kanji, número, ciudad, fecha), barra de progreso vertical y
- * una lista de enlaces reales `#dia-NN` (uno por día, zona táctil ≥ 24 px).
+ * Escritorio: día activo (kanji, «Día» + número real del día —el mismo que «Día NN» de la
+ * sección—, ciudad, fecha y posición «N de 21»), barra de progreso vertical y una lista de
+ * enlaces reales `#dia-NN` (uno por día, zona táctil ≥ 24 px).
  * Móvil (≤ 860 px, reglas en index.css): rail compacto de 56 px con enlaces
  * anterior/siguiente, una línea «Día · ciudad · fecha» y la barra de progreso horizontal.
  *
@@ -65,8 +66,7 @@ export default function DayRail({ days, activeIndex, progress }: DayRailProps) {
   const active = days[activeIndex] ?? days[0]
 
   const activeNum = pad2(active.id)
-  const seq = pad2(activeIndex + 1)
-  const total = days.length
+  const position = `${activeIndex + 1} de ${days.length}`
   const activeKanji = getCityMeta(active.citySlug).kanji
   const activeCityName = cityName(active.citySlug)
   const activeDate = formatShortDate(active.date)
@@ -148,14 +148,15 @@ export default function DayRail({ days, activeIndex, progress }: DayRailProps) {
         </span>
         <span
           style={{
-            fontSize: '11px',
-            letterSpacing: '.2em',
+            fontSize: 'var(--text-label)',
+            lineHeight: 'var(--text-label--line-height)',
+            letterSpacing: 'var(--text-label--letter-spacing)',
             textTransform: 'uppercase',
             color: 'var(--amber-text)',
             fontWeight: 700,
           }}
         >
-          Día {seq} / {total}
+          Día
         </span>
         <span
           data-rail-num
@@ -187,6 +188,16 @@ export default function DayRail({ days, activeIndex, progress }: DayRailProps) {
           }}
         >
           {activeDate}
+        </span>
+        <span
+          data-rail-position
+          style={{
+            fontSize: '12px',
+            color: 'var(--muted2)',
+            fontVariantNumeric: 'tabular-nums',
+          }}
+        >
+          {position}
         </span>
       </div>
 

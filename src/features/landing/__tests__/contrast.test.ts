@@ -34,7 +34,7 @@ function dayTints(t: Record<string, string>): string[] {
 const textPairs: Array<{ fg: string; bgs: (t: Record<string, string>) => string[]; uso: string }> = [
   {
     fg: 'amber-text',
-    uso: 'eyebrows, «Día NN / 21» del rail, acentos de «El lugar»',
+    uso: 'eyebrows, «Día» del rail, acentos de «El lugar»',
     bgs: (t) => [t.paper, t.surface, t['surface-warm'], t['surface-sun'], t['wash-amber-soft'], ...dayTints(t)],
   },
   { fg: 'tick-idle-label', uso: 'números del rail', bgs: (t) => [t['surface-warm']] },
@@ -61,14 +61,20 @@ describe.each(Object.entries(themes))('contraste AA de los tokens de texto — t
 })
 
 describe('cifras de la tira de billete del hero', () => {
-  // Cifras a 30 px en negrita = texto grande (WCAG 1.4.3: ≥ 3:1), sobre la casilla --surface.
-  // «días» usa --amber-text (≥ 4,5:1); --amber se queda para las rampas de los SVG.
-  const numerals = ['amber-text', 'coral', 'green', 'coral2']
-  it.each(Object.entries(themes))('tema %s: ≥ 3:1 sobre --surface y --surface-warm', (_, t) => {
+  // Se exige AA de texto normal (≥ 4,5:1) aunque sean 30 px en negrita: así ninguna cifra
+  // depende de la excepción de texto grande. Los acentos se leen del propio HeroSpots y se
+  // miden sobre --surface, el fondo de la tira ([data-ticket] en index.css).
+  const heroSpots = readFileSync(`${process.cwd()}/src/features/landing/HeroSpots.tsx`, 'utf8')
+  const numerals = [...heroSpots.matchAll(/accent:\s*'var\(--([\w-]+)\)'/g)].map((m) => m[1])
+
+  it('HeroSpots declara un acento por cifra', () => {
+    expect(numerals).toHaveLength(4)
+  })
+
+  it.each(Object.entries(themes))('tema %s: cada cifra ≥ 4,5:1 sobre --surface', (_, t) => {
     for (const fg of numerals) {
-      for (const bg of [t.surface, t['surface-warm']]) {
-        expect(contrastRatio(t[fg], bg), `--${fg} sobre ${bg}`).toBeGreaterThanOrEqual(3)
-      }
+      expect(t[fg], `falta --${fg}`).toBeDefined()
+      expect(contrastRatio(t[fg], t.surface), `--${fg} sobre --surface`).toBeGreaterThanOrEqual(4.5)
     }
   })
 })

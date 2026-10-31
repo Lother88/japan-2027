@@ -60,7 +60,7 @@ export default function SiteFooter() {
               />
               <span
                 style={{
-                  fontFamily: "'Shippori Mincho', serif",
+                  fontFamily: 'var(--font-serif)',
                   fontSize: '18px',
                   color: '#fdf3e7',
                   fontWeight: 700,
@@ -86,8 +86,8 @@ export default function SiteFooter() {
           <div>
             <div
               style={{
-                fontSize: '11px',
-                letterSpacing: '.16em',
+                fontSize: 'var(--text-label)',
+                letterSpacing: 'var(--text-label--letter-spacing)',
                 textTransform: 'uppercase',
                 color: '#f6c2d2',
                 fontWeight: 700,

@@ -9,10 +9,12 @@ import type { StyleSpecification } from 'maplibre-gl'
 import HeroMap from '@/features/map/HeroMap'
 import { ThemeModeContext, type ThemeMode } from '@/features/landing/useThemeMode'
 import { ROUTE_COLORS } from '@/features/map/basemap'
+import { LABEL_PLACEMENT, MAP_LABEL_CITIES, markerLabel } from '@/features/map/labels'
 
 const h = vi.hoisted(() => ({
   maps: [] as Array<{ styles: unknown[]; removed: number; options: Record<string, unknown> }>,
   markers: 0,
+  markerOptions: [] as Array<{ element?: HTMLElement; anchor?: string }>,
 }))
 
 vi.mock('maplibre-gl', () => {
@@ -40,8 +42,9 @@ vi.mock('maplibre-gl', () => {
     }
   }
   class FakeMarker {
-    constructor() {
+    constructor(options: { element?: HTMLElement; anchor?: string } = {}) {
       h.markers++
+      h.markerOptions.push(options)
     }
     setLngLat() { return this }
     addTo() { return this }
@@ -68,6 +71,7 @@ const fetchMock = vi.fn(async (url: string) => ({ ok: true, json: async () => fa
 beforeEach(() => {
   h.maps.length = 0
   h.markers = 0
+  h.markerOptions.length = 0
   fetchMock.mockClear()
   vi.stubGlobal('fetch', fetchMock)
 })
@@ -126,5 +130,20 @@ describe('HeroMap — cambio de tema sin recrear el mapa', () => {
     await waitFor(() => expect(h.maps).toHaveLength(1))
     unmount()
     expect(h.maps[0].removed).toBe(1)
+  })
+})
+
+describe('HeroMap — marcadores', () => {
+  it('cada ciudad se ancla por el centro del punto y lleva su etiqueta en la colocación prevista', async () => {
+    render(ui('light'))
+    await waitFor(() => expect(h.markerOptions).toHaveLength(MAP_LABEL_CITIES.length))
+    MAP_LABEL_CITIES.forEach((c, i) => {
+      const { element, anchor } = h.markerOptions[i]
+      // El punto (no la etiqueta) coincide con la ciudad: la ruta pasa por su centro.
+      expect(anchor).toBe('center')
+      const label = element?.querySelector('[data-map-label]')
+      expect(label).toHaveTextContent(markerLabel(c.name))
+      expect(label).toHaveAttribute('data-placement', LABEL_PLACEMENT[c.slug])
+    })
   })
 })

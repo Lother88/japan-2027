@@ -41,8 +41,9 @@ export default function Hero() {
             <span style={{ width: '34px', height: '1.5px', background: 'var(--amber-deep)' }} />
             <span
               style={{
-                fontSize: '12px',
-                letterSpacing: '.26em',
+                fontSize: 'var(--text-eyebrow)',
+                lineHeight: 'var(--text-eyebrow--line-height)',
+                letterSpacing: 'var(--text-eyebrow--letter-spacing)',
                 textTransform: 'uppercase',
                 color: 'var(--amber-text)',
                 fontWeight: 700,
@@ -54,11 +55,11 @@ export default function Hero() {
 
           <h1
             style={{
-              fontFamily: "'Shippori Mincho', serif",
+              fontFamily: 'var(--font-serif)',
               fontWeight: 800,
-              fontSize: 'clamp(64px,10vw,148px)',
-              lineHeight: 0.92,
-              letterSpacing: '-.02em',
+              fontSize: 'var(--text-display)',
+              lineHeight: 'var(--text-display--line-height)',
+              letterSpacing: 'var(--text-display--letter-spacing)',
               color: 'var(--ink)',
               margin: 0,
             }}
@@ -68,12 +69,12 @@ export default function Hero() {
 
           <p
             style={{
-              fontFamily: "'Shippori Mincho', serif",
+              fontFamily: 'var(--font-serif)',
               fontWeight: 500,
-              fontSize: 'clamp(20px,2.4vw,32px)',
+              fontSize: 'var(--text-subtitle)',
               color: 'var(--coral)',
               margin: '24px 0 0',
-              lineHeight: 1.25,
+              lineHeight: 'var(--text-subtitle--line-height)',
             }}
           >
             Tres semanas, una vuelta&nbsp;completa.
@@ -81,8 +82,8 @@ export default function Hero() {
 
           <p
             style={{
-              fontSize: 'clamp(15px,1.4vw,17px)',
-              lineHeight: 1.65,
+              fontSize: 'var(--text-lead)',
+              lineHeight: 'var(--text-lead--line-height)',
               color: 'var(--slate)',
               margin: '18px 0 0',
               maxWidth: '430px',
@@ -117,7 +118,7 @@ export default function Hero() {
               border: 'none',
               borderRadius: '10px',
               padding: '15px 26px',
-              fontFamily: "'Zen Kaku Gothic New', sans-serif",
+              fontFamily: 'var(--font-sans)',
               fontWeight: 700,
               fontSize: '15px',
               cursor: 'pointer',
@@ -144,7 +145,16 @@ export default function Hero() {
 
       {/* Aviso de scroll: salta al itinerario; el poste indicador oscila (CSS del SVG) */}
       <button type="button" data-scrollcue onClick={scrollToJourney} aria-label="Desplázate hasta el itinerario">
-        <span style={{ fontSize: '10.5px', letterSpacing: '.22em', textTransform: 'uppercase' }}>Desplázate</span>
+        <span
+          style={{
+            fontSize: 'var(--text-label)',
+            lineHeight: 'var(--text-label--line-height)',
+            letterSpacing: 'var(--text-label--letter-spacing)',
+            textTransform: 'uppercase',
+          }}
+        >
+          Desplázate
+        </span>
         <LazyIso
           load={heroSpotLoaders.michishirube}
           artClass="iso-spot-michishirube"

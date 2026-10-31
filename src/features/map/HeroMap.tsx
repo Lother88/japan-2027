@@ -7,6 +7,9 @@
  * excursión/day-trip (rombo dorado + etiqueta), encuadre con fitBounds y gestos
  * cooperativos. ADR-001: MapLibre confinado a features/map.
  *
+ * Cada marker se ancla por el centro de su punto (la ruta pasa por él) y la etiqueta va a
+ * un lado fijo por ciudad (`labels.ts`) para que ninguna se pise en el encuadre inicial.
+ *
  * Adaptativo al tema SIN recrear el mapa: hay una sola instancia y al cambiar de tema
  * se aplica el estilo del nuevo tema con `setStyle` (la ruta va dentro del estilo).
  * Los markers son DOM pintado con variables CSS, así que cambian solos con el tema.
@@ -17,24 +20,22 @@
 import 'maplibre-gl/dist/maplibre-gl.css'
 import { useEffect, useEffectEvent, useRef, type RefObject } from 'react'
 import maplibregl from 'maplibre-gl'
-import { cities, buildRouteLineString } from '@/data'
+import { buildRouteLineString } from '@/data'
 import { useThemeMode, type ThemeMode } from '@/features/landing/useThemeMode'
 import { buildMapStyle, loadBasemap } from '@/features/map/basemap'
-
-/** Ciudades de pernocta en orden de ruta (dedup: Tokio aparece 2 veces). */
-const ROUTE_CITY_SLUGS = ['tokio', 'takaragawa', 'kanazawa', 'takayama', 'kioto', 'osaka']
-/** Destinos de excursión / day-trip (sin pernocta). */
-const EXCURSION_CITY_SLUGS = ['shirakawago', 'hiroshima', 'nara']
-
-function citiesBySlugs(slugs: string[]) {
-  return slugs
-    .map((slug) => cities.find((c) => c.slug === slug))
-    .filter((c): c is (typeof cities)[number] => c !== undefined)
-}
+import {
+  LABEL_HEIGHT,
+  LABEL_PAD_X,
+  LABEL_PLACEMENT,
+  MAP_LABEL_CITIES,
+  dotSize,
+  labelOffset,
+  markerLabel,
+  type MapLabelCity,
+} from '@/features/map/labels'
 
 const routeFeature = buildRouteLineString()
-const routeCities = citiesBySlugs(ROUTE_CITY_SLUGS)
-const excursionCitiesList = citiesBySlugs(EXCURSION_CITY_SLUGS)
+const excursionCitiesList = MAP_LABEL_CITIES.filter((c) => c.kind === 'exc')
 
 /** Superficie translúcida de etiquetas y botón (sigue a --surface en ambos temas). */
 const GLASS = 'color-mix(in srgb, var(--surface) 92%, transparent)'
@@ -57,26 +58,39 @@ function applyGestureMode(m: maplibregl.Map, expanded: boolean) {
   else m.cooperativeGestures?.enable()
 }
 
-/** Marker DOM (punto + etiqueta) pintado con tokens CSS: se adapta al tema sin recrearse. */
-function makeMarkerEl(label: string, kind: 'city' | 'exc'): HTMLDivElement {
+/**
+ * Marker DOM pintado con tokens CSS (se adapta al tema sin recrearse): el elemento es el
+ * punto, centrado en la ciudad, y la etiqueta cuelga de él en posición absoluta.
+ */
+function makeMarkerEl(city: MapLabelCity): HTMLDivElement {
+  const isExc = city.kind === 'exc'
+  const size = dotSize(city.kind)
+  const placement = LABEL_PLACEMENT[city.slug] ?? 'bottom'
+  // Caja del marker (MapLibre la posiciona con su propio transform): solo da el tamaño.
   const el = document.createElement('div')
-  el.style.cssText = 'display:flex;flex-direction:column;align-items:center;cursor:default'
+  el.style.cssText = 'cursor:default;width:' + size + 'px;height:' + size + 'px'
+  // Punto: círculo (ciudad) o rombo girado (excursión), con borde del color de la superficie.
   const dot = document.createElement('div')
-  const isExc = kind === 'exc'
   dot.style.cssText =
-    'width:' + (isExc ? 9 : 13) + 'px;height:' + (isExc ? 9 : 13) + 'px;' +
+    'position:absolute;inset:0;' +
     'border-radius:' + (isExc ? '2px' : '50%') + ';' +
     'background:' + (isExc ? 'var(--amber-deep)' : 'var(--coral2)') + ';' +
-    'border:2px solid var(--surface);box-shadow:0 1px 3px rgba(0,0,0,.35);' +
-    (isExc ? 'transform:rotate(45deg)' : '')
+    'border:2px solid var(--surface);box-shadow:0 1px 3px rgba(0,0,0,.35)' +
+    (isExc ? ';transform:rotate(45deg)' : '')
+  // Etiqueta: su ancla se mide desde el centro del punto (misma geometría que labelRect).
+  const o = labelOffset(placement, size)
   const tag = document.createElement('div')
-  tag.textContent = label
+  tag.dataset.mapLabel = ''
+  tag.dataset.placement = placement
+  tag.textContent = markerLabel(city.name)
   tag.style.cssText =
-    "margin-top:5px;font:600 11px/1 'Zen Kaku Gothic New',sans-serif;color:var(--ink);" +
-    'background:' + GLASS + ';padding:2px 6px;border-radius:4px;white-space:nowrap;' +
+    'position:absolute;left:calc(50% + ' + o.x + 'px);top:calc(50% + ' + o.y + 'px);' +
+    'transform:translate(' + o.fx * 100 + '%,' + o.fy * 100 + '%);' +
+    'box-sizing:border-box;height:' + LABEL_HEIGHT + 'px;padding:2px ' + LABEL_PAD_X + 'px;' +
+    'font:600 11px/1 var(--font-sans);color:var(--ink);' +
+    'background:' + GLASS + ';border-radius:4px;white-space:nowrap;' +
     'box-shadow:0 1px 2px rgba(0,0,0,.14)'
-  el.appendChild(dot)
-  el.appendChild(tag)
+  el.append(dot, tag)
   return el
 }
 
@@ -145,14 +159,9 @@ export default function HeroMap({ expanded, onToggleExpand }: HeroMapProps) {
     // Zoom abajo-derecha: deja libre la esquina superior derecha para el botón de maximizar.
     m.addControl(new maplibregl.NavigationControl({ showCompass: false }), 'bottom-right')
 
-    // Markers: DOM fuera del estilo, sobreviven a setStyle.
-    routeCities.forEach((c) => {
-      new maplibregl.Marker({ element: makeMarkerEl(c.name.replace(/\s*\(.*\)/, ''), 'city'), anchor: 'bottom' })
-        .setLngLat([c.center[0], c.center[1]])
-        .addTo(m)
-    })
-    excursionCitiesList.forEach((c) => {
-      new maplibregl.Marker({ element: makeMarkerEl(c.name, 'exc'), anchor: 'bottom' })
+    // Markers: DOM fuera del estilo, sobreviven a setStyle. Anclados por el centro del punto.
+    MAP_LABEL_CITIES.forEach((c) => {
+      new maplibregl.Marker({ element: makeMarkerEl(c), anchor: 'center' })
         .setLngLat([c.center[0], c.center[1]])
         .addTo(m)
     })

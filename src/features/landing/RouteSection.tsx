@@ -54,10 +54,10 @@ export default function RouteSection() {
             <h2
               id="ruta-titulo"
               style={{
-                fontFamily: "'Shippori Mincho', serif",
+                fontFamily: 'var(--font-serif)',
                 fontWeight: 800,
-                fontSize: 'clamp(30px,3.4vw,44px)',
-                lineHeight: 1.05,
+                fontSize: 'var(--text-h2)',
+                lineHeight: 'var(--text-h2--line-height)',
                 color: 'var(--ink)',
                 margin: 0,
               }}
@@ -118,7 +118,7 @@ export default function RouteSection() {
               bottom: '14px',
               left: '14px',
               zIndex: 5,
-              fontFamily: "'Shippori Mincho', serif",
+              fontFamily: 'var(--font-serif)',
               fontSize: '30px',
               fontWeight: 800,
               pointerEvents: 'none',
