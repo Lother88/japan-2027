@@ -66,7 +66,8 @@ describe('marcados de la portada (hero, banda y spots)', async () => {
   const { ART_SCOPES, loadHeroChunk, deferredArtLoaders } = await import('@/features/landing/hero-art/registry')
   const chunk = await loadHeroChunk()
   const markups: Record<keyof typeof ART_SCOPES, string> = {
-    hero: chunk.HERO_SCENE.markup,
+    // El hero va por capas: se comprueba su <style> único junto con el marcado de todas ellas.
+    hero: `<style>${chunk.HERO_SCENE.style}</style>` + chunk.HERO_SCENE.layers.map((l) => l.markup).join(''),
     banda: (await deferredArtLoaders.banda()).markup,
     ruta: (await deferredArtLoaders.ruta()).markup,
     omamori: (await deferredArtLoaders.omamori()).markup,

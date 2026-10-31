@@ -84,7 +84,23 @@ beforeEach(() => {
 afterEach(() => vi.unstubAllGlobals())
 
 describe('HeroArt — maqueta en su propio chunk', () => {
-  it('reserva la caja antes de que llegue el arte y luego pinta un svg.iso-hero decorativo', async () => {
+  /** Nombres de las capas, de atrás adelante (el orden del pintor no se puede tocar). */
+  const LAYERS = [
+    'base',
+    'carp-1',
+    'carp-2',
+    'carp-3',
+    'train',
+    'glow-toro',
+    'front',
+    'glow-chochin-2',
+    'front-canopy-beam',
+    'glow-chochin-1',
+    'petal',
+    'front-canopy-roof',
+  ]
+
+  it('reserva la caja antes de que llegue el arte y luego apila las capas en un div.iso-hero', async () => {
     const { container } = render(<HeroArt />)
     const box = container.querySelector<HTMLElement>('[data-hero-art]')
     expect(box).not.toBeNull()
@@ -92,19 +108,35 @@ describe('HeroArt — maqueta en su propio chunk', () => {
     expect(box?.style.aspectRatio).toBe('1200 / 640')
     expect(box?.querySelector('svg')).toBeNull()
 
-    await waitFor(() => expect(box?.querySelector('svg.iso-hero')).not.toBeNull())
-    const svg = box?.querySelector('svg.iso-hero')
-    expect(svg).toHaveAttribute('aria-hidden', 'true')
-    expect(svg).toHaveAttribute('viewBox', '0 0 1200 640')
+    await waitFor(() => expect(box?.querySelector('.iso-hero > svg.hero-layer')).not.toBeNull())
+    const root = box?.querySelector<HTMLElement>('.iso-hero')
+    expect(root?.tagName).toBe('DIV')
+    expect(root).not.toHaveAttribute('data-crop')
+    // Un único <style> compartido por todas las capas.
+    expect(root?.querySelectorAll(':scope > style')).toHaveLength(1)
+
+    const layers = [...(root?.querySelectorAll<SVGSVGElement>(':scope > svg.hero-layer') ?? [])]
+    expect(layers.map((l) => [...l.classList].find((c) => c !== 'hero-layer')?.replace('hero-layer-', ''))).toEqual(
+      LAYERS,
+    )
+    for (const layer of layers) {
+      expect(layer).toHaveAttribute('viewBox', '0 0 1200 640')
+      expect(layer).toHaveAttribute('preserveAspectRatio', 'xMidYMid meet')
+      expect(layer).toHaveAttribute('aria-hidden', 'true')
+      expect(layer).toHaveAttribute('focusable', 'false')
+    }
   })
 
-  it('en móvil (≤ 760 px) usa el viewBox recortado y reserva su proporción', async () => {
+  it('en móvil (≤ 760 px) usa el viewBox recortado en todas las capas, marca data-crop y reserva su proporción', async () => {
     stubMatchMedia('760px')
     const { container } = render(<HeroArt />)
     const box = container.querySelector<HTMLElement>('[data-hero-art]')
     expect(box?.style.aspectRatio).toBe('676 / 478')
-    await waitFor(() => expect(box?.querySelector('svg.iso-hero')).not.toBeNull())
-    expect(box?.querySelector('svg.iso-hero')).toHaveAttribute('viewBox', '496 79 676 478')
+    await waitFor(() => expect(box?.querySelector('.iso-hero > svg.hero-layer')).not.toBeNull())
+    expect(box?.querySelector('.iso-hero')).toHaveAttribute('data-crop', 'mobile')
+    const layers = box?.querySelectorAll('.iso-hero > svg.hero-layer') ?? []
+    expect(layers).toHaveLength(LAYERS.length)
+    for (const layer of layers) expect(layer).toHaveAttribute('viewBox', '496 79 676 478')
   })
 })
 

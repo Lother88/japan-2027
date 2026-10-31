@@ -3,7 +3,12 @@
  * `import()` desde registry.ts, así que Vite/Rolldown lo emite fuera del bundle principal.
  */
 import type { HeroSceneArt, HeroSpotName, SpotArt } from './registry'
-import { HERO_MAQUETA_MARKUP, HERO_MAQUETA_VIEWBOX, HERO_MAQUETA_VIEWBOX_MOBILE } from './heroMaqueta.markup'
+import {
+  HERO_MAQUETA_LAYERS,
+  HERO_MAQUETA_STYLE,
+  HERO_MAQUETA_VIEWBOX,
+  HERO_MAQUETA_VIEWBOX_MOBILE,
+} from './heroMaqueta.markup'
 import { SPOT_KOYOMI_MARKUP, SPOT_KOYOMI_VIEWBOX } from './spotKoyomi.markup'
 import { SPOT_MACHIYA_MARKUP, SPOT_MACHIYA_VIEWBOX } from './spotMachiya.markup'
 import { SPOT_KIPPU_MARKUP, SPOT_KIPPU_VIEWBOX } from './spotKippu.markup'
@@ -14,7 +19,8 @@ import { SPOT_TORO_TOGGLE_MARKUP, SPOT_TORO_TOGGLE_VIEWBOX } from './spotToroTog
 export const HERO_SCENE: HeroSceneArt = {
   viewBox: HERO_MAQUETA_VIEWBOX,
   viewBoxMobile: HERO_MAQUETA_VIEWBOX_MOBILE,
-  markup: HERO_MAQUETA_MARKUP,
+  style: HERO_MAQUETA_STYLE,
+  layers: HERO_MAQUETA_LAYERS,
 }
 
 export const HERO_SPOTS: Record<HeroSpotName, SpotArt> = {

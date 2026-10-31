@@ -18,14 +18,25 @@
  *    se acerca al viewport.
  */
 
+import type { HeroMaquetaLayer } from './heroMaqueta.markup'
+
 export interface SpotArt {
   viewBox: string
   markup: string
 }
 
-export interface HeroSceneArt extends SpotArt {
+/**
+ * La maqueta del hero va por capas (heroMaqueta.markup.ts): cada parte que se mueve vive en su
+ * propio <svg> apilado, para que el navegador la componga sin repintar el dibujo entero.
+ */
+export interface HeroSceneArt {
+  viewBox: string
   /** viewBox recortado al área del arte (móvil: el arte va encima del título). */
   viewBoxMobile: string
+  /** CSS común a todas las capas (sin la etiqueta <style>); se emite una vez dentro de .iso-hero. */
+  style: string
+  /** Capas <svg> apiladas, de atrás adelante. */
+  layers: readonly HeroMaquetaLayer[]
 }
 
 /** Spots que viajan en el chunk del hero. */
