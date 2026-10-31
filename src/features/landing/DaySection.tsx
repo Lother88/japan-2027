@@ -1,8 +1,10 @@
 /**
  * DaySection — sección completa de un día del itinerario.
  *
- * Renderiza el header (número de día, eyebrow, subtítulo), watermark kanji,
- * ilustración decorativa, transfers y slots del día con animaciones Reveal.
+ * Renderiza el header (número de día, eyebrow, subtítulo e ilustración isométrica del
+ * día en su propio hueco), watermark kanji, transfers y slots del día con animaciones
+ * Reveal. La ilustración va a la derecha del título en escritorio y encima en móvil
+ * (reglas [data-day-head]/[data-day-art] en index.css).
  */
 import type { CSSProperties } from 'react'
 import type { Day } from '@/data/types'
@@ -16,9 +18,9 @@ import {
 } from '@/features/landing/theme'
 import Reveal from '@/features/landing/Reveal'
 import { DayIllustration } from '@/features/landing/illustrations'
-import { pickIllustration } from '@/features/landing/illustrationKind'
 import TransferCard from '@/features/landing/TransferCard'
 import SlotBlock from '@/features/landing/SlotBlock'
+import { dayAnchor } from '@/features/landing/scroll'
 
 interface DaySectionProps {
   day: Day
@@ -29,7 +31,7 @@ export default function DaySection({ day, index }: DaySectionProps) {
   const tokens = tokensForCity(day.citySlug)
   const meta = getCityMeta(day.citySlug)
 
-  // index par → ilustración/kanji a la derecha; impar → izquierda
+  // index par → kanji a la derecha; impar → izquierda (la ilustración vive en la cabecera)
   const side: 'left' | 'right' = index % 2 === 0 ? 'right' : 'left'
 
   // Subtítulo: parte tras el último '—'; si no hay, title completo
@@ -56,6 +58,7 @@ export default function DaySection({ day, index }: DaySectionProps) {
 
   return (
     <section
+      id={dayAnchor(day.id)}
       data-day={day.id}
       data-screen-label={`Día ${pad2(day.id)} · ${cityName}`}
       style={{
@@ -85,9 +88,6 @@ export default function DaySection({ day, index }: DaySectionProps) {
         {meta.kanji}
       </div>
 
-      {/* Ilustración decorativa */}
-      <DayIllustration kind={pickIllustration(day.citySlug, day.id)} side={side} seed={day.id} />
-
       {/* Contenido principal */}
       <div
         data-day-inner
@@ -101,49 +101,62 @@ export default function DaySection({ day, index }: DaySectionProps) {
       >
         {/* Header */}
         <Reveal delay={0}>
-          <div style={{ marginBottom: '30px' }}>
-            <div
-              style={{
-                display: 'flex',
-                alignItems: 'baseline',
-                gap: '14px',
-                flexWrap: 'wrap',
-              }}
-            >
-              <span
+          <div
+            data-day-head
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: 'clamp(16px,3vw,32px)',
+              marginBottom: '30px',
+            }}
+          >
+            <div style={{ flex: '1 1 0', minWidth: 0 }}>
+              <div
+                style={{
+                  display: 'flex',
+                  alignItems: 'baseline',
+                  gap: '14px',
+                  flexWrap: 'wrap',
+                }}
+              >
+                <span
+                  style={{
+                    fontFamily: fontSerif,
+                    fontWeight: 800,
+                    fontSize: 'clamp(40px,6vw,64px)',
+                    color: 'var(--ink)',
+                    lineHeight: 1,
+                  }}
+                >
+                  Día {pad2(day.id)}
+                </span>
+                <span
+                  style={{
+                    fontSize: '13px',
+                    letterSpacing: '.16em',
+                    textTransform: 'uppercase',
+                    color: tokens.eyebrow,
+                    fontWeight: 700,
+                  }}
+                >
+                  {eyebrow}
+                </span>
+              </div>
+              <h2
                 style={{
                   fontFamily: fontSerif,
-                  fontWeight: 800,
-                  fontSize: 'clamp(40px,6vw,64px)',
-                  color: 'var(--ink)',
-                  lineHeight: 1,
+                  fontWeight: 600,
+                  fontSize: 'clamp(24px,3.4vw,38px)',
+                  color: tokens.heading,
+                  margin: '10px 0 0',
                 }}
               >
-                Día {pad2(day.id)}
-              </span>
-              <span
-                style={{
-                  fontSize: '13px',
-                  letterSpacing: '.16em',
-                  textTransform: 'uppercase',
-                  color: tokens.eyebrow,
-                  fontWeight: 700,
-                }}
-              >
-                {eyebrow}
-              </span>
+                {subtitle}
+              </h2>
             </div>
-            <h2
-              style={{
-                fontFamily: fontSerif,
-                fontWeight: 600,
-                fontSize: 'clamp(24px,3.4vw,38px)',
-                color: tokens.heading,
-                margin: '10px 0 0',
-              }}
-            >
-              {subtitle}
-            </h2>
+
+            {/* Ilustración isométrica del día (decorativa, carga diferida; nada si no hay) */}
+            <DayIllustration day={day.id} style={{ flex: '0 0 clamp(200px,46%,340px)' }} />
           </div>
         </Reveal>
 

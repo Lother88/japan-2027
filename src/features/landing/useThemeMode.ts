@@ -12,7 +12,8 @@ export type ThemeMode = 'light' | 'dark'
 
 export interface ThemeModeContextValue {
   readonly mode: ThemeMode
-  readonly toggle: () => void
+  /** Alterna el tema; `origin` (el botón pulsado) es el centro de la transición. */
+  readonly toggle: (origin?: Element | null) => void
 }
 
 /** Clave de persistencia en localStorage (coincide con el anti-FOUC de index.html). */

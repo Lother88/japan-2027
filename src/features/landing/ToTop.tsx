@@ -3,13 +3,16 @@
  * El estilo inicial es invisible (opacity:0, fuera de interacción).
  * El hook global de scroll (o useScrollJourney) controla opacity/transform/pointerEvents
  * leyendo [data-totop] directamente; aquí sólo declaramos el estado inicial.
+ * Mientras está oculto es `inert` (fuera del orden de Tab); useScrollJourney lo alterna.
  */
 import { scrollTop } from '@/features/landing/scroll'
 
 export default function ToTop() {
   return (
     <button
+      type="button"
       data-totop
+      inert
       onClick={scrollTop}
       aria-label="Volver arriba"
       onMouseEnter={(e) => {

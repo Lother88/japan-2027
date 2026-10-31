@@ -96,7 +96,7 @@ export interface ThemeTokens {
 
 export const themes: Record<DayTheme, ThemeTokens> = {
   warm: {
-    eyebrow: 'var(--amber)',
+    eyebrow: 'var(--amber-text)',
     heading: 'var(--coral)',
     morningDot: 'var(--amber)',
     afternoonDot: 'var(--coral)',
@@ -106,7 +106,7 @@ export const themes: Record<DayTheme, ThemeTokens> = {
     badgeText: 'var(--coral)',
     spoilerBg: 'var(--wash-amber-soft)',
     spoilerBorder: 'var(--border-amber2)',
-    spoilerAccent: 'var(--amber)',
+    spoilerAccent: 'var(--amber-text)',
     factBorder: 'var(--border-amber2)',
     factLabel: 'var(--muted-amber)',
     noteDot: 'var(--coral2)',
@@ -131,7 +131,7 @@ export const themes: Record<DayTheme, ThemeTokens> = {
     spoilerBorder: 'var(--border-green)',
     spoilerAccent: 'var(--green)',
     factBorder: 'var(--border-green)',
-    factLabel: '#6f9286',
+    factLabel: 'var(--green)',
     noteDot: 'var(--green)',
     divider: 'var(--border-amber)',
     transferBg: '#234a40',

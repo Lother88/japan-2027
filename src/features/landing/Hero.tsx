@@ -1,104 +1,62 @@
 /**
  * Hero — sección principal (header) de la landing.
- * Contiene HeroDecor, el texto con stats derivadas de datos,
- * el mapa HeroMap y los controles de scroll.
+ *
+ * Fondo --paper liso con la maqueta isométrica (HeroArt) a la derecha y, en la zona segura de
+ * la izquierda, el texto: eyebrow con fechas, H1, subtítulo, párrafo, tira de billete con las
+ * cifras derivadas de los datos (HeroSpots) y el CTA, que baja a la banda «La ruta». En móvil
+ * el arte pasa encima del título. Debajo, el aviso «Desplázate» con el poste michishirube.
+ *
+ * El movimiento ambiental del arte se congela (data-art-paused) cuando la portada sale de
+ * pantalla. La maquetación responsive vive en index.css (`[data-hero…]`).
  */
-import { lazy, Suspense, useCallback, useState } from 'react'
-import HeroDecor from '@/features/landing/HeroDecor'
-import { scrollToJourney } from '@/features/landing/scroll'
-import { itinerary, excursions } from '@/data'
+import { useRef } from 'react'
+import { tripSummary } from '@/data/trip'
+import HeroArt from '@/features/landing/HeroArt'
+import HeroSpots from '@/features/landing/HeroSpots'
+import LazyIso from '@/features/landing/hero-art/LazyIso'
+import { heroSpotLoaders, loadHeroChunk } from '@/features/landing/hero-art/registry'
+import { usePausedOffscreen } from '@/features/landing/hero-art/useLazyArt'
+import { scrollToJourney, scrollToRoute } from '@/features/landing/scroll'
 
-// HeroMap arrastra MapLibre (~1 MB): se separa en su propio chunk con lazy
-// para no inflar el bundle inicial.
-const HeroMap = lazy(() => import('@/features/map/HeroMap'))
+// El arte del hero se pide en cuanto se evalúa este módulo, sin esperar al primer render
+// (el index.html de producción además lo precarga con <link rel="modulepreload">).
+loadHeroChunk().catch(() => {
+  // Sin red: las cajas reservadas quedan vacías; HeroArt lo reintenta al montar.
+})
 
-// Stats derivadas de datos (no hardcodeadas)
-const dias = itinerary.length
-const bases = new Set(itinerary.map((d) => d.citySlug)).size
-const excursionesCount = excursions.length
-const viajeros = 4
-
-const chips: Array<{ valor: number; etiqueta: string; accent: string }> = [
-  { valor: dias, etiqueta: 'días', accent: 'var(--amber)' },
-  { valor: bases, etiqueta: 'bases', accent: 'var(--coral)' },
-  { valor: excursionesCount, etiqueta: 'excursiones', accent: 'var(--green)' },
-  { valor: viajeros, etiqueta: 'viajeros', accent: 'var(--coral2)' },
-]
+const trip = tripSummary()
 
 export default function Hero() {
-  // El mapa avisa cuando entra/sale de pantalla completa: con el mapa maximizado
-  // ocultamos el indicador de scroll (queda por encima del overlay por stacking).
-  const [mapExpanded, setMapExpanded] = useState(false)
-  const toggleMap = useCallback(() => setMapExpanded((v) => !v), [])
+  const ref = useRef<HTMLElement>(null)
+  const paused = usePausedOffscreen(ref)
 
   return (
-    <header
-      style={{
-        position: 'relative',
-        minHeight: '100vh',
-        overflow: 'hidden',
-        background: 'linear-gradient(180deg,var(--hero-1) 0%,var(--hero-2) 60%,var(--hero-3) 100%)',
-      }}
-    >
-      <HeroDecor />
+    <header ref={ref} data-hero data-art-paused={paused ? '' : undefined}>
+      <div data-hero-stage>
+        <HeroArt />
 
-      <div
-        data-hero-grid
-        style={{
-          position: 'relative',
-          zIndex: 2,
-          maxWidth: '1340px',
-          margin: '0 auto',
-          minHeight: '100vh',
-          display: 'flex',
-          alignItems: 'center',
-          gap: 'clamp(24px,4vw,64px)',
-          padding: '120px clamp(20px,4vw,48px) 90px',
-        }}
-      >
-        {/* Eyebrow absoluto arriba-derecha */}
-        <div
-          data-eyebrow
-          style={{
-            position: 'absolute',
-            top: '74px',
-            right: 'clamp(20px,4vw,48px)',
-            zIndex: 4,
-            display: 'flex',
-            alignItems: 'center',
-            gap: '12px',
-          }}
-        >
-          <span style={{ width: '34px', height: '1.5px', background: 'var(--amber-deep)' }} />
-          <span
-            style={{
-              fontSize: '12px',
-              letterSpacing: '.26em',
-              textTransform: 'uppercase',
-              color: 'var(--amber)',
-              fontWeight: 700,
-            }}
-          >
-            8 → 29 mayo 2027
-          </span>
-        </div>
+        {/* Texto en la zona segura del lienzo (x 0–470 de 1200) */}
+        <div data-hero-copy>
+          <div data-eyebrow style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '22px' }}>
+            <span style={{ width: '34px', height: '1.5px', background: 'var(--amber-deep)' }} />
+            <span
+              style={{
+                fontSize: '12px',
+                letterSpacing: '.26em',
+                textTransform: 'uppercase',
+                color: 'var(--amber-text)',
+                fontWeight: 700,
+              }}
+            >
+              {trip.dateRange}
+            </span>
+          </div>
 
-        {/* Columna de texto */}
-        <div
-          data-hero-text
-          style={{
-            flex: '1 1 42%',
-            maxWidth: '560px',
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'flex-start',
-          }}
-        >
           <h1
             style={{
               fontFamily: "'Shippori Mincho', serif",
               fontWeight: 800,
-              fontSize: 'clamp(64px,11vw,148px)',
+              fontSize: 'clamp(64px,10vw,148px)',
               lineHeight: 0.92,
               letterSpacing: '-.02em',
               color: 'var(--ink)',
@@ -112,9 +70,9 @@ export default function Hero() {
             style={{
               fontFamily: "'Shippori Mincho', serif",
               fontWeight: 500,
-              fontSize: 'clamp(20px,2.6vw,32px)',
+              fontSize: 'clamp(20px,2.4vw,32px)',
               color: 'var(--coral)',
-              margin: '28px 0 0',
+              margin: '24px 0 0',
               lineHeight: 1.25,
             }}
           >
@@ -123,69 +81,24 @@ export default function Hero() {
 
           <p
             style={{
-              fontSize: 'clamp(15px,1.6vw,17px)',
+              fontSize: 'clamp(15px,1.4vw,17px)',
               lineHeight: 1.65,
               color: 'var(--slate)',
-              margin: '22px 0 0',
+              margin: '18px 0 0',
               maxWidth: '430px',
             }}
           >
             Ruta completa por todos los aspectos de Japón,{' '}
-            <strong style={{ color: 'var(--ink)', fontWeight: 700 }}>
-              lo moderno y lo tradicional
-            </strong>
-            , recorriendo los lugares que nos ofrece el país del sol naciente.
+            <strong style={{ color: 'var(--ink)', fontWeight: 700 }}>lo moderno y lo tradicional</strong>,
+            recorriendo los lugares que nos ofrece el país del sol naciente.
           </p>
 
-          {/* Stat chips */}
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px', marginTop: '30px' }}>
-            {chips.map(({ valor, etiqueta, accent }) => (
-              <div
-                key={etiqueta}
-                style={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  textAlign: 'center',
-                  minWidth: '84px',
-                  padding: '14px 16px',
-                  background: 'linear-gradient(160deg,var(--surface) 0%,var(--surface-warm) 100%)',
-                  border: `1px solid color-mix(in srgb, ${accent} 34%, var(--border))`,
-                  borderRadius: '14px',
-                  boxShadow: '0 12px 26px -18px rgba(27,42,74,.4)',
-                }}
-              >
-                <span
-                  style={{
-                    fontFamily: "'Shippori Mincho', serif",
-                    fontWeight: 800,
-                    fontSize: '30px',
-                    lineHeight: 1,
-                    color: accent,
-                  }}
-                >
-                  {valor}
-                </span>
-                <span
-                  style={{
-                    marginTop: '7px',
-                    fontSize: '10.5px',
-                    letterSpacing: '.14em',
-                    textTransform: 'uppercase',
-                    fontWeight: 700,
-                    color: 'var(--muted2)',
-                  }}
-                >
-                  {etiqueta}
-                </span>
-              </div>
-            ))}
-          </div>
+          <HeroSpots />
 
-          {/* Botón CTA */}
+          {/* CTA: baja a la banda «La ruta» */}
           <button
-            onClick={scrollToJourney}
+            type="button"
+            onClick={scrollToRoute}
             onMouseEnter={(e) => {
               e.currentTarget.style.background = 'var(--primary-press)'
               e.currentTarget.style.transform = 'translateY(-1px)'
@@ -195,7 +108,7 @@ export default function Hero() {
               e.currentTarget.style.transform = 'translateY(0)'
             }}
             style={{
-              marginTop: '32px',
+              marginTop: '28px',
               display: 'inline-flex',
               alignItems: 'center',
               gap: '11px',
@@ -211,7 +124,7 @@ export default function Hero() {
               transition: 'background .2s ease,transform .2s ease',
             }}
           >
-            Explora el itinerario
+            Explora la ruta
             <svg
               aria-hidden="true"
               width="16"
@@ -227,158 +140,18 @@ export default function Hero() {
             </svg>
           </button>
         </div>
-
-        {/* Columna del mapa */}
-        <div
-          data-hero-map
-          style={{
-            flex: '1 1 56%',
-            height: 'min(66vh,640px)',
-            position: 'relative',
-            borderRadius: '18px',
-            border: '1px solid var(--border-cream)',
-            boxShadow: '0 22px 50px -24px rgba(27,42,74,.4)',
-            overflow: 'hidden',
-            background: 'var(--wash-green2)',
-          }}
-        >
-          <Suspense fallback={null}>
-            <HeroMap expanded={mapExpanded} onToggleExpand={toggleMap} />
-          </Suspense>
-
-          {/* Leyenda */}
-          <div
-            style={{
-              position: 'absolute',
-              top: '14px',
-              left: '14px',
-              zIndex: 5,
-              display: 'flex',
-              flexDirection: 'column',
-              gap: '8px',
-              pointerEvents: 'none',
-            }}
-          >
-            <div
-              data-legend
-              style={{
-                border: '1px solid var(--border-2)',
-                borderRadius: '9px',
-                padding: '9px 13px',
-                boxShadow: '0 4px 14px -6px rgba(0,0,0,.25)',
-              }}
-            >
-              <div
-                style={{
-                  fontFamily: "'Shippori Mincho', serif",
-                  fontWeight: 700,
-                  fontSize: '14px',
-                  color: 'var(--ink)',
-                  marginBottom: '7px',
-                }}
-              >
-                La ruta
-              </div>
-              <div
-                style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '7px',
-                  fontSize: '11.5px',
-                  color: 'var(--slate)',
-                  marginBottom: '4px',
-                }}
-              >
-                <span
-                  style={{ width: '18px', height: '3px', borderRadius: '2px', background: 'var(--coral2)' }}
-                />
-                Recorrido principal
-              </div>
-              <div
-                style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '7px',
-                  fontSize: '11.5px',
-                  color: 'var(--slate)',
-                }}
-              >
-                <span
-                  style={{
-                    width: '18px',
-                    height: 0,
-                    borderTop: '2px dashed var(--amber-deep)',
-                    display: 'inline-block',
-                  }}
-                />
-                Excursión de día
-              </div>
-            </div>
-          </div>
-
-          {/* Watermark */}
-          <div
-            data-watermark
-            aria-hidden="true"
-            style={{
-              position: 'absolute',
-              bottom: '14px',
-              left: '14px',
-              zIndex: 5,
-              fontFamily: "'Shippori Mincho', serif",
-              fontSize: '30px',
-              fontWeight: 800,
-              pointerEvents: 'none',
-            }}
-          >
-            日本一周
-          </div>
-        </div>
       </div>
 
-      {/* Indicador de scroll (oculto con el mapa a pantalla completa) */}
-      {!mapExpanded && (
-        <div
-          data-scrollcue
-          onClick={scrollToJourney}
-          style={{
-            position: 'absolute',
-            bottom: '80px',
-            left: '50%',
-            transform: 'translateX(-50%)',
-            zIndex: 6,
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            gap: '6px',
-            cursor: 'pointer',
-          }}
-        >
-          <span
-            style={{
-              fontSize: '10.5px',
-              letterSpacing: '.22em',
-              textTransform: 'uppercase',
-            }}
-          >
-            Desplázate
-          </span>
-          <svg
-            aria-hidden="true"
-            width="20"
-            height="20"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth={2.2}
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            style={{ animation: 'ignBounce 2s ease-in-out infinite' }}
-          >
-            <path d="M12 5v14M5 12l7 7 7-7" />
-          </svg>
-        </div>
-      )}
+      {/* Aviso de scroll: salta al itinerario; el poste indicador oscila (CSS del SVG) */}
+      <button type="button" data-scrollcue onClick={scrollToJourney} aria-label="Desplázate hasta el itinerario">
+        <span style={{ fontSize: '10.5px', letterSpacing: '.22em', textTransform: 'uppercase' }}>Desplázate</span>
+        <LazyIso
+          load={heroSpotLoaders.michishirube}
+          artClass="iso-spot-michishirube"
+          slot="scrollcue"
+          style={{ width: '48px', height: '64px' }}
+        />
+      </button>
     </header>
   )
 }

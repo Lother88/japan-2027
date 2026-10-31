@@ -5,7 +5,7 @@
  *  - calcula el día activo (sección [data-day] cuyo top cruza el 42% del viewport)
  *  - calcula el progreso 0..1 dentro del contenedor [data-journey]
  *  - aplica parallax a los elementos [data-parallax]
- *  - alterna el fondo del nav [data-nav] y la visibilidad del botón [data-totop]
+ *  - alterna la visibilidad del botón [data-totop] (oculto → `inert`, fuera del Tab)
  *
  * Devuelve { activeIndex, progress } para alimentar el rail. activeIndex es el
  * índice (0-based) de la sección de día en orden de DOM.
@@ -74,15 +74,8 @@ export function useScrollJourney(): JourneyState {
         top.style.opacity = vis ? '1' : '0'
         top.style.transform = vis ? 'translateY(0) scale(1)' : 'translateY(14px) scale(.9)'
         top.style.pointerEvents = vis ? 'auto' : 'none'
-      }
-
-      // fondo del nav
-      const nav = document.querySelector<HTMLElement>('[data-nav]')
-      if (nav) {
-        const on = window.scrollY > 40
-        nav.style.background = on ? 'rgba(251,246,240,0.88)' : 'rgba(251,246,240,0)'
-        nav.style.backdropFilter = on ? 'blur(12px)' : 'none'
-        nav.style.borderBottomColor = on ? '#e7ddcc' : 'transparent'
+        // Invisible ⇒ inerte: ni enfocable con Tab ni expuesto a lectores de pantalla.
+        top.toggleAttribute('inert', !vis)
       }
     }
 
