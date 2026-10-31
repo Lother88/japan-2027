@@ -1,23 +1,25 @@
 /**
  * HeroMap — mapa de la ruta para el hero (MapLibre GL imperativo).
  *
- * Reproduce el mapa del diseño: base raster CARTO (claro/oscuro según tema),
- * ruta principal (navy en claro / coral en oscuro), excursiones (línea
- * discontinua dorada), markers de ciudad (círculo rojo + etiqueta) y de
+ * Mapa base vectorial de OpenFreeMap (sin API key) recoloreado con la paleta del sitio
+ * (ver `basemap.ts`), ruta principal (navy en claro / coral en oscuro), excursiones
+ * (línea discontinua dorada), markers de ciudad (círculo rojo + etiqueta) y de
  * excursión/day-trip (rombo dorado + etiqueta), encuadre con fitBounds y gestos
  * cooperativos. ADR-001: MapLibre confinado a features/map.
  *
- * Adaptativo al tema: al cambiar de tema el mapa se recrea por completo
- * (cleanup + nueva instancia) para refrescar tiles, colores de ruta y markers.
+ * Adaptativo al tema SIN recrear el mapa: hay una sola instancia y al cambiar de tema
+ * se aplica el estilo del nuevo tema con `setStyle` (la ruta va dentro del estilo).
+ * Los markers son DOM pintado con variables CSS, así que cambian solos con el tema.
  *
  * Defensivo: si no hay contexto WebGL (jsdom/tests) la inicialización se ignora
  * sin romper el render.
  */
 import 'maplibre-gl/dist/maplibre-gl.css'
-import { useEffect, useRef } from 'react'
+import { useEffect, useEffectEvent, useRef, type RefObject } from 'react'
 import maplibregl from 'maplibre-gl'
-import { cities, buildRouteLineString, buildExcursionLines } from '@/data'
+import { cities, buildRouteLineString } from '@/data'
 import { useThemeMode, type ThemeMode } from '@/features/landing/useThemeMode'
+import { buildMapStyle, loadBasemap } from '@/features/map/basemap'
 
 /** Ciudades de pernocta en orden de ruta (dedup: Tokio aparece 2 veces). */
 const ROUTE_CITY_SLUGS = ['tokio', 'takaragawa', 'kanazawa', 'takayama', 'kioto', 'osaka']
@@ -31,9 +33,11 @@ function citiesBySlugs(slugs: string[]) {
 }
 
 const routeFeature = buildRouteLineString()
-const excursionFeatures = buildExcursionLines()
 const routeCities = citiesBySlugs(ROUTE_CITY_SLUGS)
 const excursionCitiesList = citiesBySlugs(EXCURSION_CITY_SLUGS)
+
+/** Superficie translúcida de etiquetas y botón (sigue a --surface en ambos temas). */
+const GLASS = 'color-mix(in srgb, var(--surface) 92%, transparent)'
 
 /** Encuadra el mapa sobre toda la ruta + extremos de excursión (instantáneo). */
 function fitToRoute(m: maplibregl.Map) {
@@ -53,36 +57,8 @@ function applyGestureMode(m: maplibregl.Map, expanded: boolean) {
   else m.cooperativeGestures?.enable()
 }
 
-/** Estilo raster CARTO según tema: `dark_all` en oscuro, `light_all` en claro. */
-function buildCartoStyle(mode: ThemeMode) {
-  const base = mode === 'dark' ? 'dark_all' : 'light_all'
-  return {
-    version: 8,
-    sources: {
-      carto: {
-        type: 'raster',
-        tiles: [
-          `https://a.basemaps.cartocdn.com/${base}/{z}/{x}/{y}@2x.png`,
-          `https://b.basemaps.cartocdn.com/${base}/{z}/{x}/{y}@2x.png`,
-          `https://c.basemaps.cartocdn.com/${base}/{z}/{x}/{y}@2x.png`,
-          `https://d.basemaps.cartocdn.com/${base}/{z}/{x}/{y}@2x.png`,
-        ],
-        tileSize: 256,
-        maxzoom: 19,
-        attribution: '© OpenStreetMap, © CARTO',
-      },
-    },
-    layers: [{ id: 'carto', type: 'raster', source: 'carto' }],
-  } as const
-}
-
-function makeMarkerEl(label: string, kind: 'city' | 'exc', mode: ThemeMode): HTMLDivElement {
-  const dark = mode === 'dark'
-  // Colores de etiqueta y superficie según tema (valores de --surface por tema).
-  const tagText = dark ? '#f1ece1' : '#1b2a4a'
-  const tagBg = dark ? 'rgba(29,32,48,.92)' : 'rgba(255,253,249,.92)'
-  const surface = dark ? '#1d2030' : '#fffdf9'
-
+/** Marker DOM (punto + etiqueta) pintado con tokens CSS: se adapta al tema sin recrearse. */
+function makeMarkerEl(label: string, kind: 'city' | 'exc'): HTMLDivElement {
   const el = document.createElement('div')
   el.style.cssText = 'display:flex;flex-direction:column;align-items:center;cursor:default'
   const dot = document.createElement('div')
@@ -90,18 +66,39 @@ function makeMarkerEl(label: string, kind: 'city' | 'exc', mode: ThemeMode): HTM
   dot.style.cssText =
     'width:' + (isExc ? 9 : 13) + 'px;height:' + (isExc ? 9 : 13) + 'px;' +
     'border-radius:' + (isExc ? '2px' : '50%') + ';' +
-    'background:' + (isExc ? '#c79a44' : '#e0564b') + ';' +
-    'border:2px solid ' + surface + ';box-shadow:0 1px 3px rgba(0,0,0,.35);' +
+    'background:' + (isExc ? 'var(--amber-deep)' : 'var(--coral2)') + ';' +
+    'border:2px solid var(--surface);box-shadow:0 1px 3px rgba(0,0,0,.35);' +
     (isExc ? 'transform:rotate(45deg)' : '')
   const tag = document.createElement('div')
   tag.textContent = label
   tag.style.cssText =
-    "margin-top:5px;font:600 11px/1 'Zen Kaku Gothic New',sans-serif;color:" + tagText + ';' +
-    'background:' + tagBg + ';padding:2px 6px;border-radius:4px;white-space:nowrap;' +
+    "margin-top:5px;font:600 11px/1 'Zen Kaku Gothic New',sans-serif;color:var(--ink);" +
+    'background:' + GLASS + ';padding:2px 6px;border-radius:4px;white-space:nowrap;' +
     'box-shadow:0 1px 2px rgba(0,0,0,.14)'
   el.appendChild(dot)
   el.appendChild(tag)
   return el
+}
+
+/**
+ * Pide el estilo del tema y lo aplica a la instancia si sigue siendo la vigente y nadie
+ * ha pedido otro tema mientras tanto (los cambios rápidos no dejan un estilo antiguo).
+ */
+function requestStyle(
+  m: maplibregl.Map,
+  next: ThemeMode,
+  mapRef: RefObject<maplibregl.Map | null>,
+  styleModeRef: RefObject<ThemeMode | null>,
+) {
+  styleModeRef.current = next
+  loadBasemap(next)
+    .then((base) => {
+      if (mapRef.current !== m || styleModeRef.current !== next) return
+      m.setStyle(buildMapStyle(base, next))
+    })
+    .catch(() => {
+      // Sin red: el mapa conserva el último estilo aplicado (o queda vacío la 1.ª vez).
+    })
 }
 
 interface HeroMapProps {
@@ -114,27 +111,23 @@ interface HeroMapProps {
 export default function HeroMap({ expanded, onToggleExpand }: HeroMapProps) {
   const containerRef = useRef<HTMLDivElement>(null)
   const mapRef = useRef<maplibregl.Map | null>(null)
-  // Valor vivo de `expanded` para el efecto de creación (deps [mode]): al recrear
-  // el mapa por cambio de tema, aplica los gestos correctos sin recrearse al maximizar.
-  const expandedRef = useRef(expanded)
-  expandedRef.current = expanded
+  /** Tema del último estilo pedido: descarta respuestas de un tema ya superado. */
+  const styleModeRef = useRef<ThemeMode | null>(null)
   const { mode } = useThemeMode()
 
-  // El efecto depende de `mode`: al cambiar de tema se limpia el mapa anterior
-  // (cleanup → map.remove()) y se recrea con tiles y colores del nuevo tema.
+  // Valores vivos para el efecto de creación (que corre una sola vez).
+  const initialState = useEffectEvent(() => ({ mode, expanded }))
+
+  // Creación: una única instancia de MapLibre durante toda la vida del componente.
   useEffect(() => {
     const container = containerRef.current
     if (!container) return
-
-    // Color de la ruta principal según tema (valores de --map-line).
-    const routeColor = mode === 'dark' ? '#ff8a5c' : '#1b2a4a'
+    const { mode: initialMode, expanded: initialExpanded } = initialState()
 
     let map: maplibregl.Map | undefined
     try {
       map = new maplibregl.Map({
         container,
-        // El objeto de estilo raster cumple StyleSpecification en runtime.
-        style: buildCartoStyle(mode) as unknown as maplibregl.StyleSpecification,
         center: [137.2, 36.4],
         zoom: 4.6,
         attributionControl: { compact: true },
@@ -147,59 +140,45 @@ export default function HeroMap({ expanded, onToggleExpand }: HeroMapProps) {
 
     const m = map
     mapRef.current = m
-    // Si se recrea estando maximizado (cambio de tema), conserva la rueda directa.
-    applyGestureMode(m, expandedRef.current)
-    // Zoom abajo-derecha: deja libre la esquina superior derecha para el botón
-    // de maximizar.
+    requestStyle(m, initialMode, mapRef, styleModeRef)
+    applyGestureMode(m, initialExpanded)
+    // Zoom abajo-derecha: deja libre la esquina superior derecha para el botón de maximizar.
     m.addControl(new maplibregl.NavigationControl({ showCompass: false }), 'bottom-right')
 
-    m.on('load', () => {
-      // Ruta principal
-      m.addSource('route', { type: 'geojson', data: routeFeature })
-      m.addLayer({
-        id: 'route-line',
-        type: 'line',
-        source: 'route',
-        layout: { 'line-cap': 'round', 'line-join': 'round' },
-        paint: { 'line-color': routeColor, 'line-width': 3, 'line-opacity': 0.85 },
-      })
-
-      // Excursiones (línea discontinua dorada — igual en ambos temas)
-      excursionFeatures.forEach((feat, i) => {
-        const id = 'exc' + i
-        m.addSource(id, { type: 'geojson', data: feat })
-        m.addLayer({
-          id,
-          type: 'line',
-          source: id,
-          paint: { 'line-color': '#c79a44', 'line-width': 2, 'line-dasharray': [1.5, 1.5], 'line-opacity': 0.9 },
-        })
-      })
-
-      // Markers
-      routeCities.forEach((c) => {
-        new maplibregl.Marker({ element: makeMarkerEl(c.name.replace(/\s*\(.*\)/, ''), 'city', mode), anchor: 'bottom' })
-          .setLngLat([c.center[0], c.center[1]])
-          .addTo(m)
-      })
-      excursionCitiesList.forEach((c) => {
-        new maplibregl.Marker({ element: makeMarkerEl(c.name, 'exc', mode), anchor: 'bottom' })
-          .setLngLat([c.center[0], c.center[1]])
-          .addTo(m)
-      })
-
-      // Encuadre incluyendo extremos de excursión
-      fitToRoute(m)
+    // Markers: DOM fuera del estilo, sobreviven a setStyle.
+    routeCities.forEach((c) => {
+      new maplibregl.Marker({ element: makeMarkerEl(c.name.replace(/\s*\(.*\)/, ''), 'city'), anchor: 'bottom' })
+        .setLngLat([c.center[0], c.center[1]])
+        .addTo(m)
     })
+    excursionCitiesList.forEach((c) => {
+      new maplibregl.Marker({ element: makeMarkerEl(c.name, 'exc'), anchor: 'bottom' })
+        .setLngLat([c.center[0], c.center[1]])
+        .addTo(m)
+    })
+    fitToRoute(m)
+
+    // Precarga el estilo del otro tema para que el cambio sea inmediato.
+    const other: ThemeMode = initialMode === 'dark' ? 'light' : 'dark'
+    const idle = window.setTimeout(() => void loadBasemap(other).catch(() => {}), 1500)
 
     return () => {
+      window.clearTimeout(idle)
       try {
         m.remove()
       } catch {
         /* noop */
       }
       mapRef.current = null
+      styleModeRef.current = null
     }
+  }, [])
+
+  // Cambio de tema: misma instancia, nuevo estilo (MapLibre aplica el diff).
+  useEffect(() => {
+    const m = mapRef.current
+    if (!m || styleModeRef.current === mode) return
+    requestStyle(m, mode, mapRef, styleModeRef)
   }, [mode])
 
   // Al alternar maximizado: ajusta los gestos (rueda directa solo en pantalla
@@ -230,12 +209,6 @@ export default function HeroMap({ expanded, onToggleExpand }: HeroMapProps) {
     }
   }, [expanded, onToggleExpand])
 
-  // Colores del botón según tema (mismos valores que los markers).
-  const dark = mode === 'dark'
-  const btnBg = dark ? 'rgba(29,32,48,.92)' : 'rgba(255,253,249,.92)'
-  const btnFg = dark ? '#f1ece1' : '#1b2a4a'
-  const btnBorder = dark ? 'rgba(241,236,225,.18)' : 'rgba(27,42,74,.16)'
-
   return (
     <div
       style={
@@ -264,9 +237,9 @@ export default function HeroMap({ expanded, onToggleExpand }: HeroMapProps) {
           width: '36px',
           height: '36px',
           padding: 0,
-          background: btnBg,
-          color: btnFg,
-          border: '1px solid ' + btnBorder,
+          background: GLASS,
+          color: 'var(--ink)',
+          border: '1px solid color-mix(in srgb, var(--ink) 16%, transparent)',
           borderRadius: '9px',
           cursor: 'pointer',
           boxShadow: '0 4px 14px -6px rgba(0,0,0,.35)',
