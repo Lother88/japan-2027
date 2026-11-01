@@ -79,6 +79,20 @@ describe('DayRail — navegación por días', () => {
     expect(within(nav).getByRole('link', { name: /día siguiente/i })).toHaveAttribute('href', `#dia-${pad2(itinerary[2].id)}`)
   })
 
+  it('las barras de progreso se escalan (transform) sin transición, no animan alto/ancho', () => {
+    render(<DayRail days={itinerary} activeIndex={0} progress={0.5} />)
+    const v = document.querySelector<HTMLElement>('[data-rail-progress="v"]')
+    const h = document.querySelector<HTMLElement>('[data-rail-progress="h"]')
+    expect(v).not.toBeNull()
+    expect(h).not.toBeNull()
+    expect(v!.style.transition).toBe('')
+    expect(h!.style.transition).toBe('')
+    expect(v!.style.height).toBe('100%')
+    expect(h!.style.width).toBe('100%')
+    expect(v!.style.transform).toBe('scaleY(0.5)')
+    expect(h!.style.transform).toBe('scaleX(0.5)')
+  })
+
   it('en el primer día no hay enlace «anterior» activo', () => {
     render(<DayRail days={itinerary} activeIndex={0} progress={0} />)
     expect(screen.queryByRole('link', { name: /día anterior/i })).toBeNull()

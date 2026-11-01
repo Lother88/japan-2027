@@ -71,8 +71,6 @@ export default function DayRail({ days, activeIndex, progress }: DayRailProps) {
   const activeCityName = cityName(active.citySlug)
   const activeDate = formatShortDate(active.date)
 
-  const progressPct = `${(progress * 100).toFixed(1)}%`
-
   const prev = activeIndex > 0 ? days[activeIndex - 1] : undefined
   const next = activeIndex < days.length - 1 ? days[activeIndex + 1] : undefined
 
@@ -220,7 +218,10 @@ export default function DayRail({ days, activeIndex, progress }: DayRailProps) {
             borderRadius: '2px',
           }}
         >
+          {/* A tamaño completo y escalada: useScrollJourney escribe el transform en cada frame
+              (composited, sin layout ni re-render de React) */}
           <div
+            data-rail-progress="v"
             style={{
               position: 'absolute',
               top: 0,
@@ -228,8 +229,9 @@ export default function DayRail({ days, activeIndex, progress }: DayRailProps) {
               width: '100%',
               background: 'linear-gradient(180deg,var(--coral),var(--coral2))',
               borderRadius: '2px',
-              height: progressPct,
-              transition: 'height .15s linear',
+              height: '100%',
+              transformOrigin: 'top',
+              transform: `scaleY(${progress})`,
             }}
           />
         </div>
@@ -342,6 +344,7 @@ export default function DayRail({ days, activeIndex, progress }: DayRailProps) {
           }}
         >
           <div
+            data-rail-progress="h"
             style={{
               position: 'absolute',
               left: 0,
@@ -349,8 +352,9 @@ export default function DayRail({ days, activeIndex, progress }: DayRailProps) {
               height: '100%',
               background: 'linear-gradient(90deg,var(--coral),var(--coral2))',
               borderRadius: '2px',
-              width: progressPct,
-              transition: 'width .15s linear',
+              width: '100%',
+              transformOrigin: 'left',
+              transform: `scaleX(${progress})`,
             }}
           />
         </div>
