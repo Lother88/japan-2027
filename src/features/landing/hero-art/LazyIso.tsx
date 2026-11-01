@@ -37,6 +37,14 @@ export default function LazyIso({
   const ref = useRef<HTMLSpanElement>(null)
   const art = useLazyArt(ref, load, defer)
   const paused = usePausedOffscreen(ref, pauseOffscreen)
+  // `slice` recorta a propósito (la banda sangra por los lados); el resto deja ver el halo del
+  // zócalo, que sobresale unos px del viewBox.
+  const svgStyle: CSSProperties = {
+    display: 'block',
+    width: '100%',
+    height: '100%',
+    overflow: preserveAspectRatio.includes('slice') ? 'hidden' : 'visible',
+  }
 
   return (
     <span
@@ -44,7 +52,7 @@ export default function LazyIso({
       data-art={slot}
       data-art-paused={paused ? '' : undefined}
       aria-hidden="true"
-      style={{ display: 'block', flex: 'none', pointerEvents: 'none', ...style }}
+      style={{ display: 'block', flex: 'none', pointerEvents: 'none', position: 'relative', ...style }}
     >
       {art && (
         <svg
@@ -53,17 +61,24 @@ export default function LazyIso({
           aria-hidden="true"
           focusable="false"
           preserveAspectRatio={preserveAspectRatio}
-          // `slice` recorta a propósito (la banda sangra por los lados); el resto deja ver el
-          // halo del zócalo, que sobresale unos px del viewBox.
-          style={{
-            display: 'block',
-            width: '100%',
-            height: '100%',
-            overflow: preserveAspectRatio.includes('slice') ? 'hidden' : 'visible',
-          }}
+          style={svgStyle}
           dangerouslySetInnerHTML={{ __html: art.markup }}
         />
       )}
+      {/* Capas que se mueven: cada una en su <svg> encima del base, animado como elemento. */}
+      {art?.layers?.map((layer) => (
+        <svg
+          key={layer.name}
+          className={artClass}
+          data-art-layer={layer.name}
+          viewBox={art.viewBox}
+          aria-hidden="true"
+          focusable="false"
+          preserveAspectRatio={preserveAspectRatio}
+          style={{ ...svgStyle, position: 'absolute', inset: 0 }}
+          dangerouslySetInnerHTML={{ __html: layer.markup }}
+        />
+      ))}
     </span>
   )
 }

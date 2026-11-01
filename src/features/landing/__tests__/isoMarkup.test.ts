@@ -75,7 +75,9 @@ describe('marcados de la portada (hero, banda y spots)', async () => {
     machiya: chunk.HERO_SPOTS.machiya.markup,
     kippu: chunk.HERO_SPOTS.kippu.markup,
     maletas: chunk.HERO_SPOTS.maletas.markup,
-    michishirube: chunk.HERO_SPOTS.michishirube.markup,
+    // El poste lleva el cartel en una capa aparte: se comprueba junto con el marcado base.
+    michishirube:
+      chunk.HERO_SPOTS.michishirube.markup + (chunk.HERO_SPOTS.michishirube.layers ?? []).map((l) => l.markup).join(''),
     'toro-toggle': chunk.HERO_SPOTS['toro-toggle'].markup,
   }
   const portada = (Object.keys(ART_SCOPES) as Array<keyof typeof ART_SCOPES>).map((name) => ({
@@ -152,6 +154,20 @@ describe('marcados de la portada (hero, banda y spots)', async () => {
       const refs = [...art.markup.matchAll(/url\(#([^)]+)\)|href="#([^"]+)"/g)].map((m) => m[1] ?? m[2])
       expect(refs.filter((r) => !ids.has(r)), art.name).toEqual([])
     }
+  })
+
+  it('el poste michishirube oscila sin animar nada dentro del SVG (el cartel va en su propia capa)', () => {
+    const spot = chunk.HERO_SPOTS.michishirube
+    const layers = spot.layers ?? []
+    expect(layers.map((l) => l.name)).toEqual(['board'])
+    // Ningún elemento interno lleva la animación: rotar un <g> repinta el SVG en cada frame.
+    for (const markup of [spot.markup, ...layers.map((l) => l.markup)]) {
+      expect(markup).not.toMatch(/class="[^"]*spot-michishirube-swing/)
+    }
+    // La animación se aplica al <svg> de la capa (composición en GPU), con pivote en el gancho.
+    const css = spot.markup.match(/<style>([\s\S]*?)<\/style>/)?.[1] ?? ''
+    expect(css).toMatch(/\.iso-spot-michishirube\[data-art-layer="board"\]\{[^}]*animation:spot-michishirube-swing/)
+    expect(css).toMatch(/\.iso-spot-michishirube\[data-art-layer="board"\]\{[^}]*transform-origin:65\.33% 20\.41%/)
   })
 
   it('cada regla de estilo va acotada a la clase raíz del asset', () => {

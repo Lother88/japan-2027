@@ -13,7 +13,11 @@ import { SPOT_KOYOMI_MARKUP, SPOT_KOYOMI_VIEWBOX } from './spotKoyomi.markup'
 import { SPOT_MACHIYA_MARKUP, SPOT_MACHIYA_VIEWBOX } from './spotMachiya.markup'
 import { SPOT_KIPPU_MARKUP, SPOT_KIPPU_VIEWBOX } from './spotKippu.markup'
 import { SPOT_MALETAS_MARKUP, SPOT_MALETAS_VIEWBOX } from './spotMaletas.markup'
-import { SPOT_MICHISHIRUBE_MARKUP, SPOT_MICHISHIRUBE_VIEWBOX } from './spotMichishirube.markup'
+import {
+  SPOT_MICHISHIRUBE_BOARD_MARKUP,
+  SPOT_MICHISHIRUBE_MARKUP,
+  SPOT_MICHISHIRUBE_VIEWBOX,
+} from './spotMichishirube.markup'
 import { SPOT_TORO_TOGGLE_MARKUP, SPOT_TORO_TOGGLE_VIEWBOX } from './spotToroToggle.markup'
 
 export const HERO_SCENE: HeroSceneArt = {
@@ -28,6 +32,10 @@ export const HERO_SPOTS: Record<HeroSpotName, SpotArt> = {
   machiya: { viewBox: SPOT_MACHIYA_VIEWBOX, markup: SPOT_MACHIYA_MARKUP },
   kippu: { viewBox: SPOT_KIPPU_VIEWBOX, markup: SPOT_KIPPU_MARKUP },
   maletas: { viewBox: SPOT_MALETAS_VIEWBOX, markup: SPOT_MALETAS_MARKUP },
-  michishirube: { viewBox: SPOT_MICHISHIRUBE_VIEWBOX, markup: SPOT_MICHISHIRUBE_MARKUP },
+  michishirube: {
+    viewBox: SPOT_MICHISHIRUBE_VIEWBOX,
+    markup: SPOT_MICHISHIRUBE_MARKUP,
+    layers: [{ name: 'board', markup: SPOT_MICHISHIRUBE_BOARD_MARKUP }],
+  },
   'toro-toggle': { viewBox: SPOT_TORO_TOGGLE_VIEWBOX, markup: SPOT_TORO_TOGGLE_MARKUP },
 }

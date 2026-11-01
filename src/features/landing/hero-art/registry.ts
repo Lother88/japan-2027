@@ -20,9 +20,19 @@
 
 import type { HeroMaquetaLayer } from './heroMaqueta.markup'
 
+/** Capa de un spot: un <svg> apilado encima del base, con el mismo viewBox y la misma clase raíz. */
+export interface SpotLayer {
+  /** Va en `data-art-layer`; el <style> del marcado base anima la capa por ese atributo. */
+  name: string
+  markup: string
+}
+
 export interface SpotArt {
   viewBox: string
+  /** Marcado base (lleva el <style> del asset). */
   markup: string
+  /** Partes que se mueven, cada una en su <svg> para animar el elemento sin repintar el dibujo. */
+  layers?: readonly SpotLayer[]
 }
 
 /**

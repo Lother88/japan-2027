@@ -182,6 +182,20 @@ describe('Hero — portada isométrica', () => {
     await waitFor(() => expect(cue.querySelector('svg.iso-spot-michishirube')).not.toBeNull())
   })
 
+  it('el cartel del poste va en su propio <svg> apilado encima del dibujo base', async () => {
+    render(<Hero />)
+    const cue = screen.getByRole('button', { name: /desplázate/i })
+    await waitFor(() => expect(cue.querySelector('svg[data-art-layer="board"]')).not.toBeNull())
+    const svgs = [...cue.querySelectorAll('svg.iso-spot-michishirube')]
+    expect(svgs).toHaveLength(2)
+    const [base, board] = svgs as SVGSVGElement[]
+    expect(base.getAttribute('data-art-layer')).toBeNull()
+    expect(board.getAttribute('data-art-layer')).toBe('board')
+    expect(board.getAttribute('viewBox')).toBe(base.getAttribute('viewBox'))
+    expect(board.style.position).toBe('absolute')
+    expect((board.parentElement as HTMLElement).style.position).toBe('relative')
+  })
+
   it('el CTA lleva a la banda «La ruta»', () => {
     const scrollIntoView = vi.fn()
     render(
