@@ -1,0 +1,85 @@
+---
+/**
+ * RoutePanel — panel de itinerario junto al mapa de «La ruta» (a la derecha en escritorio,
+ * debajo en móvil). Hace de leyenda del mapa y de vistazo del viaje:
+ *
+ * - Las estancias por base en orden, como una línea de tren vertical: el trazo y los puntos
+ *   usan los mismos colores que la ruta y los markers del mapa (--map-line, --coral2).
+ * - Cuántos días se está en cada base (cifra + una píldora por día en el color de la ciudad) y
+ *   el rango de fechas. Regla de días en features/landing/routeStops.ts.
+ * - Las excursiones de día cuelgan de su base con el trazo discontinuo dorado y el rombo del mapa.
+ * - Cada parada enlaza con su primer día (#dia-NN); funciona sin JS.
+ *
+ * Con el mapa montado, pasar el ratón o el foco por una parada resalta su marker (y al revés):
+ * lo enlaza features/map/routeMap.ts por `data-stop-city` ↔ `data-map-city`.
+ * Estilos en index.css ([data-route-panel] …).
+ */
+import { daysLabel, formatStayRange, routeStops } from '@/features/landing/routeStops'
+import { dayAnchor } from '@/features/landing/scroll'
+
+const stops = routeStops()
+const lastIndex = stops.length - 1
+
+/** Papel de la parada en el viaje (solo la primera y la última). */
+function role(i: number): string | undefined {
+  if (i === 0) return 'llegada'
+  if (i === lastIndex) return 'regreso'
+  return undefined
+}
+---
+
+<aside data-route-panel aria-labelledby="ruta-paradas">
+  <h3 id="ruta-paradas" data-route-panel-title>Días en cada base</h3>
+
+  <ol data-stops>
+    {stops.map((s, i) => (
+      <li data-stop data-stop-edge={i === 0 ? 'first' : i === lastIndex ? 'last' : undefined}>
+        <a data-stop-link data-stop-city={s.slug} href={`#${dayAnchor(s.firstDayId)}`}>
+          <span data-stop-dot aria-hidden="true"></span>
+          <span data-stop-text>
+            <span data-stop-name>
+              {s.name}
+              <span data-stop-kanji lang="ja" aria-hidden="true">{s.kanji}</span>
+            </span>
+            <span data-stop-dates>
+              {formatStayRange(s.fromIso, s.toIso)}
+              {role(i) && <span data-stop-role> · {role(i)}</span>}
+            </span>
+          </span>
+          <span data-stop-days>
+            <span data-stop-count><strong>{s.days}</strong> {daysLabel(s.days)}</span>
+            <span data-stop-pips aria-hidden="true" style={`--accent: ${s.accent}`}>
+              {Array.from({ length: s.days }, () => <i></i>)}
+            </span>
+          </span>
+        </a>
+
+        {s.excursions.length > 0 && (
+          <ul data-stop-excursions>
+            {s.excursions.map((ex) => (
+              <li>
+                <a
+                  data-exc-link
+                  data-stop-city={ex.slug}
+                  href={ex.dayId !== undefined ? `#${dayAnchor(ex.dayId)}` : undefined}
+                >
+                  <span data-exc-mark aria-hidden="true"></span>
+                  <span data-exc-name>
+                    {ex.name}
+                    <span data-stop-kanji lang="ja" aria-hidden="true">{ex.kanji}</span>
+                  </span>
+                  {ex.dayId !== undefined && <span data-exc-day>excursión · día {ex.dayId}</span>}
+                </a>
+              </li>
+            ))}
+          </ul>
+        )}
+      </li>
+    ))}
+  </ol>
+
+  <ul data-route-key aria-label="Leyenda del mapa">
+    <li><span data-key-route aria-hidden="true"></span>Base y recorrido</li>
+    <li><span data-key-exc aria-hidden="true"></span>Excursión de día</li>
+  </ul>
+</aside>
