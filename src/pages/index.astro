@@ -1,0 +1,19 @@
+---
+/**
+ * Landing del itinerario «Japón 2027» (página única de scroll).
+ *
+ * Composición: skip-link («Saltar al itinerario») · un único <main> con el hero, la banda
+ * «La ruta» con el mapa y el journey (rail + secciones por día) · footer fuera de <main> ·
+ * botón para volver arriba · interruptor flotante de tema claro/oscuro.
+ */
+import Base from '@/layouts/Base.astro'
+---
+
+<Base>
+  <a class="skip-link" href="#itinerario">Saltar al itinerario</a>
+  <main>
+    {/* Hero, RouteSection (#ruta) y Journey (#itinerario): se portan en la Fase 2 */}
+    <div id="itinerario"></div>
+  </main>
+  {/* SiteFooter, ToTop y ThemeToggle: Fase 2 */}
+</Base>

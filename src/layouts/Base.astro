@@ -1,0 +1,56 @@
+---
+/**
+ * Base — documento HTML de la landing: <head> (meta, fuentes, script anti-FOUC del tema) y el
+ * CSS global (src/styles/index.css, que Astro empaqueta y enlaza en el <head>).
+ */
+import '@/styles/index.css'
+
+interface Props {
+  title?: string
+}
+
+const { title = 'Japón 2027' } = Astro.props
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    {/*
+      Google Fonts desde el HTML (no con @import en index.css): la hoja se pide en paralelo
+      con el resto en vez de esperar al CSS. Solo los pesos usados: Shippori Mincho
+      500/600/700/800 y Zen Kaku Gothic New 400/500/700 (no tiene 600: los 600 de sans
+      resuelven a 700). Los fallbacks con métricas ajustadas están en index.css.
+    */}
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;600;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap"
+    />
+    {/*
+      Script anti-FOUC del tema, en línea y síncrono antes del primer pintado: lee el tema
+      guardado (localStorage «jp-theme») o, si no hay, prefers-color-scheme, y fija
+      data-theme en <html> para que las variables de index.css resuelvan ya a esa paleta.
+    */}
+    <script is:inline>
+      (function () {
+        try {
+          var theme = localStorage.getItem('jp-theme')
+          if (theme !== 'light' && theme !== 'dark') {
+            theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+          }
+          document.documentElement.setAttribute('data-theme', theme)
+        } catch (e) {
+          // Sin acceso a localStorage: en el peor caso, un destello breve en la primera carga
+        }
+      })()
+    </script>
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>

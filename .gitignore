@@ -35,3 +35,6 @@ dist-ssr
 /tools/art/**/*.html
 /tools/art/**/meta.json
 /tools/art/**/fragments.json
+
+# Astro: tipos generados
+.astro/
