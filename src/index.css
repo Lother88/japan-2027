@@ -507,17 +507,26 @@ details[data-spoiler] > summary::marker { content: ""; }
 details[data-spoiler] [data-spoiler-hide] { display: none; }
 details[data-spoiler][open] [data-spoiler-show] { display: none; }
 details[data-spoiler][open] [data-spoiler-hide] { display: inline; }
-details[data-spoiler] [data-spoiler-chev] { transition: transform .2s ease; }
+details[data-spoiler] [data-spoiler-chev] { transition: transform 200ms var(--ease-out); }
 details[data-spoiler][open] [data-spoiler-chev] { transform: rotate(180deg); }
 details[data-spoiler] > summary:hover [data-spoiler-hint] { opacity: .72; }
+/* La transición que aplica es la del estado DESTINO: la regla base gobierna el cierre y la
+   [open], la apertura. content-visibility dura lo mismo que la altura en cada dirección (si
+   fuera más corta, el contenido desaparecería antes de cerrarse). */
 details[data-spoiler]::details-content {
   height: 0;
   overflow: clip;
   opacity: 0;
-  transition: height .55s cubic-bezier(.2,0,0,1), opacity .4s ease .08s, content-visibility .55s allow-discrete;
+  /* cierre: rápido, sin retraso */
+  transition: height 200ms var(--ease-out), opacity 120ms ease-out, content-visibility 200ms allow-discrete;
   transition-behavior: allow-discrete;
 }
-details[data-spoiler][open]::details-content { height: auto; opacity: 1; }
+details[data-spoiler][open]::details-content {
+  height: auto;
+  opacity: 1;
+  /* apertura: la altura abre camino y el texto llega 60 ms después */
+  transition: height 300ms var(--ease-out), opacity 200ms var(--ease-out) 60ms, content-visibility 300ms allow-discrete;
+}
 
 /* Ilustraciones isométricas por día: pausa el movimiento ambiental fuera de pantalla
    (DayIllustration pone data-paused con un IntersectionObserver). !important porque el
@@ -548,8 +557,9 @@ details[data-spoiler][open]::details-content { height: auto; opacity: 1; }
   html { scroll-behavior: auto; }
   /* ToTop: solo fundido (el JS escribe transform inline; !important lo neutraliza) */
   [data-totop] { transform: none !important; }
-  /* Spoiler: la altura salta, el contenido funde */
-  details[data-spoiler]::details-content {
+  /* Spoiler: la altura salta, el contenido funde ([open] incluido: tiene más especificidad) */
+  details[data-spoiler]::details-content,
+  details[data-spoiler][open]::details-content {
     transition: opacity 150ms ease, content-visibility 150ms allow-discrete;
   }
   details[data-spoiler] [data-spoiler-chev] { transition: none; }
