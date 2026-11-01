@@ -220,7 +220,7 @@ describe('círculo desde el botón (patrón MDN)', () => {
   it.each([
     ['light', 'dark'],
     ['dark', 'light'],
-  ])('%s → %s: el estado nuevo crece en círculo desde el centro del botón', async (from, to) => {
+  ])('%s → %s: el estado nuevo crece en círculo desde el borde del botón', async (from, to) => {
     html().setAttribute('data-theme', from)
     installViewTransition()
     const animate = installAnimate()
@@ -229,11 +229,11 @@ describe('círculo desde el botón (patrón MDN)', () => {
 
     await waitFor(() => expect(animate).toHaveBeenCalledTimes(1))
     const [keyframes, options] = callOf(animate)
-    expect(keyframes.clipPath[0]).toBe('circle(0px at 51px 725px)')
+    expect(keyframes.clipPath[0]).toBe('circle(25px at 51px 725px)')
     expect(keyframes.clipPath[1]).toBe(`circle(${FAR}px at 51px 725px)`)
     expect(options).toMatchObject({
-      duration: 550,
-      easing: 'ease-out',
+      duration: 500,
+      easing: 'cubic-bezier(0.23, 1, 0.32, 1)',
       pseudoElement: '::view-transition-new(root)',
     })
     await waitFor(() => expect(html().getAttribute('data-theme')).toBe(to))

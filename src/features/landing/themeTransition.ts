@@ -76,14 +76,19 @@ function reducedPlan(): Plan {
   }
 }
 
-/** Patrón MDN: el tema nuevo crece en círculo desde el botón (ambas direcciones). */
+/**
+ * Patrón MDN: el tema nuevo crece en círculo desde el borde del botón (ambas direcciones):
+ * arranca con el radio del botón, que cambia de tema al instante, no desde un punto bajo él.
+ * Ease-out fuerte: el área crece con r², así que el grueso del barrido llega pronto y la esquina
+ * opuesta se asienta suave. WAAPI no acepta var(): es el valor literal de --ease-out.
+ */
 function circlePlan(o: SwapOrigin): Plan {
   return {
     kind: 'in',
     pseudoElement: NEW,
-    keyframes: { clipPath: [circle(0, o), circle(farRadius(o), o)] },
-    duration: 550,
-    easing: 'ease-out',
+    keyframes: { clipPath: [circle(o.r, o), circle(farRadius(o), o)] },
+    duration: 500,
+    easing: 'cubic-bezier(0.23, 1, 0.32, 1)',
   }
 }
 
