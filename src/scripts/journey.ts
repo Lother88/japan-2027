@@ -6,6 +6,9 @@
  * superior ya ha cruzado el 42 % del alto del viewport (antes del primer día, el primero).
  * Un IntersectionObserver con una línea a ese 42 % avisa SOLO cuando un borde la cruza; en ese
  * momento se miden las secciones una vez (nada de leer geometría en cada evento de scroll).
+ * El estado inicial también sale de ese observer: su primera notificación llega tras el primer
+ * layout, así que medir ahí no fuerza un reflow (medir al cargar el script sí lo hacía: ~130 ms
+ * de layout síncrono en móvil). Hasta entonces se ve el día 1, que es el pre-renderizado.
  * Al cambiar de día se alternan atributos ya pre-renderizados en DayRail.astro:
  *  - `hidden` en los 21 bloques [data-rail-block] y las 21 líneas compactas [data-rail-line],
  *  - `aria-current="location"` y `data-passed` en los enlaces del rail (estilos en index.css),
@@ -81,12 +84,12 @@ function update() {
 }
 
 if (sections.length) {
-  // Línea de alto cero al 42 % del viewport: el callback llega cuando un borde la cruza.
+  // Línea de alto cero al 42 % del viewport: el callback llega cuando un borde la cruza, y una
+  // vez al empezar a observar (con el layout ya hecho), que es la que fija el día inicial.
   const io = new IntersectionObserver(update, {
     rootMargin: `-${ACTIVE_LINE * 100}% 0px -${(1 - ACTIVE_LINE) * 100}% 0px`,
   })
   sections.forEach((s) => io.observe(s))
-  update()
 }
 
 /* ── Progreso (sin scroll-driven animations) y botón «volver arriba» ────── */
