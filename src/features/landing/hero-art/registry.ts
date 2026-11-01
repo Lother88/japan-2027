@@ -2,8 +2,8 @@
  * Cargadores del arte isométrico de la portada (hero, banda «Muro» y spots).
  *
  * Los ficheros *.markup.ts de esta carpeta son marcado GENERADO (no editar a mano) por los
- * scripts build.mjs de la skill anatomy-asset en el scratchpad de la sesión
- * (hero/hero-maqueta, hero/banda-muro y hero-spots/spot-*). Sus rampas de tono se derivan de
+ * scripts de tools/art (hero-layers, hero/banda-muro y hero-spots/spot-*; ver su README:
+ * `node tools/art/build-all.mjs`). Sus rampas de tono se derivan de
  * los hex de --paper, --surface, --gold, --brown, --green, --ink, --coral, --coral2 y --amber
  * de src/index.css, y spot-omamori del azul fijo del pie (#14203a): si cambia alguno de esos
  * valores, hay que regenerarlos. Ids, clases y keyframes van prefijados por asset (`hero-…`,
