@@ -120,7 +120,7 @@ export default function DaySection({ day, index }: DaySectionProps) {
         }}
       >
         {/* Header */}
-        <Reveal delay={0}>
+        <Reveal>
           <div
             data-day-head
             style={{
@@ -185,7 +185,7 @@ export default function DaySection({ day, index }: DaySectionProps) {
 
         {/* Transfers */}
         {transfers.map((t, i) => (
-          <Reveal key={i} delay={80}>
+          <Reveal key={i}>
             <div style={{ marginBottom: '26px' }}>
               <TransferCard transfer={t} tokens={tokens} />
             </div>
@@ -196,7 +196,6 @@ export default function DaySection({ day, index }: DaySectionProps) {
         {slots.map((s, i) => (
           <Reveal
             key={s.key}
-            delay={120 + 40 * i}
             style={{ marginBottom: i < slots.length - 1 ? '24px' : 0 }}
           >
             <SlotBlock slot={s} tokens={tokens} />
