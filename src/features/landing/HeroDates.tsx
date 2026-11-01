@@ -4,8 +4,8 @@
  *
  * Todo sale de los datos (tripSummary + ayudas de fechas de trip.ts): mes en kanji, día de la
  * semana y cifras. Las hojas se leen como una imagen con el rango en palabras («Del 8 al 29 de
- * mayo de 2027») y conservan sus <time dateTime>. «Hoy» es el día del calendario local; los
- * tests lo inyectan con `today`. Estilos y entrada en index.css (`[data-hero-dates]`…).
+ * mayo de 2027») y conservan sus <time dateTime>. «Hoy» es el día del calendario local.
+ * Estilos y entrada en index.css (`[data-hero-dates]`…).
  */
 import { Fragment } from 'react'
 import {
@@ -40,9 +40,9 @@ function CalendarPage({ date, which }: { date: CalendarDay; which: 'salida' | 'r
   )
 }
 
-export default function HeroDates({ today }: { today?: Date }) {
+export default function HeroDates() {
   const { value, label } = countdownText(
-    tripCountdown(trip.departure, trip.returnDate, localIsoDate(today ?? new Date())),
+    tripCountdown(trip.departure, trip.returnDate, localIsoDate(new Date())),
   )
 
   return (

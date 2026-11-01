@@ -30,8 +30,7 @@ const trip = tripSummary()
 /** Año del sello: el de la salida */
 const year = calendarDay(trip.departure).year
 
-/** `today` solo para tests: fija el día de la cuenta atrás (por defecto, el reloj del sistema). */
-export default function Hero({ today }: { today?: Date } = {}) {
+export default function Hero() {
   const ref = useRef<HTMLElement>(null)
   const paused = usePausedOffscreen(ref)
 
@@ -42,7 +41,7 @@ export default function Hero({ today }: { today?: Date } = {}) {
 
         {/* Texto en la zona segura del lienzo (x 0–470 de 1200) */}
         <div data-hero-copy>
-          <HeroDates today={today} />
+          <HeroDates />
 
           {/* 日本 en vertical (decorativo) junto al sello, el H1 y el subtítulo */}
           <div data-hero-title>
