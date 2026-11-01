@@ -18,8 +18,18 @@ node tools/art/build-all.mjs           # regenera y escribe en src/features/land
 ```
 
 `--check` debe terminar con «todo el arte de src/ se reproduce byte a byte». Si algo difiere,
-revisa la salida que indica antes de escribir. Tras regenerar, `pnpm test:run` valida prefijos,
-ids y estilos acotados (`src/features/landing/__tests__/isoMarkup.test.ts`).
+revisa la salida que indica antes de escribir.
+
+## Quién lo consume
+
+- En línea en el HTML, en el build: la maqueta del hero y los 6 spots sobre el pliegue
+  (`src/features/landing/hero-art/heroInline.ts`, usado por `HeroArt.astro` y `ArtBox.astro`).
+- Diferidos: los 21 días, la banda «Muro», spot-ruta y spot-omamori, que `src/scripts/lazy-art.ts`
+  importa con `import()` (registros `iso/registry.ts` y `hero-art/registry.ts`) cuando su caja se
+  acerca al viewport.
+
+Todo se inserta como SVG en línea (no `<img>`): sus `<style>` dependen de `[data-theme]` en `<html>`
+y de las reglas de pausa `[data-art-paused] *` / `[data-illus][data-paused] *`.
 
 ## Qué hace cada parte
 
@@ -40,12 +50,10 @@ script; están ignoradas en git.
 ## Paleta
 
 Las rampas de tono se calculan a partir de los hex de `--paper`, `--surface`, `--gold`, `--brown`,
-`--green`, `--ink`, `--coral`, `--coral2` y `--amber` de `src/index.css` (están copiados en las
+`--green`, `--ink`, `--coral`, `--coral2` y `--amber` de `src/styles/index.css` (están copiados en las
 librerías como `SITE`). Si cambia alguno, hay que actualizar `SITE` y regenerarlo todo.
 
 ## Procedencia
 
 Los scripts se escribieron en sesiones de trabajo con la skill anatomy-asset y se trajeron aquí
-sin cambios de geometría: solo se sustituyeron las rutas absolutas por rutas relativas. Por eso las
-cabeceras de los `*.markup.ts` aún dicen «build.mjs en el scratchpad de la sesión»; se
-actualizarán la próxima vez que se regenere el arte.
+sin cambios de geometría: solo se sustituyeron las rutas absolutas por rutas relativas.

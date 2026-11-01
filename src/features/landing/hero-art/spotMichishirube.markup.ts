@@ -1,12 +1,11 @@
 /**
  * spot-michishirube: poste indicador con tablilla hacia abajo (aviso «Desplázate») — marcado SVG generado (no editar a mano).
  *
- * Generado con el kit de la skill anatomy-asset (hero-spots/spot-michishirube/build.mjs en el scratchpad
- * de la sesión), con la misma cámara que el hero (azimut 40°, elevación 30°), grosor de línea
+ * Generado con el kit de la skill anatomy-asset (hero-spots/spot-michishirube/build.mjs en tools/art), con la misma cámara que el hero (azimut 40°, elevación 30°), grosor de línea
  * 0.5 y la familia de materiales de la maqueta (madera, piedra, tokens del sitio).
- * Sustituye a la flecha con ignBounce del aviso «Desplázate» (Hero.tsx, data-scrollcue).
+ * Sustituye a la flecha con ignBounce del aviso «Desplázate» (Hero.astro, data-scrollcue).
  * Tamaño de render previsto: 48×64 px (viewBox 48×64).
- * Colores: tokens de src/index.css (--paper, --brown, --coral, --green, --ink); --a-paper usa var(--paper) en vivo (el hero pasa a --paper liso).
+ * Colores: tokens de src/styles/index.css (--paper, --brown, --coral, --green, --ink); --a-paper usa var(--paper) en vivo (el hero pasa a --paper liso).
  * Las variables del kit van abreviadas como `--a-*` (locales al asset).
  * Las rampas se derivan de esos hex al generar: si cambia la paleta, hay que regenerar este fichero.
  * Todo el CSS está acotado a `.iso-spot-michishirube` (claro) y `[data-theme="dark"] .iso-spot-michishirube` (oscuro); clases, keyframes e ids

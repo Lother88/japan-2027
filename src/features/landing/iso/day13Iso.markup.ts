@@ -2,8 +2,7 @@
  * Takaragawa Onsen isométrico (día 13): el gran rotenburo de rocas junto al río, con el ryokan
  * de madera detrás. El vapor del baño y las ondas del río respiran (CSS).
  *
- * Marcado SVG generado con el kit de la skill anatomy-asset (build.mjs en el scratchpad de la
- * sesión, iso/day13/) — no editar a mano. Los colores salen de los tokens de src/index.css
+ * Marcado SVG generado con el kit de la skill anatomy-asset (build.mjs en tools/art, iso/day13/) — no editar a mano. Los colores salen de los tokens de src/styles/index.css
  * para tema claro y oscuro: --anatomy-paper usa var(--paper) en vivo y las rampas de tono se
  * derivan de esos hex al generar. Si cambia la paleta, hay que regenerar este fichero.
  * Todo el CSS va acotado a `.iso-d13` y la animación usa nombres `d13-*`, que se detienen

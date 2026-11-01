@@ -1,5 +1,5 @@
 // Shared by hero/hero-maqueta/build.mjs and hero/banda-muro/build.mjs: kit imports, the site palette,
-// a shaded polyhedron, a smooth-shaded grid surface, the path minifier and the React drop.
+// a shaded polyhedron, a smooth-shaded grid surface, the path minifier and the site drop.
 import { pathToFileURL } from "node:url";
 
 const SKILL = ((process.env.ANATOMY_ASSET_DIR ?? `${process.env.USERPROFILE ?? process.env.HOME}/.claude/skills/anatomy-asset`).replace(/[\\/]?$/, "/"));
@@ -8,7 +8,7 @@ export const a = await import(pathToFileURL(SKILL + "kit/asset.mjs").href);
 export const G = await import(pathToFileURL(SKILL + "kit/lathe.mjs").href);
 export const A = await import(pathToFileURL(SKILL + "kit/audit.mjs").href);
 
-// ---------- site palette (src/index.css, light ~11–15, dark ~25–29) ----------
+// ---------- site palette (src/styles/index.css, light ~11–15, dark ~25–29) ----------
 export const SITE = {
   light: { paper: "#fbf6f0", ink: "#1b2a4a", gold: "#b08534", brown: "#8a5a3b", green: "#3f6f5f", coral: "#c24a5a", amber: "#b48a35", slate: "#5a5e6b" },
   dark: { paper: "#12141b", ink: "#f1ece1", gold: "#d9a948", brown: "#c89a6a", green: "#76b89a", coral: "#ff7a6f", amber: "#e2a743", slate: "#9aa0ad" },
@@ -276,7 +276,7 @@ export function minifyD(d) {
 }
 export const minify = (svg) => svg.replace(/ d="([^"]*)"/g, (_, d) => ` d="${minifyD(d)}"`);
 
-// ---------- the React drop: one geometry, light + dark tokens, everything prefixed ----------
+// ---------- the site drop: one geometry, light + dark tokens, everything prefixed ----------
 // Kit drawing classes (iso-*), accent classes (ac-*), ambient motion classes and keyframes
 // (am-*) and every id get the asset prefix, so nothing collides with the day illustrations.
 const SHORT = { fill: "f", shade: "s", top: "t", line: "l", solid: "o", halo: "h", edge: "e", crease: "c", bevel: "b", dots: "d", fade: "fd", svg: "svg", wire: "w", seamless: "sl" };

@@ -3,8 +3,7 @@
  * Tokio, con la playa de Odaiba y un yakatabune. El agua respira y las balizas de las torres
  * parpadean (CSS).
  *
- * Marcado SVG generado con el kit de la skill anatomy-asset (build.mjs en el scratchpad de la
- * sesión, iso/day27/) — no editar a mano. Los colores salen de los tokens de src/index.css
+ * Marcado SVG generado con el kit de la skill anatomy-asset (build.mjs en tools/art, iso/day27/) — no editar a mano. Los colores salen de los tokens de src/styles/index.css
  * para tema claro y oscuro: --anatomy-paper usa var(--paper) en vivo y las rampas de tono se
  * derivan de esos hex al generar. Si cambia la paleta, hay que regenerar este fichero.
  * Todo el CSS va acotado a `.iso-d27` y la animación usa nombres `d27-*`, que se detienen

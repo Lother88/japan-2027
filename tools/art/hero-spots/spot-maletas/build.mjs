@@ -82,7 +82,7 @@ emit({
   accentsFor: (t) => { const f = family(t); return { wood: f.wood, coral2: f.coral2, ebony: f.ebony, gold: f.gold }; },
   doc: {
     title: "spot-maletas: cuatro maletas (chip «viajeros» del hero)",
-    replaces: "Sustituye a la caja sin icono del chip «viajeros» (Hero.tsx, stat chips).",
+    replaces: "Sustituye a la caja sin icono del chip «viajeros» (Hero.astro, stat chips).",
     tokens: "--surface, --brown, --coral2, --gold, --ink, --paper",
     ground: "--anatomy-paper usa var(--surface) en vivo (el chip es --surface).",
     motion: "ninguno (estático; el flotado al pasar el ratón lo pone el integrador en CSS).",

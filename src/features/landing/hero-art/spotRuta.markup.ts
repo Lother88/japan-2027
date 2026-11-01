@@ -1,12 +1,11 @@
 /**
  * spot-ruta: tramo de vía con cartel de estación (cabecera de la banda «La ruta») — marcado SVG generado (no editar a mano).
  *
- * Generado con el kit de la skill anatomy-asset (hero-spots/spot-ruta/build.mjs en el scratchpad
- * de la sesión), con la misma cámara que el hero (azimut 40°, elevación 30°), grosor de línea
+ * Generado con el kit de la skill anatomy-asset (hero-spots/spot-ruta/build.mjs en tools/art), con la misma cámara que el hero (azimut 40°, elevación 30°), grosor de línea
  * 0.5 y la familia de materiales de la maqueta (madera, piedra, tokens del sitio).
  * Va en la cabecera de la banda «La ruta» (el mapa sale del hero a su propia banda).
  * Tamaño de render previsto: 120×72 px (viewBox 120×72).
- * Colores: tokens de src/index.css (--paper, --brown, --green, --amber, --coral, --ink); --a-paper usa var(--paper) en vivo.
+ * Colores: tokens de src/styles/index.css (--paper, --brown, --green, --amber, --coral, --ink); --a-paper usa var(--paper) en vivo.
  * Las variables del kit van abreviadas como `--a-*` (locales al asset).
  * Las rampas se derivan de esos hex al generar: si cambia la paleta, hay que regenerar este fichero.
  * Todo el CSS está acotado a `.iso-spot-ruta` (claro) y `[data-theme="dark"] .iso-spot-ruta` (oscuro); clases, keyframes e ids

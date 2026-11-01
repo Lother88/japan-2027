@@ -1,8 +1,8 @@
 /**
  * Destilería de sake de Sanmachi isométrico (día 16) — marcado SVG generado (no editar a mano).
  *
- * Generado con el kit de la skill anatomy-asset (dayNN/build.mjs en el scratchpad de la sesión).
- * Los colores salen de los tokens de src/index.css (--paper, --ink, --gold, --brown, --green…)
+ * Generado con el kit de la skill anatomy-asset (dayNN/build.mjs en tools/art).
+ * Los colores salen de los tokens de src/styles/index.css (--paper, --ink, --gold, --brown, --green…)
  * para tema claro y oscuro: --anatomy-paper usa var(--paper) en vivo y las rampas de tono se
  * derivan de esos hex al generar. Todo el CSS va acotado a `.iso-d16` (y
  * `[data-theme="dark"] .iso-d16`); la animación es `d16-pulse` y se detiene con

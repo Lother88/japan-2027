@@ -129,7 +129,7 @@ emit({
   },
   doc: {
     title: "spot-kippu: billete JR con banda verde, perforado y picado (chip «excursiones» del hero)",
-    replaces: "Sustituye a la caja sin icono del chip «excursiones» (Hero.tsx, stat chips). v2: el billete ocupa el lienzo.",
+    replaces: "Sustituye a la caja sin icono del chip «excursiones» (Hero.astro, stat chips). v2: el billete ocupa el lienzo.",
     tokens: "--surface, --brown, --green, --gold, --paper, --ink",
     ground: "--anatomy-paper usa var(--surface) en vivo (el chip es --surface).",
     motion: "ninguno (estático; el flotado al pasar el ratón lo pone el integrador en CSS).",

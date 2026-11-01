@@ -2,8 +2,7 @@
  * Higashi Chaya isométrico (día 14): dos chaya de dos plantas con celosía kimusuko en rojo
  * bengara, calle empedrada, canal y sauce. El farolillo junto a la puerta respira (CSS).
  *
- * Marcado SVG generado con el kit de la skill anatomy-asset (build.mjs en el scratchpad de la
- * sesión, iso/day14/) — no editar a mano. Los colores salen de los tokens de src/index.css
+ * Marcado SVG generado con el kit de la skill anatomy-asset (build.mjs en tools/art, iso/day14/) — no editar a mano. Los colores salen de los tokens de src/styles/index.css
  * para tema claro y oscuro: --anatomy-paper usa var(--paper) en vivo y las rampas de tono se
  * derivan de esos hex al generar. Si cambia la paleta, hay que regenerar este fichero.
  * Todo el CSS va acotado a `.iso-d14` y la animación usa nombres `d14-*`, que se detienen

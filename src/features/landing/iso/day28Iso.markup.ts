@@ -3,8 +3,7 @@
  * Deck y la Tembo Galleria, junto al río Sumida y el puente rojo Azuma (proporciones acortadas
  * para el formato 440×330). Las ventanas del mirador respiran y la baliza del mástil parpadea (CSS).
  *
- * Marcado SVG generado con el kit de la skill anatomy-asset (build.mjs en el scratchpad de la
- * sesión, iso/day28/) — no editar a mano. Los colores salen de los tokens de src/index.css
+ * Marcado SVG generado con el kit de la skill anatomy-asset (build.mjs en tools/art, iso/day28/) — no editar a mano. Los colores salen de los tokens de src/styles/index.css
  * para tema claro y oscuro: --anatomy-paper usa var(--paper) en vivo y las rampas de tono se
  * derivan de esos hex al generar. Si cambia la paleta, hay que regenerar este fichero.
  * Todo el CSS va acotado a `.iso-d28` y la animación usa nombres `d28-*`, que se detienen

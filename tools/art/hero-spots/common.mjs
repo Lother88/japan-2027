@@ -6,7 +6,7 @@
 // Every spot build calls `camera()` once with its fit points, draws with the helpers below,
 // and hands its body to `emit()`, which writes:
 //   <name>/<name>-light.svg|.html, <name>/<name>-dark.svg|.html   standalone, kit classes (checks)
-//   out/<camelName>.markup.ts                                      React drop, everything prefixed
+//   out/<camelName>.markup.ts                                      site drop, everything prefixed
 //   manifest/<name>.json                                           for the contact sheet
 
 import { mkdirSync, writeFileSync } from "node:fs";
@@ -22,7 +22,7 @@ export const ROOT = dirname(fileURLToPath(import.meta.url));
 export const WEIGHT = 0.5;
 export const AZIMUTH = 40;
 
-// ---------- site palette: src/index.css (light ~l.11-15, dark ~l.25-29) ----------
+// ---------- site palette: src/styles/index.css (light ~l.11-15, dark ~l.25-29) ----------
 export const SITE = {
   light: { paper: "#fbf6f0", surface: "#fffdf9", ink: "#1b2a4a", slate: "#5a5e6b", gold: "#b08534", amber: "#b48a35", brown: "#8a5a3b", green: "#3f6f5f", coral: "#c24a5a", coral2: "#e0564b", footer: "#14203a" },
   dark: { paper: "#12141b", surface: "#1b1f2c", ink: "#f1ece1", slate: "#9aa0ad", gold: "#d9a948", amber: "#e2a743", brown: "#c89a6a", green: "#76b89a", coral: "#ff7a6f", coral2: "#ff6f62", footer: "#14203a" },
@@ -274,7 +274,7 @@ export const minify = (svg) => svg.replace(/ d="([^"]*)"/g, (_, d) => ` d="${min
 const GROUNDS = {
   surface: { var: "var(--surface)", hex: (t) => SITE[t].surface, theme: (t) => t },
   paper: { var: "var(--paper)", hex: (t) => SITE[t].paper, theme: (t) => t },
-  // The site footer is navy in both themes (SiteFooter.tsx, #14203a = light --primary-press).
+  // The site footer is navy in both themes (SiteFooter.astro, #14203a = light --primary-press).
   footer: { var: null, hex: () => SITE.light.footer, theme: () => "dark" },
 };
 const MOTION = {
@@ -310,7 +310,7 @@ export function emit({ name, W, H, render, ground, label, body, accentsFor, moti
     writeFileSync(join(dir, `${id}.html`), a.previewHtml({ title: id, svg, paper: g.hex(theme), width: W * 4 }));
   }
 
-  // React drop: one geometry, both themes, every class, keyframe and id prefixed with `name-`.
+  // site drop: one geometry, both themes, every class, keyframe and id prefixed with `name-`.
   const scope = `.iso-${name}`;
   const dark = `[data-theme="dark"] ${scope}`;
   const pre = `${name}-`;
@@ -438,12 +438,11 @@ export function emit({ name, W, H, render, ground, label, body, accentsFor, moti
   const ts = `/**
  * ${doc.title} — marcado SVG generado (no editar a mano).
  *
- * Generado con el kit de la skill anatomy-asset (hero-spots/${name}/build.mjs en el scratchpad
- * de la sesión), con la misma cámara que el hero (azimut 40°, elevación 30°), grosor de línea
+ * Generado con el kit de la skill anatomy-asset (hero-spots/${name}/build.mjs en tools/art), con la misma cámara que el hero (azimut 40°, elevación 30°), grosor de línea
  * ${WEIGHT} y la familia de materiales de la maqueta (madera, piedra, tokens del sitio).
  * ${doc.replaces}
  * Tamaño de render previsto: ${render.w}×${render.h} px (viewBox ${W}×${H}).
- * Colores: tokens de src/index.css (${doc.tokens}); ${doc.ground.replace(/--anatomy-/g, "--a-")}
+ * Colores: tokens de src/styles/index.css (${doc.tokens}); ${doc.ground.replace(/--anatomy-/g, "--a-")}
  * Las variables del kit van abreviadas como \`--a-*\` (locales al asset).
  * Las rampas se derivan de esos hex al generar: si cambia la paleta, hay que regenerar este fichero.
  * Todo el CSS está acotado a \`${scope}\` (claro) y \`${dark}\` (oscuro); clases, keyframes e ids

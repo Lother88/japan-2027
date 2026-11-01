@@ -1,7 +1,7 @@
 import { fileURLToPath as toPath__ } from "node:url";
 // Shared helpers for the day 13 / 14 / 27 / 28 / 29 isometric assets of the japan-2027 landing.
 // Copied from the approved day-21 pilot (kinkakuji/build.mjs): site palette, polySolid,
-// rectRing/roofOf, face helpers, minifier and the React markup emitter, with the CSS scope and
+// rectRing/roofOf, face helpers, minifier and the TS markup emitter, with the CSS scope and
 // animation names parameterised per day (`.iso-dNN`, `dNN-pulse`) so 21 inlined assets never
 // collide.
 
@@ -19,7 +19,7 @@ export const H = 330;
 export const WEIGHT = 0.7;
 export const SCRATCH = toPath__(new URL("../..", import.meta.url));
 
-// ---------- site palette (src/index.css, light :root and [data-theme="dark"]) ----------
+// ---------- site palette (src/styles/index.css, light :root and [data-theme="dark"]) ----------
 export const SITE = {
   light: { paper: "#fbf6f0", ink: "#1b2a4a", gold: "#b08534", amber: "#b48a35", coral: "#c24a5a", coral2: "#e0564b", brown: "#8a5a3b", green: "#3f6f5f" },
   dark: { paper: "#12141b", ink: "#f1ece1", gold: "#d9a948", amber: "#e2a743", coral: "#ff7a6f", coral2: "#ff6f62", brown: "#c89a6a", green: "#76b89a" },
@@ -297,7 +297,7 @@ function minifyD(d) {
 }
 export const minify = (svg) => svg.replace(/ d="([^"]*)"/g, (_, d) => ` d="${minifyD(d)}"`);
 
-// ---------- emit: standalone SVGs + previews + the React markup module ----------
+// ---------- emit: standalone SVGs + previews + the TS markup module ----------
 // `nn` is the two-digit day. The standalone files keep the kit's `am-*` motion classes; the
 // markup module renames them to `dNN-*` and scopes every rule to `.iso-dNN`.
 export function emit({ nn, here, body, label, subject, accentsFor, jsdoc, solids }) {
@@ -347,8 +347,7 @@ export function emit({ nn, here, body, label, subject, accentsFor, jsdoc, solids
   const ts = `/**
 ${jsdoc.map((l) => ` * ${l}`.trimEnd()).join("\n")}
  *
- * Marcado SVG generado con el kit de la skill anatomy-asset (build.mjs en el scratchpad de la
- * sesión, iso/day${nn}/) — no editar a mano. Los colores salen de los tokens de src/index.css
+ * Marcado SVG generado con el kit de la skill anatomy-asset (build.mjs en tools/art, iso/day${nn}/) — no editar a mano. Los colores salen de los tokens de src/styles/index.css
  * para tema claro y oscuro: --anatomy-paper usa var(--paper) en vivo y las rampas de tono se
  * derivan de esos hex al generar. Si cambia la paleta, hay que regenerar este fichero.
  * Todo el CSS va acotado a \`.iso-d${nn}\` y la animación usa nombres \`d${nn}-*\`, que se detienen

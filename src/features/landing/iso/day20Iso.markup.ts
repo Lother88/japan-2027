@@ -1,9 +1,8 @@
 /**
  * Senbon torii de Fushimi Inari isométrico (día 20) — marcado SVG generado (no editar a mano).
  *
- * Generado con el kit de la skill anatomy-asset (iso/day20/build.mjs en el scratchpad de la
- * sesión), con el mismo plinto, cámara y escala que el piloto del día 21 (Kinkaku-ji).
- * Los colores salen de los tokens de src/index.css (--paper, --coral2, --brown, --green, --ink) para tema claro y oscuro:
+ * Generado con el kit de la skill anatomy-asset (iso/day20/build.mjs en tools/art), con el mismo plinto, cámara y escala que el piloto del día 21 (Kinkaku-ji).
+ * Los colores salen de los tokens de src/styles/index.css (--paper, --coral2, --brown, --green, --ink) para tema claro y oscuro:
  * --anatomy-paper usa var(--paper) en vivo y las rampas de tono se derivan de esos hex al
  * generar. Todo el CSS está acotado a `.iso-d20` y la animación usa `@keyframes d20-pulse`, `@keyframes d20-swing` (parada con prefers-reduced-motion).
  * Movimiento ambiental solo CSS: la ventana del tōrō de lo alto de la escalera late despacio y los baberos de los kitsune se mecen (desfasados); todo se detiene con prefers-reduced-motion.

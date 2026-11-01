@@ -1,7 +1,7 @@
 // Shared helpers for the day 09/10/11/12/26 isometric assets of the japan-2027 landing.
 // Copied from the approved day-21 pilot (kinkakuji/build.mjs): site palette, polySolid,
 // roofOf, courses, face helpers, garden parts, the lossless path minifier, and an `emit`
-// that writes the standalone SVG + preview pages and the scoped React markup module.
+// that writes the standalone SVG + preview pages and the scoped TS markup module.
 
 import { mkdirSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
@@ -16,7 +16,7 @@ export const W = 440;
 export const H = 330;
 export const WEIGHT = 0.7;
 
-// ---------- site palette (src/index.css, light ~11–15, dark ~25–29) ----------
+// ---------- site palette (src/styles/index.css, light ~11–15, dark ~25–29) ----------
 export const SITE = {
   light: { paper: "#fbf6f0", ink: "#1b2a4a", gold: "#b08534", amber: "#b48a35", coral: "#c24a5a", coral2: "#e0564b", brown: "#8a5a3b", green: "#3f6f5f" },
   dark: { paper: "#12141b", ink: "#f1ece1", gold: "#d9a948", amber: "#e2a743", coral: "#ff7a6f", coral2: "#ff6f62", brown: "#c89a6a", green: "#76b89a" },
@@ -361,7 +361,7 @@ export function emit({ nn, here, out, subject, doc, label, body, accents, solids
   }
   console.log(`solids: ${solids}`);
 
-  // React drop: kit drawing rules scoped to `.iso-dNN`, tokens per theme, motion prefixed dNN-.
+  // site drop: kit drawing rules scoped to `.iso-dNN`, tokens per theme, motion prefixed dNN-.
   const scope = `.iso-d${nn}`;
   const pre = `d${nn}-`;
   const drawing = k.ISO_CSS.split("\n").filter((line) => /^\.(iso-svg|iso-fill|iso-solid|iso-shade|iso-top|iso-halo|iso-line|iso-dots|tb-)/.test(line));
@@ -389,9 +389,9 @@ export function emit({ nn, here, out, subject, doc, label, body, accents, solids
 ${doc.map((l) => ` *${l ? ` ${l}` : ""}`).join("\n")}
  *
  * Marcado SVG generado (no editar a mano) con el kit de la skill anatomy-asset
- * (iso/day${nn}/build.mjs en el scratchpad de la sesión). Estilos acotados a \`.iso-d${nn}\` y
+ * (iso/day${nn}/build.mjs en tools/art). Estilos acotados a \`.iso-d${nn}\` y
  * animaciones con prefijo \`d${nn}-\`, para que los 21 dibujos convivan en una página.
- * Los colores salen de los tokens de src/index.css (--paper en vivo; las rampas de tono se
+ * Los colores salen de los tokens de src/styles/index.css (--paper en vivo; las rampas de tono se
  * derivan de los hex de la paleta al generar): si cambia la paleta, hay que regenerar este fichero.
  */
 export const DAY${nn}_ISO_VIEWBOX = '0 0 ${W} ${H}'

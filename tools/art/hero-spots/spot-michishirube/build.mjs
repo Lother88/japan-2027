@@ -83,7 +83,7 @@ emit({
   accentsFor: (t) => { const f = family(t); return { wood: f.wood, roof: f.roof, moss: f.moss, coral: f.coral, pine: f.pine }; },
   doc: {
     title: "spot-michishirube: poste indicador con tablilla hacia abajo (aviso «Desplázate»)",
-    replaces: "Sustituye a la flecha con ignBounce del aviso «Desplázate» (Hero.tsx, data-scrollcue).",
+    replaces: "Sustituye a la flecha con ignBounce del aviso «Desplázate» (Hero.astro, data-scrollcue).",
     tokens: "--paper, --brown, --coral, --green, --ink",
     ground: "--anatomy-paper usa var(--paper) en vivo (el hero pasa a --paper liso).",
     motion: "la tablilla oscila ±3° en su propio plano (4,2 s, keyframes `spot-michishirube-swing`); se detiene con prefers-reduced-motion.",
