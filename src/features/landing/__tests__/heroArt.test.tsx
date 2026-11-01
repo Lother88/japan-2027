@@ -170,8 +170,9 @@ describe('Hero — portada isométrica', () => {
   it('conserva el texto real y ya no pinta las decoraciones planas ni el mapa', () => {
     const { container } = render(<Hero />)
     expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent('Japón')
-    expect(screen.getByText(/Tres semanas, una vuelta/)).toBeInTheDocument()
-    expect(screen.getByText('lo moderno y lo tradicional')).toBeInTheDocument()
+    expect(screen.getByText('Tres semanas,')).toBeInTheDocument()
+    expect(screen.getByText('una vuelta completa.')).toBeInTheDocument()
+    expect(screen.getByText('entre lo más moderno y lo más tradicional')).toBeInTheDocument()
     expect(container.querySelector('[data-day-decor], [data-night-decor], canvas')).toBeNull()
     expect(screen.queryByLabelText('Mapa de la ruta por Japón')).toBeNull()
   })

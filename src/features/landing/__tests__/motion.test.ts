@@ -97,3 +97,73 @@ describe('sin transiciones de tema muertas', () => {
     expect(ruleOf(selector)).not.toMatch(/transition/)
   })
 })
+
+/** Contenido de cada bloque `@media <cond> { … }` (un nivel de anidamiento). */
+function mediaBlocks(cond: string): string[] {
+  const out: string[] = []
+  let at = css.indexOf(`@media ${cond} {`)
+  while (at >= 0) {
+    let i = css.indexOf('{', at) + 1
+    let depth = 1
+    const start = i
+    while (depth > 0 && i < css.length) {
+      if (css[i] === '{') depth++
+      else if (css[i] === '}') depth--
+      i++
+    }
+    out.push(css.slice(start, i - 1))
+    at = css.indexOf(`@media ${cond} {`, i)
+  }
+  return out
+}
+
+/** Cuerpo de `@keyframes name { … }` (con sus pasos anidados). */
+function keyframes(name: string): string {
+  const at = css.indexOf(`@keyframes ${name} {`)
+  if (at < 0) throw new Error(`index.css no define @keyframes ${name}`)
+  let i = css.indexOf('{', at) + 1
+  let depth = 1
+  const start = i
+  while (depth > 0 && i < css.length) {
+    if (css[i] === '{') depth++
+    else if (css[i] === '}') depth--
+    i++
+  }
+  return css.slice(start, i - 1)
+}
+
+describe('entrada del título del hero', () => {
+  const motionOk = mediaBlocks('(prefers-reduced-motion: no-preference)').join('\n')
+
+  it.each([
+    ['[data-hero-kanji]', 'hero-brush'],
+    ['[data-hanko]', 'hero-stamp'],
+    ['[data-cal-page]', 'hero-page-drop'],
+  ])('%s anima con %s solo sin reduce-motion, una vez y con --ease-out', (selector, name) => {
+    const esc = selector.replace(/[[\]]/g, '\\$&')
+    const rule = motionOk.match(new RegExp(`${esc}\\s*\\{([^}]*)\\}`))?.[1]
+    expect(rule, `falta la animación de ${selector}`).toBeDefined()
+    expect(rule).toMatch(new RegExp(`animation:\\s*${name}\\s+\\d+ms\\s+var\\(--ease-out\\)`))
+    expect(rule).not.toMatch(/infinite/)
+    // Fuera de no-preference no se anima: con reduce todo queda quieto
+    const head = css.slice(0, css.lastIndexOf('@media (prefers-reduced-motion: reduce)'))
+    const outside = head.replace(/@media \(prefers-reduced-motion: no-preference\) \{[\s\S]*?\n\}/g, '')
+    expect(outside).not.toMatch(new RegExp(`animation:\\s*${name}\\b`))
+  })
+
+  it('el pincel del kanji se revela de arriba abajo con clip-path', () => {
+    const k = keyframes('hero-brush')
+    expect(k).toMatch(/clip-path:\s*inset\(0 0 100% 0\)/)
+    expect(k).not.toMatch(/(?:^|[\s;{])(?:width|height|top|left|margin|padding)\s*:/)
+  })
+
+  it.each(['hero-brush', 'hero-stamp', 'hero-page-drop'])('%s solo anima propiedades del compositor', (name) => {
+    const props = [...keyframes(name).matchAll(/([\w-]+)\s*:/g)].map((m) => m[1])
+    expect(props.length).toBeGreaterThan(0)
+    for (const p of props) expect(['transform', 'opacity', 'clip-path', 'scale', 'translate', 'rotate']).toContain(p)
+  })
+
+  it('el sello se estampa desde una escala mayor', () => {
+    expect(keyframes('hero-stamp')).toMatch(/scale:\s*1\.2\d*/)
+  })
+})

@@ -37,11 +37,13 @@
   --font-serif: 'Shippori Mincho', 'Shippori Mincho Fallback', serif;
   --font-sans: 'Zen Kaku Gothic New', 'Zen Kaku Gothic New Fallback', sans-serif;
 
-  /* H1 «Japón» del hero (escritorio) y su versión de teléfono (≤ 760 px, más grande) */
-  --text-display: clamp(64px, 10vw, 148px);
+  /* H1 «Japón» del hero, junto al kanji vertical (en el teléfono, 64 px fijos) */
+  --text-display: clamp(64px, 6.6vw, 104px);
   --text-display--line-height: .92;
   --text-display--letter-spacing: -.02em;
-  --text-display-compact: clamp(88px, 27vw, 128px);
+  /* 日本 vertical del hero: el elemento más llamativo del título (en el teléfono, 112 px) */
+  --text-hero-kanji: clamp(120px, 10.5vw, 150px);
+  --text-hero-kanji--line-height: 1;
   /* Títulos de sección («La ruta») */
   --text-h2: clamp(30px, 3.4vw, 44px);
   --text-h2--line-height: 1.05;
@@ -100,6 +102,9 @@
   --coral2-text:#bc483f;
   /* Anillo de foco (≥ 3:1 sobre los fondos de la página) */
   --focus-ring:#b23a36;
+  /* Bermellón del sello «2027» y de la cabecera de las hojas de calendario del hero, con su
+     tinta (≥ 4,5:1). En oscuro se oscurece: el --coral claro del tema no aguanta texto blanco. */
+  --hanko:#c24a5a; --hanko-ink:#fffdf9;
   color-scheme: light;
   /* anima la altura 'auto' del spoiler <details> */
   interpolate-size: allow-keywords;
@@ -119,6 +124,7 @@
   --amber-text:#e2a743;
   --coral2-text:#ff6f62;
   --focus-ring:#ffd27a;
+  --hanko:#b23a36; --hanko-ink:#fffdf9;
   color-scheme: dark;
 }
 
@@ -311,6 +317,184 @@ body {
   container: hero-copy / inline-size;
 }
 
+/* Título «Kanji y sello» (Hero.tsx, HeroDates.tsx), de arriba abajo:
+   1. Fechas: dos hojas de calendario arrancables (himekuri) unidas por la duración del viaje y,
+      tras un filete, la cuenta atrás.
+   2. 日本 en vertical a la izquierda; a la derecha el sello «2027», el H1 y el subtítulo.
+   3. Entradilla. */
+[data-hero-dates] { display: flex; align-items: center; gap: 12px; }
+[data-himekuri] { display: flex; align-items: center; gap: 12px; }
+[data-cal-page] {
+  position: relative;
+  display: block;
+  width: 76px;
+  background: var(--surface);
+  border: 1px solid var(--border-2);
+  border-radius: 7px;
+  text-align: center;
+  /* Sombra y, debajo, el canto de la hoja siguiente del taco */
+  box-shadow: 0 10px 22px -16px rgba(27,42,74,.5), 0 2px 0 -1px var(--surface), 0 3px 0 -1px var(--border-2);
+  rotate: -2deg;
+}
+[data-cal-page="regreso"] { rotate: 2deg; }
+[data-cal-page] > span { display: block; }
+[data-cal-page] > [data-cal-ring] {
+  position: absolute;
+  top: -5px;
+  left: 20px;
+  width: 7px;
+  height: 11px;
+  border-radius: 4px;
+  background: var(--ink);
+}
+[data-cal-page] > [data-cal-ring] + [data-cal-ring] { left: auto; right: 20px; }
+[data-cal-month] {
+  background: var(--hanko);
+  color: var(--hanko-ink);
+  border-radius: 6px 6px 0 0;
+  font: 700 13px/1 var(--font-serif);
+  letter-spacing: .12em;
+  padding: 9px 0 5px;
+}
+[data-cal-month] small {
+  display: block;
+  margin-top: 3px;
+  font: 700 8px/1 var(--font-sans);
+  letter-spacing: .24em;
+  text-transform: uppercase;
+  opacity: .85;
+}
+[data-cal-num] {
+  padding-top: 6px;
+  font: 800 40px/1 var(--font-serif);
+  color: var(--ink);
+}
+[data-cal-weekday] {
+  padding: 4px 0 8px;
+  font: 700 9.5px/1.45 var(--font-sans);
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--muted2);
+}
+[data-cal-weekday] [lang="ja"] { font: 700 12px var(--font-serif); color: var(--coral); }
+[data-cal-span] { display: flex; flex-direction: column; align-items: center; gap: 6px; min-width: 58px; }
+[data-cal-len] { font: italic 600 17px/1.2 var(--font-serif); color: var(--coral); white-space: nowrap; }
+/* Flecha discontinua de la salida al regreso */
+[data-cal-line] {
+  position: relative;
+  width: 100%;
+  height: 2px;
+  background: repeating-linear-gradient(90deg, var(--ink) 0 6px, transparent 6px 10px);
+}
+[data-cal-line]::after {
+  content: '';
+  position: absolute;
+  right: -2px;
+  top: -4px;
+  border: 5px solid transparent;
+  border-left: 7px solid var(--ink);
+  border-right: 0;
+}
+[data-countdown] {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 0 10px;
+  padding-left: 16px;
+  border-left: 1px solid var(--border-2);
+}
+[data-countdown] strong { font: 800 34px/1 var(--font-serif); color: var(--amber-text); white-space: nowrap; }
+[data-countdown-label] {
+  font: 700 9.5px/1.35 var(--font-sans);
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--muted2);
+  text-align: left;
+}
+[data-countdown-label] > span { display: block; }
+
+[data-hero-title] {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: 28px;
+  align-items: end;
+  margin-top: 20px;
+}
+[data-hero-kanji] {
+  display: block;
+  writing-mode: vertical-rl;
+  font-family: var(--font-serif);
+  font-weight: 800;
+  font-size: var(--text-hero-kanji);
+  line-height: var(--text-hero-kanji--line-height);
+  letter-spacing: .04em;
+  color: var(--ink);
+}
+[data-hero-title-side] { display: flex; flex-direction: column; align-items: flex-start; padding-bottom: 6px; }
+/* Sello hanko: bermellón con doble filete interior, algo girado */
+[data-hanko] {
+  display: grid;
+  place-items: center;
+  width: 70px;
+  height: 70px;
+  margin: 0 0 18px 4px;
+  border-radius: 8px;
+  background: var(--hanko);
+  color: var(--hanko-ink);
+  box-shadow: inset 0 0 0 3px var(--hanko), inset 0 0 0 5px var(--hanko-ink);
+  font: 800 20px/1 var(--font-serif);
+  letter-spacing: .06em;
+  rotate: -6deg;
+}
+[data-hero-title] h1 {
+  margin: 0;
+  font-family: var(--font-serif);
+  font-weight: 800;
+  font-size: var(--text-display);
+  line-height: var(--text-display--line-height);
+  letter-spacing: var(--text-display--letter-spacing);
+  color: var(--ink);
+}
+[data-hero-sub] {
+  margin: 16px 0 0;
+  font-family: var(--font-serif);
+  font-weight: 500;
+  font-size: var(--text-subtitle);
+  line-height: var(--text-subtitle--line-height);
+  color: var(--coral);
+}
+[data-hero-sub] span { white-space: nowrap; }
+[data-hero-lead] {
+  max-width: 440px;
+  margin: 24px 0 0;
+  font-size: var(--text-lead);
+  line-height: var(--text-lead--line-height);
+  color: var(--slate);
+}
+[data-hero-lead] strong { color: var(--ink); font-weight: 700; }
+
+/* Entrada (una vez, solo en el compositor): las hojas caen escalonadas, el kanji se traza de
+   arriba abajo como una pincelada y el sello se estampa al final. Con reduce, todo quieto. */
+@keyframes hero-page-drop {
+  from { translate: 0 -10px; opacity: 0; }
+  to { translate: 0 0; opacity: 1; }
+}
+@keyframes hero-brush {
+  from { clip-path: inset(0 0 100% 0); }
+  to { clip-path: inset(0 0 0 0); }
+}
+@keyframes hero-stamp {
+  from { scale: 1.25; opacity: 0; }
+  40% { opacity: 1; }
+  to { scale: 1; opacity: 1; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  [data-cal-page] { animation: hero-page-drop 500ms var(--ease-out) both; }
+  [data-cal-page="regreso"] { animation-delay: 90ms; }
+  [data-hero-kanji] { animation: hero-brush 850ms var(--ease-out) 150ms both; }
+  [data-hanko] { animation: hero-stamp 260ms var(--ease-out) 850ms both; }
+}
+
 /* Tira de billete: casillas separadas por un perforado; los spots asumen fondo --surface */
 [data-ticket] {
   list-style: none;
@@ -451,8 +635,13 @@ a[data-day-nav]:active { transform: scale(0.97); }
   [data-hero-stage] { display: flex; flex-direction: column; align-items: center; }
   [data-hero-art] { max-width: 520px; }
   [data-hero-copy] { width: 100%; align-items: center; text-align: center; padding: 8px 0 0; }
-  /* Titular más grande en el teléfono: el H1 sigue siendo el LCP (por encima del párrafo) */
-  [data-hero-copy] h1 { font-size: var(--text-display-compact) !important; }
+  /* Título: hojas centradas y la cuenta atrás en su propia línea; kanji, H1 y sello fijos */
+  [data-hero-dates] { justify-content: center; flex-wrap: wrap; row-gap: 14px; }
+  [data-countdown] { flex-basis: 100%; justify-content: center; margin-left: 0; padding-left: 0; border-left: 0; }
+  [data-hero-title] { column-gap: 18px; justify-content: center; text-align: left; }
+  [data-hero-kanji] { font-size: 112px; }
+  [data-hero-title] h1 { font-size: 64px; }
+  [data-hanko] { width: 56px; height: 56px; margin-bottom: 14px; font-size: 16px; }
   [data-art="banda"] { aspect-ratio: auto; height: 96px; }
   [data-route-head] { gap: 12px; }
 }

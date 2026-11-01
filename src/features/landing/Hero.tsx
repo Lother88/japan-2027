@@ -2,16 +2,18 @@
  * Hero — sección principal (header) de la landing.
  *
  * Fondo --paper liso con la maqueta isométrica (HeroArt) a la derecha y, en la zona segura de
- * la izquierda, el texto: eyebrow con fechas, H1, subtítulo, párrafo, tira de billete con las
- * cifras derivadas de los datos (HeroSpots) y el CTA, que baja a la banda «La ruta». En móvil
- * el arte pasa encima del título. Debajo, el aviso «Desplázate» con el poste michishirube.
+ * la izquierda, el texto: hojas de calendario con la cuenta atrás (HeroDates), 日本 en vertical
+ * con el sello del año, H1, subtítulo, párrafo, tira de billete con las cifras derivadas de los
+ * datos (HeroSpots) y el CTA, que baja a la banda «La ruta». En móvil el arte pasa encima del
+ * título. Debajo, el aviso «Desplázate» con el poste michishirube.
  *
  * El movimiento ambiental del arte se congela (data-art-paused) cuando la portada sale de
  * pantalla. La maquetación responsive vive en index.css (`[data-hero…]`).
  */
 import { useRef } from 'react'
-import { tripSummary } from '@/data/trip'
+import { calendarDay, numberWord, tripSummary } from '@/data/trip'
 import HeroArt from '@/features/landing/HeroArt'
+import HeroDates from '@/features/landing/HeroDates'
 import HeroSpots from '@/features/landing/HeroSpots'
 import LazyIso from '@/features/landing/hero-art/LazyIso'
 import { heroSpotLoaders, loadHeroChunk } from '@/features/landing/hero-art/registry'
@@ -25,8 +27,11 @@ loadHeroChunk().catch(() => {
 })
 
 const trip = tripSummary()
+/** Año del sello: el de la salida */
+const year = calendarDay(trip.departure).year
 
-export default function Hero() {
+/** `today` solo para tests: fija el día de la cuenta atrás (por defecto, el reloj del sistema). */
+export default function Hero({ today }: { today?: Date } = {}) {
   const ref = useRef<HTMLElement>(null)
   const paused = usePausedOffscreen(ref)
 
@@ -37,61 +42,28 @@ export default function Hero() {
 
         {/* Texto en la zona segura del lienzo (x 0–470 de 1200) */}
         <div data-hero-copy>
-          <div data-eyebrow style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '22px' }}>
-            <span style={{ width: '34px', height: '1.5px', background: 'var(--amber-deep)' }} />
-            <span
-              style={{
-                fontSize: 'var(--text-eyebrow)',
-                lineHeight: 'var(--text-eyebrow--line-height)',
-                letterSpacing: 'var(--text-eyebrow--letter-spacing)',
-                textTransform: 'uppercase',
-                color: 'var(--amber-text)',
-                fontWeight: 700,
-              }}
-            >
-              {trip.dateRange}
+          <HeroDates today={today} />
+
+          {/* 日本 en vertical (decorativo) junto al sello, el H1 y el subtítulo */}
+          <div data-hero-title>
+            <span data-hero-kanji lang="ja" aria-hidden="true">
+              日本
             </span>
+            <div data-hero-title-side>
+              <span data-hanko aria-hidden="true">
+                {year}
+              </span>
+              <h1>Japón</h1>
+              <p data-hero-sub>
+                <span>Tres semanas,</span> <br />
+                <span>una vuelta completa.</span>
+              </p>
+            </div>
           </div>
 
-          <h1
-            style={{
-              fontFamily: 'var(--font-serif)',
-              fontWeight: 800,
-              fontSize: 'var(--text-display)',
-              lineHeight: 'var(--text-display--line-height)',
-              letterSpacing: 'var(--text-display--letter-spacing)',
-              color: 'var(--ink)',
-              margin: 0,
-            }}
-          >
-            Japón
-          </h1>
-
-          <p
-            style={{
-              fontFamily: 'var(--font-serif)',
-              fontWeight: 500,
-              fontSize: 'var(--text-subtitle)',
-              color: 'var(--coral)',
-              margin: '24px 0 0',
-              lineHeight: 'var(--text-subtitle--line-height)',
-            }}
-          >
-            Tres semanas, una vuelta&nbsp;completa.
-          </p>
-
-          <p
-            style={{
-              fontSize: 'var(--text-lead)',
-              lineHeight: 'var(--text-lead--line-height)',
-              color: 'var(--slate)',
-              margin: '18px 0 0',
-              maxWidth: '430px',
-            }}
-          >
-            Ruta completa por todos los aspectos de Japón,{' '}
-            <strong style={{ color: 'var(--ink)', fontWeight: 700 }}>lo moderno y lo tradicional</strong>,
-            recorriendo los lugares que nos ofrece el país del sol naciente.
+          <p data-hero-lead>
+            Del neón de Tokio a los templos de Kioto, y vuelta: {trip.days} días en tren por {numberWord(trip.bases)} bases,{' '}
+            <strong>entre lo más moderno y lo más tradicional</strong>.
           </p>
 
           <HeroSpots />

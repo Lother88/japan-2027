@@ -92,6 +92,14 @@ describe('tokens base de las ilustraciones (congelados)', () => {
   })
 })
 
+describe('tinta bermellón del hero (cabecera de las hojas de calendario y sello «2027»)', () => {
+  it.each(Object.entries(themes))('tema %s: --hanko-ink ≥ 4,5:1 sobre --hanko', (_, t) => {
+    expect(t.hanko, 'falta --hanko').toBeDefined()
+    expect(t['hanko-ink'], 'falta --hanko-ink').toBeDefined()
+    expect(contrastRatio(t['hanko-ink'], t.hanko)).toBeGreaterThanOrEqual(4.5)
+  })
+})
+
 describe('foco visible', () => {
   it('index.css define un anillo :focus-visible con --focus-ring', () => {
     expect(css).toMatch(/:focus-visible\s*\{[^}]*outline:[^}]*var\(--focus-ring\)/)
