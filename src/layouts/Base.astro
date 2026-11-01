@@ -41,11 +41,13 @@ const ogImage = new URL('/og.png', Astro.site)
     <meta name="twitter:card" content="summary_large_image" />
     {/*
       Fuentes autoalojadas y recortadas (tools/fonts/build.mjs; @font-face en index.css). Se
-      precargan solo las dos que pinta el primer pantallazo casi entero: serif 800 latino
-      («Japón», cifras del calendario) y sans 400 latino (texto). El resto llega por el CSS.
+      precargan las que pintan el primer pantallazo casi entero: serif 800 latino («Japón»,
+      cifras del calendario), sans 400 latino (texto) y el trozo de 日本 del hero, que es el
+      LCP (así se pinta con su fuente desde el primer fotograma). El resto llega por el CSS.
     */}
     <link rel="preload" href="/fonts/shippori-mincho-800-latin.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="/fonts/zen-kaku-gothic-new-400-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/shippori-mincho-800-hero.woff2" as="font" type="font/woff2" crossorigin />
     {/*
       Script en línea y síncrono antes del primer pintado. Anti-FOUC del tema: lee el tema
       guardado (localStorage «jp-theme») o, si no hay, prefers-color-scheme, y fija

@@ -12,6 +12,8 @@
  * en el repo) de una commit fija de google/fonts a tools/fonts/source/, comprueba su SHA-256 y
  * regenera. Las salidas sí van en el repo, así que el build de Render normalmente no descarga.
  *
+ * Además, un trozo mínimo con el kanji del hero (HERO, más abajo) para precargarlo.
+ *
  * Uso: `node tools/fonts/build.mjs` (lo llama `pnpm build`) · `--check` falla si hay que regenerar.
  */
 import { createHash } from 'node:crypto'
@@ -43,6 +45,14 @@ const FACES = [
 
 /** Frontera entre los dos trozos (debe coincidir con los unicode-range de index.css). */
 const CJK_START = 0x3000
+
+/**
+ * Trozo mínimo con el kanji 日本 del hero en serif 800 (el elemento LCP). Base.astro lo
+ * precarga e index.css lo declara como familia propia («Shippori Mincho Hero», solo para
+ * [data-hero-kanji]): el kanji se pinta con su fuente desde el primer fotograma sin precargar
+ * los ~40 KB del trozo CJK entero.
+ */
+const HERO = { slug: 'shippori-mincho', weight: 800, text: '日本' }
 
 /**
  * Juego latino fijo (red de seguridad; lo usado de verdad ya sale de los textos): ASCII
@@ -110,12 +120,17 @@ async function main() {
   const points = await collectCodePoints()
   const charset = {
     commit: GOOGLE_FONTS_COMMIT,
+    hero: HERO.text,
     latin: toText(points.filter((cp) => cp < CJK_START)),
     cjk: toText(points.filter((cp) => cp >= CJK_START)),
   }
   const previous = existsSync(CHARSET_FILE) ? await readFile(CHARSET_FILE, 'utf8') : ''
   const next = `${JSON.stringify(charset, null, 2)}\n`
-  const outputs = FACES.flatMap((face) => ['latin', 'cjk'].map((part) => join(OUT_DIR, outName(face, part))))
+  const heroFace = FACES.find((f) => f.slug === HERO.slug && f.weight === HERO.weight)
+  const outputs = [
+    ...FACES.flatMap((face) => ['latin', 'cjk'].map((part) => join(OUT_DIR, outName(face, part)))),
+    join(OUT_DIR, outName(heroFace, 'hero')),
+  ]
   const upToDate = previous === next && outputs.every((p) => existsSync(p))
 
   if (upToDate) {
@@ -140,6 +155,13 @@ async function main() {
       console.log(`${relative(ROOT, out)}  ${(woff2.length / 1024).toFixed(1)} KB`)
     }
   }
+  const hero = await subsetFont(await ensureSource(heroFace), HERO.text, {
+    targetFormat: 'woff2',
+    preserveNameIds: PRESERVE_NAME_IDS,
+  })
+  const heroOut = join(OUT_DIR, outName(heroFace, 'hero'))
+  await writeFile(heroOut, hero)
+  console.log(`${relative(ROOT, heroOut)}  ${(hero.length / 1024).toFixed(1)} KB`)
   await writeFile(CHARSET_FILE, next)
 }
 

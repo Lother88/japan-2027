@@ -3,8 +3,9 @@
    cuerpo), autoalojadas en /fonts y recortadas a los caracteres que usa la web
    (tools/fonts/build.mjs, que corre en cada `pnpm build`). Cada peso va en dos trozos con
    unicode-range: latino (U+0000–2FFF) y CJK (U+3000 en adelante); el navegador solo baja el
-   trozo CJK de un peso si ese peso pinta algún kanji o kana. Base.astro precarga los dos
-   críticos: serif 800 latino («Japón», títulos) y sans 400 latino (texto).
+   trozo CJK de un peso si ese peso pinta algún kanji o kana. Base.astro precarga los
+   críticos: serif 800 latino («Japón», títulos), sans 400 latino (texto) y el trozo mínimo
+   con el 日本 del hero (el LCP).
 
    Fallbacks con métricas ajustadas: mientras llegan las fuentes (font-display: swap) se pinta
    con Times New Roman / Arial escaladas y con el mismo ascent/descent, de modo que el cambio de
@@ -123,6 +124,16 @@
   font-display: swap;
   src: url('/fonts/zen-kaku-gothic-new-700-cjk.woff2') format('woff2');
   unicode-range: U+3000-10FFFF;
+}
+/* 日本 del hero (LCP): familia propia con un trozo mínimo (~1 KB) que Base.astro precarga. Así
+   el elemento más grande de la portada se pinta con su fuente desde el primer fotograma, sin
+   cambio de fuente visible y sin precargar los ~40 KB del trozo CJK de Shippori 800. */
+@font-face {
+  font-family: 'Shippori Mincho Hero';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url('/fonts/shippori-mincho-800-hero.woff2') format('woff2');
 }
 
 @font-face {
@@ -460,9 +471,12 @@ body {
 [data-hero-stage] > * { grid-area: 1 / 1; min-width: 0; }
 /* Proporción reservada de la maqueta (debe coincidir con los viewBox de heroMaqueta.markup.ts):
    lienzo 1200×640 en escritorio y recorte 676×478 en móvil (≤ 760 px, ver más abajo). */
-[data-hero-art] { width: 100%; pointer-events: none; aspect-ratio: 1200 / 640; }
+/* La maqueta va después del texto en el HTML (Hero.astro): `order` la deja primera en el flujo
+   (columna en móvil) y el z-index del texto lo mantiene por encima en escritorio */
+[data-hero-art] { order: -1; width: 100%; pointer-events: none; aspect-ratio: 1200 / 640; }
 [data-hero-copy] {
   position: relative;
+  z-index: 1;
   justify-self: start;
   width: 39.2%;
   display: flex;
@@ -577,12 +591,16 @@ body {
 [data-hero-kanji] {
   display: block;
   writing-mode: vertical-rl;
-  font-family: var(--font-serif);
+  font-family: 'Shippori Mincho Hero', var(--font-serif);
   font-weight: 800;
   font-size: var(--text-hero-kanji);
   line-height: var(--text-hero-kanji--line-height);
   letter-spacing: .04em;
   color: var(--ink);
+  /* Ancla de la capa de la pincelada; el recorte a la caja es el estado final que dejaba la
+     animación anterior (clip-path), así que el kanji se ve igual que antes */
+  position: relative;
+  clip-path: inset(0);
 }
 [data-hero-title-side] { display: flex; flex-direction: column; align-items: flex-start; padding-bottom: 6px; }
 /* Sello hanko: bermellón con doble filete interior, algo girado */
@@ -633,9 +651,12 @@ body {
   from { translate: 0 -10px; opacity: 0; }
   to { translate: 0 0; opacity: 1; }
 }
+/* Pincelada del kanji: una capa del color del fondo que se retira de arriba abajo (scaleY
+   desde abajo). El kanji ya está pintado debajo desde el primer fotograma, así que es el LCP
+   desde el FCP (con clip-path desde 100 % no contaba hasta que empezaba la animación). */
 @keyframes hero-brush {
-  from { clip-path: inset(0 0 100% 0); }
-  to { clip-path: inset(0 0 0 0); }
+  from { transform: scaleY(1); }
+  to { transform: scaleY(0); }
 }
 @keyframes hero-stamp {
   from { scale: 1.25; opacity: 0; }
@@ -645,7 +666,15 @@ body {
 @media (prefers-reduced-motion: no-preference) {
   [data-cal-page] { animation: hero-page-drop 500ms var(--ease-out) both; }
   [data-cal-page="regreso"] { animation-delay: 90ms; }
-  [data-hero-kanji] { animation: hero-brush 850ms var(--ease-out) 150ms both; }
+  [data-hero-kanji]::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--paper);
+    transform-origin: 50% 100%;
+    pointer-events: none;
+    animation: hero-brush 850ms var(--ease-out) 150ms both;
+  }
   [data-hanko] { animation: hero-stamp 260ms var(--ease-out) 850ms both; }
 }
 

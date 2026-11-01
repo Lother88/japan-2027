@@ -25,9 +25,13 @@ const year = calendarDay(trip.departure).year
 ---
 
 <header data-hero>
+  {/*
+    El texto va ANTES que la maqueta en el HTML: la maqueta en línea son ~350 KB de SVG y, si
+    fuera delante, el primer pintado podía llegar sin el kanji 日本 (el LCP) todavía analizado.
+    La posición visual no cambia (index.css: misma celda del grid en escritorio con el texto
+    encima por z-index; en móvil la maqueta sube con `order`).
+  */}
   <div data-hero-stage>
-    <HeroArt />
-
     {/* Texto en la zona segura del lienzo (x 0–470 de 1200) */}
     <div data-hero-copy>
       <HeroDates />
@@ -73,6 +77,8 @@ const year = calendarDay(trip.departure).year
         </svg>
       </button>
     </div>
+
+    <HeroArt />
   </div>
 
   {/* Aviso de scroll: salta al itinerario; el poste indicador oscila (CSS del SVG) */}
