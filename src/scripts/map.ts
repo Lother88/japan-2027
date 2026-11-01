@@ -14,8 +14,10 @@ if (box) {
       io.disconnect()
       import('@/features/map/routeMap')
         .then(({ mountRouteMap }) => mountRouteMap(box))
+        // Con el mapa montado ya se pinta su marca de agua (index.css, [data-map-ready])
+        .then(() => box.setAttribute('data-map-ready', ''))
         .catch(() => {
-          // Sin red para el chunk: la caja queda con la leyenda y la marca de agua.
+          // Sin red para el chunk: la caja queda con la leyenda, sin mapa ni marca de agua.
         })
     },
     { rootMargin: '150px 0px' },

@@ -216,6 +216,9 @@
   /* Coral vivo para texto (≥ 4,5:1 sobre --surface): cifra «viajeros» de la tira de billete.
      --coral2 tampoco se toca (rampas de las ilustraciones). */
   --coral2-text:#bc483f;
+  /* Coral para texto (≥ 4,5:1 sobre --paper, --surface y --wash-pink): subtítulo del hero,
+     «21 días», ciudad del rail, títulos y letras de zona. --coral sigue para rellenos. */
+  --coral-text:#b64050;
   /* Anillo de foco (≥ 3:1 sobre los fondos de la página) */
   --focus-ring:#b23a36;
   /* Bermellón del sello «2027» y de la cabecera de las hojas de calendario del hero, con su
@@ -239,6 +242,7 @@
   --lantern-body:#ff6f62; --lantern-body-hover:#ff8a7f; --lantern-ring:rgba(0,0,0,.22); --lantern-cap:rgba(0,0,0,.5);
   --amber-text:#e2a743;
   --coral2-text:#ff6f62;
+  --coral-text:#ff7a6f;
   --focus-ring:#ffd27a;
   --hanko:#b23a36; --hanko-ink:#fffdf9;
   color-scheme: dark;
@@ -309,6 +313,9 @@ body {
 }
 [data-rail-tick][data-passed] [data-rail-dot] { background-color: var(--dot); }
 [data-rail-tick][aria-current] [data-rail-dot] { border-color: var(--paper); box-shadow: 0 0 0 2px var(--dot); transform: scale(1); }
+/* Kanji de la ciudad en el rail: marca de agua (contraste bajo a propósito), como contenido
+   generado para que no se lea ni se audite como texto */
+[data-rail-kanji]::before { content: attr(data-glyphs); }
 [data-rail-tick-label] {
   font-size: 11px; font-weight: 500; color: var(--tick-idle-label);
   transition: color .25s ease; font-variant-numeric: tabular-nums;
@@ -427,6 +434,8 @@ body {
 [data-legend]    { background: rgba(255,253,249,.94); }
 [data-theme="dark"] [data-legend] { background: rgba(24,27,38,.9); }
 [data-watermark] { color: rgba(27,42,74,.16); }
+/* La marca de agua es decoración del mapa: no se pinta sobre la caja vacía antes de que cargue */
+[data-route-map]:not([data-map-ready]) [data-watermark] { visibility: hidden; }
 [data-theme="dark"] [data-watermark] { color: rgba(232,238,248,.16); }
 
 /* ─────────────────────────────────────────────
@@ -508,7 +517,6 @@ body {
   font: 700 8px/1 var(--font-sans);
   letter-spacing: .24em;
   text-transform: uppercase;
-  opacity: .85;
 }
 [data-cal-num] {
   padding-top: 6px;
@@ -522,9 +530,9 @@ body {
   text-transform: uppercase;
   color: var(--muted2);
 }
-[data-cal-weekday] [lang="ja"] { font: 700 12px var(--font-serif); color: var(--coral); }
+[data-cal-weekday] [lang="ja"] { font: 700 12px var(--font-serif); color: var(--coral-text); }
 [data-cal-span] { display: flex; flex-direction: column; align-items: center; gap: 6px; min-width: 58px; }
-[data-cal-len] { font: italic 600 17px/1.2 var(--font-serif); color: var(--coral); white-space: nowrap; }
+[data-cal-len] { font: italic 600 17px/1.2 var(--font-serif); color: var(--coral-text); white-space: nowrap; }
 /* Flecha discontinua de la salida al regreso */
 [data-cal-line] {
   position: relative;
@@ -607,7 +615,7 @@ body {
   font-weight: 500;
   font-size: var(--text-subtitle);
   line-height: var(--text-subtitle--line-height);
-  color: var(--coral);
+  color: var(--coral-text);
 }
 [data-hero-sub] span { white-space: nowrap; }
 [data-hero-lead] {
