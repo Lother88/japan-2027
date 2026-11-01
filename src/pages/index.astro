@@ -13,9 +13,14 @@ import Journey from '@/components/Journey.astro'
 import SiteFooter from '@/components/SiteFooter.astro'
 import ToTop from '@/components/ToTop.astro'
 import ThemeToggle from '@/components/ThemeToggle.astro'
+import { tripSummary } from '@/data/trip'
+
+const trip = tripSummary()
+// Resumen para buscadores y tarjetas al compartir (meta description y Open Graph)
+const description = `Itinerario de ${trip.days} días por Japón en tren (${trip.dateRange}): de Tokio a Kioto y vuelta por ${trip.bases} bases y ${trip.excursions} excursiones, con la ruta en el mapa y el plan día a día.`
 ---
 
-<Base>
+<Base description={description}>
   <a class="skip-link" href="#itinerario">Saltar al itinerario</a>
   <main>
     <Hero />

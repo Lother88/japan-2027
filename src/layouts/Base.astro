@@ -1,15 +1,19 @@
 ---
 /**
- * Base — documento HTML de la landing: <head> (meta, fuentes, script anti-FOUC del tema) y el
- * CSS global (src/styles/index.css, que Astro empaqueta y enlaza en el <head>).
+ * Base — documento HTML de la landing: <head> (meta, SEO y Open Graph, fuentes, script
+ * anti-FOUC del tema) y el CSS global (src/styles/index.css, que Astro empaqueta y enlaza).
  */
 import '@/styles/index.css'
 
 interface Props {
   title?: string
+  description: string
 }
 
-const { title = 'Japón 2027' } = Astro.props
+const { title = 'Japón 2027', description } = Astro.props
+// URL absolutas a partir de `site` (astro.config.mjs): canonical y Open Graph las exigen
+const canonical = new URL(Astro.url.pathname, Astro.site)
+const ogImage = new URL('/og.png', Astro.site)
 ---
 
 <!doctype html>
@@ -19,6 +23,22 @@ const { title = 'Japón 2027' } = Astro.props
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    {/* Color de la barra del navegador: el --paper de cada tema */}
+    <meta name="theme-color" content="#fbf6f0" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#12141b" media="(prefers-color-scheme: dark)" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="es_ES" />
+    <meta property="og:site_name" content={title} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Maqueta isométrica del hero: monte Fuji, shinkansen y torii, con el título Japón 2027" />
+    <meta name="twitter:card" content="summary_large_image" />
     {/*
       Fuentes autoalojadas y recortadas (tools/fonts/build.mjs; @font-face en index.css). Se
       precargan solo las dos que pinta el primer pantallazo casi entero: serif 800 latino

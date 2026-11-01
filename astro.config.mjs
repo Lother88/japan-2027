@@ -9,6 +9,8 @@ import { fileURLToPath, URL } from 'node:url'
  * Source maps en el build: web personal, sin problema en exponer el código (Lighthouse los pide).
  */
 export default defineConfig({
+  // URL pública (Render): la usan las URL absolutas de canonical y Open Graph en Base.astro
+  site: 'https://viaje-japon-2027.onrender.com',
   output: 'static',
   vite: {
     plugins: [tailwindcss()],
