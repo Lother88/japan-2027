@@ -1,0 +1,77 @@
+---
+/**
+ * ArtBox — caja de tamaño fijo para un spot isométrico.
+ *
+ * La caja (span, válida dentro de botones y casillas) reserva el tamaño desde el HTML, así que
+ * la llegada del SVG no mueve nada. Es decorativa: aria-hidden.
+ *
+ * - Sin `defer` (spots sobre el pliegue: tira de billete, poste del aviso de scroll, tōrō del
+ *   botón de tema): el SVG se escribe en línea en el build (heroInline.ts), con sus capas.
+ * - Con `defer` (banda, ruta, omamori): la caja sale vacía y scripts/lazy-art.ts la rellena al
+ *   acercarse al viewport.
+ *
+ * Contrato con index.css y scripts/lazy-art.ts:
+ *  - `data-art` es el nombre del hueco (`[data-art="banda"]`, `[data-ticket-cell] [data-art]`).
+ *  - `data-art-src` es la clave del asset (ART_SCOPES de hero-art/registry.ts).
+ *  - `data-art-defer`: se descarga al acercarse al viewport.
+ *  - `data-art-pause`: congela sus animaciones mientras no se ve (pone `data-art-paused`).
+ *  - `data-art-par`: preserveAspectRatio del SVG (por defecto `xMidYMid meet`).
+ */
+import { css, type StyleObject } from '@/lib/style'
+import { ART_SCOPES, spotSvgStyle, type ArtName, type HeroSpotName } from '@/features/landing/hero-art/registry'
+import { HERO_SPOTS } from '@/features/landing/hero-art/heroInline'
+
+interface Props {
+  /** Nombre del hueco (`data-art`). */
+  name: string
+  /** Clave del asset en el registro de arte. */
+  src: ArtName
+  defer?: boolean
+  pauseOffscreen?: boolean
+  preserveAspectRatio?: string
+  style?: StyleObject
+}
+
+const { name, src, defer = false, pauseOffscreen = false, preserveAspectRatio, style } = Astro.props
+const par = preserveAspectRatio ?? 'xMidYMid meet'
+const artClass = ART_SCOPES[src].root
+const art = defer ? undefined : HERO_SPOTS[src as HeroSpotName]
+if (!defer && !art) throw new Error(`ArtBox: «${src}» no está en HERO_SPOTS; usa defer`)
+---
+
+<span
+  data-art={name}
+  data-art-src={src}
+  data-art-defer={defer ? '' : undefined}
+  data-art-pause={pauseOffscreen ? '' : undefined}
+  data-art-par={preserveAspectRatio}
+  aria-hidden="true"
+  style={css({ display: 'block', flex: 'none', pointerEvents: 'none', position: 'relative' }, style)}
+>{
+  art && (
+    <Fragment>
+      <svg
+        class={artClass}
+        viewBox={art.viewBox}
+        aria-hidden="true"
+        focusable="false"
+        preserveAspectRatio={par}
+        style={spotSvgStyle(par)}
+        set:html={art.markup}
+      />
+      {/* Capas que se mueven: cada una en su <svg> encima del base, animado como elemento. */}
+      {art.layers?.map((layer) => (
+        <svg
+          class={artClass}
+          data-art-layer={layer.name}
+          viewBox={art.viewBox}
+          aria-hidden="true"
+          focusable="false"
+          preserveAspectRatio={par}
+          style={spotSvgStyle(par, true)}
+          set:html={layer.markup}
+        />
+      ))}
+    </Fragment>
+  )
+}</span>

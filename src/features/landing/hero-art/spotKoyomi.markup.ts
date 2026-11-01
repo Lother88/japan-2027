@@ -1,12 +1,11 @@
 /**
  * spot-koyomi: bloc de calendario de 21 hojas (chip «días» del hero) — marcado SVG generado (no editar a mano).
  *
- * Generado con el kit de la skill anatomy-asset (hero-spots/spot-koyomi/build.mjs en el scratchpad
- * de la sesión), con la misma cámara que el hero (azimut 40°, elevación 30°), grosor de línea
+ * Generado con el kit de la skill anatomy-asset (hero-spots/spot-koyomi/build.mjs en tools/art), con la misma cámara que el hero (azimut 40°, elevación 30°), grosor de línea
  * 0.5 y la familia de materiales de la maqueta (madera, piedra, tokens del sitio).
- * Sustituye a la caja sin icono del chip «días» (Hero.tsx, stat chips).
+ * Sustituye a la caja sin icono del chip «días» (Hero.astro, stat chips).
  * Tamaño de render previsto: 56×56 px (viewBox 56×56).
- * Colores: tokens de src/index.css (--surface, --brown, --amber, --coral, --ink, --paper); --a-paper usa var(--surface) en vivo (el chip es --surface).
+ * Colores: tokens de src/styles/index.css (--surface, --brown, --amber, --coral, --ink, --paper); --a-paper usa var(--surface) en vivo (el chip es --surface).
  * Las variables del kit van abreviadas como `--a-*` (locales al asset).
  * Las rampas se derivan de esos hex al generar: si cambia la paleta, hay que regenerar este fichero.
  * Todo el CSS está acotado a `.iso-spot-koyomi` (claro) y `[data-theme="dark"] .iso-spot-koyomi` (oscuro); clases, keyframes e ids

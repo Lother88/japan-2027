@@ -5,12 +5,11 @@
  * Las etiquetas son DOM (tipografía del sitio y colores por variables CSS, así que siguen al
  * tema y sobreviven a `setStyle`), pero sin detección de colisiones: en su lugar cada ciudad
  * tiene una colocación explícita, elegida para que ninguna se pise en el encuadre inicial de
- * escritorio y móvil (lo comprueba `__tests__/labels.test.ts` proyectando las ciudades).
+ * escritorio y móvil.
  * Es más predecible que una capa `symbol` con colisiones, que en móvil OCULTARÍA Osaka o
  * Nara en vez de apartarlas.
  *
- * `labelOffset` es la única fuente de la geometría: la usan tanto el estilo del marcador
- * (`HeroMap`) como el rectángulo que se comprueba en los tests (`labelRect`).
+ * `labelOffset` es la única fuente de la geometría de la etiqueta (la usa routeMap.ts).
  */
 import { cities } from '@/data'
 
@@ -87,14 +86,6 @@ export function markerLabel(name: string): string {
 }
 
 /**
- * Ancho estimado de la etiqueta (11 px, Zen Kaku Gothic New en negrita): ≈ 6,6 px por carácter,
- * algo por encima de lo medido en Chrome, más el padding.
- */
-export function labelWidth(text: string): number {
-  return Math.ceil(text.length * 6.6) + 2 * LABEL_PAD_X
-}
-
-/**
  * Posición de la etiqueta relativa al CENTRO del punto: el punto (x, y) en px donde va su
  * ancla, y qué fracción del propio tamaño hay que desplazarla (0 = alineada por la izquierda
  * o arriba, -0,5 = centrada, -1 = alineada por la derecha o abajo).
@@ -123,20 +114,4 @@ export function labelOffset(
     case 'bottom-left':
       return { x: -d, y: d, fx: -1, fy: 0 }
   }
-}
-
-export interface Rect {
-  readonly left: number
-  readonly top: number
-  readonly right: number
-  readonly bottom: number
-}
-
-/** Rectángulo (px de pantalla) que ocupa la etiqueta de un punto situado en `p`. */
-export function labelRect(p: { x: number; y: number }, size: number, text: string, placement: LabelPlacement): Rect {
-  const o = labelOffset(placement, size)
-  const w = labelWidth(text)
-  const left = p.x + o.x + o.fx * w
-  const top = p.y + o.y + o.fy * LABEL_HEIGHT
-  return { left, top, right: left + w, bottom: top + LABEL_HEIGHT }
 }

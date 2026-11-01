@@ -61,7 +61,7 @@ emit({
   accentsFor: (t) => { const f = family(t); return { coral: f.coral, gold: f.gold, wood: f.wood }; },
   doc: {
     title: "spot-omamori: amuleto omamori con cordón y nudo (pie de página)",
-    replaces: "Sustituye al círculo 桜 del pie (SiteFooter.tsx, bloque de identidad, 34 px).",
+    replaces: "Sustituye al círculo 桜 del pie (SiteFooter.astro, bloque de identidad, 34 px).",
     tokens: "--coral, --gold y --brown del tema oscuro",
     ground: "el pie es azul marino en los dos temas (#14203a, = --primary-press del tema claro), así que el asset usa siempre la rampa oscura y no cambia con el tema; --anatomy-paper es #14203a fijo.",
     motion: "ninguno (estático).",

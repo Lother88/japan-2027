@@ -7,7 +7,7 @@
 // the pond and the reflection shimmers (CSS only).
 //
 //   node build.mjs            → kinkakuji-light.svg/.html, kinkakuji-dark.svg/.html (checks)
-//                             → ../../<repo>/src/features/landing/kinkakujiIso.markup.ts (React)
+//                             → ../../<repo>/src/features/landing/kinkakujiIso.markup.ts
 
 import { mkdirSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
@@ -23,7 +23,7 @@ const ISO_OUT = join(HERE, "..", "iso", "out");
 const W = 440;
 const H = 330;
 
-// ---------- site palette (src/index.css) ----------
+// ---------- site palette (src/styles/index.css) ----------
 const SITE = {
   light: { paper: "#fbf6f0", ink: "#1b2a4a", gold: "#b08534", brown: "#8a5a3b", green: "#3f6f5f" },
   dark: { paper: "#12141b", ink: "#f1ece1", gold: "#d9a948", brown: "#c89a6a", green: "#76b89a" },
@@ -611,7 +611,7 @@ for (const theme of ["light", "dark"]) {
 }
 console.log(`solids: ${solids}`);
 
-// ---------- React drop: the same art, coloured from the site's tokens ----------
+// ---------- site drop: the same art, coloured from the site's tokens ----------
 // Kit drawing rules (no plate, legend or default token blocks), scoped to `.kk-iso`.
 const drawing = k.ISO_CSS.split("\n").filter((line) => /^\.(iso-svg|iso-fill|iso-solid|iso-shade|iso-top|iso-halo|iso-line|iso-dots|tb-)/.test(line));
 const scoped = drawing.map((line) => line.replace(/^([^{]+)\{/, (_, sel) => `${sel.split(",").map((s) => `.kk-iso ${s.trim().replace(/^\.iso-svg /, "")}`).join(",")}{`)).join("\n");
@@ -636,8 +636,8 @@ const markup = `<style>${css}</style><g data-art="">${body}</g>`;
 const ts = `/**
  * Kinkaku-ji isométrico — marcado SVG generado (no editar a mano).
  *
- * Generado con el kit de la skill anatomy-asset (build.mjs en el scratchpad de la sesión).
- * Los colores salen de los tokens de src/index.css (--paper, --gold, --brown, --green, --ink)
+ * Generado con el kit de la skill anatomy-asset (build.mjs en tools/art).
+ * Los colores salen de los tokens de src/styles/index.css (--paper, --gold, --brown, --green, --ink)
  * para tema claro y oscuro: --anatomy-paper usa var(--paper) en vivo y las rampas de tono se
  * derivan de esos hex al generar. Si cambia la paleta, hay que regenerar este fichero.
  */

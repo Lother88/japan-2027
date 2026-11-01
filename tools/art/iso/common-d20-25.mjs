@@ -2,7 +2,7 @@ import { fileURLToPath as toPath__ } from "node:url";
 // Shared helpers for the day 20, 22, 23, 24, 25 isometric assets of the japan-2027 landing.
 // Copied and generalised from the approved day-21 pilot (kinkakuji/build.mjs): same canvas,
 // same camera and fit (so every plinth lands at the same place and scale), same plinth,
-// same polyhedron solid, roof, minifier and the same React/TS export shape, scoped per day.
+// same polyhedron solid, roof, minifier and the same TS export shape, scoped per day.
 
 import { mkdirSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
@@ -17,7 +17,7 @@ export const W = 440;
 export const H = 330;
 export const WEIGHT = 0.7;
 
-// ---------- site palette (src/index.css, light ~l.11-15, dark ~l.25-29) ----------
+// ---------- site palette (src/styles/index.css, light ~l.11-15, dark ~l.25-29) ----------
 export const SITE = {
   light: { paper: "#fbf6f0", ink: "#1b2a4a", gold: "#b08534", amber: "#b48a35", brown: "#8a5a3b", green: "#3f6f5f", coral: "#c24a5a", coral2: "#e0564b" },
   dark: { paper: "#12141b", ink: "#f1ece1", gold: "#d9a948", amber: "#e2a743", brown: "#c89a6a", green: "#76b89a", coral: "#ff7a6f", coral2: "#ff6f62" },
@@ -437,9 +437,8 @@ export function emit({ dir, nn, subject, label, body, accentsFor, tokensNote, mo
   const ts = `/**
  * ${subject} isométrico (día ${NN}) — marcado SVG generado (no editar a mano).
  *
- * Generado con el kit de la skill anatomy-asset (iso/day${NN}/build.mjs en el scratchpad de la
- * sesión), con el mismo plinto, cámara y escala que el piloto del día 21 (Kinkaku-ji).
- * Los colores salen de los tokens de src/index.css (${tokensNote}) para tema claro y oscuro:
+ * Generado con el kit de la skill anatomy-asset (iso/day${NN}/build.mjs en tools/art), con el mismo plinto, cámara y escala que el piloto del día 21 (Kinkaku-ji).
+ * Los colores salen de los tokens de src/styles/index.css (${tokensNote}) para tema claro y oscuro:
  * --anatomy-paper usa var(--paper) en vivo y las rampas de tono se derivan de esos hex al
  * generar. Todo el CSS está acotado a \`${scope}\`${hasMotion ? ` y la animación usa ${used.map((m) => `\`@keyframes ${pre}${m}\``).join(", ")} (parada con prefers-reduced-motion)` : ""}.
  * ${motionNote}

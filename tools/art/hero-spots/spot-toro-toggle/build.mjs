@@ -49,7 +49,7 @@ emit({
   accentsFor: (t) => { const f = family(t); return { moss: f.moss, pane: f.pane, stone: f.stone }; },
   doc: {
     title: "spot-toro-toggle: tōrō de piedra para el botón de tema",
-    replaces: "Sustituye a los iconos luna/sol de ThemeToggle.tsx (32 px dentro del botón de 50 px; el botón conserva aria-label).",
+    replaces: "Sustituye a los iconos luna/sol de ThemeToggle.astro (32 px dentro del botón de 50 px; el botón conserva aria-label).",
     tokens: "--surface, --slate, --green, --amber, --ink, --paper",
     ground: "--anatomy-paper usa var(--surface) en vivo (el botón es --surface).",
     motion: "solo en oscuro: los vanos se encienden (ámbar) y un halo de llama pulsa (2,8 s, keyframes `spot-toro-toggle-pulse`); en claro está apagado y quieto. Se detiene con prefers-reduced-motion.",

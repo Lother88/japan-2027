@@ -1,12 +1,11 @@
 /**
  * spot-omamori: amuleto omamori con cordón y nudo (pie de página) — marcado SVG generado (no editar a mano).
  *
- * Generado con el kit de la skill anatomy-asset (hero-spots/spot-omamori/build.mjs en el scratchpad
- * de la sesión), con la misma cámara que el hero (azimut 40°, elevación 30°), grosor de línea
+ * Generado con el kit de la skill anatomy-asset (hero-spots/spot-omamori/build.mjs en tools/art), con la misma cámara que el hero (azimut 40°, elevación 30°), grosor de línea
  * 0.5 y la familia de materiales de la maqueta (madera, piedra, tokens del sitio).
- * Sustituye al círculo 桜 del pie (SiteFooter.tsx, bloque de identidad, 34 px).
+ * Sustituye al círculo 桜 del pie (SiteFooter.astro, bloque de identidad, 34 px).
  * Tamaño de render previsto: 40×48 px (viewBox 40×48).
- * Colores: tokens de src/index.css (--coral, --gold y --brown del tema oscuro); el pie es azul marino en los dos temas (#14203a, = --primary-press del tema claro), así que el asset usa siempre la rampa oscura y no cambia con el tema; --a-paper es #14203a fijo.
+ * Colores: tokens de src/styles/index.css (--coral, --gold y --brown del tema oscuro); el pie es azul marino en los dos temas (#14203a, = --primary-press del tema claro), así que el asset usa siempre la rampa oscura y no cambia con el tema; --a-paper es #14203a fijo.
  * Las variables del kit van abreviadas como `--a-*` (locales al asset).
  * Las rampas se derivan de esos hex al generar: si cambia la paleta, hay que regenerar este fichero.
  * Todo el CSS está acotado a `.iso-spot-omamori` (claro) y `[data-theme="dark"] .iso-spot-omamori` (oscuro); clases, keyframes e ids

@@ -5,9 +5,9 @@
  * prefers-reduced-motion.
  *
  * Marcado SVG generado (no editar a mano) con el kit de la skill anatomy-asset
- * (build.mjs del piloto en el scratchpad de la sesión). Estilos acotados a `.iso-d21`,
+ * (build.mjs del piloto en tools/art). Estilos acotados a `.iso-d21`,
  * animaciones e ids con prefijo `d21-`, para que los 21 dibujos convivan en una página.
- * Los colores salen de los tokens de src/index.css (--paper en vivo; las rampas de tono se
+ * Los colores salen de los tokens de src/styles/index.css (--paper en vivo; las rampas de tono se
  * derivan de los hex de la paleta al generar): si cambia la paleta, hay que regenerar este fichero.
  */
 export const DAY21_ISO_VIEWBOX = '0 0 440 330'

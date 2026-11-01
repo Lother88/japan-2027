@@ -1,5 +1,5 @@
 /**
- * Mapa base del HeroMap: estilos vectoriales de OpenFreeMap (sin API key) adaptados a
+ * Mapa base del mapa de la ruta (routeMap.ts): estilos vectoriales de OpenFreeMap (sin API key) adaptados a
  * la paleta del sitio, con la ruta y las excursiones como capas propias del estilo.
  *
  * Al ir la ruta DENTRO del estilo, cambiar de tema es un único `map.setStyle(estilo)`
@@ -12,7 +12,7 @@
  */
 import type { LayerSpecification, StyleSpecification } from 'maplibre-gl'
 import { buildRouteLineString, buildExcursionLines } from '@/data'
-import type { ThemeMode } from '@/features/landing/useThemeMode'
+import type { ThemeMode } from '@/lib/themeMode'
 
 /** Estilos sin clave de OpenFreeMap: «positron» (claro) y «dark» (oscuro). */
 export const BASEMAP_URLS: Readonly<Record<ThemeMode, string>> = {

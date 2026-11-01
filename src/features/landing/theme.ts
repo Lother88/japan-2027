@@ -97,13 +97,13 @@ export interface ThemeTokens {
 export const themes: Record<DayTheme, ThemeTokens> = {
   warm: {
     eyebrow: 'var(--amber-text)',
-    heading: 'var(--coral)',
+    heading: 'var(--coral-text)',
     morningDot: 'var(--amber)',
     afternoonDot: 'var(--coral)',
     tagBg: 'var(--wash-amber)',
     tagText: 'var(--muted)',
     badgeBg: 'var(--wash-pink)',
-    badgeText: 'var(--coral)',
+    badgeText: 'var(--coral-text)',
     spoilerBg: 'var(--wash-amber-soft)',
     spoilerBorder: 'var(--border-amber2)',
     spoilerAccent: 'var(--amber-text)',

@@ -35,3 +35,9 @@ dist-ssr
 /tools/art/**/*.html
 /tools/art/**/meta.json
 /tools/art/**/fragments.json
+
+# Astro: tipos generados
+.astro/
+
+# Fuentes originales (tools/fonts): ~40 MB, las descarga tools/fonts/build.mjs cuando hace falta
+/tools/fonts/source/*.ttf

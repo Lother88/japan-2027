@@ -1,6 +1,6 @@
 // Shared helpers for the day 15–19 isometric assets (japan-2027 landing).
 // Copied and generalised from the approved day-21 pilot (kinkakuji/build.mjs): same kit, same
-// palette derivation, same polySolid / roofOf / minify, same scoped React markup output.
+// palette derivation, same polySolid / roofOf / minify, same scoped TS markup output.
 //
 // Each dayNN/build.mjs calls setProjection(P) once, then uses the helpers, then emit(...).
 
@@ -18,7 +18,7 @@ export const W = 440;
 export const H = 330;
 export const WEIGHT = 0.7;
 
-// ---------- site palette (src/index.css, light ~l.11-15, dark ~l.25-29) ----------
+// ---------- site palette (src/styles/index.css, light ~l.11-15, dark ~l.25-29) ----------
 export const SITE = {
   light: { paper: "#fbf6f0", ink: "#1b2a4a", gold: "#b08534", amber: "#b48a35", coral: "#c24a5a", coral2: "#e0564b", brown: "#8a5a3b", green: "#3f6f5f" },
   dark: { paper: "#12141b", ink: "#f1ece1", gold: "#d9a948", amber: "#e2a743", coral: "#ff7a6f", coral2: "#ff6f62", brown: "#c89a6a", green: "#76b89a" },
@@ -280,7 +280,7 @@ function minifyD(d) {
 }
 export const minify = (svg) => svg.replace(/ d="([^"]*)"/g, (_, d) => ` d="${minifyD(d)}"`);
 
-// ---------- output: standalone SVGs + previews + scoped React markup ----------
+// ---------- output: standalone SVGs + previews + scoped TS markup ----------
 export function emit({ day, here, subject, label, body, accentsFor, title }) {
   const NN = String(day).padStart(2, "0");
   for (const theme of ["light", "dark"]) {
@@ -319,8 +319,8 @@ export function emit({ day, here, subject, label, body, accentsFor, title }) {
   const ts = `/**
  * ${title} isométrico (día ${day}) — marcado SVG generado (no editar a mano).
  *
- * Generado con el kit de la skill anatomy-asset (dayNN/build.mjs en el scratchpad de la sesión).
- * Los colores salen de los tokens de src/index.css (--paper, --ink, --gold, --brown, --green…)
+ * Generado con el kit de la skill anatomy-asset (dayNN/build.mjs en tools/art).
+ * Los colores salen de los tokens de src/styles/index.css (--paper, --ink, --gold, --brown, --green…)
  * para tema claro y oscuro: --anatomy-paper usa var(--paper) en vivo y las rampas de tono se
  * derivan de esos hex al generar. Todo el CSS va acotado a \`${scope}\` (y
  * \`[data-theme="dark"] ${scope}\`); la animación es \`${pulse}\` y se detiene con

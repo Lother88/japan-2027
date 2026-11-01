@@ -320,10 +320,9 @@ const markup = reactMarkup({ scope: "iso-banda", prefix: "banda", body, accentsF
 const ts = `/**
  * Banda «Muro» (transición hero → «La ruta») — marcado SVG generado (no editar a mano).
  *
- * Generado con el kit de la skill anatomy-asset (hero/banda-muro/build.mjs en el scratchpad de la
- * sesión). Una sola geometría para los dos temas: el <style> va acotado a \`.iso-banda\` y la
+ * Generado con el kit de la skill anatomy-asset (hero/banda-muro/build.mjs en tools/art). Una sola geometría para los dos temas: el <style> va acotado a \`.iso-banda\` y la
  * variante oscura vive bajo [data-theme="dark"] .iso-banda. Los colores salen de los tokens de
- * src/index.css (--paper, --ink, --gold, --brown, --green, --amber, --slate): --anatomy-paper usa
+ * src/styles/index.css (--paper, --ink, --gold, --brown, --green, --amber, --slate): --anatomy-paper usa
  * var(--paper) en vivo y las rampas de tono se derivan de esos hex al generar. Si cambia la
  * paleta, hay que regenerar este fichero.
  *

@@ -116,7 +116,7 @@ emit({
   accentsFor: (t) => { const f = family(t); return { wood: f.wood, plaster: f.plaster, amber: f.amber, coral: f.coral }; },
   doc: {
     title: "spot-koyomi: bloc de calendario de 21 hojas (chip «días» del hero)",
-    replaces: "Sustituye a la caja sin icono del chip «días» (Hero.tsx, stat chips).",
+    replaces: "Sustituye a la caja sin icono del chip «días» (Hero.astro, stat chips).",
     tokens: "--surface, --brown, --amber, --coral, --ink, --paper",
     ground: "--anatomy-paper usa var(--surface) en vivo (el chip es --surface).",
     motion: "ninguno (estático; el flotado al pasar el ratón lo pone el integrador en CSS).",

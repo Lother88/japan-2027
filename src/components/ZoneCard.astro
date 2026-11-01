@@ -1,0 +1,234 @@
+---
+/**
+ * ZoneCard — tarjeta de una zona del itinerario.
+ *
+ * Cabecera (badge + nombre + tags) · bloque colapsable «El lugar» (<details> nativo, sin JS) con
+ * el contexto cultural por POI (desde src/data/context.ts, separado del modelo anti-spoiler) ·
+ * logística (Acceso / Horario / Notas desde Zone.practical). El bloque de contexto solo se
+ * muestra si hay fichas para la zona.
+ */
+import type { Zone } from '@/data/types'
+import type { ThemeTokens } from '@/features/landing/theme'
+import { getContext } from '@/data/context'
+import { tagLabel } from '@/data/tags'
+import { fontSerif, fontSans } from '@/features/landing/theme'
+import { css } from '@/lib/style'
+
+interface Props {
+  zone: Zone
+  tokens: ThemeTokens
+}
+
+const { zone, tokens } = Astro.props
+const entries = getContext(zone.id) ?? []
+const hasContext = entries.length > 0
+const badge = zone.name.charAt(0)
+
+const { access, hours, logistics } = zone.practical
+
+// Filas de logística presentes (para no poner border-bottom en la última)
+const infoRows: Array<'access' | 'hours' | 'logistics'> = []
+if (access) infoRows.push('access')
+if (hours) infoRows.push('hours')
+if (logistics && logistics.length > 0) infoRows.push('logistics')
+const lastRow = infoRows[infoRows.length - 1]
+
+const rowLabel = css({
+  fontFamily: fontSans,
+  fontSize: 11,
+  letterSpacing: '0.06em',
+  textTransform: 'uppercase',
+  color: tokens.spoilerAccent,
+  fontWeight: 700,
+  marginBottom: 2,
+})
+const rowText = css({ fontFamily: fontSans, fontSize: 13.5, color: 'var(--body)', lineHeight: 1.5 })
+const rowStyle = (row: 'access' | 'hours') =>
+  css({
+    display: 'flex',
+    gap: 11,
+    padding: '13px 22px',
+    borderBottom: lastRow !== row ? `1px solid ${tokens.divider}` : undefined,
+  })
+const iconStyle = css({ flex: 'none', marginTop: 1 })
+---
+
+<div style={css({ background: 'var(--surface)', border: '1px solid var(--border)', borderRadius: 14, overflow: 'hidden' })}>
+  {/* Cabecera: badge + nombre + tags */}
+  <div style={css({ display: 'flex', alignItems: 'flex-start', gap: 13, padding: '18px 22px 14px' })}>
+    <span
+      style={css({
+        flex: 'none',
+        width: 30,
+        height: 30,
+        borderRadius: 8,
+        background: tokens.badgeBg,
+        color: tokens.badgeText,
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        fontFamily: fontSerif,
+        fontWeight: 700,
+        fontSize: 14,
+      })}
+      aria-hidden="true">{badge}</span>
+    <div style={css({ flex: 1 })}>
+      <h3 style={css({ margin: 0, fontFamily: fontSerif, fontSize: 20, fontWeight: 600, color: 'var(--ink)' })}>{zone.name}</h3>
+      <div style={css({ display: 'flex', flexWrap: 'wrap', gap: 6, marginTop: 8 })}>
+        {
+          zone.tags.map((tag) => (
+            <span
+              style={css({
+                fontFamily: fontSans,
+                fontSize: 11,
+                color: tokens.tagText,
+                background: tokens.tagBg,
+                padding: '3px 9px',
+                borderRadius: 20,
+              })}
+            >{tagLabel(tag)}</span>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+
+  {/* «El lugar» — contexto cultural colapsable (solo si hay fichas) */}
+  {
+    hasContext && (
+      <div style={css({ padding: '2px 22px 18px' })}>
+        <details
+          data-spoiler
+          style={css({ background: tokens.spoilerBg, border: `1px solid ${tokens.spoilerBorder}`, borderRadius: 11, overflow: 'hidden' })}
+        >
+          <summary
+            style={css({
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              gap: 10,
+              padding: '13px 17px',
+              cursor: 'pointer',
+              userSelect: 'none',
+              listStyle: 'none',
+            })}
+          >
+            <span style={css({ display: 'flex', alignItems: 'center', gap: 8 })}>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke={tokens.spoilerAccent} stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M12 7v14" />
+                <path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z" />
+              </svg>
+              <span
+                style={css({
+                  fontFamily: fontSans,
+                  fontSize: 11,
+                  letterSpacing: '0.13em',
+                  textTransform: 'uppercase',
+                  color: tokens.spoilerAccent,
+                  fontWeight: 700,
+                })}
+              >El lugar</span>
+            </span>
+            <span
+              data-spoiler-hint
+              style={css({
+                display: 'flex',
+                alignItems: 'center',
+                gap: 6,
+                fontSize: 11.5,
+                fontWeight: 700,
+                color: tokens.heading,
+                transition: 'opacity .2s ease',
+              })}
+            >
+              <span data-spoiler-show>Mostrar contexto</span>
+              <span data-spoiler-hide>Ocultar</span>
+              <svg data-spoiler-chev width="14" height="14" viewBox="0 0 24 24" fill="none" stroke={tokens.heading} stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M6 9l6 6 6-6" />
+              </svg>
+            </span>
+          </summary>
+
+          <div style={css({ padding: '0 17px 16px' })}>
+            {entries.map((poi, i) => (
+              <div
+                style={css({
+                  paddingTop: i === 0 ? 4 : 14,
+                  marginTop: i === 0 ? 0 : 14,
+                  borderTop: i === 0 ? undefined : `1px solid ${tokens.spoilerBorder}`,
+                })}
+              >
+                <div style={css({ fontFamily: fontSerif, fontSize: 16, fontWeight: 700, color: 'var(--ink)' })}>{poi.nombre}</div>
+                <div style={css({ fontFamily: fontSans, fontSize: 12.5, fontWeight: 600, color: tokens.spoilerAccent, marginTop: 2 })}>{poi.queEs}</div>
+                <p style={css({ margin: '8px 0 0', fontFamily: fontSans, fontSize: 13.5, lineHeight: 1.62, color: 'var(--body)' })}>{poi.historia}</p>
+                <p style={css({ margin: '8px 0 0', fontFamily: fontSans, fontSize: 13.5, lineHeight: 1.62, color: 'var(--body)' })}>{poi.significado}</p>
+                {poi.datoCurioso && (
+                  <div style={css({ marginTop: 10, padding: '9px 12px', background: 'var(--surface)', border: `1px solid ${tokens.factBorder}`, borderRadius: 8 })}>
+                    <div
+                      style={css({
+                        fontFamily: fontSans,
+                        fontSize: 9.5,
+                        letterSpacing: '0.08em',
+                        textTransform: 'uppercase',
+                        color: tokens.factLabel,
+                        fontWeight: 700,
+                        marginBottom: 3,
+                      })}
+                    >Dato curioso</div>
+                    <div style={css({ fontFamily: fontSans, fontSize: 13, lineHeight: 1.5, color: 'var(--body)' })}>{poi.datoCurioso}</div>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        </details>
+      </div>
+    )
+  }
+
+  {/* Logística: Acceso / Horario / Notas (solo filas con datos) */}
+  {
+    infoRows.length > 0 && (
+      <div style={css({ borderTop: `1px solid ${tokens.divider}` })}>
+        {access && (
+          <div style={rowStyle('access')}>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={tokens.spoilerAccent} stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style={iconStyle} aria-hidden="true">
+              <path d="M12 21s-7-5.5-7-11a7 7 0 0 1 14 0c0 5.5-7 11-7 11z" />
+              <circle cx="12" cy="10" r="2.5" />
+            </svg>
+            <div>
+              <div style={rowLabel}>Acceso</div>
+              <div style={rowText}>{access}</div>
+            </div>
+          </div>
+        )}
+
+        {hours && (
+          <div style={rowStyle('hours')}>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={tokens.spoilerAccent} stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style={iconStyle} aria-hidden="true">
+              <circle cx="12" cy="12" r="9" />
+              <path d="M12 7v5l3 2" />
+            </svg>
+            <div>
+              <div style={rowLabel}>Horario</div>
+              <div style={rowText}>{hours}</div>
+            </div>
+          </div>
+        )}
+
+        {logistics && logistics.length > 0 && (
+          <div style={css({ padding: '13px 22px 17px' })}>
+            <div style={css({ fontFamily: fontSans, fontSize: 11, letterSpacing: '0.06em', textTransform: 'uppercase', color: tokens.spoilerAccent, fontWeight: 700, marginBottom: 7 })}>Notas</div>
+            <ul style={css({ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 6 })}>
+              {logistics.map((nota) => (
+                <li style={css({ display: 'flex', gap: 9, fontFamily: fontSans, fontSize: 13.5, color: 'var(--body)', lineHeight: 1.45 })}>
+                  <span style={css({ flex: 'none', width: 5, height: 5, borderRadius: '50%', background: tokens.noteDot, marginTop: 6 })} aria-hidden="true"></span>{nota}
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+      </div>
+    )
+  }
+</div>

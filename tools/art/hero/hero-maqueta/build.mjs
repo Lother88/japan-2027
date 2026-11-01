@@ -821,7 +821,7 @@ const body = minify([plinth(), river(), drawn.map((it) => it.svg).join(""), peta
 // ---------- motion CSS (scoped; all names prefixed hero-) ----------
 const slideVec = (() => { const p = at([0, 0, 0]); const q = at(TRAIN.slide); return [(q[0] - p[0]).toFixed(2), (q[1] - p[1]).toFixed(2)]; })();
 function motionCss(s, theme) {
-  // `s` is the scope selector; theme: "light" | "dark" | "both" (React drop: one geometry).
+  // `s` is the scope selector; theme: "light" | "dark" | "both" (site drop: one geometry).
   const dark = theme === "both" ? `[data-theme="dark"] ${s}` : s;
   const rules = [
     `@keyframes hero-train{0%,14%{transform:translate(0,0)}46%,64%{transform:translate(${slideVec[0]}px,${slideVec[1]}px)}94%,100%{transform:translate(0,0)}}`,
@@ -868,15 +868,14 @@ const padM = 10;
 const mob = [Math.floor(artBox[0] - padM), Math.floor(artBox[1] - padM), Math.ceil(artBox[2] - artBox[0] + 2 * padM), Math.ceil(artBox[3] - artBox[1] + 2 * padM + 8)];
 console.log("art bbox", artBox.map((v) => v.toFixed(0)).join(" "), "→ mobile viewBox", mob.join(" "));
 
-// ---------- React drop ----------
+// ---------- site drop ----------
 const markup = reactMarkup({ scope: "iso-hero", prefix: "hero", body, accentsFor, weight: WEIGHT, css: [AMBIENT, `.iso-hero .am-swing{transform-box:view-box;transform-origin:0 0;animation:am-swing var(--am-period,3s) cubic-bezier(.45,0,.55,1) var(--am-delay,0s) infinite}`, motionCss(".iso-hero", "both")].join("\n") });
 const ts = `/**
  * Hero «Maqueta de tren al pie del Fuji» — marcado SVG generado (no editar a mano).
  *
- * Generado con el kit de la skill anatomy-asset (hero/hero-maqueta/build.mjs en el scratchpad de la
- * sesión). Una sola geometría para los dos temas: el <style> va acotado a \`.iso-hero\` y la
+ * Generado con el kit de la skill anatomy-asset (hero/hero-maqueta/build.mjs en tools/art). Una sola geometría para los dos temas: el <style> va acotado a \`.iso-hero\` y la
  * variante oscura vive bajo [data-theme="dark"] .iso-hero. Los colores salen de los tokens de
- * src/index.css (--paper, --ink, --gold, --brown, --green, --coral, --amber, --slate):
+ * src/styles/index.css (--paper, --ink, --gold, --brown, --green, --coral, --amber, --slate):
  * --anatomy-paper usa var(--paper) en vivo y las rampas de tono se derivan de esos hex al generar.
  * Si cambia la paleta, hay que regenerar este fichero.
  *

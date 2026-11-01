@@ -81,7 +81,7 @@ emit({
   accentsFor: (t) => { const f = family(t); return { wood: f.wood, roof: f.roof, plaster: f.plaster, coral: f.coral, moss: f.moss, pine: f.pine }; },
   doc: {
     title: "spot-machiya: casa machiya (chip «bases» del hero)",
-    replaces: "Sustituye a la caja sin icono del chip «bases» (Hero.tsx, stat chips).",
+    replaces: "Sustituye a la caja sin icono del chip «bases» (Hero.astro, stat chips).",
     tokens: "--surface, --brown, --coral, --green, --ink, --paper",
     ground: "--anatomy-paper usa var(--surface) en vivo (el chip es --surface).",
     motion: "ninguno (estático; el flotado al pasar el ratón lo pone el integrador en CSS).",

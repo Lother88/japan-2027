@@ -6,9 +6,9 @@
  * prefers-reduced-motion). Delante, el enlosado, bolardos, un rickshaw y un ginkgo.
  *
  * Marcado SVG generado (no editar a mano) con el kit de la skill anatomy-asset
- * (iso/day09/build.mjs en el scratchpad de la sesión). Estilos acotados a `.iso-d09` y
+ * (iso/day09/build.mjs en tools/art). Estilos acotados a `.iso-d09` y
  * animaciones con prefijo `d09-`, para que los 21 dibujos convivan en una página.
- * Los colores salen de los tokens de src/index.css (--paper en vivo; las rampas de tono se
+ * Los colores salen de los tokens de src/styles/index.css (--paper en vivo; las rampas de tono se
  * derivan de los hex de la paleta al generar): si cambia la paleta, hay que regenerar este fichero.
  */
 export const DAY09_ISO_VIEWBOX = '0 0 440 330'

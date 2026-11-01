@@ -1,12 +1,11 @@
 /**
  * spot-toro-toggle: tōrō de piedra para el botón de tema — marcado SVG generado (no editar a mano).
  *
- * Generado con el kit de la skill anatomy-asset (hero-spots/spot-toro-toggle/build.mjs en el scratchpad
- * de la sesión), con la misma cámara que el hero (azimut 40°, elevación 30°), grosor de línea
+ * Generado con el kit de la skill anatomy-asset (hero-spots/spot-toro-toggle/build.mjs en tools/art), con la misma cámara que el hero (azimut 40°, elevación 30°), grosor de línea
  * 0.5 y la familia de materiales de la maqueta (madera, piedra, tokens del sitio).
- * Sustituye a los iconos luna/sol de ThemeToggle.tsx (32 px dentro del botón de 50 px; el botón conserva aria-label).
+ * Sustituye a los iconos luna/sol de ThemeToggle.astro (32 px dentro del botón de 50 px; el botón conserva aria-label).
  * Tamaño de render previsto: 32×32 px (viewBox 32×32).
- * Colores: tokens de src/index.css (--surface, --slate, --green, --amber, --ink, --paper); --a-paper usa var(--surface) en vivo (el botón es --surface).
+ * Colores: tokens de src/styles/index.css (--surface, --slate, --green, --amber, --ink, --paper); --a-paper usa var(--surface) en vivo (el botón es --surface).
  * Las variables del kit van abreviadas como `--a-*` (locales al asset).
  * Las rampas se derivan de esos hex al generar: si cambia la paleta, hay que regenerar este fichero.
  * Todo el CSS está acotado a `.iso-spot-toro-toggle` (claro) y `[data-theme="dark"] .iso-spot-toro-toggle` (oscuro); clases, keyframes e ids

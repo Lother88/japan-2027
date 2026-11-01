@@ -1,8 +1,7 @@
 /**
  * Hero «Maqueta de tren al pie del Fuji» — marcado SVG generado POR CAPAS (no editar a mano).
  *
- * Generado con el kit de la skill anatomy-asset (hero-layers/build.mjs en el scratchpad de la
- * sesión). Misma geometría, colores y movimiento que el SVG único anterior; lo que cambia es que
+ * Generado con el kit de la skill anatomy-asset (hero-layers/build.mjs en tools/art). Misma geometría, colores y movimiento que el SVG único anterior; lo que cambia es que
  * cada parte que se mueve vive en su propia capa, para que Chrome la componga en la GPU en vez de
  * repintar el dibujo entero (~1 280 paths) en cada frame.
  *
@@ -24,7 +23,7 @@
  *   Con prefers-reduced-motion no se anima nada: tren parado ante el torii, carpas extendidas.
  *   La pausa fuera de pantalla sigue funcionando con [data-art-paused] en un ancestro.
  *
- * Colores: tokens de src/index.css (--paper, --ink, --gold, --brown, --green, --coral, --amber,
+ * Colores: tokens de src/styles/index.css (--paper, --ink, --gold, --brown, --green, --coral, --amber,
  * --slate); --anatomy-paper usa var(--paper) en vivo y las rampas se derivan de esos hex al
  * generar. Si cambia la paleta, hay que regenerar este fichero.
  */
