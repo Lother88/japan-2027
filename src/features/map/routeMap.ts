@@ -77,9 +77,11 @@ function makeMarkerEl(city: MapLabelCity): HTMLDivElement {
   const placement = LABEL_PLACEMENT[city.slug] ?? 'bottom'
   // Caja del marker (MapLibre la posiciona con su propio transform): solo da el tamaño.
   const el = document.createElement('div')
+  el.dataset.mapCity = city.slug
   el.style.cssText = 'cursor:default;width:' + size + 'px;height:' + size + 'px'
   // Punto: círculo (ciudad) o rombo girado (excursión), con borde del color de la superficie.
   const dot = document.createElement('div')
+  dot.dataset.mapDot = ''
   dot.style.cssText =
     'position:absolute;inset:0;' +
     'border-radius:' + (isExc ? '2px' : '50%') + ';' +
@@ -101,6 +103,44 @@ function makeMarkerEl(city: MapLabelCity): HTMLDivElement {
     'box-shadow:0 1px 2px rgba(0,0,0,.14)'
   el.append(dot, tag)
   return el
+}
+
+/**
+ * Enlaza el panel de itinerario (RoutePanel.astro) con los markers: pasar el ratón o el foco
+ * por una parada (`data-stop-city`) resalta su marker (`data-map-city`) y viceversa, poniendo
+ * `data-hl` en ambos (estilos en index.css). Solo escribe atributos: sin lecturas de geometría.
+ * Tokio sale dos veces en el panel y una en el mapa: se resaltan las dos paradas.
+ */
+function linkPanel(box: HTMLElement, markers: ReadonlyMap<string, HTMLElement>) {
+  const panel = box.closest('[data-route]')?.querySelector<HTMLElement>('[data-route-panel]')
+  if (!panel) return
+  let current: string | null = null
+
+  const mark = (slug: string, on: boolean) => {
+    markers.get(slug)?.toggleAttribute('data-hl', on)
+    panel.querySelectorAll(`[data-stop-city="${slug}"]`).forEach((e) => e.toggleAttribute('data-hl', on))
+  }
+  const highlight = (slug: string | null) => {
+    if (slug === current) return
+    if (current) mark(current, false)
+    current = slug
+    if (slug) mark(slug, true)
+  }
+  const cityOf = (target: EventTarget | null): string | null =>
+    target instanceof Element ? target.closest<HTMLElement>('[data-stop-city]')?.dataset.stopCity ?? null : null
+  /** Al salir el ratón, manda el foco si sigue dentro del panel. */
+  const focusedCity = () => (panel.contains(document.activeElement) ? cityOf(document.activeElement) : null)
+
+  panel.addEventListener('pointerover', (e) => highlight(cityOf(e.target)))
+  panel.addEventListener('pointerleave', () => highlight(focusedCity()))
+  panel.addEventListener('focusin', (e) => highlight(cityOf(e.target)))
+  panel.addEventListener('focusout', (e) => {
+    if (!(e.relatedTarget instanceof Node && panel.contains(e.relatedTarget))) highlight(null)
+  })
+  markers.forEach((el, slug) => {
+    el.addEventListener('pointerenter', () => highlight(slug))
+    el.addEventListener('pointerleave', () => highlight(null))
+  })
 }
 
 /** Botón de pantalla completa (hover y presión en index.css, [data-map-expand]). */
@@ -146,7 +186,7 @@ export async function mountRouteMap(box: HTMLElement): Promise<void> {
   container.style.cssText = 'position:absolute;inset:0'
   const expandButton = makeExpandButton()
   wrapper.append(container, expandButton)
-  // Primer hijo: la leyenda y la marca de agua (z-index 5) quedan encima del lienzo embebido.
+  // Primer hijo: la marca de agua (z-index 5) queda encima del lienzo embebido.
   box.prepend(wrapper)
 
   let map: MapLibreMap
@@ -159,7 +199,7 @@ export async function mountRouteMap(box: HTMLElement): Promise<void> {
       cooperativeGestures: true,
     })
   } catch {
-    // Sin WebGL: sin mapa (la caja conserva la leyenda y la marca de agua).
+    // Sin WebGL: sin mapa (la caja queda vacía; el panel de itinerario sigue al lado).
     wrapper.remove()
     return
   }
@@ -182,9 +222,13 @@ export async function mountRouteMap(box: HTMLElement): Promise<void> {
   // Zoom abajo-derecha: deja libre la esquina superior derecha para el botón de maximizar.
   map.addControl(new NavigationControl({ showCompass: false }), 'bottom-right')
   // Markers: DOM fuera del estilo, sobreviven a setStyle. Anclados por el centro del punto.
+  const markerEls = new Map<string, HTMLElement>()
   MAP_LABEL_CITIES.forEach((c) => {
-    new Marker({ element: makeMarkerEl(c), anchor: 'center' }).setLngLat([c.center[0], c.center[1]]).addTo(map)
+    const el = makeMarkerEl(c)
+    markerEls.set(c.slug, el)
+    new Marker({ element: el, anchor: 'center' }).setLngLat([c.center[0], c.center[1]]).addTo(map)
   })
+  linkPanel(box, markerEls)
   fitToRoute(map)
 
   // Precarga el estilo del otro tema para que el cambio sea inmediato.

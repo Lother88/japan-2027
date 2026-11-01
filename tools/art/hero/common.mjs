@@ -1,4 +1,4 @@
-// Shared by hero/hero-maqueta/build.mjs and hero/banda-muro/build.mjs: kit imports, the site palette,
+// Shared by hero/hero-maqueta/build.mjs and hero/banda-calle/build.mjs: kit imports, the site palette,
 // a shaded polyhedron, a smooth-shaded grid surface, the path minifier and the site drop.
 import { pathToFileURL } from "node:url";
 
@@ -282,7 +282,7 @@ export const minify = (svg) => svg.replace(/ d="([^"]*)"/g, (_, d) => ` d="${min
 const SHORT = { fill: "f", shade: "s", top: "t", line: "l", solid: "o", halo: "h", edge: "e", crease: "c", bevel: "b", dots: "d", fade: "fd", svg: "svg", wire: "w", seamless: "sl" };
 export function prefixAll(text, p) {
   return text
-    .replace(/(?<![-\w])iso-([a-z]+)/g, (m, w) => (w === "hero" || w === "banda" ? m : `${p}-${SHORT[w] ?? `iso-${w}`}`))
+    .replace(/(?<![-\w])iso-([a-z]+)/g, (m, w) => (w === "hero" || w === "banda" || w === "calle" ? m : `${p}-${SHORT[w] ?? `iso-${w}`}`))
     .replace(/(?<![-\w])ac-/g, `${p}-a-`)
     .replace(/(?<![-\w])am-/g, `${p}-am-`);
 }

@@ -41,3 +41,4 @@ dist-ssr
 
 # Fuentes originales (tools/fonts): ~40 MB, las descarga tools/fonts/build.mjs cuando hace falta
 /tools/fonts/source/*.ttf
+/tools/art/**/shots/

@@ -2,20 +2,24 @@
 /**
  * RouteSection — banda «La ruta», entre el hero y el itinerario.
  *
- * Abre con la banda «Muro» (muro de piedra con tejadillo, pinos y tōrō) que hace de transición
- * desde el hero; después, la cabecera con el spot de la vía y el mapa MapLibre de la ruta.
+ * Abre con la banda «Calle» (una calle japonesa continua: machiya, tiendas, un torii, postes)
+ * que hace de transición desde el hero; después, la cabecera con el spot de la vía y, en una rejilla [data-route-body],
+ * el mapa MapLibre de la ruta y a su lado el panel de itinerario (RoutePanel.astro), que hace de
+ * leyenda del mapa (debajo del mapa en pantallas estrechas).
  *
  * - La banda y el spot se descargan al acercarse al viewport (scripts/lazy-art.ts).
  * - El mapa (MapLibre) se carga solo cuando su caja [data-route-map] entra en pantalla
- *   (scripts/map.ts); la leyenda y la marca de agua ya van en el HTML.
+ *   (scripts/map.ts); la marca de agua ya va en el HTML.
  * - Pantalla completa: el mapa pasa a `position: fixed` (z-index 1000). Ningún ancestro crea
- *   contexto de apilamiento ni bloque contenedor (sin z-index, transform, filter ni contain),
- *   así que el modal cubre también el rail y los botones flotantes sin portal.
+ *   contexto de apilamiento ni bloque contenedor (sin z-index, transform, filter ni contain;
+ *   tampoco la rejilla [data-route-body]), así que el modal cubre también el rail, el panel y
+ *   los botones flotantes sin portal.
  */
 import { tripSummary } from '@/data/trip'
 import { ROUTE_ANCHOR } from '@/features/landing/scroll'
 import { css } from '@/lib/style'
 import ArtBox from '@/components/ArtBox.astro'
+import RoutePanel from '@/components/RoutePanel.astro'
 
 const trip = tripSummary()
 ---
@@ -44,52 +48,26 @@ const trip = tripSummary()
       </div>
     </div>
 
-    <div data-route-map>
-      {/* Leyenda */}
-      <div
-        data-legend
-        style={css({
-          position: 'absolute',
-          top: '14px',
-          left: '14px',
-          zIndex: 5,
-          pointerEvents: 'none',
-          border: '1px solid var(--border-2)',
-          borderRadius: '9px',
-          padding: '9px 13px',
-          boxShadow: '0 4px 14px -6px rgba(0,0,0,.25)',
-          display: 'flex',
-          flexDirection: 'column',
-          gap: '4px',
-          fontSize: '11.5px',
-          color: 'var(--slate)',
-        })}
-      >
-        <span style={css({ display: 'flex', alignItems: 'center', gap: '7px' })}>
-          <span style={css({ width: '18px', height: '3px', borderRadius: '2px', background: 'var(--map-line)' })}></span>
-          Recorrido principal
-        </span>
-        <span style={css({ display: 'flex', alignItems: 'center', gap: '7px' })}>
-          <span style={css({ width: '18px', height: 0, borderTop: '2px dashed var(--amber-deep)', display: 'inline-block' })}></span>
-          Excursión de día
-        </span>
+    <div data-route-body>
+      <div data-route-map>
+        {/* Marca de agua */}
+        <div
+          data-watermark
+          aria-hidden="true"
+          style={css({
+            position: 'absolute',
+            bottom: '14px',
+            left: '14px',
+            zIndex: 5,
+            fontFamily: 'var(--font-serif)',
+            fontSize: '30px',
+            fontWeight: 800,
+            pointerEvents: 'none',
+          })}
+        >日本一周</div>
       </div>
 
-      {/* Marca de agua */}
-      <div
-        data-watermark
-        aria-hidden="true"
-        style={css({
-          position: 'absolute',
-          bottom: '14px',
-          left: '14px',
-          zIndex: 5,
-          fontFamily: 'var(--font-serif)',
-          fontSize: '30px',
-          fontWeight: 800,
-          pointerEvents: 'none',
-        })}
-      >日本一周</div>
+      <RoutePanel />
     </div>
   </div>
 </section>
