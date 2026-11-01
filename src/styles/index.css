@@ -1,14 +1,130 @@
 /* ─────────────────────────────────────────────
    Fuentes: Shippori Mincho (serif — títulos, números, kanji) + Zen Kaku Gothic New (sans —
-   cuerpo). Las carga index.html con <link> (preconnect + hoja, solo los pesos usados), no un
-   @import aquí: así la hoja de Google no espera a este CSS.
+   cuerpo), autoalojadas en /fonts y recortadas a los caracteres que usa la web
+   (tools/fonts/build.mjs, que corre en cada `pnpm build`). Cada peso va en dos trozos con
+   unicode-range: latino (U+0000–2FFF) y CJK (U+3000 en adelante); el navegador solo baja el
+   trozo CJK de un peso si ese peso pinta algún kanji o kana. Base.astro precarga los dos
+   críticos: serif 800 latino («Japón», títulos) y sans 400 latino (texto).
 
-   Fallbacks con métricas ajustadas: mientras llegan las fuentes (display=swap) se pinta con
-   Times New Roman / Arial escaladas y con el mismo ascent/descent, de modo que el cambio de
+   Fallbacks con métricas ajustadas: mientras llegan las fuentes (font-display: swap) se pinta
+   con Times New Roman / Arial escaladas y con el mismo ascent/descent, de modo que el cambio de
    fuente no mueve el texto (CLS). Medido en Chrome con canvas.measureText sobre el texto del
    hero: Shippori 800 ≈ 1,17 × Times bold de ancho; Zen Kaku 400 ≈ 0,975 × Arial; ambas con
    ascent 1,16 em y descent 0,29 em (los overrides se dividen por size-adjust).
 ───────────────────────────────────────────── */
+@font-face {
+  font-family: 'Shippori Mincho';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('/fonts/shippori-mincho-500-latin.woff2') format('woff2');
+  unicode-range: U+0000-2FFF;
+}
+@font-face {
+  font-family: 'Shippori Mincho';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('/fonts/shippori-mincho-500-cjk.woff2') format('woff2');
+  unicode-range: U+3000-10FFFF;
+}
+@font-face {
+  font-family: 'Shippori Mincho';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('/fonts/shippori-mincho-600-latin.woff2') format('woff2');
+  unicode-range: U+0000-2FFF;
+}
+@font-face {
+  font-family: 'Shippori Mincho';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('/fonts/shippori-mincho-600-cjk.woff2') format('woff2');
+  unicode-range: U+3000-10FFFF;
+}
+@font-face {
+  font-family: 'Shippori Mincho';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('/fonts/shippori-mincho-700-latin.woff2') format('woff2');
+  unicode-range: U+0000-2FFF;
+}
+@font-face {
+  font-family: 'Shippori Mincho';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('/fonts/shippori-mincho-700-cjk.woff2') format('woff2');
+  unicode-range: U+3000-10FFFF;
+}
+@font-face {
+  font-family: 'Shippori Mincho';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url('/fonts/shippori-mincho-800-latin.woff2') format('woff2');
+  unicode-range: U+0000-2FFF;
+}
+@font-face {
+  font-family: 'Shippori Mincho';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url('/fonts/shippori-mincho-800-cjk.woff2') format('woff2');
+  unicode-range: U+3000-10FFFF;
+}
+@font-face {
+  font-family: 'Zen Kaku Gothic New';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/zen-kaku-gothic-new-400-latin.woff2') format('woff2');
+  unicode-range: U+0000-2FFF;
+}
+@font-face {
+  font-family: 'Zen Kaku Gothic New';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/zen-kaku-gothic-new-400-cjk.woff2') format('woff2');
+  unicode-range: U+3000-10FFFF;
+}
+@font-face {
+  font-family: 'Zen Kaku Gothic New';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('/fonts/zen-kaku-gothic-new-500-latin.woff2') format('woff2');
+  unicode-range: U+0000-2FFF;
+}
+@font-face {
+  font-family: 'Zen Kaku Gothic New';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('/fonts/zen-kaku-gothic-new-500-cjk.woff2') format('woff2');
+  unicode-range: U+3000-10FFFF;
+}
+@font-face {
+  font-family: 'Zen Kaku Gothic New';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('/fonts/zen-kaku-gothic-new-700-latin.woff2') format('woff2');
+  unicode-range: U+0000-2FFF;
+}
+@font-face {
+  font-family: 'Zen Kaku Gothic New';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('/fonts/zen-kaku-gothic-new-700-cjk.woff2') format('woff2');
+  unicode-range: U+3000-10FFFF;
+}
+
 @font-face {
   font-family: 'Shippori Mincho Fallback';
   src: local('Times New Roman'), local('Times'), local('Liberation Serif'), local('Tinos');

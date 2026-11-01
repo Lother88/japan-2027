@@ -20,17 +20,12 @@ const { title = 'Japón 2027' } = Astro.props
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
     {/*
-      Google Fonts desde el HTML (no con @import en index.css): la hoja se pide en paralelo
-      con el resto en vez de esperar al CSS. Solo los pesos usados: Shippori Mincho
-      500/600/700/800 y Zen Kaku Gothic New 400/500/700 (no tiene 600: los 600 de sans
-      resuelven a 700). Los fallbacks con métricas ajustadas están en index.css.
+      Fuentes autoalojadas y recortadas (tools/fonts/build.mjs; @font-face en index.css). Se
+      precargan solo las dos que pinta el primer pantallazo casi entero: serif 800 latino
+      («Japón», cifras del calendario) y sans 400 latino (texto). El resto llega por el CSS.
     */}
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;600;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap"
-    />
+    <link rel="preload" href="/fonts/shippori-mincho-800-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/zen-kaku-gothic-new-400-latin.woff2" as="font" type="font/woff2" crossorigin />
     {/*
       Script en línea y síncrono antes del primer pintado. Anti-FOUC del tema: lee el tema
       guardado (localStorage «jp-theme») o, si no hay, prefers-color-scheme, y fija
