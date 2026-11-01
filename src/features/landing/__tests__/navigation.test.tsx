@@ -93,6 +93,21 @@ describe('DayRail — navegación por días', () => {
     expect(h!.style.transform).toBe('scaleX(0.5)')
   })
 
+  it('los puntos tienen caja fija y cambian de tamaño con scale, sin transition: all', () => {
+    render(<DayRail days={itinerary} activeIndex={3} progress={0.2} />)
+    const links = within(screen.getByRole('list')).getAllByRole('link')
+    const dots = links.map((l) => l.querySelector<HTMLElement>('span[aria-hidden] > span')!)
+    for (const dot of dots) {
+      expect(dot.style.width).toBe('13px')
+      expect(dot.style.height).toBe('13px')
+      expect(dot.style.transition).not.toMatch(/\ball\b/)
+      expect(dot.style.transition).toContain('transform 200ms var(--ease-out)')
+    }
+    expect(dots[3].style.transform).toBe('scale(1)')
+    expect(dots[0].style.transform).toBe(`scale(${9 / 13})`)
+    expect(dots[10].style.transform).toBe(`scale(${9 / 13})`)
+  })
+
   it('en el primer día no hay enlace «anterior» activo', () => {
     render(<DayRail days={itinerary} activeIndex={0} progress={0} />)
     expect(screen.queryByRole('link', { name: /día anterior/i })).toBeNull()

@@ -252,21 +252,20 @@ export default function DayRail({ days, activeIndex, progress }: DayRailProps) {
             const col = getCityMeta(d.citySlug).dot
             const passed = i <= activeIndex
             const isActive = i === activeIndex
-            const size = isActive ? 13 : 9
 
+            // Caja fija de 13 px: el tamaño visual (9 → 13 px) cambia con scale, sin layout.
             const dotStyle: CSSProperties = {
               flexShrink: 0,
-              width: `${size}px`,
-              height: `${size}px`,
+              width: '13px',
+              height: '13px',
               borderRadius: '50%',
-              background: passed ? col : 'var(--tick-idle)',
-              transition: 'all .25s ease',
-              ...(isActive
-                ? {
-                    border: '2px solid var(--paper)',
-                    boxShadow: `0 0 0 2px ${col}`,
-                  }
-                : {}),
+              backgroundColor: passed ? col : 'var(--tick-idle)',
+              // borde siempre presente (transparente en reposo) para no cambiar la geometría
+              border: `2px solid ${isActive ? 'var(--paper)' : 'transparent'}`,
+              boxShadow: `0 0 0 ${isActive ? 2 : 0}px ${col}`,
+              transform: `scale(${isActive ? 1 : 9 / 13})`,
+              transition:
+                'transform 200ms var(--ease-out), background-color 200ms ease, box-shadow 200ms ease, border-color 200ms ease',
             }
 
             return (
