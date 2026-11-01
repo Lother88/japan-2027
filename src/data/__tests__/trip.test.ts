@@ -1,9 +1,10 @@
 /**
  * Fechas del viaje para el hero: hojas de calendario (himekuri), rango legible y cuenta atrás.
- * Todo se deriva del itinerario; nada de fechas escritas a mano en la UI.
+ * Salida y regreso salen de TRIP_DATES y el resto se deriva; nada de fechas escritas a mano en la UI.
  */
 import { itinerary } from '../itinerary'
 import {
+  TRIP_DATES,
   calendarDay,
   countdownText,
   formatDateSpan,
@@ -16,18 +17,26 @@ import {
 describe('tripSummary — salida y regreso', () => {
   const trip = tripSummary()
 
-  it('la salida es la víspera del primer día del itinerario', () => {
-    expect(itinerary[0].date).toBe('2027-05-09')
-    expect(trip.departure).toBe('2027-05-08')
+  it('sale el viernes 7 de mayo de 2027 (fecha planificada del viaje)', () => {
+    expect(TRIP_DATES.departure).toBe('2027-05-07')
+    expect(trip.departure).toBe('2027-05-07')
   })
 
-  it('el regreso es el último día del itinerario', () => {
-    expect(trip.returnDate).toBe(itinerary[itinerary.length - 1].date)
-    expect(trip.returnDate).toBe('2027-05-29')
+  it('el vuelo de regreso sale el viernes 28 de mayo (se aterriza el 29; el domingo 30, libre)', () => {
+    expect(TRIP_DATES.return).toBe('2027-05-28')
+    expect(trip.returnDate).toBe('2027-05-28')
   })
 
-  it('conserva el rango corto del pie', () => {
-    expect(trip.dateRange).toBe('8 → 29 mayo 2027')
+  it('el rango corto del pie sigue esas fechas', () => {
+    expect(trip.dateRange).toBe('7 → 28 mayo 2027')
+  })
+
+  it('la duración del viaje no cambia: tantos días como el itinerario', () => {
+    expect(tripCountdown(trip.departure, trip.returnDate, trip.returnDate)).toEqual({
+      kind: 'during',
+      day: itinerary.length,
+      total: itinerary.length,
+    })
   })
 })
 
