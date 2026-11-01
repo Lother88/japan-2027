@@ -81,7 +81,7 @@ async function* walk(dir) {
   }
 }
 
-/** Caracteres de los textos fuente: .astro y .ts de src/ (sin arte generado ni el React antiguo). */
+/** Caracteres de los textos fuente: .astro y .ts de src/ (sin el arte generado). */
 async function collectCodePoints() {
   const points = new Set(LATIN_FIXED)
   for await (const path of walk(SRC)) {

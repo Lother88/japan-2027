@@ -86,7 +86,7 @@ function makeMarkerEl(city: MapLabelCity): HTMLDivElement {
     'background:' + (isExc ? 'var(--amber-deep)' : 'var(--coral2)') + ';' +
     'border:2px solid var(--surface);box-shadow:0 1px 3px rgba(0,0,0,.35)' +
     (isExc ? ';transform:rotate(45deg)' : '')
-  // Etiqueta: su ancla se mide desde el centro del punto (misma geometría que labelRect).
+  // Etiqueta: su ancla se mide desde el centro del punto (geometría de labelOffset).
   const o = labelOffset(placement, size)
   const tag = document.createElement('div')
   tag.dataset.mapLabel = ''

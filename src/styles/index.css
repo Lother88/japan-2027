@@ -210,7 +210,7 @@
 /* ─────────────────────────────────────────────
    Tokens de diseño — variables CSS (Claude Design)
    Tema claro (:root) + tema oscuro ([data-theme="dark"]).
-   El cambio de tema lo gestiona useThemeMode (data-theme en <html>).
+   El cambio de tema lo gestiona scripts/theme.ts (data-theme en <html>).
 ───────────────────────────────────────────── */
 :root {
   --paper:#fbf6f0; --surface:#fffdf9; --surface-warm:#fdf8f1; --surface-sun:#f6efe4;
@@ -450,7 +450,7 @@ body {
 [data-theme="dark"] [data-watermark] { color: rgba(232,238,248,.16); }
 
 /* ─────────────────────────────────────────────
-   Hero isométrico (Hero.tsx, HeroArt.tsx, HeroSpots.tsx)
+   Hero isométrico (Hero.astro, HeroArt.astro, HeroSpots.astro)
    Fondo --paper liso: los rellenos de la maqueta y de los spots se generaron contra él.
    Escritorio: una sola celda de rejilla; el arte ocupa el lienzo 1200×640 y el texto se
    superpone en su zona segura (x 0–470 → 39,2 %). Si el texto es más alto que el arte, la
@@ -486,7 +486,7 @@ body {
   container: hero-copy / inline-size;
 }
 
-/* Título «Kanji y sello» (Hero.tsx, HeroDates.tsx), de arriba abajo:
+/* Título «Kanji y sello» (Hero.astro, HeroDates.astro), de arriba abajo:
    1. Fechas: dos hojas de calendario arrancables (himekuri) unidas por la duración del viaje y,
       tras un filete, la cuenta atrás.
    2. 日本 en vertical a la izquierda; a la derecha el sello «2027», el H1 y el subtítulo.
@@ -786,7 +786,7 @@ a[data-day-nav]:active { transform: scale(0.97); }
 /* ToTop: su transform lo escribe el JS en línea; la presión va por la propiedad `scale` */
 [data-totop]:active { scale: 0.97; }
 
-/* Banda «La ruta» (RouteSection.tsx): banda «Muro» a sangre y el mapa debajo.
+/* Banda «La ruta» (RouteSection.astro): banda «Muro» a sangre y el mapa debajo.
    Sin z-index, transform, filter ni contain: el mapa a pantalla completa (fixed) depende de ello. */
 [data-route] { background: var(--paper); }
 [data-art="banda"] { width: 100%; aspect-ratio: 1200 / 180; }
@@ -808,7 +808,7 @@ a[data-day-nav]:active { transform: scale(0.97); }
 }
 
 /* Arte isométrico de la portada: congela el movimiento fuera de pantalla (data-art-paused lo
-   ponen Hero y LazyIso con un IntersectionObserver). !important porque el <style> de cada
+   pone scripts/lazy-art.ts con un IntersectionObserver). !important porque el <style> de cada
    SVG redefine `animation` en su clase. */
 [data-art-paused] * { animation-play-state: paused !important; }
 

@@ -1,5 +1,5 @@
 /**
- * Mapa base del HeroMap: estilos vectoriales de OpenFreeMap (sin API key) adaptados a
+ * Mapa base del mapa de la ruta (routeMap.ts): estilos vectoriales de OpenFreeMap (sin API key) adaptados a
  * la paleta del sitio, con la ruta y las excursiones como capas propias del estilo.
  *
  * Al ir la ruta DENTRO del estilo, cambiar de tema es un único `map.setStyle(estilo)`

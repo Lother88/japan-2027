@@ -2,13 +2,13 @@
  * Registro de cargadores de las ilustraciones isométricas por día.
  *
  * Un `import()` por día: Vite/Rolldown emite cada marcado (≈ 75–150 KB sin comprimir) en su
- * propio chunk, fuera del bundle principal, y DayIllustration lo pide solo cuando la sección
- * se acerca al viewport.
+ * propio chunk, fuera del bundle principal, y scripts/lazy-art.ts lo pide solo cuando la
+ * ilustración se acerca al viewport.
  *
  * Los ficheros dayNNIso.markup.ts son marcado GENERADO (no editar a mano) por los scripts
- * build.mjs de la skill anatomy-asset en el scratchpad de la sesión. Sus rampas de tono se
+ * build.mjs de tools/art (`node tools/art/build-all.mjs`). Sus rampas de tono se
  * derivan de los hex de --paper, --gold, --brown, --green, --ink, --coral, --coral2 y --amber
- * de src/index.css: si cambia alguno de esos tokens, hay que regenerarlos todos. Ids,
+ * de src/styles/index.css: si cambia alguno de esos tokens, hay que regenerarlos todos. Ids,
  * keyframes y estilos van prefijados por día (`dNN-…`, `.iso-dNN`) para que convivan.
  */
 import type { IllustrationKind } from '@/features/landing/illustrationKind'
