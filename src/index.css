@@ -103,6 +103,9 @@
   color-scheme: light;
   /* anima la altura 'auto' del spoiler <details> */
   interpolate-size: allow-keywords;
+  /* Movimiento: ease-out fuerte para entradas/feedback; ease-in-out fuerte para movimiento en pantalla */
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
 }
 [data-theme="dark"] {
   --paper:#12141b; --surface:#1b1f2c; --surface-warm:#1f2434; --surface-sun:#23202b;
