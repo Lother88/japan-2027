@@ -90,3 +90,10 @@ describe('tokens de easing', () => {
     expect(dark).not.toMatch(/--ease-/)
   })
 })
+
+describe('sin transiciones de tema muertas', () => {
+  // swapTheme() pone data-theme-swapping, que anula toda transición: estas nunca corrían.
+  it.each(['html', 'body'])('%s no declara transition', (selector) => {
+    expect(ruleOf(selector)).not.toMatch(/transition/)
+  })
+})
