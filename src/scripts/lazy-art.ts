@@ -1,7 +1,8 @@
 /**
  * lazy-art — arte isométrico diferido y pausa de animaciones fuera de pantalla.
  *
- * Carga diferida (un `import()` por asset, emitido por Vite/Rolldown en su propio chunk):
+ * Carga diferida (un `import()` por asset, emitido por Vite/Rolldown en su propio chunk; los
+ * observadores se activan tras el `load` de la página):
  *  - Ilustraciones por día (`[data-illus][data-illus-kind]`): al quedar a 800 px del viewport.
  *  - Spots diferidos (`[data-art][data-art-defer]`: banda, ruta, omamori): a 600 px.
  * El SVG se escribe en línea dentro de la caja (no <img>): su <style> sigue [data-theme] en
@@ -104,10 +105,14 @@ function observeNear(boxes: HTMLElement[], rootMargin: string) {
   for (const box of boxes) near.observe(box)
 }
 
-const illus = [...document.querySelectorAll<HTMLElement>('[data-illus][data-illus-kind]')]
-const spots = [...document.querySelectorAll<HTMLElement>('[data-art][data-art-defer]')]
-observeNear(illus, ILLUS_MARGIN)
-observeNear(spots, SPOT_MARGIN)
+// Las descargas empiezan tras el `load`: el arte diferido nunca está en el primer pantallazo
+// (el del hero va en línea) y así no compite con el HTML, el CSS y las fuentes por el LCP.
+function startLazyLoading() {
+  observeNear([...document.querySelectorAll<HTMLElement>('[data-illus][data-illus-kind]')], ILLUS_MARGIN)
+  observeNear([...document.querySelectorAll<HTMLElement>('[data-art][data-art-defer]')], SPOT_MARGIN)
+}
+if (document.readyState === 'complete') startLazyLoading()
+else addEventListener('load', startLazyLoading, { once: true })
 
 // Pausa fuera de pantalla: data-paused en las ilustraciones, data-art-paused en el resto.
 const visible = new IntersectionObserver((entries) => {
