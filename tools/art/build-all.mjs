@@ -23,7 +23,7 @@ const builds = [
   ...dirs('iso', /^day\d\d$/).map((d) => `iso/${d}/build.mjs`),
   'kinkakuji/build.mjs',
   'hero/hero-maqueta/build.mjs',
-  'hero/banda-muro/build.mjs',
+  'hero/banda-calle/build.mjs',
   ...dirs('hero-spots', /^spot-/).map((d) => `hero-spots/${d}/build.mjs`),
   'hero-layers/build.mjs',
 ]
@@ -39,7 +39,7 @@ const heroArt = join(target, 'src', 'features', 'landing', 'hero-art')
 mkdirSync(heroArt, { recursive: true })
 const heroFiles = [
   ['hero-layers/out/heroMaqueta.markup.ts', 'heroMaqueta.markup.ts'],
-  ['hero/out/bandaMuro.markup.ts', 'bandaMuro.markup.ts'],
+  ['hero/out/bandaCalle.markup.ts', 'bandaCalle.markup.ts'],
   ...readdirSync(join(HERE, 'hero-spots', 'out')).map((f) => [`hero-spots/out/${f}`, f]),
 ]
 for (const [from, to] of heroFiles) copyFileSync(join(HERE, from), join(heroArt, to))

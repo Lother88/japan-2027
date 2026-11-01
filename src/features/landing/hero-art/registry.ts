@@ -1,21 +1,21 @@
 /**
- * Arte isométrico de la portada (hero, banda «Muro» y spots): tipos, cargadores diferidos y
+ * Arte isométrico de la portada (hero, banda «Calle» y spots): tipos, cargadores diferidos y
  * clases raíz.
  *
  * Los ficheros *.markup.ts de esta carpeta son marcado GENERADO (no editar a mano) por los
- * scripts de tools/art (hero-layers, hero/banda-muro y hero-spots/spot-*; ver su README:
+ * scripts de tools/art (hero-layers, hero/banda-calle y hero-spots/spot-*; ver su README:
  * `node tools/art/build-all.mjs`). Sus rampas de tono se derivan de
  * los hex de --paper, --surface, --gold, --brown, --green, --ink, --coral, --coral2 y --amber
  * de src/styles/index.css, y spot-omamori del azul fijo del pie (#14203a): si cambia alguno de
  * esos valores, hay que regenerarlos. Ids, clases y keyframes van prefijados por asset (`hero-…`,
- * `banda-…`, `spot-<nombre>-…`) y cada <style> va acotado a la clase raíz (`.iso-hero`,
- * `.iso-banda`, `.iso-spot-<nombre>`), así que conviven con las ilustraciones por día.
+ * `calle-…`, `spot-<nombre>-…`) y cada <style> va acotado a la clase raíz (`.iso-hero`,
+ * `.iso-calle`, `.iso-spot-<nombre>`), así que conviven con las ilustraciones por día.
  *
  * Reparto:
  *  - En línea en el HTML (heroInline.ts, solo en el build): la maqueta y los 6 spots que se ven
  *    sobre el pliegue (4 de la tira de billete, el poste del aviso de scroll y el tōrō del botón
  *    de tema).
- *  - Diferidos (este módulo, seguro para el cliente: sin marcado estático): banda «Muro»,
+ *  - Diferidos (este módulo, seguro para el cliente: sin marcado estático): banda «Calle» (con sus capas animadas),
  *    spot-ruta y spot-omamori, un `import()` cada uno que scripts/lazy-art.ts lanza cuando su
  *    caja se acerca al viewport.
  */
@@ -57,7 +57,11 @@ export type HeroSpotName = 'koyomi' | 'machiya' | 'kippu' | 'maletas' | 'michish
 /** Arte diferido (debajo del pliegue): un chunk por asset. */
 export const deferredArtLoaders = {
   banda: (): Promise<SpotArt> =>
-    import('./bandaMuro.markup').then((m) => ({ viewBox: m.BANDA_MURO_VIEWBOX, markup: m.BANDA_MURO_MARKUP })),
+    import('./bandaCalle.markup').then((m) => ({
+      viewBox: m.BANDA_CALLE_VIEWBOX,
+      markup: m.BANDA_CALLE_MARKUP,
+      layers: m.BANDA_CALLE_LAYERS,
+    })),
   ruta: (): Promise<SpotArt> =>
     import('./spotRuta.markup').then((m) => ({ viewBox: m.SPOT_RUTA_VIEWBOX, markup: m.SPOT_RUTA_MARKUP })),
   omamori: (): Promise<SpotArt> =>
@@ -69,7 +73,7 @@ export type DeferredArtName = keyof typeof deferredArtLoaders
 /** Clase raíz de cada asset (la que acota su <style>) y prefijo de sus ids/keyframes. */
 export const ART_SCOPES = {
   hero: { root: 'iso-hero', prefix: 'hero-' },
-  banda: { root: 'iso-banda', prefix: 'banda-' },
+  banda: { root: 'iso-calle', prefix: 'calle-' },
   ruta: { root: 'iso-spot-ruta', prefix: 'spot-ruta-' },
   omamori: { root: 'iso-spot-omamori', prefix: 'spot-omamori-' },
   koyomi: { root: 'iso-spot-koyomi', prefix: 'spot-koyomi-' },

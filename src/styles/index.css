@@ -784,10 +784,10 @@ a[data-day-nav]:active { transform: scale(0.97); }
 /* ToTop: su transform lo escribe el JS en línea; la presión va por la propiedad `scale` */
 [data-totop]:active { scale: 0.97; }
 
-/* Banda «La ruta» (RouteSection.astro): banda «Muro» a sangre y el mapa debajo.
+/* Banda «La ruta» (RouteSection.astro): banda «Calle» a sangre y el mapa debajo.
    Sin z-index, transform, filter ni contain: el mapa a pantalla completa (fixed) depende de ello. */
 [data-route] { background: var(--paper); }
-[data-art="banda"] { width: 100%; aspect-ratio: 1200 / 180; }
+[data-art="banda"] { width: 100%; aspect-ratio: 1200 / 200; }
 [data-route-inner] {
   max-width: 1340px;
   margin: 0 auto;
@@ -973,7 +973,7 @@ a[data-day-nav]:active { transform: scale(0.97); }
   [data-hero-kanji] { font-size: 112px; }
   [data-hero-title] h1 { font-size: 64px; }
   [data-hanko] { width: 56px; height: 56px; margin-bottom: 14px; font-size: 16px; }
-  [data-art="banda"] { aspect-ratio: auto; height: 96px; }
+  [data-art="banda"] { aspect-ratio: auto; height: 112px; }
   [data-route-head] { gap: 12px; }
 }
 
