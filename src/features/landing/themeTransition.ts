@@ -1,86 +1,153 @@
 /**
- * themeTransition — transición ligera claro/oscuro.
+ * themeTransition — intercambio claro/oscuro con View Transitions.
  *
- * Un único disco "sol naciente" se expande desde el centro para cubrir la
- * pantalla, se intercambia el tema debajo y se desvanece revelando el nuevo tema.
- * Anima SOLO transform y opacity sobre UNA capa promovida a GPU → fluida y de bajo
- * consumo (sustituye al antiguo abanico de 22 hojas, que se entrecortaba en móvil).
- * El intercambio real del tema se delega en `applySwap`.
+ * Secuencia (sin cadenas de setTimeout; todo cuelga de promesas de animación):
+ *   1. Marca <html data-theme-swapping> → index.css anula TODAS las transiciones
+ *      de color, así nunca se ve un estado a medio mezclar.
+ *   2. `document.startViewTransition(commit)`: el navegador congela una captura
+ *      del tema viejo, `commit` aplica el nuevo de forma síncrona (data-theme +
+ *      flushSync del estado React) y el nuevo se pinta YA resuelto.
+ *   3. En `vt.ready` se anima con WAAPI el pseudo-elemento que toque (clip-path
+ *      u opacity: propiedades de composición).
+ *   4. En `vt.finished` se retira la marca; como los valores ya son los finales,
+ *      quitarla no dispara ninguna transición.
+ *
+ * Sin `startViewTransition` (navegadores antiguos): cambio instantáneo con las
+ * transiciones suprimidas hasta que el estado nuevo se ha pintado.
  */
-
-const GROW = 360 // ms — expansión del disco hasta cubrir la pantalla
-const HOLD = 60 //  ms — margen con la pantalla cubierta antes de revelar
-const FADE = 320 // ms — desvanecido que revela el nuevo tema
-
-export interface ThemeOverlayHandles {
-  readonly root: HTMLDivElement
-  readonly disc: HTMLDivElement
+/** Centro y radio (px, coordenadas de viewport) del botón que dispara el cambio. */
+export interface SwapOrigin {
+  readonly x: number
+  readonly y: number
+  readonly r: number
 }
 
-/** Prepara el overlay (disco) dentro de `root` y devuelve los handles. */
-export function buildThemeOverlay(root: HTMLDivElement): ThemeOverlayHandles {
-  root.setAttribute('data-theme-overlay', '')
-  Object.assign(root.style, {
-    position: 'fixed',
-    inset: '0',
-    zIndex: '200',
-    opacity: '0',
-    pointerEvents: 'none',
-    overflow: 'hidden',
-    display: 'grid',
-    placeItems: 'center',
-  } satisfies Partial<CSSStyleDeclaration>)
+export interface ThemeSwapOptions {
+  readonly origin: SwapOrigin
+  readonly reducedMotion: boolean
+  /** Aplica el tema nuevo de forma síncrona (DOM + estado React + persistencia). */
+  readonly commit: () => void
+}
 
-  const disc = document.createElement('div')
-  Object.assign(disc.style, {
-    width: '150vmax',
-    height: '150vmax',
-    borderRadius: '50%',
-    transformOrigin: '50% 50%',
-    transform: 'scale(0)',
-    background: 'radial-gradient(circle at 50% 40%, #ffe1ad 0%, #f4a24a 34%, #d8453f 100%)',
-    willChange: 'transform, opacity',
-  } satisfies Partial<CSSStyleDeclaration>)
-  root.appendChild(disc)
+/** Atributo en <html> mientras dura el intercambio (ver index.css). */
+export const SWAP_ATTR = 'data-theme-swapping'
 
-  return { root, disc }
+const NEW = '::view-transition-new(root)'
+
+/** in → el tema nuevo crece encima · fade → fundido · instant → sin animación. */
+type SwapKind = 'in' | 'fade' | 'instant'
+
+interface Plan {
+  readonly kind: Exclude<SwapKind, 'instant'>
+  readonly pseudoElement: string
+  readonly keyframes: PropertyIndexedKeyframes
+  readonly duration: number
+  readonly easing: string
+}
+
+/** Origen a partir del elemento pulsado; sin elemento, el centro del viewport. */
+export function originOf(el: Element | null | undefined): SwapOrigin {
+  if (!el) return { x: window.innerWidth / 2, y: window.innerHeight / 2, r: 0 }
+  const b = el.getBoundingClientRect()
+  return { x: b.left + b.width / 2, y: b.top + b.height / 2, r: Math.min(b.width, b.height) / 2 }
+}
+
+/** Radio que cubre la esquina del viewport más lejana al origen. */
+function farRadius({ x, y }: SwapOrigin): number {
+  return Math.hypot(Math.max(x, window.innerWidth - x), Math.max(y, window.innerHeight - y))
+}
+
+const circle = (r: number, { x, y }: SwapOrigin) => `circle(${r}px at ${x}px ${y}px)`
+
+/**
+ * Movimiento reducido: fundido de opacidad de 200ms `ease`.
+ * Skill animate §7 / review-animations STANDARDS «Accessibility»: «reduced
+ * motion means fewer and gentler animations, not zero — keep opacity/color,
+ * remove movement»; su ejemplo es justo `fade 0.2s ease`. Un fundido de
+ * capturas es uniforme (no el barro de transiciones CSS a distinto ritmo).
+ */
+function reducedPlan(): Plan {
+  return {
+    kind: 'fade',
+    pseudoElement: NEW,
+    keyframes: { opacity: ['0', '1'] },
+    duration: 200,
+    easing: 'ease',
+  }
 }
 
 /**
- * Reproduce la transición: expande el disco cubriendo la pantalla, intercambia el
- * tema (`applySwap`) bajo la cobertura y desvanece el disco revelando el resultado.
- * Devuelve una promesa que resuelve al terminar (libera el guard de "ocupado").
+ * Patrón MDN: el tema nuevo crece en círculo desde el borde del botón (ambas direcciones):
+ * arranca con el radio del botón, que cambia de tema al instante, no desde un punto bajo él.
+ * Ease-out fuerte: el área crece con r², así que el grueso del barrido llega pronto y la esquina
+ * opuesta se asienta suave. WAAPI no acepta var(): es el valor literal de --ease-out.
  */
-export function playThemeSwap(h: ThemeOverlayHandles, applySwap: () => void): Promise<void> {
+function circlePlan(o: SwapOrigin): Plan {
+  return {
+    kind: 'in',
+    pseudoElement: NEW,
+    keyframes: { clipPath: [circle(o.r, o), circle(farRadius(o), o)] },
+    duration: 500,
+    easing: 'cubic-bezier(0.23, 1, 0.32, 1)',
+  }
+}
+
+function planFor(o: ThemeSwapOptions): Plan {
+  if (o.reducedMotion) return reducedPlan()
+  return circlePlan(o.origin)
+}
+
+/** Resuelve cuando el estado actual ya se ha pintado (doble rAF). */
+function afterNextPaint(): Promise<void> {
   return new Promise(resolve => {
-    const { root, disc } = h
-
-    // Estado inicial (cubierto a escala 0) sin animar.
-    root.style.transition = 'none'
-    root.style.opacity = '1'
-    disc.style.transition = 'none'
-    disc.style.transform = 'scale(0)'
-    void root.offsetHeight // fuerza reflow para encadenar la animación
-
-    // Expande el disco hasta cubrir.
-    disc.style.transition = `transform ${GROW}ms cubic-bezier(.4,0,.2,1)`
-    disc.style.transform = 'scale(1)'
-
-    // Intercambia el tema cuando ya está cubierto.
-    window.setTimeout(applySwap, GROW - 20)
-
-    // Desvanece el overlay revelando el nuevo tema.
-    window.setTimeout(() => {
-      root.style.transition = `opacity ${FADE}ms ease`
-      root.style.opacity = '0'
-    }, GROW + HOLD)
-
-    // Limpieza al terminar.
-    window.setTimeout(() => {
-      root.style.transition = 'none'
-      disc.style.transition = 'none'
-      disc.style.transform = 'scale(0)'
-      resolve()
-    }, GROW + HOLD + FADE + 40)
+    if (typeof requestAnimationFrame !== 'function') {
+      setTimeout(resolve, 0)
+      return
+    }
+    requestAnimationFrame(() => requestAnimationFrame(() => resolve()))
   })
+}
+
+/**
+ * Intercambia el tema con la transición de círculo. Resuelve al terminar la
+ * transición (libera el guard de «ocupado» del proveedor).
+ */
+export async function swapTheme(o: ThemeSwapOptions): Promise<void> {
+  const root = document.documentElement
+
+  if (typeof document.startViewTransition !== 'function') {
+    root.setAttribute(SWAP_ATTR, 'instant' satisfies SwapKind)
+    try {
+      o.commit()
+      await afterNextPaint()
+    } finally {
+      root.removeAttribute(SWAP_ATTR)
+    }
+    return
+  }
+
+  const plan = planFor(o)
+  root.setAttribute(SWAP_ATTR, plan.kind)
+  let animation: Animation | undefined
+  try {
+    const vt = document.startViewTransition(o.commit)
+    try {
+      await vt.ready
+      animation = root.animate(plan.keyframes, {
+        duration: plan.duration,
+        easing: plan.easing,
+        pseudoElement: plan.pseudoElement,
+        // Mantiene el último fotograma hasta que el navegador desmonta los
+        // pseudo-elementos (evita un parpadeo del estado sin recortar).
+        fill: 'forwards',
+      })
+    } catch {
+      // Transición omitida (p. ej. pestaña oculta): el callback se ejecuta igual.
+    }
+    await vt.finished
+  } finally {
+    // Su pseudo-elemento ya no existe: suelta la animación (con fill retenida)
+    animation?.cancel()
+    root.removeAttribute(SWAP_ATTR)
+  }
 }

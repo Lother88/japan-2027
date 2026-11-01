@@ -1,8 +1,15 @@
 /**
  * SiteFooter — pie de página de la landing.
- * Fondo navy oscuro (#14203a), resumen del viaje y decisiones de scope.
+ * Fondo navy oscuro (#14203a), resumen del viaje (cifras derivadas de los datos)
+ * y notas del viaje. La marca es el spot isométrico de un omamori (amuleto), generado para
+ * este azul fijo del pie, así que no cambia con el tema. Se descarga al acercarse al viewport.
  */
 import type { CSSProperties } from 'react'
+import { tripSummary } from '@/data/trip'
+import LazyIso from '@/features/landing/hero-art/LazyIso'
+import { deferredArtLoaders } from '@/features/landing/hero-art/registry'
+
+const trip = tripSummary()
 
 const chipStyle: CSSProperties = {
   fontSize: '12px',
@@ -44,26 +51,16 @@ export default function SiteFooter() {
                 marginBottom: '14px',
               }}
             >
-              <div
-                style={{
-                  width: '34px',
-                  height: '34px',
-                  borderRadius: '50%',
-                  background: '#f6c2d2',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  color: '#1b2a4a',
-                  fontFamily: "'Shippori Mincho', serif",
-                  fontSize: '18px',
-                  fontWeight: 700,
-                }}
-              >
-                桜
-              </div>
+              <LazyIso
+                load={deferredArtLoaders.omamori}
+                artClass="iso-spot-omamori"
+                slot="omamori"
+                defer
+                style={{ width: '40px', height: '48px' }}
+              />
               <span
                 style={{
-                  fontFamily: "'Shippori Mincho', serif",
+                  fontFamily: 'var(--font-serif)',
                   fontSize: '18px',
                   color: '#fdf3e7',
                   fontWeight: 700,
@@ -80,29 +77,30 @@ export default function SiteFooter() {
                 color: '#9fb0d0',
               }}
             >
-              Ruta redonda por Narita · 8 → 29 mayo 2027 · 20 noches · 4 viajeros · eje cultura.
+              Ruta redonda por Narita · {trip.dateRange} · {trip.nights} noches · {trip.bases} bases ·{' '}
+              {trip.excursions} excursiones · {trip.travelers} viajeros · eje cultura.
             </p>
           </div>
 
-          {/* Bloque derecho — decisiones de scope */}
+          {/* Bloque derecho — notas del viaje */}
           <div>
             <div
               style={{
-                fontSize: '11px',
-                letterSpacing: '.16em',
+                fontSize: 'var(--text-label)',
+                letterSpacing: 'var(--text-label--letter-spacing)',
                 textTransform: 'uppercase',
                 color: '#f6c2d2',
                 fontWeight: 700,
                 marginBottom: '12px',
               }}
             >
-              Decisiones de scope
+              Notas del viaje
             </div>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', maxWidth: '420px' }}>
               <span style={chipStyle}>Hiroshima sin pernocta</span>
               <span style={chipStyle}>Shirakawa-go sin maletas</span>
               <span style={chipStyle}>Fuji desde el shinkansen</span>
-              <span style={chipStyle}>Miyajima → open-jaw</span>
+              <span style={chipStyle}>Miyajima, para otro viaje</span>
             </div>
           </div>
         </div>

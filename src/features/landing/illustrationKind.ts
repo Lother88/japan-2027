@@ -1,65 +1,46 @@
 /**
- * Selección del motivo de ilustración por día (separado del componente para
+ * Selección de la ilustración isométrica de cada día (separado del componente para
  * cumplir react-refresh/only-export-components).
  *
- * El mapeo es por día concreto del itinerario, de modo que las figuras se
- * relacionan con lo que se ve y cambian de un día a otro. Para los días urbanos
- * el motivo `skyline` se auto-varía con la semilla (ver illustrations.tsx).
+ * Cada día del itinerario (9–29) tiene su propio dibujo isométrico generado con la skill
+ * anatomy-asset (marcados en ./iso, cargados en diferido desde ./iso/registry). El
+ * identificador del asset coincide con la clase CSS a la que va acotado su <style>
+ * (`iso-dNN`), de modo que sirve a la vez de clave de carga y de clase del <svg>.
  */
-export type IllustrationKind =
-  | 'pagoda'
-  | 'skyline'
-  | 'onsen'
-  | 'castle'
-  | 'machiya'
-  | 'gassho'
-  | 'torii'
-  | 'pavilion'
+export const ISO_KINDS = [
+  'iso-d09', 'iso-d10', 'iso-d11', 'iso-d12', 'iso-d13', 'iso-d14', 'iso-d15',
+  'iso-d16', 'iso-d17', 'iso-d18', 'iso-d19', 'iso-d20', 'iso-d21', 'iso-d22',
+  'iso-d23', 'iso-d24', 'iso-d25', 'iso-d26', 'iso-d27', 'iso-d28', 'iso-d29',
+] as const
 
-/** Motivo asignado a cada día del itinerario (9–29). */
+export type IllustrationKind = (typeof ISO_KINDS)[number]
+
+/** Dibujo asignado a cada día del itinerario (9–29). */
 const byDay: Record<number, IllustrationKind> = {
-  9: 'pagoda', //   Asakusa, Sensō-ji (templo de Edo, pagoda)
-  10: 'skyline', // Shibuya / Harajuku / Shinjuku (rascacielos)
-  11: 'machiya', // Ueno / Yanaka (shitamachi histórico)
-  12: 'skyline', // Palacio Imperial / Ginza / Tsukiji
-  13: 'onsen', //   Takaragawa (ryokan junto al río)
-  14: 'machiya', // Kanazawa, barrio de chaya (casas de té de madera)
-  15: 'castle', //  Kanazawa, Kenroku-en + castillo
-  16: 'machiya', // Takayama, Sanmachi (casco antiguo de madera)
-  17: 'gassho', //  Shirakawa-go (tejados de paja gasshō-zukuri)
-  18: 'pagoda', //  Kioto, Tō-ji (templo de pagoda)
-  19: 'machiya', // Kioto, Higashiyama / Gion (casas de té)
-  20: 'torii', //   Kioto, Fushimi Inari (toriis) + Arashiyama (bambú)
-  21: 'pavilion', //Kioto, Kinkaku-ji (pabellón dorado)
-  22: 'pagoda', //  Nara, Tōdai-ji (gran templo) → Osaka
-  23: 'skyline', // Osaka, Katsuo-ji + Dōtonbori
-  24: 'skyline', // Excursión a Hiroshima
-  25: 'castle', //  Osaka, castillo
-  26: 'skyline', // Tokio, Akihabara
-  27: 'skyline', // Tokio, Odaiba (bahía / puente)
-  28: 'skyline', // Tokio, Asakusa + Skytree
-  29: 'skyline', // Tokio, mañana libre y regreso
+  9: 'iso-d09', //  Asakusa: Kaminarimon (Sensō-ji)
+  10: 'iso-d10', // Shibuya / Harajuku / Shinjuku
+  11: 'iso-d11', // Ueno / Yanaka (shitamachi)
+  12: 'iso-d12', // Palacio Imperial / Ginza / Tsukiji
+  13: 'iso-d13', // Takaragawa (onsen junto al río)
+  14: 'iso-d14', // Kanazawa, barrio de chaya
+  15: 'iso-d15', // Kanazawa, Kenroku-en + castillo
+  16: 'iso-d16', // Takayama, Sanmachi
+  17: 'iso-d17', // Shirakawa-go (gasshō-zukuri)
+  18: 'iso-d18', // Kioto, Tō-ji
+  19: 'iso-d19', // Kioto, Higashiyama / Gion
+  20: 'iso-d20', // Kioto, Fushimi Inari + Arashiyama
+  21: 'iso-d21', // Kioto, Kinkaku-ji
+  22: 'iso-d22', // Nara, Tōdai-ji → Osaka
+  23: 'iso-d23', // Osaka, Katsuo-ji + Dōtonbori
+  24: 'iso-d24', // Excursión a Hiroshima
+  25: 'iso-d25', // Osaka, castillo
+  26: 'iso-d26', // Tokio, Akihabara
+  27: 'iso-d27', // Tokio, Odaiba
+  28: 'iso-d28', // Tokio, Asakusa + Skytree
+  29: 'iso-d29', // Tokio, mañana libre y regreso
 }
 
-/** Fallback por ciudad si un día no estuviera mapeado. */
-function cityFallback(citySlug: string): IllustrationKind {
-  switch (citySlug) {
-    case 'takaragawa':
-      return 'onsen'
-    case 'osaka':
-      return 'skyline'
-    case 'kioto':
-    case 'kanazawa':
-    case 'takayama':
-      return 'machiya'
-    case 'tokio':
-      return 'skyline'
-    default:
-      return 'pagoda'
-  }
-}
-
-/** Elige el motivo según el día (con fallback por ciudad). */
-export function pickIllustration(citySlug: string, dayId: number): IllustrationKind {
-  return byDay[dayId] ?? cityFallback(citySlug)
+/** Dibujo del día, o null si el día no tiene asset (no se pinta nada). */
+export function pickIllustration(dayId: number): IllustrationKind | null {
+  return byDay[dayId] ?? null
 }

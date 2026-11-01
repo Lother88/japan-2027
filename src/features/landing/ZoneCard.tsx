@@ -10,6 +10,7 @@ import type { Zone } from '@/data/types'
 import type { ThemeTokens } from '@/features/landing/theme'
 import { getContext } from '@/data/context'
 import { fontSerif, fontSans } from '@/features/landing/theme'
+import { tagLabel } from '@/data/tags'
 
 interface Props {
   zone: Zone
@@ -53,7 +54,7 @@ export default function ZoneCard({ zone, tokens }: Props) {
           {badge}
         </span>
         <div style={{ flex: 1 }}>
-          <div style={{ fontFamily: fontSerif, fontSize: 20, fontWeight: 600, color: 'var(--ink)' }}>{zone.name}</div>
+          <h3 style={{ margin: 0, fontFamily: fontSerif, fontSize: 20, fontWeight: 600, color: 'var(--ink)' }}>{zone.name}</h3>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6, marginTop: 8 }}>
             {zone.tags.map((tag) => (
               <span
@@ -67,7 +68,7 @@ export default function ZoneCard({ zone, tokens }: Props) {
                   borderRadius: 20,
                 }}
               >
-                {tag}
+                {tagLabel(tag)}
               </span>
             ))}
           </div>

@@ -3,12 +3,16 @@
  *
  * Portado de handleScroll del diseño. En un único listener de scroll (con rAF):
  *  - calcula el día activo (sección [data-day] cuyo top cruza el 42% del viewport)
- *  - calcula el progreso 0..1 dentro del contenedor [data-journey]
- *  - aplica parallax a los elementos [data-parallax]
- *  - alterna el fondo del nav [data-nav] y la visibilidad del botón [data-totop]
+ *  - calcula el progreso 0..1 dentro del contenedor [data-journey] y lo escribe en el rail
+ *  - alterna la visibilidad del botón [data-totop] (oculto → `inert`, fuera del Tab)
  *
- * Devuelve { activeIndex, progress } para alimentar el rail. activeIndex es el
- * índice (0-based) de la sección de día en orden de DOM.
+ * El progreso se escribe directamente como transform en las barras [data-rail-progress]
+ * del rail (sin estado de React por frame). Devuelve { activeIndex, progress }: activeIndex
+ * es el índice (0-based) de la sección de día en orden de DOM, y solo cambia (y re-renderiza)
+ * al cambiar de día; progress es el valor de ese momento, para el render del rail.
+ *
+ * El parallax del kanji de fondo ya no pasa por aquí: es CSS scroll-driven
+ * (`animation-timeline: view()` en index.css).
  */
 import { useEffect, useState } from 'react'
 
@@ -30,12 +34,16 @@ export function useScrollJourney(): JourneyState {
       typeof cancelAnimationFrame !== 'undefined' ? cancelAnimationFrame : (id) => clearTimeout(id)
 
     let raf = 0
+    // Última visibilidad aplicada a ToTop: solo se escribe cuando cambia.
+    let lastVis: boolean | undefined
 
     const compute = () => {
       raf = 0
+      // 1) Lecturas (todas antes de cualquier escritura, para no forzar reflows).
       const sections = Array.from(document.querySelectorAll('[data-day]'))
       const journey = document.querySelector('[data-journey]')
-      const mid = window.innerHeight * 0.42
+      const vh = window.innerHeight
+      const mid = vh * 0.42
 
       let active = 0
       sections.forEach((s, i) => {
@@ -46,44 +54,36 @@ export function useScrollJourney(): JourneyState {
       let progress = 0
       if (journey) {
         const r = journey.getBoundingClientRect()
-        const total = Math.max(r.height - window.innerHeight, 1)
+        const total = Math.max(r.height - vh, 1)
         const passed = Math.min(Math.max(-r.top, 0), total)
         progress = Math.max(0, Math.min(1, passed / total))
       }
 
-      setState((prev) =>
-        active !== prev.activeIndex || Math.abs(progress - prev.progress) > 0.004
-          ? { activeIndex: active, progress }
-          : prev,
-      )
+      const vis = window.scrollY > vh * 0.6
 
-      // parallax
-      const vh = window.innerHeight
-      document.querySelectorAll<HTMLElement>('[data-parallax]').forEach((el) => {
-        const speed = parseFloat(el.getAttribute('data-parallax') || '0.1') || 0.1
-        const r = el.getBoundingClientRect()
-        const center = r.top + r.height / 2
-        const d = center - vh / 2
-        el.style.transform = 'translateY(' + (-d * speed).toFixed(1) + 'px)'
+      // 2) Escrituras. El progreso va directo a las barras del rail (transform: composited,
+      //    sin layout) en vez de pasar por React en cada frame.
+      document.querySelectorAll<HTMLElement>('[data-rail-progress="v"]').forEach((b) => {
+        b.style.transform = `scaleY(${progress})`
+      })
+      document.querySelectorAll<HTMLElement>('[data-rail-progress="h"]').forEach((b) => {
+        b.style.transform = `scaleX(${progress})`
       })
 
-      // botón volver arriba
+      // botón volver arriba: solo al cambiar de visibilidad
       const top = document.querySelector<HTMLElement>('[data-totop]')
-      if (top) {
-        const vis = window.scrollY > vh * 0.6
+      if (top && vis !== lastVis) {
+        lastVis = vis
         top.style.opacity = vis ? '1' : '0'
         top.style.transform = vis ? 'translateY(0) scale(1)' : 'translateY(14px) scale(.9)'
         top.style.pointerEvents = vis ? 'auto' : 'none'
+        // Invisible ⇒ inerte: ni enfocable con Tab ni expuesto a lectores de pantalla.
+        top.toggleAttribute('inert', !vis)
       }
 
-      // fondo del nav
-      const nav = document.querySelector<HTMLElement>('[data-nav]')
-      if (nav) {
-        const on = window.scrollY > 40
-        nav.style.background = on ? 'rgba(251,246,240,0.88)' : 'rgba(251,246,240,0)'
-        nav.style.backdropFilter = on ? 'blur(12px)' : 'none'
-        nav.style.borderBottomColor = on ? '#e7ddcc' : 'transparent'
-      }
+      // React solo re-renderiza al cambiar el día activo. `progress` se guarda para el render
+      // (el rail lo pinta con el valor de ese momento), pero por sí solo no provoca renders.
+      setState((prev) => (active !== prev.activeIndex ? { activeIndex: active, progress } : prev))
     }
 
     const schedule = () => {

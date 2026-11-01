@@ -27,3 +27,11 @@ dist-ssr
 *-handoff.zip
 .design-handoff*/
 /.atl/
+
+# Art generators (tools/art): build outputs and previews are regenerated on demand
+/tools/art/**/out/
+/tools/art/**/manifest/
+/tools/art/**/*.svg
+/tools/art/**/*.html
+/tools/art/**/meta.json
+/tools/art/**/fragments.json

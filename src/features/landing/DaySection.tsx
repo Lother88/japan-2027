@@ -1,10 +1,14 @@
 /**
  * DaySection — sección completa de un día del itinerario.
  *
- * Renderiza el header (número de día, eyebrow, subtítulo), watermark kanji,
- * ilustración decorativa, transfers y slots del día con animaciones Reveal.
+ * Renderiza el header (número de día, eyebrow, subtítulo e ilustración isométrica del
+ * día en su propio hueco), watermark kanji, transfers y slots del día con animaciones
+ * Reveal. La ilustración va a la derecha del título en escritorio y encima en móvil
+ * (reglas [data-day-head]/[data-day-art] en index.css). En escritorio el arte ocupa el 36 %
+ * de la columna (máx. 280 px) y el subtítulo se equilibra (text-wrap: balance) para que
+ * ninguno pase de dos líneas. El kanji de fondo hace parallax por CSS (index.css).
  */
-import type { CSSProperties } from 'react'
+import type { CSSProperties, ReactNode } from 'react'
 import type { Day } from '@/data/types'
 import { cities } from '@/data'
 import {
@@ -16,9 +20,25 @@ import {
 } from '@/features/landing/theme'
 import Reveal from '@/features/landing/Reveal'
 import { DayIllustration } from '@/features/landing/illustrations'
-import { pickIllustration } from '@/features/landing/illustrationKind'
 import TransferCard from '@/features/landing/TransferCard'
 import SlotBlock from '@/features/landing/SlotBlock'
+import { dayAnchor } from '@/features/landing/scroll'
+
+/**
+ * Mantiene enteras las palabras con guion («Shirakawa-go», «Kinkaku-ji»): con text-wrap:
+ * balance el navegador prefería cortar tras el guion («Shirakawa-» / «go»).
+ */
+function keepHyphenated(text: string): ReactNode[] {
+  return text.split(/(\S+-\S+)/).map((part, i) =>
+    i % 2 === 1 ? (
+      <span key={i} style={{ whiteSpace: 'nowrap' }}>
+        {part}
+      </span>
+    ) : (
+      part
+    ),
+  )
+}
 
 interface DaySectionProps {
   day: Day
@@ -29,7 +49,7 @@ export default function DaySection({ day, index }: DaySectionProps) {
   const tokens = tokensForCity(day.citySlug)
   const meta = getCityMeta(day.citySlug)
 
-  // index par → ilustración/kanji a la derecha; impar → izquierda
+  // index par → kanji a la derecha; impar → izquierda (la ilustración vive en la cabecera)
   const side: 'left' | 'right' = index % 2 === 0 ? 'right' : 'left'
 
   // Subtítulo: parte tras el último '—'; si no hay, title completo
@@ -56,24 +76,27 @@ export default function DaySection({ day, index }: DaySectionProps) {
 
   return (
     <section
+      id={dayAnchor(day.id)}
       data-day={day.id}
       data-screen-label={`Día ${pad2(day.id)} · ${cityName}`}
       style={{
         position: 'relative',
-        overflow: 'hidden',
+        // clip y no hidden: hidden la convierte en contenedor de scroll y el parallax del kanji
+        // (animation-timeline: view()) tomaría la sección como scroller y no avanzaría.
+        overflow: 'clip',
         background: `linear-gradient(180deg, ${tint} 0%, transparent 40%)`,
       }}
     >
       {/* Watermark kanji */}
       <div
         data-kanji
-        data-parallax="0.14"
         style={{
           position: 'absolute',
           top: '6%',
           fontFamily: fontSerif,
           fontWeight: 800,
-          fontSize: 'clamp(140px,18vw,260px)',
+          fontSize: 'var(--text-watermark)',
+          lineHeight: 'var(--text-watermark--line-height)',
           color: `color-mix(in srgb, ${meta.dot} 7%, transparent)`,
           writingMode: 'vertical-rl',
           zIndex: 0,
@@ -84,9 +107,6 @@ export default function DaySection({ day, index }: DaySectionProps) {
       >
         {meta.kanji}
       </div>
-
-      {/* Ilustración decorativa */}
-      <DayIllustration kind={pickIllustration(day.citySlug, day.id)} side={side} seed={day.id} />
 
       {/* Contenido principal */}
       <div
@@ -100,56 +120,72 @@ export default function DaySection({ day, index }: DaySectionProps) {
         }}
       >
         {/* Header */}
-        <Reveal delay={0}>
-          <div style={{ marginBottom: '30px' }}>
-            <div
-              style={{
-                display: 'flex',
-                alignItems: 'baseline',
-                gap: '14px',
-                flexWrap: 'wrap',
-              }}
-            >
-              <span
+        <Reveal>
+          <div
+            data-day-head
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: 'clamp(16px,2.4vw,24px)',
+              marginBottom: '30px',
+            }}
+          >
+            <div style={{ flex: '1 1 0', minWidth: 0 }}>
+              <div
+                style={{
+                  display: 'flex',
+                  alignItems: 'baseline',
+                  gap: '14px',
+                  flexWrap: 'wrap',
+                }}
+              >
+                <span
+                  style={{
+                    fontFamily: fontSerif,
+                    fontWeight: 800,
+                    fontSize: 'var(--text-day-num)',
+                    color: 'var(--ink)',
+                    lineHeight: 'var(--text-day-num--line-height)',
+                  }}
+                >
+                  Día {pad2(day.id)}
+                </span>
+                <span
+                  style={{
+                    fontSize: 'var(--text-eyebrow)',
+                    lineHeight: 'var(--text-eyebrow--line-height)',
+                    letterSpacing: 'var(--text-eyebrow--letter-spacing)',
+                    textTransform: 'uppercase',
+                    color: tokens.eyebrow,
+                    fontWeight: 700,
+                  }}
+                >
+                  {eyebrow}
+                </span>
+              </div>
+              <h2
                 style={{
                   fontFamily: fontSerif,
-                  fontWeight: 800,
-                  fontSize: 'clamp(40px,6vw,64px)',
-                  color: 'var(--ink)',
-                  lineHeight: 1,
+                  fontWeight: 600,
+                  fontSize: 'var(--text-day-title)',
+                  lineHeight: 'var(--text-day-title--line-height)',
+                  textWrap: 'balance',
+                  color: tokens.heading,
+                  margin: '10px 0 0',
                 }}
               >
-                Día {pad2(day.id)}
-              </span>
-              <span
-                style={{
-                  fontSize: '13px',
-                  letterSpacing: '.16em',
-                  textTransform: 'uppercase',
-                  color: tokens.eyebrow,
-                  fontWeight: 700,
-                }}
-              >
-                {eyebrow}
-              </span>
+                {keepHyphenated(subtitle)}
+              </h2>
             </div>
-            <h2
-              style={{
-                fontFamily: fontSerif,
-                fontWeight: 600,
-                fontSize: 'clamp(24px,3.4vw,38px)',
-                color: tokens.heading,
-                margin: '10px 0 0',
-              }}
-            >
-              {subtitle}
-            </h2>
+
+            {/* Ilustración isométrica del día (decorativa, carga diferida; nada si no hay) */}
+            <DayIllustration day={day.id} style={{ flex: '0 0 clamp(200px,36%,280px)' }} />
           </div>
         </Reveal>
 
         {/* Transfers */}
         {transfers.map((t, i) => (
-          <Reveal key={i} delay={80}>
+          <Reveal key={i}>
             <div style={{ marginBottom: '26px' }}>
               <TransferCard transfer={t} tokens={tokens} />
             </div>
@@ -160,7 +196,6 @@ export default function DaySection({ day, index }: DaySectionProps) {
         {slots.map((s, i) => (
           <Reveal
             key={s.key}
-            delay={120 + 40 * i}
             style={{ marginBottom: i < slots.length - 1 ? '24px' : 0 }}
           >
             <SlotBlock slot={s} tokens={tokens} />

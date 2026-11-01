@@ -3,21 +3,20 @@
  * El estilo inicial es invisible (opacity:0, fuera de interacción).
  * El hook global de scroll (o useScrollJourney) controla opacity/transform/pointerEvents
  * leyendo [data-totop] directamente; aquí sólo declaramos el estado inicial.
+ * Mientras está oculto es `inert` (fuera del orden de Tab); useScrollJourney lo alterna.
+ * Fondo, hover y presión viven en index.css ([data-totop]); la presión usa la propiedad
+ * independiente `scale`, que se compone con el `transform` que escribe el JS sin pisarlo.
  */
 import { scrollTop } from '@/features/landing/scroll'
 
 export default function ToTop() {
   return (
     <button
+      type="button"
       data-totop
+      inert
       onClick={scrollTop}
       aria-label="Volver arriba"
-      onMouseEnter={(e) => {
-        e.currentTarget.style.background = 'var(--primary-press)'
-      }}
-      onMouseLeave={(e) => {
-        e.currentTarget.style.background = 'var(--primary-fill)'
-      }}
       style={{
         position: 'fixed',
         bottom: '26px',
@@ -29,7 +28,6 @@ export default function ToTop() {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        background: 'var(--primary-fill)',
         color: '#fdf3e7',
         border: 'none',
         cursor: 'pointer',
@@ -37,7 +35,8 @@ export default function ToTop() {
         opacity: 0,
         transform: 'translateY(14px) scale(.9)',
         pointerEvents: 'none',
-        transition: 'opacity .3s ease,transform .3s ease',
+        transition:
+          'opacity 200ms var(--ease-out), transform 200ms var(--ease-out), scale 160ms var(--ease-out), background-color 200ms ease',
       }}
     >
       <svg

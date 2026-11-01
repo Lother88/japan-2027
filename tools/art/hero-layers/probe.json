@@ -1,0 +1,466 @@
+{
+ "hash": "03aeced36bc6",
+ "movers": [
+  "carp-1",
+  "carp-2",
+  "carp-3",
+  "train",
+  "glow-toro",
+  "glow-chochin-2",
+  "glow-chochin-1",
+  "petal"
+ ],
+ "lifted": [
+  "6→8",
+  "8→10",
+  "14→16"
+ ],
+ "bad": [],
+ "result": [
+  {
+   "i": 0,
+   "name": "plinth",
+   "moving": null,
+   "slot": 0,
+   "hits": {},
+   "px": 154790
+  },
+  {
+   "i": 1,
+   "name": "river",
+   "moving": null,
+   "slot": 0,
+   "hits": {},
+   "px": 3339
+  },
+  {
+   "i": 2,
+   "name": "fuji",
+   "moving": null,
+   "slot": 0,
+   "hits": {},
+   "px": 56639
+  },
+  {
+   "i": 3,
+   "name": "pine",
+   "moving": null,
+   "slot": 0,
+   "hits": {},
+   "px": 4288
+  },
+  {
+   "i": 4,
+   "name": "via.abut",
+   "moving": null,
+   "slot": 0,
+   "hits": {},
+   "px": 3030
+  },
+  {
+   "i": 5,
+   "name": "cat.mast",
+   "moving": null,
+   "slot": 0,
+   "hits": {},
+   "px": 710
+  },
+  {
+   "i": 6,
+   "name": "pine#2",
+   "moving": null,
+   "slot": 0,
+   "hits": {},
+   "px": 5467
+  },
+  {
+   "i": 7,
+   "name": "via.pier",
+   "moving": null,
+   "slot": 0,
+   "hits": {},
+   "px": 1909
+  },
+  {
+   "i": 8,
+   "name": "koi",
+   "moving": null,
+   "slot": 0,
+   "hits": {},
+   "px": 893
+  },
+  {
+   "i": 9,
+   "name": "carp-1",
+   "moving": "carp-1",
+   "slot": 1,
+   "hits": {},
+   "px": 1476
+  },
+  {
+   "i": 10,
+   "name": "carp-2",
+   "moving": "carp-2",
+   "slot": 3,
+   "hits": {},
+   "px": 1076
+  },
+  {
+   "i": 11,
+   "name": "carp-3",
+   "moving": "carp-3",
+   "slot": 5,
+   "hits": {},
+   "px": 714
+  },
+  {
+   "i": 12,
+   "name": "koi",
+   "moving": null,
+   "slot": 10,
+   "hits": {
+    "1": 61,
+    "3": 54,
+    "5": 43
+   },
+   "px": 2122
+  },
+  {
+   "i": 13,
+   "name": "stone",
+   "moving": null,
+   "slot": 0,
+   "hits": {},
+   "px": 286
+  },
+  {
+   "i": 14,
+   "name": "stone#2",
+   "moving": null,
+   "slot": 0,
+   "hits": {},
+   "px": 166
+  },
+  {
+   "i": 15,
+   "name": "cat.mast#2",
+   "moving": null,
+   "slot": 0,
+   "hits": {},
+   "px": 709
+  },
+  {
+   "i": 16,
+   "name": "pine#3",
+   "moving": null,
+   "slot": 0,
+   "hits": {},
+   "px": 3595
+  },
+  {
+   "i": 17,
+   "name": "via.pier#2",
+   "moving": null,
+   "slot": 0,
+   "hits": {},
+   "px": 1876
+  },
+  {
+   "i": 18,
+   "name": "cat.mast#3",
+   "moving": null,
+   "slot": 0,
+   "hits": {},
+   "px": 708
+  },
+  {
+   "i": 19,
+   "name": "via.abut#2",
+   "moving": null,
+   "slot": 0,
+   "hits": {},
+   "px": 2996
+  },
+  {
+   "i": 20,
+   "name": "via.deck",
+   "moving": null,
+   "slot": 0,
+   "hits": {},
+   "px": 20643
+  },
+  {
+   "i": 21,
+   "name": "via.track",
+   "moving": null,
+   "slot": 0,
+   "hits": {},
+   "px": 13658
+  },
+  {
+   "i": 22,
+   "name": "train",
+   "moving": "train",
+   "slot": 7,
+   "hits": {},
+   "px": 12419
+  },
+  {
+   "i": 23,
+   "name": "fstone",
+   "moving": null,
+   "slot": 0,
+   "hits": {},
+   "px": 253
+  },
+  {
+   "i": 24,
+   "name": "fstone#2",
+   "moving": null,
+   "slot": 0,
+   "hits": {},
+   "px": 149
+  },
+  {
+   "i": 25,
+   "name": "cat.wire",
+   "moving": null,
+   "slot": 0,
+   "hits": {},
+   "px": 528
+  },
+  {
+   "i": 26,
+   "name": "cat.arm",
+   "moving": null,
+   "slot": 0,
+   "hits": {},
+   "px": 177
+  },
+  {
+   "i": 27,
+   "name": "cat.arm#2",
+   "moving": null,
+   "slot": 0,
+   "hits": {},
+   "px": 177
+  },
+  {
+   "i": 28,
+   "name": "toro",
+   "moving": null,
+   "slot": 0,
+   "hits": {},
+   "px": 2112
+  },
+  {
+   "i": 29,
+   "name": "glow-toro",
+   "moving": "glow-toro",
+   "slot": 9,
+   "hits": {},
+   "px": 2955
+  },
+  {
+   "i": 30,
+   "name": "via.para",
+   "moving": null,
+   "slot": 0,
+   "hits": {},
+   "px": 4053
+  },
+  {
+   "i": 31,
+   "name": "plat.base",
+   "moving": null,
+   "slot": 0,
+   "hits": {},
+   "px": 6441
+  },
+  {
+   "i": 32,
+   "name": "cherry",
+   "moving": null,
+   "slot": 10,
+   "hits": {
+    "9": 169
+   },
+   "px": 8152
+  },
+  {
+   "i": 33,
+   "name": "plat.top",
+   "moving": null,
+   "slot": 10,
+   "hits": {
+    "7": 85
+   },
+   "px": 2998
+  },
+  {
+   "i": 34,
+   "name": "fpine",
+   "moving": null,
+   "slot": 10,
+   "hits": {
+    "8": 51
+   },
+   "px": 4563
+  },
+  {
+   "i": 35,
+   "name": "plat.bench",
+   "moving": null,
+   "slot": 10,
+   "hits": {
+    "8": 188
+   },
+   "px": 188
+  },
+  {
+   "i": 36,
+   "name": "canopy.post",
+   "moving": null,
+   "slot": 10,
+   "hits": {
+    "8": 119
+   },
+   "px": 212
+  },
+  {
+   "i": 37,
+   "name": "canopy.post#2",
+   "moving": null,
+   "slot": 10,
+   "hits": {
+    "7": 33,
+    "8": 154
+   },
+   "px": 180
+  },
+  {
+   "i": 38,
+   "name": "chochin#2",
+   "moving": null,
+   "slot": 10,
+   "hits": {
+    "7": 25,
+    "8": 175
+   },
+   "px": 188
+  },
+  {
+   "i": 39,
+   "name": "glow-chochin-2",
+   "moving": "glow-chochin-2",
+   "slot": 11,
+   "hits": {},
+   "px": 1496
+  },
+  {
+   "i": 40,
+   "name": "canopy.beam",
+   "moving": null,
+   "slot": 12,
+   "hits": {
+    "7": 207,
+    "8": 43,
+    "11": 246
+   },
+   "px": 485
+  },
+  {
+   "i": 41,
+   "name": "chochin",
+   "moving": null,
+   "slot": 12,
+   "hits": {
+    "8": 144,
+    "11": 7,
+    "12": 4
+   },
+   "px": 183
+  },
+  {
+   "i": 42,
+   "name": "glow-chochin-1",
+   "moving": "glow-chochin-1",
+   "slot": 13,
+   "hits": {},
+   "px": 1485
+  },
+  {
+   "i": 43,
+   "name": "canopy.roof",
+   "moving": null,
+   "slot": 16,
+   "hits": {
+    "7": 1123,
+    "8": 144,
+    "11": 531,
+    "12": 508,
+    "13": 526
+   },
+   "px": 2198
+  },
+  {
+   "i": 44,
+   "name": "path.stone",
+   "moving": null,
+   "slot": 0,
+   "hits": {},
+   "px": 119
+  },
+  {
+   "i": 45,
+   "name": "cat.arm#3",
+   "moving": null,
+   "slot": 0,
+   "hits": {},
+   "px": 175
+  },
+  {
+   "i": 46,
+   "name": "path.stone#2",
+   "moving": null,
+   "slot": 0,
+   "hits": {},
+   "px": 103
+  },
+  {
+   "i": 47,
+   "name": "path.stone#3",
+   "moving": null,
+   "slot": 0,
+   "hits": {},
+   "px": 124
+  },
+  {
+   "i": 48,
+   "name": "torii",
+   "moving": null,
+   "slot": 10,
+   "hits": {
+    "7": 1185,
+    "10": 516
+   },
+   "px": 7716
+  },
+  {
+   "i": 49,
+   "name": "path.stone#4",
+   "moving": null,
+   "slot": 0,
+   "hits": {},
+   "px": 103
+  },
+  {
+   "i": 50,
+   "name": "petal",
+   "moving": "petal",
+   "slot": 15,
+   "hits": {},
+   "px": 829
+  }
+ ]
+}

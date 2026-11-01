@@ -1,8 +1,10 @@
 /**
  * Journey — contenedor del itinerario completo.
  *
- * Dos columnas: rail sticky (DayRail) + scrollable main (DaySection por día).
+ * Dos columnas: rail sticky (DayRail, <nav>) + lista de días (DaySection por día).
  * Conecta useScrollJourney con el rail para sincronizar progreso y día activo.
+ * El landmark <main> lo pone App (envuelve hero + journey); `#itinerario` es el
+ * destino del skip-link.
  */
 import { itinerary } from '@/data'
 import { useScrollJourney } from '@/features/landing/useScrollJourney'
@@ -13,7 +15,9 @@ export default function Journey() {
   const { activeIndex, progress } = useScrollJourney()
 
   return (
-    <div
+    <section
+      id="itinerario"
+      aria-label="Itinerario día a día"
       data-journey
       style={{
         position: 'relative',
@@ -24,11 +28,11 @@ export default function Journey() {
     >
       <DayRail days={itinerary} activeIndex={activeIndex} progress={progress} />
 
-      <main style={{ flex: 1, minWidth: 0, position: 'relative' }}>
+      <div style={{ flex: 1, minWidth: 0, position: 'relative' }}>
         {itinerary.map((day, i) => (
           <DaySection key={day.id} day={day} index={i} />
         ))}
-      </main>
-    </div>
+      </div>
+    </section>
   )
 }
