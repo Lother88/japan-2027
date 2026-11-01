@@ -16,6 +16,30 @@ function rootBlock(): string {
   return m[1]
 }
 
+/** Bloque final `@media (prefers-reduced-motion: reduce) { … }` (el global del fichero). */
+function reduceBlock(): string {
+  const at = css.lastIndexOf('@media (prefers-reduced-motion: reduce)')
+  if (at < 0) throw new Error('index.css no tiene bloque de reduce-motion')
+  return css.slice(at)
+}
+
+describe('reduce-motion: menos movimiento, se conservan los fundidos', () => {
+  it('ToTop solo funde (anula el transform que escribe el JS)', () => {
+    expect(reduceBlock()).toMatch(/\[data-totop\]\s*\{\s*transform:\s*none\s*!important;\s*\}/)
+  })
+
+  it('el spoiler no anima la altura: solo funde la opacidad', () => {
+    const rule = reduceBlock().match(/details\[data-spoiler\]::details-content\s*\{([^}]*)\}/)?.[1]
+    expect(rule, 'falta la regla del spoiler con reduce').toBeDefined()
+    expect(rule).toMatch(/transition:\s*opacity\s+150ms/)
+    expect(rule).not.toMatch(/height/)
+  })
+
+  it('el chevron del spoiler gira sin transición', () => {
+    expect(reduceBlock()).toMatch(/details\[data-spoiler\]\s*\[data-spoiler-chev\]\s*\{\s*transition:\s*none;\s*\}/)
+  })
+})
+
 describe('tokens de easing', () => {
   it.each([
     ['--ease-out', 'cubic-bezier(0.23, 1, 0.32, 1)'],

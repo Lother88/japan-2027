@@ -518,4 +518,11 @@ details[data-spoiler][open]::details-content { height: auto; opacity: 1; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; }
   html { scroll-behavior: auto; }
+  /* ToTop: solo fundido (el JS escribe transform inline; !important lo neutraliza) */
+  [data-totop] { transform: none !important; }
+  /* Spoiler: la altura salta, el contenido funde */
+  details[data-spoiler]::details-content {
+    transition: opacity 150ms ease, content-visibility 150ms allow-discrete;
+  }
+  details[data-spoiler] [data-spoiler-chev] { transition: none; }
 }
