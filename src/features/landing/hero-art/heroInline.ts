@@ -1,6 +1,9 @@
 /**
- * Chunk del hero: la maqueta y los 6 spots que se ven sobre el pliegue. Solo se importa con
- * `import()` desde registry.ts, así que Vite/Rolldown lo emite fuera del bundle principal.
+ * Arte en línea de la portada: la maqueta y los 6 spots que se ven sobre el pliegue.
+ *
+ * Solo lo importan los componentes .astro en el build (HeroArt, ArtBox), que lo escriben como
+ * SVG en línea en el HTML. NUNCA desde un script de cliente: arrastraría ~350 KB de marcado al
+ * bundle. El arte diferido (banda, ruta, omamori, días) va por registry.ts / iso/registry.ts.
  */
 import type { HeroSceneArt, HeroSpotName, SpotArt } from './registry'
 import {

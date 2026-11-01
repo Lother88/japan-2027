@@ -1,15 +1,65 @@
 ---
 /**
- * HeroArt — caja de la maqueta isométrica del hero («Maqueta de tren al pie del Fuji»).
+ * HeroArt — la maqueta isométrica del hero («Maqueta de tren al pie del Fuji»), en línea.
  *
- * La caja reserva la proporción del viewBox desde el HTML (aspect-ratio en index.css: 1200/640
- * en escritorio, 676/478 en móvil ≤ 760 px), así que la llegada del arte no provoca saltos.
- * Escritorio: lienzo con el arte a la derecha y la zona segura (x 0–470) libre para el titular,
- * que Hero superpone. Móvil: viewBox recortado al arte, encima del título.
+ * - El marcado (heroInline.ts) se escribe en el HTML en el build: el arte llega con el documento.
+ * - La caja reserva la proporción del viewBox desde el HTML (aspect-ratio en index.css: 1200/640
+ *   en escritorio, 676/478 en móvil ≤ 760 px), así que no hay saltos de maquetación.
+ * - Escritorio: lienzo 1200×640 con el arte a la derecha y la zona segura (x 0–470) libre para
+ *   el titular, que Hero superpone. Móvil (≤ 760 px): viewBox recortado al arte, encima del título.
+ * - Va por capas: un div.iso-hero con el <style> común una sola vez y un <svg class="hero-layer
+ *   hero-layer-{name}"> por capa, de atrás adelante y con el mismo viewBox. Solo las capas que se
+ *   mueven animan (transform/opacity sobre su propio <svg>), así que el navegador las compone sin
+ *   repintar el dibujo entero. Sus desplazamientos y pivotes van en % de la caja y dependen del
+ *   recorte: con el viewBox móvil, el contenedor lleva data-crop="mobile".
+ * - Recorte móvil: el HTML sale con el viewBox de escritorio y el script en línea que va justo
+ *   detrás lo cambia antes del primer pintado si `(max-width: 760px)`, y sigue los cambios.
+ * - Las animaciones se pausan con data-art-paused en el hero (scripts/lazy-art.ts) cuando la
+ *   portada sale de pantalla.
  *
- * El arte por capas (div.iso-hero con el <style> común y un <svg> por capa) entra en la Fase 3.
- * Es decorativa: aria-hidden.
+ * Es decorativa: aria-hidden y sin foco.
  */
+import { HERO_SCENE } from '@/features/landing/hero-art/heroInline'
 ---
 
-<div data-hero-art aria-hidden="true"><slot /></div>
+<div data-hero-art aria-hidden="true">
+  <div
+    class="iso-hero"
+    data-viewbox={HERO_SCENE.viewBox}
+    data-viewbox-mobile={HERO_SCENE.viewBoxMobile}
+    style="width:100%;height:100%"
+  >
+    {/* <style> crudo vía Fragment: Astro extraería y acotaría un <style> literal del componente */}
+    <Fragment set:html={`<style>${HERO_SCENE.style}</style>`} />
+    {
+      HERO_SCENE.layers.map((layer) => (
+        <svg
+          class={`hero-layer hero-layer-${layer.name}`}
+          viewBox={HERO_SCENE.viewBox}
+          preserveAspectRatio="xMidYMid meet"
+          aria-hidden="true"
+          focusable="false"
+          set:html={layer.markup}
+        />
+      ))
+    }
+  </div>
+  <script is:inline>
+    // Recorte móvil del hero antes del primer pintado (ver HeroArt.astro). Debe coincidir con
+    // el @media (max-width: 760px) de index.css que cambia la proporción de [data-hero-art].
+    ;(function () {
+      var root = document.currentScript.previousElementSibling
+      var mq = window.matchMedia('(max-width: 760px)')
+      var apply = function () {
+        var mobile = mq.matches
+        var vb = mobile ? root.getAttribute('data-viewbox-mobile') : root.getAttribute('data-viewbox')
+        if (mobile) root.setAttribute('data-crop', 'mobile')
+        else root.removeAttribute('data-crop')
+        var layers = root.querySelectorAll(':scope > svg')
+        for (var i = 0; i < layers.length; i++) layers[i].setAttribute('viewBox', vb)
+      }
+      apply()
+      mq.addEventListener('change', apply)
+    })()
+  </script>
+</div>
