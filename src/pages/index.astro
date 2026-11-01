@@ -27,12 +27,14 @@ import ThemeToggle from '@/components/ThemeToggle.astro'
   <ThemeToggle />
   <script>
     // Comportamiento (Astro lo empaqueta en un único módulo): tema, día activo del rail y
-    // progreso, aparición de bloques, botones de navegación, cuenta atrás y arte diferido.
+    // progreso, aparición de bloques, botones de navegación, cuenta atrás, arte diferido y,
+    // al llegar a su caja, el mapa (MapLibre en su propio chunk).
     import '@/scripts/theme'
     import '@/scripts/journey'
     import '@/scripts/reveal'
     import '@/scripts/nav'
     import '@/scripts/countdown'
     import '@/scripts/lazy-art'
+    import '@/scripts/map'
   </script>
 </Base>

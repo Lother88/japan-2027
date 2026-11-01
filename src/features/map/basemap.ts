@@ -12,7 +12,7 @@
  */
 import type { LayerSpecification, StyleSpecification } from 'maplibre-gl'
 import { buildRouteLineString, buildExcursionLines } from '@/data'
-import type { ThemeMode } from '@/features/landing/useThemeMode'
+import type { ThemeMode } from '@/lib/themeMode'
 
 /** Estilos sin clave de OpenFreeMap: «positron» (claro) y «dark» (oscuro). */
 export const BASEMAP_URLS: Readonly<Record<ThemeMode, string>> = {
