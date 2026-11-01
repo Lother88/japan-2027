@@ -3,7 +3,7 @@
  * (setStyle) en vez de destruir y recrear el mapa (que dejaba el lienzo vacío dentro
  * de la View Transition del tema).
  */
-import { render, waitFor } from '@testing-library/react'
+import { fireEvent, render, screen, waitFor } from '@testing-library/react'
 import { vi } from 'vitest'
 import type { StyleSpecification } from 'maplibre-gl'
 import HeroMap from '@/features/map/HeroMap'
@@ -145,5 +145,17 @@ describe('HeroMap — marcadores', () => {
       expect(label).toHaveTextContent(markerLabel(c.name))
       expect(label).toHaveAttribute('data-placement', LABEL_PLACEMENT[c.slug])
     })
+  })
+})
+
+describe('HeroMap — botón de pantalla completa', () => {
+  it('el hover y la presión son CSS ([data-map-expand]), no estilos inline', async () => {
+    render(ui('light'))
+    await waitFor(() => expect(h.maps).toHaveLength(1))
+    const btn = screen.getByRole('button', { name: 'Ver el mapa a pantalla completa' })
+    expect(btn).toHaveAttribute('data-map-expand')
+    fireEvent.mouseEnter(btn)
+    expect(btn.style.transform).toBe('')
+    expect(btn.style.transition).toBe('')
   })
 })

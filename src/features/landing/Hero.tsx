@@ -97,23 +97,16 @@ export default function Hero() {
           <HeroSpots />
 
           {/* CTA: baja a la banda «La ruta» */}
+          {/* Fondo, hover y presión en index.css ([data-cta]) */}
           <button
             type="button"
+            data-cta
             onClick={scrollToRoute}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.background = 'var(--primary-press)'
-              e.currentTarget.style.transform = 'translateY(-1px)'
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.background = 'var(--primary-fill)'
-              e.currentTarget.style.transform = 'translateY(0)'
-            }}
             style={{
               marginTop: '28px',
               display: 'inline-flex',
               alignItems: 'center',
               gap: '11px',
-              background: 'var(--primary-fill)',
               color: '#fdf3e7',
               border: 'none',
               borderRadius: '10px',
@@ -122,7 +115,6 @@ export default function Hero() {
               fontWeight: 700,
               fontSize: '15px',
               cursor: 'pointer',
-              transition: 'background .2s ease,transform .2s ease',
             }}
           >
             Explora la ruta

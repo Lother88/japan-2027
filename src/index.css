@@ -392,6 +392,34 @@ button[data-scrollcue] {
   cursor: pointer;
 }
 
+/* Feedback de botones: color con ease; presión con scale 0.97 (ease-out fuerte, 160 ms).
+   Hover gateado: en táctil el tap dispara un hover falso que se queda pegado. */
+[data-cta] {
+  background: var(--primary-fill);
+  transition: background-color 200ms ease, transform 160ms var(--ease-out);
+}
+[data-totop] { background: var(--primary-fill); }
+[data-map-expand],
+[data-ttoggle],
+[data-scrollcue],
+[data-day-nav] { transition: transform 160ms var(--ease-out); }
+@media (hover: hover) and (pointer: fine) {
+  [data-cta]:hover { background: var(--primary-press); }
+  [data-totop]:hover { background: var(--primary-press); }
+}
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  [data-cta]:hover,
+  [data-map-expand]:hover { transform: translateY(-1px); }
+}
+/* Presión: después del hover para ganarle en cascada (misma especificidad) */
+[data-cta]:active,
+[data-map-expand]:active,
+[data-ttoggle]:active,
+[data-scrollcue]:active,
+a[data-day-nav]:active { transform: scale(0.97); }
+/* ToTop: su transform lo escribe el JS en línea; la presión va por la propiedad `scale` */
+[data-totop]:active { scale: 0.97; }
+
 /* Banda «La ruta» (RouteSection.tsx): banda «Muro» a sangre y el mapa debajo.
    Sin z-index, transform, filter ni contain: el mapa a pantalla completa (fixed) depende de ello. */
 [data-route] { background: var(--paper); }

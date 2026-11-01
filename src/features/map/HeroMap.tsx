@@ -233,8 +233,8 @@ export default function HeroMap({ expanded, onToggleExpand }: HeroMapProps) {
         onClick={onToggleExpand}
         aria-label={expanded ? 'Cerrar pantalla completa del mapa' : 'Ver el mapa a pantalla completa'}
         title={expanded ? 'Cerrar (Esc)' : 'Pantalla completa'}
-        onMouseEnter={(e) => (e.currentTarget.style.transform = 'translateY(-1px)')}
-        onMouseLeave={(e) => (e.currentTarget.style.transform = 'translateY(0)')}
+        // hover y presión en index.css ([data-map-expand])
+        data-map-expand
         style={{
           position: 'absolute',
           top: '14px',
@@ -253,7 +253,6 @@ export default function HeroMap({ expanded, onToggleExpand }: HeroMapProps) {
           cursor: 'pointer',
           boxShadow: '0 4px 14px -6px rgba(0,0,0,.35)',
           backdropFilter: 'blur(6px)',
-          transition: 'transform .15s ease',
         }}
       >
         <svg

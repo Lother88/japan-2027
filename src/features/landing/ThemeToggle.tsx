@@ -37,7 +37,6 @@ export default function ThemeToggle() {
         border: '1px solid var(--border)',
         boxShadow: '0 8px 22px -10px rgba(0,0,0,.4)',
         cursor: 'pointer',
-        transition: 'background .3s, color .3s, border-color .3s',
       }}
     >
       <LazyIso
