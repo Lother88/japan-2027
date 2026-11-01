@@ -3,9 +3,8 @@
  *
  * - Días: los del itinerario (llegada a Narita → vuelo de regreso).
  * - Noches en Japón: días − 1 (el último día se vuela de vuelta).
- * - Salida: la víspera del primer día (vuelo de ida nocturno desde España).
+ * - Salida y regreso: fechas planificadas del viaje (TRIP_DATES), no derivadas del itinerario.
  * - Bases: ciudades distintas con pernocta o día en el itinerario.
- * - Regreso: el último día del itinerario.
  *
  * Además, ayudas puras de fechas para el hero: hojas de calendario (mes en kanji, día de la
  * semana), el rango en palabras y la cuenta atrás. Las fechas ISO se tratan como días de
@@ -16,6 +15,15 @@ import { excursions } from './excursions'
 
 /** Viajeros del grupo (dato del viaje, no derivable del itinerario). */
 export const TRAVELERS = 4
+
+/**
+ * Fechas planificadas del viaje, vuelos incluidos (dato del viaje, como TRAVELERS).
+ * Salida de España el viernes 7 de mayo de 2027 (se llega a Japón el 8) y vuelo de regreso el
+ * viernes 28 (se aterriza en España el sábado 29): así queda libre el domingo 30 para descansar
+ * antes de volver al trabajo. Son la fuente de la portada (calendario, cuenta atrás) y del pie.
+ * El itinerario día a día aún va del 9 al 29: está pendiente de revisar y reajustar a estas fechas.
+ */
+export const TRIP_DATES = { departure: '2027-05-07', return: '2027-05-28' } as const
 
 const MONTHS = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre']
 /** Numerales kanji de los meses (五月 = mayo) */
@@ -28,12 +36,6 @@ const DAY_MS = 86_400_000
 function parts(iso: string): { y: number; m: number; d: number } {
   const [y, m, d] = iso.split('-').map(Number)
   return { y, m: m - 1, d }
-}
-
-/** Fecha ISO del día anterior (UTC, sin depender de la zona horaria local). */
-function dayBefore(iso: string): string {
-  const { y, m, d } = parts(iso)
-  return new Date(Date.UTC(y, m, d - 1)).toISOString().slice(0, 10)
 }
 
 /** Días de calendario entre dos fechas ISO (negativo si `toIso` es anterior). */
@@ -142,26 +144,24 @@ export interface TripSummary {
   readonly bases: number
   readonly excursions: number
   readonly travelers: number
-  /** Rango de fechas del viaje completo, salida incluida ('8 → 29 mayo 2027'). */
+  /** Rango de fechas del viaje completo, salida incluida ('7 → 28 mayo 2027'). */
   readonly dateRange: string
-  /** Salida desde España, ISO: víspera del primer día del itinerario. */
+  /** Salida desde España, ISO (TRIP_DATES.departure). */
   readonly departure: string
-  /** Regreso, ISO: último día del itinerario. */
+  /** Regreso, ISO (TRIP_DATES.return). */
   readonly returnDate: string
 }
 
 export function tripSummary(): TripSummary {
-  const first = itinerary[0].date
-  const last = itinerary[itinerary.length - 1].date
-  const departure = dayBefore(first)
+  const { departure, return: returnDate } = TRIP_DATES
   return {
     days: itinerary.length,
     nights: itinerary.length - 1,
     bases: new Set(itinerary.map((d) => d.citySlug)).size,
     excursions: excursions.length,
     travelers: TRAVELERS,
-    dateRange: formatDateRange(departure, last),
+    dateRange: formatDateRange(departure, returnDate),
     departure,
-    returnDate: last,
+    returnDate,
   }
 }

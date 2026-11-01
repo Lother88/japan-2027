@@ -50,36 +50,37 @@ describe('Hero — título «Kanji y sello»', () => {
 describe('HeroDates — himekuri y cuenta atrás', () => {
   it('las hojas se leen como un rango con su etiqueta y llevan <time dateTime>', () => {
     render(<HeroDates today={new Date(2026, 10, 1)} />)
-    const cal = screen.getByRole('img', { name: 'Del 8 al 29 de mayo de 2027' })
+    const cal = screen.getByRole('img', { name: 'Del 7 al 28 de mayo de 2027' })
     const times = [...cal.querySelectorAll('time')].map((t) => t.getAttribute('dateTime'))
-    expect(times).toEqual(['2027-05-08', '2027-05-29'])
+    expect(times).toEqual(['2027-05-07', '2027-05-28'])
   })
 
   it('cada hoja muestra mes en kanji, nombre del mes, día y día de la semana', () => {
     render(<HeroDates today={new Date(2026, 10, 1)} />)
-    const cal = screen.getByRole('img', { name: 'Del 8 al 29 de mayo de 2027' })
+    const cal = screen.getByRole('img', { name: 'Del 7 al 28 de mayo de 2027' })
     const [salida, regreso] = [...cal.querySelectorAll('time')] as HTMLElement[]
     expect(salida).toHaveTextContent('五月')
     expect(salida).toHaveTextContent('mayo')
-    expect(salida).toHaveTextContent('8')
-    expect(salida).toHaveTextContent('土 · sáb')
-    expect(regreso).toHaveTextContent('29')
+    expect(salida).toHaveTextContent('7')
+    expect(salida).toHaveTextContent('金 · vie')
+    expect(regreso).toHaveTextContent('28')
+    expect(regreso).toHaveTextContent('金 · vie')
     for (const ja of cal.querySelectorAll('[lang="ja"]')) expect(ja.textContent).toMatch(/^[一二三四五六七八九十月日火水木金土]+$/)
     expect(cal.querySelectorAll('[lang="ja"]')).toHaveLength(4)
   })
 
   it('entre las hojas, la duración del viaje', () => {
     render(<HeroDates today={new Date(2026, 10, 1)} />)
-    const cal = screen.getByRole('img', { name: 'Del 8 al 29 de mayo de 2027' })
+    const cal = screen.getByRole('img', { name: 'Del 7 al 28 de mayo de 2027' })
     expect(within(cal).getByText('21 días')).toBeInTheDocument()
   })
 
   it.each([
-    [new Date(2026, 10, 1), '188 días para despegar'],
-    [new Date(2027, 4, 7, 23, 30), '1 día para despegar'],
-    [new Date(2027, 4, 8), 'Hoy despegamos'],
-    [new Date(2027, 4, 13), 'Día 5 de 21'],
-    [new Date(2027, 4, 30), 'Viaje completado'],
+    [new Date(2026, 10, 1), '187 días para despegar'],
+    [new Date(2027, 4, 6, 23, 30), '1 día para despegar'],
+    [new Date(2027, 4, 7), 'Hoy despegamos'],
+    [new Date(2027, 4, 12), 'Día 5 de 21'],
+    [new Date(2027, 4, 29), 'Viaje completado'],
   ])('cuenta atrás con hoy = %s → «%s»', (today, text) => {
     const { container } = render(<HeroDates today={today} />)
     expect(container.querySelector('[data-countdown]')).toHaveTextContent(text)
@@ -87,7 +88,7 @@ describe('HeroDates — himekuri y cuenta atrás', () => {
 
   it('sin fecha inyectada usa el reloj del sistema (hora local)', () => {
     vi.useFakeTimers({ toFake: ['Date'] })
-    vi.setSystemTime(new Date(2027, 4, 7, 12))
+    vi.setSystemTime(new Date(2027, 4, 6, 12))
     try {
       const { container } = render(<HeroDates />)
       expect(container.querySelector('[data-countdown]')).toHaveTextContent('1 día para despegar')

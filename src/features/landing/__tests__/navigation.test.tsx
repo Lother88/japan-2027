@@ -177,7 +177,7 @@ describe('SiteFooter — cifras derivadas de los datos', () => {
     const bases = new Set(itinerary.map((d) => d.citySlug)).size
     expect(footer).toHaveTextContent(`${noches} noches`)
     expect(footer).toHaveTextContent(`${bases} bases`)
-    expect(footer).toHaveTextContent('8 → 29 mayo 2027')
+    expect(footer).toHaveTextContent('7 → 28 mayo 2027')
   })
 
   it('sin jerga interna: «Notas del viaje» en vez de «Decisiones de scope» / «open-jaw»', () => {
