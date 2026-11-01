@@ -75,7 +75,7 @@ export default function Hero({ today }: { today?: Date } = {}) {
             data-cta
             onClick={scrollToRoute}
             style={{
-              marginTop: '28px',
+              marginTop: '20px',
               display: 'inline-flex',
               alignItems: 'center',
               gap: '11px',
