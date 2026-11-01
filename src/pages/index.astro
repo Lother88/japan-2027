@@ -7,13 +7,22 @@
  * botón para volver arriba · interruptor flotante de tema claro/oscuro.
  */
 import Base from '@/layouts/Base.astro'
+import Hero from '@/components/Hero.astro'
+import RouteSection from '@/components/RouteSection.astro'
+import Journey from '@/components/Journey.astro'
+import SiteFooter from '@/components/SiteFooter.astro'
+import ToTop from '@/components/ToTop.astro'
+import ThemeToggle from '@/components/ThemeToggle.astro'
 ---
 
 <Base>
   <a class="skip-link" href="#itinerario">Saltar al itinerario</a>
   <main>
-    {/* Hero, RouteSection (#ruta) y Journey (#itinerario): se portan en la Fase 2 */}
-    <div id="itinerario"></div>
+    <Hero />
+    <RouteSection />
+    <Journey />
   </main>
-  {/* SiteFooter, ToTop y ThemeToggle: Fase 2 */}
+  <SiteFooter />
+  <ToTop />
+  <ThemeToggle />
 </Base>

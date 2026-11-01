@@ -1,0 +1,187 @@
+---
+/**
+ * DaySection — sección completa de un día del itinerario.
+ *
+ * Cabecera (número de día, antetítulo, subtítulo e ilustración isométrica del día en su propio
+ * hueco), kanji de fondo, trayectos y medias jornadas. La ilustración va a la derecha del título
+ * en escritorio y encima en móvil (reglas [data-day-head]/[data-illus] en index.css). En
+ * escritorio el arte ocupa el 36 % de la columna (máx. 280 px) y el subtítulo se equilibra
+ * (text-wrap: balance) para que ninguno pase de dos líneas. El kanji de fondo hace parallax por
+ * CSS (index.css). Los bloques llevan `data-reveal`: el contenido se ve sin JS y scripts/reveal.ts
+ * lo anima al entrar en pantalla.
+ *
+ * Ilustración: caja `[data-illus]` con la proporción del viewBox común (440/330) reservada desde
+ * el HTML; scripts/lazy-art.ts la rellena con el dibujo de `data-illus-kind` al acercarse.
+ * content-visibility:auto solo en la caja (no en la sección): con secciones de altura estimada,
+ * el progreso del rail y los saltos a cada día medirían mal.
+ */
+import type { Day } from '@/data/types'
+import { cities } from '@/data'
+import { getCityMeta, tokensForCity, formatLongDate, pad2, fontSerif } from '@/features/landing/theme'
+import { pickIllustration } from '@/features/landing/illustrationKind'
+import { dayAnchor } from '@/features/landing/scroll'
+import { css } from '@/lib/style'
+import TransferCard from '@/components/TransferCard.astro'
+import SlotBlock from '@/components/SlotBlock.astro'
+
+interface Props {
+  day: Day
+  index: number
+}
+
+const { day, index } = Astro.props
+const tokens = tokensForCity(day.citySlug)
+const meta = getCityMeta(day.citySlug)
+
+// index par → kanji a la derecha; impar → izquierda (la ilustración vive en la cabecera)
+const side: 'left' | 'right' = index % 2 === 0 ? 'right' : 'left'
+
+// Subtítulo: parte tras el último '—'; si no hay, el título completo
+const dashIdx = day.title.lastIndexOf('—')
+const subtitle = dashIdx >= 0 ? day.title.slice(dashIdx + 1).trim() : day.title
+
+/**
+ * Mantiene enteras las palabras con guion («Shirakawa-go», «Kinkaku-ji»): con text-wrap:
+ * balance el navegador prefería cortar tras el guion («Shirakawa-» / «go»).
+ */
+const subtitleParts = subtitle.split(/(\S+-\S+)/)
+
+// Antetítulo: fecha larga + nombre de ciudad (sin paréntesis)
+const rawCityName = cities.find((c) => c.slug === day.citySlug)?.name ?? day.citySlug
+const cityName = rawCityName.replace(/\s*\(.*\)/, '')
+const eyebrow = `${formatLongDate(day.date)} · ${cityName}`
+
+// Tinte de fondo muy suave del color de la ciudad (meta.dot es var(--token): color-mix)
+const tint = `color-mix(in srgb, ${meta.dot} 6%, transparent)`
+
+const illustration = pickIllustration(day.id)
+const transfers = day.transfers ?? []
+const slots = day.slots
+---
+
+<section
+  id={dayAnchor(day.id)}
+  data-day={day.id}
+  data-screen-label={`Día ${pad2(day.id)} · ${cityName}`}
+  style={css({
+    position: 'relative',
+    // clip y no hidden: hidden la convierte en contenedor de scroll y el parallax del kanji
+    // (animation-timeline: view()) tomaría la sección como scroller y no avanzaría.
+    overflow: 'clip',
+    background: `linear-gradient(180deg, ${tint} 0%, transparent 40%)`,
+  })}
+>
+  {/* Kanji de fondo */}
+  <div
+    data-kanji
+    style={css(
+      {
+        position: 'absolute',
+        top: '6%',
+        fontFamily: fontSerif,
+        fontWeight: 800,
+        fontSize: 'var(--text-watermark)',
+        lineHeight: 'var(--text-watermark--line-height)',
+        color: `color-mix(in srgb, ${meta.dot} 7%, transparent)`,
+        writingMode: 'vertical-rl',
+        zIndex: 0,
+        pointerEvents: 'none',
+        userSelect: 'none',
+      },
+      side === 'right' ? { right: '-2%', left: 'auto' } : { left: '-2%', right: 'auto' },
+    )}
+  >{meta.kanji}</div>
+
+  {/* Contenido principal */}
+  <div
+    data-day-inner
+    style={css({
+      position: 'relative',
+      zIndex: 2,
+      maxWidth: '760px',
+      margin: '0 auto',
+      padding: 'clamp(70px,11vh,140px) clamp(24px,5vw,56px)',
+    })}
+  >
+    {/* Cabecera */}
+    <div data-reveal>
+      <div data-day-head style={css({ display: 'flex', alignItems: 'center', gap: 'clamp(16px,2.4vw,24px)', marginBottom: '30px' })}>
+        <div style={css({ flex: '1 1 0', minWidth: 0 })}>
+          <div style={css({ display: 'flex', alignItems: 'baseline', gap: '14px', flexWrap: 'wrap' })}>
+            <span
+              style={css({
+                fontFamily: fontSerif,
+                fontWeight: 800,
+                fontSize: 'var(--text-day-num)',
+                color: 'var(--ink)',
+                lineHeight: 'var(--text-day-num--line-height)',
+              })}
+            >Día {pad2(day.id)}</span>
+            <span
+              style={css({
+                fontSize: 'var(--text-eyebrow)',
+                lineHeight: 'var(--text-eyebrow--line-height)',
+                letterSpacing: 'var(--text-eyebrow--letter-spacing)',
+                textTransform: 'uppercase',
+                color: tokens.eyebrow,
+                fontWeight: 700,
+              })}
+            >{eyebrow}</span>
+          </div>
+          <h2
+            style={css({
+              fontFamily: fontSerif,
+              fontWeight: 600,
+              fontSize: 'var(--text-day-title)',
+              lineHeight: 'var(--text-day-title--line-height)',
+              textWrap: 'balance',
+              color: tokens.heading,
+              margin: '10px 0 0',
+            })}
+          >{subtitleParts.map((part, i) => (i % 2 === 1 ? <span style="white-space:nowrap">{part}</span> : part))}</h2>
+        </div>
+
+        {/* Ilustración isométrica del día (decorativa, carga diferida; nada si no hay) */}
+        {
+          illustration && (
+            <div
+              data-illus
+              data-illus-kind={illustration}
+              aria-hidden="true"
+              style={css({
+                aspectRatio: '440 / 330',
+                width: '100%',
+                contentVisibility: 'auto',
+                // content-visibility implica contención de pintura: sin margen recortaría el halo
+                // difuminado del zócalo (y los pocos px que algún dibujo sobresale del viewBox).
+                overflowClipMargin: '24px',
+                pointerEvents: 'none',
+                flex: '0 0 clamp(200px,36%,280px)',
+              })}
+            ></div>
+          )
+        }
+      </div>
+    </div>
+
+    {/* Trayectos */}
+    {
+      transfers.map((t) => (
+        <div data-reveal>
+          <div style={css({ marginBottom: '26px' })}>
+            <TransferCard transfer={t} tokens={tokens} />
+          </div>
+        </div>
+      ))
+    }
+
+    {/* Medias jornadas */}
+    {
+      slots.map((s, i) => (
+        <div data-reveal style={css({ marginBottom: i < slots.length - 1 ? '24px' : 0 })}>
+          <SlotBlock timeSlot={s} tokens={tokens} />
+        </div>
+      ))
+    }
+  </div>
+</section>

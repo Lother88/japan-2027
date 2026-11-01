@@ -1,0 +1,26 @@
+---
+/**
+ * Journey — contenedor del itinerario completo.
+ *
+ * Dos columnas: rail sticky (DayRail, <nav>) + lista de días (DaySection por día), hermanos
+ * dentro de [data-journey]. `#itinerario` es el destino del skip-link; el día activo y el
+ * progreso del rail los lleva scripts/journey.ts.
+ */
+import { itinerary } from '@/data'
+import { css } from '@/lib/style'
+import DayRail from '@/components/DayRail.astro'
+import DaySection from '@/components/DaySection.astro'
+---
+
+<section
+  id="itinerario"
+  aria-label="Itinerario día a día"
+  data-journey
+  style={css({ position: 'relative', display: 'flex', alignItems: 'flex-start', background: 'var(--paper)' })}
+>
+  <DayRail days={itinerary} />
+
+  <div style={css({ flex: 1, minWidth: 0, position: 'relative' })}>
+    {itinerary.map((day, i) => <DaySection day={day} index={i} />)}
+  </div>
+</section>

@@ -171,6 +171,30 @@ body {
 [data-rail] a { color: inherit; text-decoration: none; }
 [data-rail-tick]:hover [data-rail-tick-label] { color: var(--ink) !important; }
 
+/* Variantes pre-renderizadas del rail (bloques y líneas del día activo, anterior/siguiente):
+   `hidden` gana a los display en línea y a los `!important` de la media query móvil. */
+[data-rail] [hidden] { display: none !important; }
+
+/* Puntos del rail. El estado va en atributos del enlace (aria-current = día activo,
+   data-passed = días ya pasados, incluido el activo) y el color de la ciudad en --dot.
+   Caja fija de 13 px: el tamaño visual (9 → 13 px) cambia con scale, sin layout; el borde
+   está siempre (transparente en reposo) para no cambiar la geometría. */
+[data-rail-dot] {
+  flex-shrink: 0; width: 13px; height: 13px; border-radius: 50%;
+  background-color: var(--tick-idle);
+  border: 2px solid transparent;
+  box-shadow: 0 0 0 0 var(--dot);
+  transform: scale(calc(9 / 13));
+  transition: transform 200ms var(--ease-out), background-color 200ms ease, box-shadow 200ms ease, border-color 200ms ease;
+}
+[data-rail-tick][data-passed] [data-rail-dot] { background-color: var(--dot); }
+[data-rail-tick][aria-current] [data-rail-dot] { border-color: var(--paper); box-shadow: 0 0 0 2px var(--dot); transform: scale(1); }
+[data-rail-tick-label] {
+  font-size: 11px; font-weight: 500; color: var(--tick-idle-label);
+  transition: color .25s ease; font-variant-numeric: tabular-nums;
+}
+[data-rail-tick][aria-current] [data-rail-tick-label] { font-weight: 700; color: var(--ink); }
+
 /* ─────────────────────────────────────────────
    Intercambio de tema (themeTransition.ts)
    Mientras <html data-theme-swapping> existe, NINGUNA transición CSS corre: el
@@ -305,7 +329,9 @@ body {
   margin: 0 auto;
 }
 [data-hero-stage] > * { grid-area: 1 / 1; min-width: 0; }
-[data-hero-art] { width: 100%; pointer-events: none; }
+/* Proporción reservada de la maqueta (debe coincidir con los viewBox de heroMaqueta.markup.ts):
+   lienzo 1200×640 en escritorio y recorte 676×478 en móvil (≤ 760 px, ver más abajo). */
+[data-hero-art] { width: 100%; pointer-events: none; aspect-ratio: 1200 / 640; }
 [data-hero-copy] {
   position: relative;
   justify-self: start;
@@ -633,7 +659,7 @@ a[data-day-nav]:active { transform: scale(0.97); }
 @media (max-width: 760px) {
   [data-hero] { padding-top: 20px; }
   [data-hero-stage] { display: flex; flex-direction: column; align-items: center; }
-  [data-hero-art] { max-width: 520px; }
+  [data-hero-art] { max-width: 520px; aspect-ratio: 676 / 478; }
   [data-hero-copy] { width: 100%; align-items: center; text-align: center; padding: 8px 0 0; }
   /* Título: hojas centradas y la cuenta atrás en su propia línea; kanji, H1 y sello fijos */
   [data-hero-dates] { justify-content: center; flex-wrap: wrap; row-gap: 14px; }

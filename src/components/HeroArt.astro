@@ -1,0 +1,15 @@
+---
+/**
+ * HeroArt — caja de la maqueta isométrica del hero («Maqueta de tren al pie del Fuji»).
+ *
+ * La caja reserva la proporción del viewBox desde el HTML (aspect-ratio en index.css: 1200/640
+ * en escritorio, 676/478 en móvil ≤ 760 px), así que la llegada del arte no provoca saltos.
+ * Escritorio: lienzo con el arte a la derecha y la zona segura (x 0–470) libre para el titular,
+ * que Hero superpone. Móvil: viewBox recortado al arte, encima del título.
+ *
+ * El arte por capas (div.iso-hero con el <style> común y un <svg> por capa) entra en la Fase 3.
+ * Es decorativa: aria-hidden.
+ */
+---
+
+<div data-hero-art aria-hidden="true"><slot /></div>

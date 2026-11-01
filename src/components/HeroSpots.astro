@@ -1,0 +1,35 @@
+---
+/**
+ * HeroSpots — «tira de billete» del hero: las cifras del viaje (derivadas de los datos), cada
+ * una con su spot isométrico (calendario, machiya, billete JR, maletas).
+ *
+ * Las cajas de 56×56 de los spots están reservadas desde el HTML. El flotado al pasar el ratón
+ * es CSS (index.css, `[data-ticket-cell]`). Cada cifra pasa ≥ 4,5:1 sobre --surface en ambos
+ * temas (sin depender de la excepción de texto grande): «días» usa --amber-text y «viajeros»
+ * --coral2-text; --amber y --coral2 se quedan para las rampas de los SVG.
+ */
+import { tripSummary } from '@/data/trip'
+import { css } from '@/lib/style'
+import ArtBox from '@/components/ArtBox.astro'
+
+const trip = tripSummary()
+
+const cells = [
+  { valor: trip.days, etiqueta: 'días', accent: 'var(--amber-text)', spot: 'koyomi' },
+  { valor: trip.bases, etiqueta: 'bases', accent: 'var(--coral)', spot: 'machiya' },
+  { valor: trip.excursions, etiqueta: 'excursiones', accent: 'var(--green)', spot: 'kippu' },
+  { valor: trip.travelers, etiqueta: 'viajeros', accent: 'var(--coral2-text)', spot: 'maletas' },
+]
+---
+
+<ul data-ticket role="list" aria-label="El viaje en cifras">
+  {
+    cells.map(({ valor, etiqueta, accent, spot }) => (
+      <li data-ticket-cell>
+        <ArtBox name="ticket" src={spot} style={{ width: '56px', height: '56px' }} />
+        <span data-ticket-num style={css({ color: accent })}>{valor}</span>
+        <span data-ticket-label>{etiqueta}</span>
+      </li>
+    ))
+  }
+</ul>

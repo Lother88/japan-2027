@@ -1,0 +1,42 @@
+---
+/**
+ * ToTop — botón flotante «volver arriba».
+ * Arranca invisible (opacity 0, fuera de interacción) e `inert` (fuera del orden de Tab y de
+ * los lectores de pantalla). scripts/journey.ts lo muestra al bajar leyendo [data-totop]
+ * (opacity/transform/pointer-events + inert) y atiende su clic.
+ * Fondo, hover y presión viven en index.css ([data-totop]); la presión usa la propiedad
+ * independiente `scale`, que se compone con el `transform` que escribe el JS sin pisarlo.
+ */
+import { css } from '@/lib/style'
+---
+
+<button
+  type="button"
+  data-totop
+  inert
+  aria-label="Volver arriba"
+  style={css({
+    position: 'fixed',
+    bottom: '26px',
+    right: '26px',
+    zIndex: 85,
+    width: '50px',
+    height: '50px',
+    borderRadius: '50%',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    color: '#fdf3e7',
+    border: 'none',
+    cursor: 'pointer',
+    boxShadow: '0 8px 22px -8px rgba(27,42,74,.6)',
+    opacity: 0,
+    transform: 'translateY(14px) scale(.9)',
+    pointerEvents: 'none',
+    transition: 'opacity 200ms var(--ease-out), transform 200ms var(--ease-out), scale 160ms var(--ease-out), background-color 200ms ease',
+  })}
+>
+  <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 19V5M5 12l7-7 7 7" />
+  </svg>
+</button>
