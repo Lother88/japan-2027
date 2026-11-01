@@ -134,6 +134,10 @@
 * { box-sizing: border-box; }
 html, body { margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
+/* Hasta que termina la carga (lo quita el script en línea de Base.astro), el scroll es
+   instantáneo: un enlace directo /#dia-NN o la restauración al recargar aterrizan sin recorrer
+   la página animada desde arriba. */
+html[data-scroll-instant] { scroll-behavior: auto; }
 body {
   background: var(--paper);
   color: var(--body);
@@ -763,6 +767,34 @@ details[data-spoiler][open]::details-content {
       animation-timeline: view();
     }
   }
+}
+
+/* Aparición de los bloques del itinerario (scripts/reveal.ts): solo se esconde lo que no se veía
+   al cargar ([data-reveal="out"]) y se revela al entrar ([data-reveal="in"]). La transición va
+   solo en «in»: esconder es instantáneo (fuera de pantalla) y aparecer, suave. */
+@media (prefers-reduced-motion: no-preference) {
+  [data-reveal="out"] { opacity: 0; transform: translateY(16px); }
+  [data-reveal="in"] { transition: opacity 600ms var(--ease-out), transform 600ms var(--ease-out); }
+}
+
+/* Barra de progreso del rail ligada al scroll del itinerario (en el compositor): 0 cuando el
+   borde superior de [data-journey] llega arriba del viewport y 1 cuando su borde inferior llega
+   abajo (rango «contain»). La animación pisa el transform inicial en línea (scale 0). Sin
+   soporte, scripts/journey.ts escribe el transform en un rAF. Es un indicador de posición, no
+   decoración: se mantiene con reduce-motion (el ajuste global de duración no afecta a una
+   línea de tiempo de scroll). */
+@keyframes rail-progress-v { from { transform: scaleY(0); } to { transform: scaleY(1); } }
+@keyframes rail-progress-h { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@supports (animation-timeline: view()) {
+  [data-journey] { view-timeline: --journey block; }
+  [data-rail-progress] {
+    animation-timing-function: linear;
+    animation-fill-mode: both;
+    animation-timeline: --journey;
+    animation-range: contain 0% contain 100%;
+  }
+  [data-rail-progress="v"] { animation-name: rail-progress-v; }
+  [data-rail-progress="h"] { animation-name: rail-progress-h; }
 }
 
 /* Respeta reduce-motion */

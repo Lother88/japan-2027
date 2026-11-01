@@ -35,5 +35,5 @@ const { value, label } = countdownText(tripCountdown(trip.departure, trip.return
     }
   </div>
 
-  <p data-countdown><strong data-countdown-value>{value}</strong> <span data-countdown-label>{label.map((line, i) => <>{i > 0 && ' '}<span>{line}</span></>)}</span></p>
+  <p data-countdown data-departure={trip.departure} data-return={trip.returnDate}><strong data-countdown-value>{value}</strong> <span data-countdown-label>{label.map((line, i) => <>{i > 0 && ' '}<span>{line}</span></>)}</span></p>
 </div>

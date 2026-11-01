@@ -32,9 +32,10 @@ const { title = 'Japón 2027' } = Astro.props
       href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;600;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap"
     />
     {/*
-      Script anti-FOUC del tema, en línea y síncrono antes del primer pintado: lee el tema
+      Script en línea y síncrono antes del primer pintado. Anti-FOUC del tema: lee el tema
       guardado (localStorage «jp-theme») o, si no hay, prefers-color-scheme, y fija
       data-theme en <html> para que las variables de index.css resuelvan ya a esa paleta.
+      Además deja el scroll instantáneo mientras carga la página.
     */}
     <script is:inline>
       (function () {
@@ -48,6 +49,16 @@ const { title = 'Japón 2027' } = Astro.props
           // Sin acceso a localStorage: en el peor caso, un destello breve en la primera carga
         }
       })()
+      // Scroll instantáneo hasta que acaba la carga (index.css, [data-scroll-instant]): un enlace
+      // directo /#dia-NN aterriza en el día sin recorrer la página animada desde arriba.
+      ;(function (root) {
+        root.setAttribute('data-scroll-instant', '')
+        addEventListener('load', function () {
+          requestAnimationFrame(function () {
+            root.removeAttribute('data-scroll-instant')
+          })
+        })
+      })(document.documentElement)
     </script>
   </head>
   <body>

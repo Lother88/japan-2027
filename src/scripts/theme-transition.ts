@@ -1,12 +1,12 @@
 /**
- * themeTransition — intercambio claro/oscuro con View Transitions.
+ * theme-transition — intercambio claro/oscuro con View Transitions (lo usa scripts/theme.ts).
  *
  * Secuencia (sin cadenas de setTimeout; todo cuelga de promesas de animación):
  *   1. Marca <html data-theme-swapping> → index.css anula TODAS las transiciones
  *      de color, así nunca se ve un estado a medio mezclar.
  *   2. `document.startViewTransition(commit)`: el navegador congela una captura
- *      del tema viejo, `commit` aplica el nuevo de forma síncrona (data-theme +
- *      flushSync del estado React) y el nuevo se pinta YA resuelto.
+ *      del tema viejo, `commit` aplica el nuevo de forma síncrona (data-theme y
+ *      persistencia) y el nuevo se pinta YA resuelto.
  *   3. En `vt.ready` se anima con WAAPI el pseudo-elemento que toque (clip-path
  *      u opacity: propiedades de composición).
  *   4. En `vt.finished` se retira la marca; como los valores ya son los finales,
@@ -25,7 +25,7 @@ export interface SwapOrigin {
 export interface ThemeSwapOptions {
   readonly origin: SwapOrigin
   readonly reducedMotion: boolean
-  /** Aplica el tema nuevo de forma síncrona (DOM + estado React + persistencia). */
+  /** Aplica el tema nuevo de forma síncrona (DOM + persistencia). */
   readonly commit: () => void
 }
 
@@ -100,17 +100,13 @@ function planFor(o: ThemeSwapOptions): Plan {
 /** Resuelve cuando el estado actual ya se ha pintado (doble rAF). */
 function afterNextPaint(): Promise<void> {
   return new Promise(resolve => {
-    if (typeof requestAnimationFrame !== 'function') {
-      setTimeout(resolve, 0)
-      return
-    }
     requestAnimationFrame(() => requestAnimationFrame(() => resolve()))
   })
 }
 
 /**
  * Intercambia el tema con la transición de círculo. Resuelve al terminar la
- * transición (libera el guard de «ocupado» del proveedor).
+ * transición (libera el guard de «ocupado» de scripts/theme.ts).
  */
 export async function swapTheme(o: ThemeSwapOptions): Promise<void> {
   const root = document.documentElement

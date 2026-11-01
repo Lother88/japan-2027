@@ -26,7 +26,13 @@ import ThemeToggle from '@/components/ThemeToggle.astro'
   <ToTop />
   <ThemeToggle />
   <script>
-    // Arte diferido (días, banda, ruta, omamori) y pausa de animaciones fuera de pantalla.
+    // Comportamiento (Astro lo empaqueta en un único módulo): tema, día activo del rail y
+    // progreso, aparición de bloques, botones de navegación, cuenta atrás y arte diferido.
+    import '@/scripts/theme'
+    import '@/scripts/journey'
+    import '@/scripts/reveal'
+    import '@/scripts/nav'
+    import '@/scripts/countdown'
     import '@/scripts/lazy-art'
   </script>
 </Base>
