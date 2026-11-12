@@ -1,0 +1,66 @@
+---
+/**
+ * DateStrip — tira horizontal de fechas del itinerario (solo móvil, ≤ 860 px; en escritorio
+ * navega el DayRail lateral). Sticky arriba, bajo la zona segura.
+ *
+ * Un chip por día con el color de su ciudad (--c = tono de la ciudad): día de la semana
+ * (sábado en azul, domingo en rojo), número y marcas 🧳 (día con maletas) y 🧺 (colada). Entre
+ * ciudades hay un hueco. Cada chip es un enlace real a `#dia-NN` (funciona sin JS; el scroll
+ * suave y el margen bajo la tira los pone index.css).
+ *
+ * Estado (scripts/journey.ts y scripts/day-plan.ts): `aria-current="location"` en el día activo
+ * (sin JS, el primero), `data-today` en el día de hoy y `data-past` en los ya pasados. El script
+ * del journey desplaza la tira para que el chip activo quede a la vista.
+ */
+import type { Day } from '@/data/types'
+import { cityTone, dateParts, formatLongDate } from '@/features/landing/theme'
+import { dayAnchor } from '@/features/landing/scroll'
+import { cityName, isMovingDay } from '@/features/landing/dayView'
+
+interface Props {
+  days: readonly Day[]
+}
+
+const { days } = Astro.props
+
+const chips = days.map((d, i) => {
+  const parts = dateParts(d.date)
+  const moving = isMovingDay(d)
+  const city = cityName(d.citySlug)
+  const label = [formatLongDate(d.date), city, moving && 'día con maletas', d.laundry && 'día de colada'].filter(Boolean).join(', ')
+  return {
+    id: d.id,
+    tone: cityTone(d.citySlug),
+    weekday: parts.weekday,
+    weekend: parts.weekdayIndex === 6 ? 'sat' : parts.weekdayIndex === 0 ? 'sun' : undefined,
+    day: parts.day,
+    marks: `${moving ? '🧳' : ''}${d.laundry ? '🧺' : ''}`,
+    label,
+    newCity: i > 0 && days[i - 1].citySlug !== d.citySlug,
+  }
+})
+---
+
+<nav data-strip aria-label="Días del viaje">
+  <ol data-strip-list>
+    {
+      chips.map((c, i) => (
+        <li data-strip-gap={c.newCity ? '' : undefined}>
+          <a
+            data-strip-chip
+            data-strip-day={c.id}
+            data-tone
+            href={`#${dayAnchor(c.id)}`}
+            aria-label={c.label}
+            aria-current={i === 0 ? 'location' : undefined}
+            style={`--c:${c.tone}`}
+          >
+            <span data-chip-wd={c.weekend}>{c.weekday}</span>
+            <span data-chip-n>{c.day}</span>
+            <span data-chip-marks aria-hidden="true">{c.marks}</span>
+          </a>
+        </li>
+      ))
+    }
+  </ol>
+</nav>

@@ -28,7 +28,7 @@ export type LabelPlacement =
 /** Ciudades de pernocta en orden de ruta (sin repetir Tokio). */
 const ROUTE_CITY_SLUGS = ['tokio', 'takaragawa', 'kanazawa', 'takayama', 'kioto', 'osaka']
 /** Destinos de excursión / day-trip (sin pernocta). */
-const EXCURSION_CITY_SLUGS = ['shirakawago', 'hiroshima', 'nara']
+const EXCURSION_CITY_SLUGS = ['shirakawago', 'hiroshima', 'nara', 'katsuoji']
 
 export interface MapLabelCity {
   readonly slug: string
@@ -66,6 +66,7 @@ export const LABEL_PLACEMENT: Readonly<Record<string, LabelPlacement>> = {
   shirakawago: 'bottom-left',
   hiroshima: 'top',
   nara: 'right',
+  katsuoji: 'top-left',
 }
 
 /** Lado del punto de cada tipo (px): círculo de 13 px / rombo de 9 px. */

@@ -4,7 +4,7 @@
  * Coordinates are approximate public centers, sufficient for map encuadre.
  * Sources: Wikipedia, OpenStreetMap, Google Maps public data.
  *
- * Note: Kanazawa ↔ Takayama order in routeOrder is provisional (Open Question 5).
+ * Route order Kanazawa → Takayama is decided (Kanazawa first: from the onsen, Takayama is 6.5–9 h).
  */
 
 import type { City } from './types'
@@ -55,5 +55,10 @@ export const cities: readonly City[] = [
     slug: 'hiroshima',
     name: 'Hiroshima',
     center: [132.4536, 34.3955], // Peace Memorial Park area
+  },
+  {
+    slug: 'katsuoji',
+    name: 'Katsuo-ji (Minoh)',
+    center: [135.4889, 34.8569], // Katsuo-ji temple, Minoh (Osaka)
   },
 ] as const

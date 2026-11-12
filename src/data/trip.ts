@@ -19,9 +19,10 @@ export const TRAVELERS = 4
 /**
  * Fechas planificadas del viaje, vuelos incluidos (dato del viaje, como TRAVELERS).
  * Salida de España el viernes 7 de mayo de 2027 (se llega a Japón el 8) y vuelo de regreso el
- * viernes 28 (se aterriza en España el sábado 29): así queda libre el domingo 30 para descansar
- * antes de volver al trabajo. Son la fuente de la portada (calendario, cuenta atrás) y del pie.
- * El itinerario día a día aún va del 9 al 29: está pendiente de revisar y reajustar a estas fechas.
+ * viernes 28 (NRT 11:20 → BCN 23:05, el mismo día): quedan libres el sábado 29 y el domingo 30
+ * para descansar antes de volver al trabajo. Son la fuente de la portada (calendario, cuenta atrás) y del pie.
+ * El itinerario día a día va del 8 (llegada a Narita) al 28 (vuelo de regreso); el día 7 de la
+ * salida no es un Day del itinerario: solo vive aquí.
  */
 export const TRIP_DATES = { departure: '2027-05-07', return: '2027-05-28' } as const
 
@@ -80,7 +81,7 @@ export function calendarDay(iso: string): CalendarDay {
   }
 }
 
-/** 'Del 8 al 29 de mayo de 2027' (mismo mes), 'Del 30 de abril al 2 de mayo de 2027'… */
+/** 'Del 7 al 28 de mayo de 2027' (mismo mes), 'Del 30 de abril al 2 de mayo de 2027'… */
 export function formatDateSpan(fromIso: string, toIso: string): string {
   const a = parts(fromIso)
   const b = parts(toIso)
@@ -130,7 +131,7 @@ export function numberWord(n: number): string {
   return NUMBER_WORDS[n] ?? String(n)
 }
 
-/** '8 → 29 mayo 2027' (mismo mes) o '30 abril → 2 mayo 2027'. */
+/** '7 → 28 mayo 2027' (mismo mes) o '30 abril → 2 mayo 2027'. */
 export function formatDateRange(fromIso: string, toIso: string): string {
   const a = parts(fromIso)
   const b = parts(toIso)

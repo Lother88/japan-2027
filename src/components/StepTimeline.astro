@@ -1,0 +1,87 @@
+---
+/**
+ * StepTimeline — «El plan» del día: línea de tiempo con un paso por fila.
+ *
+ * Cada paso: hora (cifras tabulares; las vagas «mañana/tarde/noche» en gris), icono del tipo
+ * sobre el conector, y una tarjeta con la etiqueta (NOSPOIL-04: lugar + acción u hora), las
+ * marcas «opcional» y «reserva» y una casilla «hecho» (role=checkbox).
+ *
+ * Tocar la tarjeta abre la hoja del paso (scripts/sheet.ts): el botón lleva en data-* lo que la
+ * hoja necesita (hora, tipo, enlace de Maps, zona y si requiere reserva), así que la hoja se
+ * rellena sin fetch. El estado «hecho» (localStorage) y los estados de hoy (now / next / past)
+ * los pone scripts/day-plan.ts; sin JS, la lista se lee igual.
+ */
+import type { Day } from '@/data/types'
+import { getZone } from '@/data'
+import { STEP_TYPE_LABELS, isExactTime, stepId, stepKey, stepMapsUrl } from '@/features/landing/dayView'
+import Icon from '@/components/Icon.astro'
+
+interface Props {
+  day: Day
+  titleId: string
+}
+
+const { day, titleId } = Astro.props
+const steps = day.steps.map((s, i) => ({
+  ...s,
+  id: stepId(day, i),
+  key: stepKey(day, i),
+  exact: isExactTime(s.time),
+  typeLabel: STEP_TYPE_LABELS[s.type],
+  mapsUrl: stepMapsUrl(s, s.zoneId ? getZone(s.zoneId) : undefined, day),
+}))
+---
+
+<section data-plan aria-labelledby={`${titleId}-plan`}>
+  <h3 data-plan-head id={`${titleId}-plan`}>
+    <span>El plan</span>
+    <small data-done-count aria-live="polite">0 de {steps.length} hechos</small>
+  </h3>
+  <ol data-timeline>
+    {
+      steps.map((s) => (
+        <li data-step data-optional={s.optional ? '' : undefined}>
+          <span data-step-time data-fuzzy={s.exact ? undefined : ''}>{s.time}</span>
+          <span data-step-rail aria-hidden="true">
+            <span data-step-dot>
+              <Icon name={s.type} size={16} />
+            </span>
+          </span>
+          <div data-step-card>
+            <button
+              type="button"
+              id={s.id}
+              data-step-open
+              data-time={s.time}
+              data-type-label={s.typeLabel}
+              data-maps={s.mapsUrl}
+              data-zone-id={s.zoneId}
+              data-reserve={s.reserve ? '' : undefined}
+              aria-haspopup="dialog"
+            >
+              <span data-step-flag hidden />
+              <span data-step-label>{s.label}</span>
+              {(s.optional || s.reserve) && (
+                <span data-step-tags>
+                  {s.optional && <span data-tag="opt">opcional</span>}
+                  {s.reserve && (
+                    <span data-tag="res">
+                      <Icon name="ticket" size={12} />
+                      reserva
+                    </span>
+                  )}
+                </span>
+              )}
+              <span class="sr-only">{`, ${s.exact ? `a las ${s.time}` : s.time}. Abrir detalles`}</span>
+            </button>
+            <button type="button" role="checkbox" aria-checked="false" data-step-done={s.key} aria-label={`Hecho: ${s.label}`}>
+              <span data-box>
+                <Icon name="check" size={15} />
+              </span>
+            </button>
+          </div>
+        </li>
+      ))
+    }
+  </ol>
+</section>

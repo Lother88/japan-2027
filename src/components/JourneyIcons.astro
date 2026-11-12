@@ -1,0 +1,30 @@
+---
+/**
+ * JourneyIcons — sprite SVG del itinerario (un <symbol> por icono, trazo con currentColor).
+ *
+ * Se pinta una sola vez dentro de #itinerario y cada uso es un `<use href="#ji-…">`: los ~130
+ * pasos de la línea de tiempo comparten el dibujo en lugar de repetirlo en el HTML. La hoja de
+ * cada paso (StepSheet, fuera de <main>) también los usa: los ids son del documento.
+ *
+ * Iconos: tipos de paso (visita, comida, traslado, compras, descanso, noche) y los de interfaz
+ * (check, pin, ticket, bed, arrow, close, chev).
+ */
+---
+
+<svg aria-hidden="true" focusable="false" width="0" height="0" style="position:absolute;width:0;height:0;overflow:hidden">
+  <defs>
+    <symbol id="ji-visita" viewBox="0 0 24 24"><path d="M3 6.5c3 .8 15 .8 18 0M4.5 10h15M7 6.8V21M17 6.8V21" /></symbol>
+    <symbol id="ji-traslado" viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="13" rx="3" /><path d="M5 10h14M9 20l-2 1.5M15 20l2 1.5M9 13h.01M15 13h.01" /></symbol>
+    <symbol id="ji-comida" viewBox="0 0 24 24"><path d="M3.5 11.5h17a8.5 8.5 0 0 1-17 0zM15 3l-4 7M19 4l-5 6" /></symbol>
+    <symbol id="ji-compras" viewBox="0 0 24 24"><path d="M5 8h14l-1 12.5H6zM9 8V6.5a3 3 0 0 1 6 0V8" /></symbol>
+    <symbol id="ji-descanso" viewBox="0 0 24 24"><path d="M3 19V7M3 15h18v4M21 15v-2.5a3 3 0 0 0-3-3h-7V15M7 12.5h.01" /></symbol>
+    <symbol id="ji-noche" viewBox="0 0 24 24"><path d="M19.5 14.6A8 8 0 1 1 9.4 4.5a6.4 6.4 0 0 0 10.1 10.1z" /></symbol>
+    <symbol id="ji-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" stroke-width="3" /></symbol>
+    <symbol id="ji-pin" viewBox="0 0 24 24"><path d="M12 21.5s-7-6.2-7-11.8A7 7 0 0 1 19 9.7c0 5.6-7 11.8-7 11.8z" /><circle cx="12" cy="9.7" r="2.6" /></symbol>
+    <symbol id="ji-ticket" viewBox="0 0 24 24"><path d="M3.5 8.5V6.5a1 1 0 0 1 1-1h15a1 1 0 0 1 1 1v2a3.5 3.5 0 0 0 0 7v2a1 1 0 0 1-1 1h-15a1 1 0 0 1-1-1v-2a3.5 3.5 0 0 0 0-7zM14 6v12" /></symbol>
+    <symbol id="ji-bed" viewBox="0 0 24 24"><path d="M3 19V7M3 15h18v4M21 15v-2.5a3 3 0 0 0-3-3h-7V15M7 12.5h.01" /></symbol>
+    <symbol id="ji-arrow" viewBox="0 0 24 24"><path d="M3 12h17M14 6l6 6-6 6" /></symbol>
+    <symbol id="ji-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18" /></symbol>
+    <symbol id="ji-chev" viewBox="0 0 24 24"><path d="M6 9.5l6 6 6-6" /></symbol>
+  </defs>
+</svg>

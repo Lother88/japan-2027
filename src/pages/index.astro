@@ -3,8 +3,9 @@
  * Landing del itinerario «Japón 2027» (página única de scroll).
  *
  * Composición: skip-link («Saltar al itinerario») · un único <main> con el hero, la banda
- * «La ruta» con el mapa y el journey (rail + secciones por día) · footer fuera de <main> ·
- * botón para volver arriba · interruptor flotante de tema claro/oscuro.
+ * «La ruta» con el mapa y el journey (rail / tira de fechas + secciones por día) · footer fuera
+ * de <main> · botón para volver arriba · interruptor flotante de tema claro/oscuro · la hoja de
+ * cada paso del plan (hija directa de <body>: al abrirla, el resto se vuelve inert).
  */
 import Base from '@/layouts/Base.astro'
 import Hero from '@/components/Hero.astro'
@@ -13,6 +14,7 @@ import Journey from '@/components/Journey.astro'
 import SiteFooter from '@/components/SiteFooter.astro'
 import ToTop from '@/components/ToTop.astro'
 import ThemeToggle from '@/components/ThemeToggle.astro'
+import StepSheet from '@/components/StepSheet.astro'
 import { tripSummary } from '@/data/trip'
 
 const trip = tripSummary()
@@ -30,12 +32,17 @@ const description = `Itinerario de ${trip.days} días por Japón en tren (${trip
   <SiteFooter />
   <ToTop />
   <ThemeToggle />
+  <StepSheet />
   <script>
-    // Comportamiento (Astro lo empaqueta en un único módulo): tema, día activo del rail y
-    // progreso, aparición de bloques, botones de navegación, cuenta atrás, arte diferido y,
-    // al llegar a su caja, el mapa (MapLibre en su propio chunk).
+    // Comportamiento (Astro lo empaqueta en un único módulo): tema, día activo del rail y de la
+    // tira de fechas, plan de hoy («Ahora / Después», pasos hechos), hoja de cada paso, «El
+    // lugar» bajo demanda, aparición de bloques, botones de navegación, cuenta atrás, arte
+    // diferido y, al llegar a su caja, el mapa (MapLibre en su propio chunk).
     import '@/scripts/theme'
     import '@/scripts/journey'
+    import '@/scripts/day-plan'
+    import '@/scripts/sheet'
+    import '@/scripts/place'
     import '@/scripts/reveal'
     import '@/scripts/nav'
     import '@/scripts/countdown'
