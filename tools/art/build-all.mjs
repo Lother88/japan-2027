@@ -21,6 +21,9 @@ const dirs = (parent, re) => readdirSync(join(HERE, parent)).filter((d) => re.te
 //    hero/hero-maqueta (SVG único) solo sirve de referencia a hero-layers (ref.html).
 const builds = [
   ...dirs('iso', /^day\d\d$/).map((d) => `iso/${d}/build.mjs`),
+  'iso/jinya/build.mjs',
+  'iso/sagano/build.mjs',
+  'iso/nakano/build.mjs',
   'kinkakuji/build.mjs',
   'hero/hero-maqueta/build.mjs',
   'hero/banda-calle/build.mjs',

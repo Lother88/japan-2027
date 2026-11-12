@@ -51,4 +51,7 @@ export const isoLoaders: Record<IllustrationKind, () => Promise<IsoArt>> = {
   'iso-d27': () => import('./day27Iso.markup').then(toArt),
   'iso-d28': () => import('./day28Iso.markup').then(toArt),
   'iso-d29': () => import('./day29Iso.markup').then(toArt),
+  'iso-jinya': () => import('./jinyaIso.markup').then(toArt),
+  'iso-sagano': () => import('./saganoIso.markup').then(toArt),
+  'iso-nakano': () => import('./nakanoIso.markup').then(toArt),
 }
