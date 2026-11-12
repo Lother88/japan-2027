@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Itinerario Japón 2027</title>
+<style>
+  :root {
+    --bg: #f7f5f0; --surface: #ffffff; --ink: #1d1b18; --muted: #6b665d; --line: #e3ded4;
+    --weekend: #fdf3e2;
+    --tokio: #c8403a; --takaragawa: #2a8c82; --kanazawa: #b8860b; --takayama: #8a5a2b;
+    --kioto: #7b4fa3; --osaka: #2f6db3; --casa: #8d8d8d;
+    --tag-bg: #f0ece4;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #151413; --surface: #1f1d1b; --ink: #ece8e1; --muted: #a39d92; --line: #34312d;
+      --weekend: #2a2418;
+      --tokio: #e8665f; --takaragawa: #4fbfb3; --kanazawa: #d9a93a; --takayama: #c08850;
+      --kioto: #a77fd0; --osaka: #5b9be0; --casa: #8d8d8d;
+      --tag-bg: #2a2724;
+    }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink);
+    font: 15px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif; }
+  main { max-width: 1180px; margin: 0 auto; padding: 32px 16px 80px; }
+  h1 { font-size: 30px; margin: 0 0 4px; letter-spacing: -0.02em; }
+  h2 { font-size: 20px; margin: 48px 0 6px; }
+  .sub { color: var(--muted); margin: 0 0 16px; }
+  .flights { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 16px; }
+  .flight { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 10px 14px; }
+  .flight b { display: block; font-size: 13px; color: var(--muted); font-weight: 600; text-transform: uppercase; letter-spacing: .04em; }
+
+  /* Ruta */
+  .route { display: flex; gap: 4px; margin-top: 12px; }
+  .stop { border-radius: 10px; color: #fff; padding: 12px 10px; min-width: 112px; position: relative; }
+  .stop .n { font-size: 12px; opacity: .9; }
+  .stop .c { font-weight: 700; font-size: 15px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .stop .d { font-size: 12px; opacity: .9; }
+  .stop .x { margin-top: 8px; font-size: 12px; background: rgba(255,255,255,.18); border-radius: 6px; padding: 3px 6px; display: inline-block; }
+  .arrowrow { display: flex; justify-content: space-between; color: var(--muted); font-size: 12px; margin-top: 6px; }
+
+  /* Calendario */
+  .cal { display: grid; grid-template-columns: 54px repeat(7, 1fr); gap: 4px; margin-top: 12px; }
+  .cal .h { font-size: 12px; font-weight: 700; color: var(--muted); text-align: center; padding: 4px 0; }
+  .cal .h.we { color: var(--ink); }
+  .cal .wk { font-size: 12px; color: var(--muted); display: flex; align-items: center; justify-content: center; }
+  .cell { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 6px 7px 7px;
+    min-height: 92px; font-size: 12.5px; line-height: 1.35; cursor: pointer; position: relative;
+    border-top: 5px solid var(--city, var(--line)); transition: transform .12s ease, box-shadow .12s ease; }
+  .cell:hover { transform: translateY(-2px); box-shadow: 0 4px 14px rgba(0,0,0,.08); }
+  .cell.we { background: var(--weekend); }
+  .cell.empty { background: transparent; border: 1px dashed var(--line); cursor: default; min-height: 0; }
+  .cell.empty:hover { transform: none; box-shadow: none; }
+  .cell .num { font-weight: 800; font-size: 15px; }
+  .cell .city { font-size: 11px; font-weight: 700; color: var(--city); text-transform: uppercase; letter-spacing: .03em; }
+  .cell .t { margin-top: 3px; }
+  .badge { position: absolute; top: 5px; right: 6px; font-size: 10.5px; font-weight: 700; padding: 1px 5px;
+    border-radius: 4px; background: var(--ink); color: var(--bg); }
+  .legend { display: flex; gap: 14px; flex-wrap: wrap; font-size: 13px; color: var(--muted); margin-top: 10px; }
+  .legend span { display: inline-flex; align-items: center; gap: 6px; }
+  .sw { width: 12px; height: 12px; border-radius: 3px; display: inline-block; }
+
+  /* Detalle */
+  .days { display: grid; gap: 10px; margin-top: 12px; }
+  .day { background: var(--surface); border: 1px solid var(--line); border-left: 6px solid var(--city);
+    border-radius: 10px; padding: 12px 16px; display: grid; grid-template-columns: 120px 1fr; gap: 14px; scroll-margin-top: 20px; }
+  .day.flash { animation: flash 1.4s ease; }
+  @keyframes flash { 0%,40% { box-shadow: 0 0 0 3px var(--city); } 100% { box-shadow: 0 0 0 0 transparent; } }
+  .day .when .dn { font-size: 13px; color: var(--muted); }
+  .day .when .dd { font-size: 24px; font-weight: 800; line-height: 1.1; }
+  .day .when .cc { font-size: 12px; font-weight: 700; color: var(--city); text-transform: uppercase; }
+  .day h3 { margin: 0 0 6px; font-size: 16px; }
+  .steps { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin: 0; padding: 0; list-style: none; }
+  .steps li { background: var(--tag-bg); border-radius: 6px; padding: 3px 8px; font-size: 13.5px; }
+  .steps li + li::before { content: "→"; color: var(--muted); margin: 0 6px 0 -2px; }
+  .steps li { display: inline-flex; align-items: center; }
+  .note { margin-top: 8px; font-size: 13px; color: var(--muted); }
+  .note.warn { color: var(--tokio); }
+  .rule { display: inline-block; font-size: 11px; font-weight: 700; border-radius: 4px; padding: 1px 6px; margin-left: 6px; vertical-align: 2px; }
+  .r-cierre { background: #f6d6d3; color: #8b221c; }
+  .r-lab { background: #d4eedc; color: #1d6b36; }
+  .r-hora { background: #f7ecc4; color: #7a5b00; }
+  .r-finde { background: #d6e4f7; color: #1c4a86; }
+  .r-mov { background: var(--ink); color: var(--bg); }
+
+  table { width: 100%; border-collapse: collapse; margin-top: 12px; background: var(--surface); border-radius: 10px; overflow: hidden; border: 1px solid var(--line); }
+  th, td { text-align: left; padding: 9px 12px; border-bottom: 1px solid var(--line); vertical-align: top; font-size: 14px; }
+  th { font-size: 12px; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); }
+  tr:last-child td { border-bottom: 0; }
+  ul.pend { margin: 8px 0 0; padding-left: 20px; }
+
+  @media (max-width: 760px) {
+    .cal { grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 2px; }
+    .cal .wk { display: none; }
+    .cal .h:first-child { display: none; }
+    .cell { min-height: 54px; padding: 3px; font-size: 10px; }
+    .cell .t, .cell .city { display: none; }
+    .badge { font-size: 8px; padding: 0 3px; }
+    .route { flex-direction: column; }
+    .stop { flex: none !important; }
+    .day { grid-template-columns: 1fr; gap: 6px; }
+    .table-wrap { overflow-x: auto; }
+  }
+</style>
+</head>
+<body>
+<main>
+  <h1>Japón 2027 · 8 → 28 de mayo</h1>
+  <p class="sub">Plan vigente a 12 nov 2026 · 20 noches · 4 viajeros. Detalle y fuentes en <code>revision-itinerario-fechas-2027.md</code>.</p>
+  <div class="flights">
+    <div class="flight"><b>Ida</b>vie 7 BCN 10:15 → FRA → <strong>sáb 8 NRT 09:30</strong></div>
+    <div class="flight"><b>Vuelta</b><strong>vie 28 NRT 11:20</strong> → FRA → BCN 23:05</div>
+  </div>
+
+  <h2>1 · La ruta</h2>
+  <p class="sub">El ancho de cada bloque es proporcional a las noches. Debajo, las excursiones que se hacen sin maletas.</p>
+  <div class="route" id="route"></div>
+  <div class="arrowrow"><span>✈️ Narita sáb 8</span><span>cambio de hotel con maletas + taxi en cada frontera →</span><span>✈️ Narita vie 28</span></div>
+
+  <h2>2 · Calendario</h2>
+  <p class="sub">Los fines de semana tienen fondo crema. Pulsa un día para ir a su detalle.</p>
+  <div class="cal" id="cal"></div>
+  <div class="legend" id="legend"></div>
+
+  <h2>3 · Día a día</h2>
+  <p class="sub">Las etiquetas indican por qué ese plan cae en ese día.</p>
+  <div class="legend">
+    <span><i class="rule r-cierre">CIERRE / FECHA FIJA</i></span>
+    <span><i class="rule r-lab">LABORABLE</i> menos turismo local</span>
+    <span><i class="rule r-hora">HORA EXTREMA</i> esquivar escolares (10–15 h)</span>
+    <span><i class="rule r-finde">FIN DE SEMANA</i> se gana algo</span>
+    <span><i class="rule r-mov">TRASLADO</i> cambio de hotel</span>
+  </div>
+  <div class="days" id="days"></div>
+
+  <h2>4 · Días de traslado</h2>
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>Día</th><th>Trayecto</th><th>Cómo</th><th>Llegada</th></tr></thead>
+    <tbody>
+      <tr><td>Sáb 8</td><td>Narita → Tokio</td><td>Skyliner (~41 min a Ueno) + taxi</td><td>~12:30</td></tr>
+      <tr><td>Mié 12</td><td>Tokio → Takaragawa</td><td>Jōetsu Shinkansen (~1h15) + lanzadera del ryokan 13:00 o 15:00 (<strong>reservar por teléfono</strong>)</td><td>13:45 / 15:45</td></tr>
+      <tr><td>Jue 13</td><td>Takaragawa → Kanazawa</td><td>Lanzadera 9:30 (la única) → Jōmō-Kōgen → Takasaki → Hokuriku Shinkansen</td><td>~14:00</td></tr>
+      <tr><td>Sáb 15</td><td>Kanazawa → Takayama</td><td>Bus Nōhi con reserva (~2h15) o tren por Toyama (solo 4 Hida al día)</td><td>mediodía</td></tr>
+      <tr><td>Lun 17</td><td>Takayama → Kioto</td><td>Shirakawa-go por la mañana, vuelta a Takayama → Hida a Nagoya + Shinkansen</td><td>~17:00</td></tr>
+      <tr><td>Vie 21</td><td>Kioto → Osaka</td><td>Tō-ji (las maletas se quedan en el hotel) → recogerlas → JR a Osaka + taxi a Namba → <strong>dejarlas en el hotel</strong> → Nara en ida y vuelta por la tarde</td><td>~12:30</td></tr>
+      <tr><td>Mar 25</td><td>Osaka → Tokio</td><td>Tōkaidō Shinkansen, <strong>asiento E</strong> para ver el Fuji</td><td>~mediodía</td></tr>
+      <tr><td>Vie 28</td><td>Tokio → Narita</td><td>Taxi → Skyliner desde Ueno/Nippori → T1</td><td>~8:45</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h2>5 · Pendiente de confirmar</h2>
+  <ul class="pend">
+    <li>Fechas del Kanda Matsuri 2027 (se publican en primavera).</li>
+    <li>Horarios 2027 de trenes Hida y bus Nōhi (tras el cambio de marzo).</li>
+    <li>Horarios de Ginkaku-ji y Nanzen-ji.</li>
+    <li>Tarjeta IC (Suica/ICOCA) para cada uno: el bus a Katsuo-ji no acepta efectivo.</li>
+    <li>Hoteles: ninguno reservado todavía. El más urgente es el ryokan Osenkaku (mié 12).</li>
+  </ul>
+</main>
+
+<script>
+const CITIES = {
+  tokio:      { name: 'Tokio',      color: 'var(--tokio)' },
+  takaragawa: { name: 'Takaragawa', color: 'var(--takaragawa)' },
+  kanazawa:   { name: 'Kanazawa',   color: 'var(--kanazawa)' },
+  takayama:   { name: 'Takayama',   color: 'var(--takayama)' },
+  kioto:      { name: 'Kioto',      color: 'var(--kioto)' },
+  osaka:      { name: 'Osaka',      color: 'var(--osaka)' },
+  casa:       { name: 'Viaje',      color: 'var(--casa)' },
+};
+
+const ROUTE = [
+  { city: 'tokio', nights: 4, dates: 'sáb 8 → mié 12' },
+  { city: 'takaragawa', nights: 1, dates: 'mié 12', label: '♨️ onsen' },
+  { city: 'kanazawa', nights: 2, dates: 'jue 13 → sáb 15' },
+  { city: 'takayama', nights: 2, dates: 'sáb 15 → lun 17', x: ['Shirakawa-go · lun 17'] },
+  { city: 'kioto', nights: 4, dates: 'lun 17 → vie 21' },
+  { city: 'osaka', nights: 4, dates: 'vie 21 → mar 25', x: ['Nara · vie 21 tarde', 'Katsuo-ji · sáb 22', 'Hiroshima · dom 23'] },
+  { city: 'tokio', nights: 3, dates: 'mar 25 → vie 28' },
+];
+
+const DOW = ['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb'];
+
+// rules: cierre | lab | hora | finde | mov
+const DAYS = [
+  { d: 7, city: 'casa', short: '✈️ Salida BCN', title: 'Salida desde Barcelona', steps: ['BCN 10:15', 'Fráncfort', 'vuelo nocturno a Narita'], rules: ['mov'] },
+  { d: 8, city: 'tokio', short: 'Llegada · Kanda o Asakusa noche', title: 'Llegada a Tokio', steps: ['NRT 9:30', 'Skyliner', 'hotel', 'Kanda Matsuri (formato ligero)'], note: 'Si el Kanda Matsuri no cae este fin de semana: Asakusa de noche.', rules: ['mov'] },
+  { d: 9, city: 'tokio', short: 'Palacio · Ginza peatonal', title: 'Palacio Imperial y Ginza', steps: ['Kanda Myōjin (mikoshi, un rato)', 'Jardines del Este', 'Ginza peatonal 12–18'], note: 'Los Jardines del Este cierran lunes y viernes. Ginza solo es peatonal en fin de semana.', rules: ['cierre', 'finde'] },
+  { d: 10, city: 'tokio', short: 'Meiji · Harajuku · 🎮 Parco · Shibuya Sky · Shinjuku', title: 'Meiji Jingū, Harajuku, Shibuya y Shinjuku', steps: ['Meiji Jingū a primera hora', 'Harajuku (Takeshita)', 'Omotesandō', 'comida', 'cruce de Shibuya', 'Shibuya Parco 6F: Nintendo · Pokémon · Capcom · Jump', 'Shibuya Sky al atardecer (~18:40)', 'Shinjuku de noche: Omoide Yokocho · Golden Gai · Kabukichō'], note: 'Harajuku es intransitable en fin de semana. Shibuya Sky va con entrada a hora fija: comprarla con antelación.', rules: ['lab'] },
+  { d: 11, city: 'tokio', short: 'Museo Nacional · Tsukiji · Yanaka', title: 'Ueno, Tsukiji y Yanaka', steps: ['Museo Nacional 9:30', 'línea Hibiya a Tsukiji', 'comida en Tsukiji', 'Yanaka y Nezu'], note: 'El Museo Nacional cierra los lunes y Tsukiji los domingos: por eso martes. Tsukiji de 9:00 a 14:00, como pide la asociación del mercado.', rules: ['cierre'] },
+  { d: 12, city: 'takaragawa', short: '♨️ Onsen Takaragawa', title: 'Onsen en Takaragawa', steps: ['Jōetsu Shinkansen', 'Jōmō-Kōgen', 'lanzadera 13:00 o 15:00', 'ryokan Osenkaku'], note: 'Entre semana hay menos bañistas de día y la noche es más barata. La lanzadera se reserva por teléfono.', rules: ['lab', 'mov'] },
+  { d: 13, city: 'kanazawa', short: 'Llegada · Higashi Chaya', title: 'Llegada a Kanazawa', steps: ['lanzadera 9:30 (la única)', 'Takasaki', 'Hokuriku Shinkansen', 'Kanazawa ~14:00', 'Higashi Chaya al atardecer', 'Ōmichō'], rules: ['mov'] },
+  { d: 14, city: 'kanazawa', short: 'Kenroku-en · Nagamachi · Ōmichō', title: 'Kenroku-en y el castillo', steps: ['Kenroku-en 7:00', 'castillo', 'Nagamachi', 'comida en Ōmichō', 'tarde libre'], note: 'Entrada gratis de 4:00 a 6:45 por las puertas Hasuike y Zuijinzaka. El Museo del Siglo XXI está cerrado por obras. Tarde opcional: paseo por Nishi Chaya y Teramachi, a vuestro aire.', rules: ['hora'] },
+  { d: 15, city: 'takayama', short: 'Llegada · Yatai Kaikan · Sanmachi', title: 'Llegada a Takayama', steps: ['bus Nōhi (~2h15, reserva) o tren por Toyama', 'dejar maletas y comer', 'Yatai Kaikan + Sakurayama Hachimangū ~14:00', 'Sanmachi desde 16:00'], note: 'Yatai Kaikan: carrozas del Festival de Takayama, visita libre de 30–45 min (horario y precio por confirmar: ~9:00–17:00, ~¥840). Muchas tiendas y bodegas de Sanmachi cierran hacia las 17:00. Takayama absorbe bien a la gente: el fin de semana aquí no penaliza.', rules: ['finde', 'mov'] },
+  { d: 16, city: 'takayama', short: 'Mercado · Jinya · Hida no Sato', title: 'Takayama a fondo', steps: ['mercado Miyagawa 7:00', 'Takayama Jinya 8:45', 'Hida no Sato'], rules: ['finde', 'hora'] },
+  { d: 17, city: 'kioto', short: 'Shirakawa-go · tren a Kioto', title: 'Shirakawa-go y tren a Kioto', steps: ['bus 7:20', 'Shirakawa-go 8:10', 'vuelta a Takayama', 'Hida + Shinkansen', 'Kioto ~17:00'], note: 'Shirakawa-go se colapsa en domingo; en lunes temprano está tranquilo.', rules: ['lab', 'hora', 'mov'] },
+  { d: 18, city: 'kioto', short: 'Higashiyama sur → norte · Gion', title: 'Higashiyama de sur a norte', steps: ['Kiyomizu 6:00', 'Sannenzaka', 'Kōdai-ji', 'Maruyama', 'Nanzen-ji', 'Camino del Filósofo', 'Ginkaku-ji', 'Gion al atardecer'], note: 'Día largo. Ginkaku-ji cierra hacia las 17:00 (sin confirmar).', rules: ['hora'] },
+  { d: 19, city: 'kioto', short: 'Arashiyama · Sanjūsangen-dō · Nijō', title: 'Arashiyama, Sanjūsangen-dō y Nijō', steps: ['Arashiyama 7:00', 'Tenryū-ji 8:30', 'comida', 'JR a Kioto', 'Sanjūsangen-dō ~13:30', 'Castillo Nijō ~15:00'], note: 'Sanjūsangen-dō: 8:30–17:00, ¥600, unos 45–60 min. Nijō: 8:45–17:00, última entrada 16:00; el palacio Honmaru cierra lun 17 y mar 18, por eso miércoles.', rules: ['cierre', 'hora'] },
+  { d: 20, city: 'kioto', short: '⛩️ Fushimi Inari al amanecer · Kinkaku-ji · Nishiki', title: 'Fushimi Inari al amanecer, Kinkaku-ji y Nishiki', steps: ['primer tren a Fushimi Inari (~6:00)', 'subida al mirador Yotsutsuji (~1h30)', 'taxi a Kinkaku-ji (~35–40 min)', 'Kinkaku-ji 9:00', 'Ryōan-ji', 'comida', 'mercado Nishiki', 'tarde libre'], note: 'Criterio de la primera oleada: Fushimi con el primer tren es indispensable para una buena experiencia. Conviene que el hotel de Kioto esté cerca de la línea Keihan (Gion-Shijō/Shichijō).', rules: ['hora'] },
+  { d: 21, city: 'osaka', short: 'Tō-ji · Osaka (maletas) · Nara tarde', title: 'Tō-ji, Osaka y Nara por la tarde', steps: ['mercadillo Kōbō-ichi en Tō-ji 8:00 (maletas en el hotel de Kioto)', 'recoger maletas', 'JR a Osaka + taxi', 'dejar maletas en el hotel de Namba ~12:30', 'comida', 'Kintetsu Namba → Nara (~40 min)', 'Tōdai-ji 15:00–17:30', 'cena en Namba'], note: 'El mercadillo solo se celebra el día 21 de cada mes. Nunca se va con maletas por Nara ni se depende de las consignas.', rules: ['cierre', 'hora', 'mov'] },
+  { d: 22, city: 'osaka', short: 'Katsuo-ji · Minami', title: 'Katsuo-ji y Minami', steps: ['Katsuo-ji', 'Minami (Dōtonbori)'], note: 'En fin de semana hay más autobuses. El bus no acepta efectivo desde oct 2026; taxi ~¥3.400.', rules: ['finde'] },
+  { d: 23, city: 'osaka', short: 'Excursión a Hiroshima', title: 'Excursión a Hiroshima', steps: ['Shinkansen', 'Museo de la Paz', 'Parque de la Paz'], note: 'En domingo no hay grupos escolares. Reservar la franja 7:30–8:30 del museo online, o llegar hacia las 9:00. El torreón del castillo está cerrado.', rules: ['finde'] },
+  { d: 24, city: 'osaka', short: '😌 Día tranquilo · castillo · Kuromon · Shinsekai · Umeda Sky', title: 'Día tranquilo en Osaka', steps: ['sin despertador', 'parque del castillo de Osaka (por fuera)', 'comida en Kuromon', 'Shinsekai', 'descanso en el hotel', 'Umeda Sky al atardecer (~19:00)', 'cena en Umeda'], note: 'Día de recuperación: corta 8 días seguidos con mucho ritmo (17–24). Umeda Sky: 9:30–22:30, ¥2.000; se puede adelantar al dom 23 si volvéis de Hiroshima con energía. Las murallas de piedra son del siglo XVII; el torreón es una reconstrucción y por dentro es un museo (¥1.200, opcional).', rules: [] },
+  { d: 25, city: 'tokio', short: 'Shinkansen · 🎮 Akihabara friki', title: 'Vuelta a Tokio y Akihabara friki', steps: ['Tōkaidō Shinkansen (asiento E: Fuji)', 'hotel', 'Akihabara: figuras (Radio Kaikan · Mandarake · Surugaya)', 'retro (Super Potato…)', 'gachapon'], note: 'Tarde entera de tiendas friki. Comprobar en 2027 que las tiendas retro siguen abiertas.', rules: ['mov'] },
+  { d: 26, city: 'tokio', short: 'Asakusa · Skytree', title: 'Asakusa y Skytree', steps: ['Asakusa 7:30', 'Sensō-ji', 'Skytree al atardecer'], note: 'Asakusa temprano y entre semana, después del Sanja Matsuri (14–16 may). Skytree: entrada con hora, comprar con antelación.', rules: ['lab', 'hora'] },
+  { d: 27, city: 'tokio', short: 'Fukagawa · 🎮 Nakano Broadway · maletas', title: 'Kiyosumi-Fukagawa y Nakano Broadway', steps: ['jardín Kiyosumi + museo Edo de Fukagawa', 'línea Tōzai directa (~35 min)', 'Nakano Broadway: Mandarake, figuras vintage, retro', 'hacer maletas'], note: 'Las tiendas de Nakano abren sobre todo de 12:00 a 20:00: la mañana es para la cultura y la tarde para las compras.', rules: ['lab'] },
+  { d: 28, city: 'casa', short: '✈️ NRT 11:20 → BCN 23:05', title: 'Regreso', steps: ['taxi', 'Skyliner Ueno/Nippori', 'NRT T1 ~8:45', 'LH711 11:20', 'BCN 23:05'], rules: ['mov'] },
+  { d: 29, city: 'casa', short: '🏠 Descanso', title: '', rules: [] },
+  { d: 30, city: 'casa', short: '🏠 Descanso', title: '', rules: [] },
+];
+
+const RULE_LABEL = { cierre: 'CIERRE / FECHA FIJA', lab: 'LABORABLE', hora: 'HORA EXTREMA', finde: 'FIN DE SEMANA', mov: 'TRASLADO' };
+const dow = d => new Date(2027, 4, d).getDay();
+
+// Ruta
+const totalNights = ROUTE.reduce((s, r) => s + r.nights, 0);
+document.getElementById('route').innerHTML = ROUTE.map(r => {
+  const c = CITIES[r.city];
+  const xs = (r.x || []).map(x => `<div class="x">↺ ${x}</div>`).join('');
+  return `<div class="stop" style="flex:${r.nights} 1 0;background:${c.color}">
+    <div class="n">${r.nights} ${r.nights === 1 ? 'noche' : 'noches'}${r.label ? ' · ' + r.label : ''}</div>
+    <div class="c">${c.name}</div><div class="d">${r.dates}</div>${xs}</div>`;
+}).join('');
+
+// Calendario (semanas de lunes a domingo, del 3 al 30 de mayo)
+const cal = document.getElementById('cal');
+let html = '<div class="h"></div>' + ['Lun','Mar','Mié','Jue','Vie','Sáb','Dom']
+  .map((h, i) => `<div class="h${i > 4 ? ' we' : ''}">${h}</div>`).join('');
+const byDay = Object.fromEntries(DAYS.map(x => [x.d, x]));
+for (let w = 0; w < 4; w++) {
+  html += `<div class="wk">Sem ${w}</div>`;
+  for (let i = 0; i < 7; i++) {
+    const d = 3 + w * 7 + i;
+    const x = byDay[d];
+    const we = i > 4 ? ' we' : '';
+    if (!x) { html += `<div class="cell empty${we}"></div>`; continue; }
+    const c = CITIES[x.city];
+    const mov = x.rules.includes('mov') ? '<span class="badge">🧳</span>' : '';
+    html += `<div class="cell${we}" style="--city:${c.color}" data-d="${d}">
+      ${mov}<div class="num">${d}</div><div class="city">${c.name}</div><div class="t">${x.short}</div></div>`;
+  }
+}
+cal.innerHTML = html;
+cal.addEventListener('click', e => {
+  const cell = e.target.closest('.cell[data-d]');
+  const card = cell && document.getElementById('d' + cell.dataset.d);
+  if (!card) return;
+  card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  card.classList.remove('flash'); void card.offsetWidth; card.classList.add('flash');
+});
+
+document.getElementById('legend').innerHTML =
+  Object.entries(CITIES).filter(([k]) => k !== 'casa')
+    .map(([, c]) => `<span><i class="sw" style="background:${c.color}"></i>${c.name}</span>`).join('') +
+  '<span>🧳 cambio de hotel</span>';
+
+// Detalle
+document.getElementById('days').innerHTML = DAYS.filter(x => x.title).map(x => {
+  const c = CITIES[x.city];
+  const rules = x.rules.map(r => `<i class="rule r-${r}">${RULE_LABEL[r]}</i>`).join('');
+  const steps = x.steps.map(s => `<li>${s}</li>`).join('');
+  const note = x.note ? `<div class="note${x.warn ? ' warn' : ''}">${x.note}</div>` : '';
+  return `<article class="day" id="d${x.d}" style="--city:${c.color}">
+    <div class="when"><div class="dn">${DOW[dow(x.d)]}</div><div class="dd">${x.d} may</div><div class="cc">${c.name}</div></div>
+    <div><h3>${x.title}${rules}</h3><ul class="steps">${steps}</ul>${note}</div></article>`;
+}).join('');
+</script>
+</body>
+</html>
