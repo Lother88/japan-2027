@@ -4,7 +4,7 @@
  * ZoneCard pinta el <details data-place data-place-src="/contexto/<zona>.json"> plegado y con
  * el cuerpo vacío (anti-spoiler: nunca se abre solo). Al tocar su <summary> para desplegarlo,
  * se pide ese JSON (pages/contexto/[zone].json.ts) y se pintan las fichas (qué es, historia,
- * significado, curiosidades y fuentes). Se escucha el `click` (llega antes de que el <details>
+ * significado y curiosidades). Se escucha el `click` (llega antes de que el <details>
  * se abra), así que si el JSON ya está en memoria el contenido entra antes de la animación de
  * apertura y esta crece hasta su alto real; si no, se ve «Cargando…» mientras llega.
  *
@@ -65,21 +65,6 @@ function renderEntries(body: HTMLElement, entries: Entries) {
       art.append(el('h4', poi.nombre), el('h5', 'Qué es'), el('p', poi.queEs), el('h5', 'Historia'), el('p', poi.historia))
       if (poi.significado) art.append(el('h5', 'Significado'), el('p', poi.significado))
       if (poi.curiosidades.length) art.append(el('h5', 'Curiosidades'), list(poi.curiosidades))
-      if (poi.fuentes.length) {
-        const ul = el('ul', undefined, 'data-poi-sources')
-        ul.append(
-          ...poi.fuentes.map((f) => {
-            const a = el('a', f.label)
-            a.href = f.url
-            a.target = '_blank'
-            a.rel = 'noopener'
-            const li = el('li')
-            li.append(a)
-            return li
-          }),
-        )
-        art.append(el('h5', 'Fuentes'), ul)
-      }
       return art
     }),
   )

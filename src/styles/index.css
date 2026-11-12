@@ -1491,8 +1491,6 @@ html[data-sheet-open] { overflow: hidden; scrollbar-gutter: stable; }
 [data-poi] ul > li { position: relative; padding-left: 18px; font-size: 16px; line-height: 1.55; }
 [data-poi] ul > li + li { margin-top: 6px; }
 [data-poi] ul > li::before { content: '・'; position: absolute; left: 0; font-weight: 700; color: var(--amber-text); }
-[data-poi-sources] > li { font-size: 15px; }
-[data-poi-sources] a { display: inline-block; padding: 4px 0; color: var(--ink); text-underline-offset: 3px; }
 /* Carga bajo demanda (scripts/place.ts): «Cargando…» y, si falla, aviso con «Reintentar» */
 [data-place-status] { margin: 4px 0 0; font-size: 15px; color: var(--muted); }
 [data-place-error] { display: grid; justify-items: start; gap: 12px; padding-top: 4px; }
