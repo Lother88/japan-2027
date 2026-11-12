@@ -1,0 +1,24 @@
+---
+/**
+ * Icon — un icono del sprite del itinerario (JourneyIcons.astro). Decorativo (aria-hidden): el
+ * nombre accesible lo da el control que lo contiene. Trazo con currentColor.
+ */
+interface Props {
+  name: 'visita' | 'comida' | 'traslado' | 'compras' | 'descanso' | 'noche' | 'check' | 'pin' | 'ticket' | 'bed' | 'arrow' | 'close' | 'chev'
+  size?: number
+}
+
+const { name, size = 16 } = Astro.props
+---
+
+<svg
+  width={size}
+  height={size}
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.8"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  aria-hidden="true"
+  focusable="false"><use href={`#ji-${name}`}></use></svg
+>

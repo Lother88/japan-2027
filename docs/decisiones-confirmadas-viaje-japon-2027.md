@@ -8,7 +8,15 @@
 
 ## 🟢 Decisiones cerradas
 
-### D1 · Fechas del viaje: **8 → 29 de mayo de 2027** (3 semanas)
+> ⚠️ **Actualizado el 12 nov 2026: los vuelos ya están comprados.**
+> - Ida: **vie 7 may** BCN 10:15 → **sáb 8 may NRT 09:30**.
+> - Vuelta: **vie 28 may** NRT 11:20 → BCN 23:05.
+> - En Japón: del 8 al 28, 20 noches.
+> - Itinerario vigente: [revision-itinerario-fechas-2027.md](revision-itinerario-fechas-2027.md).
+>
+> Lo que sigue en D1 es la decisión original de junio y queda solo como histórico.
+
+### D1 · Fechas del viaje: **8 → 29 de mayo de 2027** (3 semanas) · *superado por los vuelos reales (7 → 28)*
 - **Confirmado:** 16 jun 2026.
 - **Qué:** salida de España el **sábado 8 may**, regreso el **sábado 29 may 2027**. 22 días naturales.
 - **Por qué (resumen):**
@@ -42,7 +50,7 @@
 - **Vuelo — momento de reserva:** ventana óptima ~jun-jul 2026 (≈330-355 días antes); confirmar 8 plazas en la misma tarifa y franquicia de equipaje.
 - **Ruta e itinerario:** ciudades-base, orden y día a día (incl. si entra Hakone/Fuji, Hiroshima, etc.).
 - **Transporte interno:** billetes sueltos + pases regionales vs JR Pass (este último **no compensa** para la Ruta Dorada clásica).
-- **Sumo Natsu Basho (9-23 may, Tokio):** ¿incluirlo? Si sí, reservar entradas ~abril 2027.
+- ~~**Sumo Natsu Basho (9-23 may, Tokio):** ¿incluirlo?~~ **Descartado** (decisión de junio de 2026, confirmada el 12 nov 2026).
 - **Alojamiento de grupo (4 pax):** reservar con 6-9 meses de antelación; es lo primero que se agota.
 
 ---

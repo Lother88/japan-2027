@@ -1,5 +1,9 @@
 # 🔁 Itinerario — Ruta REDONDA por Narita (v1)
 
+> ⚠️ **Documento histórico (junio de 2026), ya superado.** El itinerario vigente, con los vuelos reales (8 → 28 may) y las decisiones del 12 nov 2026, está en [revision-itinerario-fechas-2027.md](revision-itinerario-fechas-2027.md). Lo que ha cambiado desde entonces:
+> - Kamakura ya no es el comodín: el jueves 27 es Fukagawa + Nakano Broadway.
+> - El orden de los días es distinto.
+
 > **Versión 1, en revisión.** Primera de dos rutas a comparar (la otra será **open-jaw**: entrar por Narita / salir por Osaka-Kansai).
 > **Configuración de vuelo:** redondo — entra y sale por **Tokio-Narita (NRT)**.
 > **Última actualización:** 16 jun 2026.

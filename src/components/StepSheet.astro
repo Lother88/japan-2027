@@ -1,0 +1,46 @@
+---
+/**
+ * StepSheet — hoja inferior (bottom sheet) compartida por todos los pasos del itinerario.
+ *
+ * Un solo diálogo (role=dialog + aria-modal) hijo directo de <body>; scripts/sheet.ts lo
+ * rellena al abrir a partir del paso tocado: hora · tipo, etiqueta, marcas, «Abrir en Google
+ * Maps», «Marcar como hecho», reservas del día (si el paso la necesita), la ficha de la zona
+ * (clonada de su <template>, con «El lugar» plegado) y las notas del día.
+ *
+ * Cierre: botón, tocar el fondo, Esc, arrastrar hacia abajo (con velocidad) o el «atrás» del
+ * móvil. Mientras está abierta, el resto de la página es `inert` y el foco vuelve al botón que
+ * la abrió al cerrar. Estilos en index.css («Journey · hoja»).
+ */
+import Icon from '@/components/Icon.astro'
+---
+
+<div data-sheet-root hidden>
+  <div data-sheet-backdrop></div>
+  <div data-sheet data-tone role="dialog" aria-modal="true" aria-labelledby="hoja-titulo" tabindex="-1">
+    <div data-sheet-grab aria-hidden="true"><span></span></div>
+    <button type="button" data-sheet-close aria-label="Cerrar">
+      <Icon name="close" size={22} />
+    </button>
+    <div data-sheet-scroll>
+      <p data-sheet-kicker><i aria-hidden="true"></i><span data-sheet-meta></span></p>
+      <h2 id="hoja-titulo" data-sheet-title></h2>
+      <div data-sheet-tags></div>
+      <div data-sheet-actions>
+        <a data-sheet-maps href="https://www.google.com/maps" target="_blank" rel="noopener">
+          <Icon name="pin" size={22} />
+          Abrir en Google Maps
+        </a>
+        <button type="button" role="checkbox" aria-checked="false" data-sheet-done>
+          <span data-box><Icon name="check" size={15} /></span>
+          <span data-sheet-done-label>Marcar como hecho</span>
+        </button>
+      </div>
+      <div data-sheet-res></div>
+      <div data-sheet-zone></div>
+      <section data-sheet-notes aria-labelledby="hoja-notas">
+        <h3 id="hoja-notas">Notas del día</h3>
+        <ul></ul>
+      </section>
+    </div>
+  </div>
+</div>

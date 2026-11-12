@@ -13,22 +13,12 @@
 /** GeoJSON coordinate tuple — ALWAYS [longitude, latitude] */
 export type LngLat = readonly [number, number]
 
-/** Time slot keys — union literal (NOT enum) */
-export type SlotKey = 'morning' | 'afternoon'
-
 // ── City ────────────────────────────────────────────────────────────────────
 
 export interface City {
   readonly slug: string       // 'tokio', 'kioto', 'osaka', 'kanazawa'...
   readonly name: string       // 'Tokio'
   readonly center: LngLat     // map center for encuadre [lng, lat]
-}
-
-// ── Zone references ─────────────────────────────────────────────────────────
-
-/** Lightweight reference to a Zone from within the itinerary (avoids duplication) */
-export interface ZoneRef {
-  readonly zoneId: string     // → Zone.id
 }
 
 // ── Transfers (trayectos entre ciudades / localizaciones) ────────────────────
@@ -45,7 +35,7 @@ export type TransferMode =
 
 /**
  * A transfer leg between two locations (inter-city move or day-trip round trip).
- * Pure logistics — NO spoilers. Rendered at the top of a Day, before the slots.
+ * Pure logistics — NO spoilers. Rendered at the top of a Day, before the steps.
  * A day can have 0..n legs (e.g. Kioto → Nara → Osaka has two).
  */
 export interface Transfer {
@@ -64,7 +54,7 @@ export interface Transfer {
  * city, so the closed round-trip route (routeOrder) stays undistorted.
  */
 export interface Excursion {
-  readonly id: string          // 'shirakawago' | 'hiroshima'
+  readonly id: string          // 'shirakawago' | 'nara' | 'hiroshima' | 'katsuoji'
   readonly fromSlug: string    // base city slug (→ City.slug)
   readonly toSlug: string      // destination slug (→ City.slug)
   readonly label: string       // 'Excursión a Shirakawa-go'
@@ -79,25 +69,70 @@ export interface ZonePractical {
   readonly logistics?: readonly string[]    // ['Combina con Harajuku a 15 min a pie']
 }
 
+// ── Steps (hour-by-hour plan of a day) ──────────────────────────────────────
+
+/** Kind of step — union literal (NOT enum) */
+export type StepType = 'visita' | 'comida' | 'traslado' | 'compras' | 'descanso' | 'noche'
+
 /**
- * Morning or afternoon block within a Day.
- * `summary` describes category/context — NOT what you'll see (anti-spoiler).
+ * One step of the day plan (orientative time + logistic label).
+ * ANTI-SPOILER (NOSPOIL-04): `label` is place name + action or time, never what
+ * you will see or experience inside.
  */
-export interface TimeSlot {
-  readonly key: SlotKey
-  readonly label: string        // 'Mañana' | 'Tarde'
-  readonly summary: string      // category/context brief, no spoilers
-  readonly zones: readonly ZoneRef[]
+export interface Step {
+  readonly time: string          // '09:30' | 'mañana' | 'tarde' | 'noche'
+  readonly label: string         // 'Museo Nacional de Tokio (apertura)'
+  readonly type: StepType
+  readonly zoneId?: string       // → Zone.id
+  readonly maps?: string         // Google Maps search text
+  readonly optional?: boolean    // optional step (e.g. depends on a festival)
+  readonly reserve?: boolean     // needs a booking in advance
 }
+
+/**
+ * Why a day is planned on that weekday / at that time — union literal (NOT enum).
+ * - cierre: closing day or fixed date (market, festival)
+ * - laborable: weekday, less local tourism
+ * - oleada: "first wave" — arrive before the crowds
+ * - finde: weekend gives something (pedestrian street, more buses)
+ */
+export type DayRule = 'cierre' | 'laborable' | 'oleada' | 'finde'
 
 /** Single day in the itinerary */
 export interface Day {
-  readonly id: number             // 9..29 (stable; route /dia/:dayId)
-  readonly date: string           // ISO 'YYYY-MM-DD' (2027-05-09 ...)
+  readonly id: number             // 8..28 = day of month (stable; anchor #dia-NN)
+  readonly date: string           // ISO 'YYYY-MM-DD' (2027-05-08 ... 2027-05-28)
   readonly citySlug: string       // → City.slug (city where you sleep that night / base city)
-  readonly title: string          // 'Tokio · bloque 1 — Llegada'
+  readonly title: string          // 'Tokio · bloque 1 — Llegada a Tokio' (UI takes the text after the last '—')
   readonly transfers?: readonly Transfer[]   // inter-city / day-trip legs (optional, ordered)
-  readonly slots: readonly TimeSlot[]   // normally [morning, afternoon]
+  readonly steps: readonly Step[]            // hour-by-hour plan (source of truth for the day)
+  readonly notes?: readonly string[]         // logistic notes (closures, tickets, cash...)
+  readonly rules?: readonly DayRule[]        // planning criteria applied to this day
+  readonly laundry?: boolean                 // laundry day (coin laundry at the hotel)
+  readonly hotelId?: string                  // → Hotel.id (where you sleep that night)
+}
+
+// ── Hotels & reservations ───────────────────────────────────────────────────
+
+/** Hotel stay (zone / area chosen; the actual hotel is booked separately) */
+export interface Hotel {
+  readonly id: string                    // 'tokio1' | 'kanazawa' ...
+  readonly citySlug: string              // → City.slug
+  readonly area: string                  // 'Ueno' | 'Shichijō (línea Keihan)'
+  readonly checkIn: string               // ISO date
+  readonly checkOut: string              // ISO date
+  readonly nights: number
+  readonly maps: string                  // Google Maps search text
+  readonly laundry: boolean              // coin laundry required at the hotel
+  readonly reasons?: readonly string[]   // why this area (logistics only)
+}
+
+/** Something that must be booked in advance */
+export interface Reservation {
+  readonly what: string                  // 'Shibuya Sky (franja del atardecer)'
+  readonly how: string                   // 'Online, ~2 semanas antes'
+  readonly date: string                  // ISO date of the day it is used
+  readonly dayId: number                 // → Day.id
 }
 
 /**

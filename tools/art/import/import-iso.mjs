@@ -19,6 +19,15 @@ for (const f of fs.readdirSync(srcDir).filter((n) => /^day\d\dIso\.markup\.ts$/.
   console.log(f, 'fade ids renamed:', (src.match(fadeIds) || []).length)
 }
 
+// Escenas con nombre (itinerario 8–28 may): iso-jinya, iso-sagano, iso-nakano. Mismo
+// prefijado de ids del kit que los días, con el nombre de la escena como prefijo.
+for (const name of ['jinya', 'sagano', 'nakano']) {
+  const f = `${name}Iso.markup.ts`
+  const src = fs.readFileSync(path.join(srcDir, f), 'utf8')
+  fs.writeFileSync(path.join(dest, f), src.replace(fadeIds, `${name}-fade-`))
+  console.log(f, 'fade ids renamed:', (src.match(fadeIds) || []).length)
+}
+
 // Piloto (día 21): normaliza al mismo esquema que los demás.
 const pilotPath = path.join(srcDir, 'kinkakujiIso.markup.ts')
 const pilot = fs.readFileSync(pilotPath, 'utf8')

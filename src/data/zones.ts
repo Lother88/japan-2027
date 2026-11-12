@@ -1,53 +1,92 @@
 /**
- * Zone data — Tokio bloque 1 pilot (días 9–12)
+ * Zone data — todas las zonas del itinerario (días 8–28 de mayo de 2027)
  *
  * ANTI-SPOILER RULE (NOSPOIL-01, NOSPOIL-04):
  * - NO `description` field in any Zone object
  * - `practical` contains logistics only: access, hours, logistics tips
  * - Tags describe category/type, not what you'll see
- * - `TimeSlot.summary` in itinerary.ts may describe category context, never the experience
+ * - El contexto cultural vive aparte en context.ts (mismo id de zona)
  *
  * Coordinates: [lng, lat] GeoJSON order.
  * Sources: OpenStreetMap, Wikipedia, Google Maps public data (approximate centers).
+ * Horarios: docs/revision-itinerario-fechas-2027.md (§3–§4) y docs/contexto-itinerario/v2/.
+ * Son orientativos: comprobar los de 2027 antes del viaje.
  */
 
 import type { Zone } from './types'
 
 export const zones: readonly Zone[] = [
-  // ── Día 9 — Asakusa ────────────────────────────────────────────────────
+  // ── Tokio · bloque 1 (días 8–11) ─────────────────────────────────────────
+
+  // ── Días 8 y 9 — Kanda Myōjin (Kanda Matsuri, si se confirma) ────────────
   {
-    id: 'asakusa',
-    name: 'Asakusa',
+    id: 'kanda',
+    name: 'Kanda Myōjin',
     citySlug: 'tokio',
-    coordinates: [139.7966, 35.7148],
-    tags: ['tradicional', 'templos', 'historico', 'shitamachi'],
+    coordinates: [139.7679, 35.702],
+    tags: ['santuario', 'historico', 'tradicional'],
     practical: {
-      access: 'Metro Ginza (G19) o Toei Asakusa (A18) — Estación Asakusa',
-      hours: 'Templo Sensoji: acceso libre 24h; sala principal 6:00–17:00. Nakamise: desde 9:00',
+      access: 'JR Chūō/Sōbu o Metro Marunouchi — Ochanomizu (~5 min a pie). Desde Akihabara, ~7 min a pie',
+      hours: 'Recinto: acceso libre',
       logistics: [
-        'Llegar antes de las 8:00 para evitar grupos organizados',
-        'Efectivo imprescindible en muchos puestos de Nakamise',
-        'JR Pass NO cubre el metro de Tokio — usar Suica/Pasmo',
+        'Kanda Matsuri 2027 (año de gran festival): fechas por confirmar; posible desfile el sáb 8 y entrada de mikoshi el dom 9 (alternativa: 15–16)',
+        'El santuario publica el programa en primavera (kandamatsuri.com)',
+        'Formato ligero: el desfile al paso el sábado y un rato el domingo por la mañana',
       ],
     },
   },
 
-  // ── Día 26 — Tokyo Skytree (Oshiage, combina con Asakusa) ───────────────
+  // ── Día 9 — Palacio Imperial ────────────────────────────────────────────
   {
-    id: 'tokyo-skytree',
-    name: 'Tokyo Skytree',
+    id: 'palacio-imperial',
+    name: 'Palacio Imperial',
     citySlug: 'tokio',
-    coordinates: [139.8107, 35.7101],
-    tags: ['mirador', 'iconico', 'moderno', 'shitamachi'],
+    coordinates: [139.7528, 35.6842],
+    tags: ['historico', 'jardines', 'iconico', 'imperial'],
     practical: {
-      access:
-        'Tobu Skytree Line / Metro Hanzomon — Estación Oshiage o Tokyo Skytree. A 20 min a pie o 3 min en metro desde Asakusa',
-      hours: 'Tembo Deck (350 m) y Tembo Galleria (450 m): ~9:00–22:00 (última entrada 21:00)',
+      access: 'Metro Marunouchi o Chiyoda — Estación Otemachi o Nijubashimae',
+      hours: 'Jardín Este: 9:00–18:00 del 15 de abril al 31 de agosto (última entrada 17:30). Cierra lunes y viernes',
       logistics: [
-        'Subir al atardecer (17:00–19:00 en mayo): vistas con luz y luego iluminado',
-        'Comprar entrada online con antelación (ticket rápido para extranjeros) — grupo de 4',
-        'A los pies está Tokyo Solamachi (centro comercial)',
-        'Se ve gratis e iluminado desde el puente Azuma-bashi (Asakusa)',
+        'Jardín Este: gratuito y sin reserva; entrada por la puerta Ōtemon',
+        'Si el lunes es festivo, abre ese día y cierra el martes',
+        'Interior del palacio no accesible sin reserva especial',
+        'Comida en Marunouchi y Ginza a pie (~15 min)',
+      ],
+    },
+  },
+
+  // ── Día 9 — Ginza ──────────────────────────────────────────────────────
+  {
+    id: 'ginza',
+    name: 'Ginza',
+    citySlug: 'tokio',
+    coordinates: [139.7647, 35.6717],
+    tags: ['lujo', 'compras', 'arte', 'gastronomia'],
+    practical: {
+      access: 'Metro Ginza (líneas Ginza, Marunouchi, Hibiya) — Estación Ginza. JR Yamanote — Estación Yurakucho (5 min a pie)',
+      hours: 'Chūō-dōri peatonal: sábados, domingos y festivos 12:00–18:00 (abril–septiembre). Tiendas: 10:00–20:00',
+      logistics: [
+        'El paso peatonal depende de la policía y del tiempo',
+        'Kabuki-za: localidades de un solo acto (makumi-seki); comprobar antes del viaje cómo se venden',
+        'Itoya (papelería) y Uniqlo Ginza: tax-free con pasaporte',
+      ],
+    },
+  },
+
+  // ── Día 10 — Harajuku / Meiji Jingū ────────────────────────────────────
+  {
+    id: 'harajuku-meiji',
+    name: 'Harajuku / Meiji Jingū',
+    citySlug: 'tokio',
+    coordinates: [139.6993, 35.6762],
+    tags: ['santuario', 'moda-alternativa', 'parque', 'cultura-pop'],
+    practical: {
+      access: 'JR Yamanote — Estación Harajuku (salida Takeshita u Omotesandō)',
+      hours: 'Meiji Jingū: del amanecer al anochecer. Takeshita-dōri: peatonal de 11:00 a 18:00',
+      logistics: [
+        'Meiji Jingū: recinto gratuito; jardín interior (Gyoen) 500 ¥',
+        'En fin de semana Harajuku se satura: por eso va en lunes',
+        'Ropa vintage en Cat Street / Ura-Harajuku',
       ],
     },
   },
@@ -60,48 +99,28 @@ export const zones: readonly Zone[] = [
     coordinates: [139.7016, 35.6585],
     tags: ['comercial', 'juvenil', 'iconico', 'entretenimiento'],
     practical: {
-      access: 'JR Yamanote Line o Metro Ginza — Estación Shibuya, salida Hachiko',
-      hours: 'Tiendas: 10:00–21:00. Shibuya SKY (mirador): reserva online recomendada',
+      access: 'JR Yamanote o Metro Ginza — Estación Shibuya, salida Hachikō',
+      hours: 'Shibuya Parco, planta 6 (Nintendo Tokyo, Pokémon Center, Capcom Store, Jump Shop): ~10:00–21:00. SHIBUYA SKY: entrada con hora',
       logistics: [
-        'Pokémon Center y Nintendo Tokyo en Shibuya PARCO planta 6: 10:00–21:00',
-        'Mejor mañana para el cruce peatonal (menos concurrido)',
-        'Reservar Shibuya SKY con 2 semanas de antelación',
+        'SHIBUYA SKY: comprar online la franja del atardecer (~2 semanas antes); puesta de sol ~18:40',
+        'SHIBUYA SKY está en la torre este de Shibuya Scramble Square',
       ],
     },
   },
 
-  // ── Día 10 — Harajuku / Meiji Jingu ────────────────────────────────────
-  {
-    id: 'harajuku-meiji',
-    name: 'Harajuku / Meiji Jingū',
-    citySlug: 'tokio',
-    coordinates: [139.6993, 35.6762],
-    tags: ['santuario', 'moda-alternativa', 'parque', 'cultura-pop'],
-    practical: {
-      access: 'JR Yamanote — Estación Harajuku (salida Takeshita o Omotesando)',
-      hours: 'Meiji Jingū: amanecer–anochecer. Takeshita Street: tiendas desde 11:00',
-      logistics: [
-        'Meiji Jingū: recinto gratuito; tesoro interior ~500¥',
-        'Takeshita Street: entre semana es más manejable que fines de semana',
-        'Ropa vintage de calidad en Cat Street / Ura-Harajuku',
-      ],
-    },
-  },
-
-  // ── Día 10 — Shinjuku ──────────────────────────────────────────────────
+  // ── Día 10 — Shinjuku de noche ─────────────────────────────────────────
   {
     id: 'shinjuku',
     name: 'Shinjuku',
     citySlug: 'tokio',
     coordinates: [139.6993, 35.6896],
-    tags: ['compras', 'gastronomia', 'ocio-nocturno', 'segunda-mano'],
+    tags: ['ocio-nocturno', 'gastronomia', 'iconico', 'entretenimiento'],
     practical: {
-      access: 'JR Yamanote — Estación Shinjuku (salida Oeste para Book Off y Gobierno Metropolitano)',
-      hours: 'Book Off PLUS: 10:00–23:00. Mirador Gobierno Metropolitano: 9:30–22:30 (cierra algunos martes)',
+      access: 'JR Yamanote — Estación Shinjuku: salida oeste para Omoide Yokochō; salida este para Kabukichō y Golden Gai',
+      hours: 'Omoide Yokochō: mejor de 18:00 a 21:00. Golden Gai: bares por la noche',
       logistics: [
-        'Mirador gratuito del Gobierno Metropolitano — sin reserva, planta 45',
-        'Book Off PLUS: Nishishinjuku 1-chome, plantas 3F–6F',
-        'Omoide Yokocho: mejor entre 18:00 y 21:00',
+        'De Omoide Yokochō (oeste) a Kabukichō y Golden Gai (este): ~10 min a pie',
+        'Bares diminutos: muchos cobran entrada (cover charge)',
       ],
     },
   },
@@ -114,13 +133,30 @@ export const zones: readonly Zone[] = [
     coordinates: [139.7744, 35.7141],
     tags: ['museos', 'parque', 'historico', 'shitamachi'],
     practical: {
-      access: 'JR Yamanote o Keihin-Tohoku — Estación Ueno (salida Park para el parque; Shinobazu para Ameyoko)',
-      hours: 'Museo Nacional de Tokio: 9:30–17:00 (vie/sáb hasta 20:00), cerrado lunes. Zoo: 9:30–17:00, cerrado lunes',
+      access: 'JR Yamanote o Keihin-Tōhoku — Estación Ueno (salida Park para el parque)',
+      hours: 'Museo Nacional de Tokio: 9:30–17:00 (vie/sáb hasta 20:00), cerrado lunes',
       logistics: [
-        'Elegir un museo principal — el TNM solo puede ocupar 3–4 horas',
-        'Ameyoko Market: mejor 11:00–15:00',
-        'Efectivo imprescindible en puestos de Ameyoko',
-        'Combina perfectamente con Akihabara a 15 min a pie',
+        'Llegar a la apertura (9:30)',
+        'Línea Hibiya directa de Ueno a Tsukiji para comer',
+        'Ameyoko Market: efectivo en los puestos',
+      ],
+    },
+  },
+
+  // ── Día 11 — Tsukiji ───────────────────────────────────────────────────
+  {
+    id: 'tsukiji',
+    name: 'Tsukiji (Mercado Exterior)',
+    citySlug: 'tokio',
+    coordinates: [139.7706, 35.6654],
+    tags: ['gastronomia', 'mercado', 'historico', 'marisco'],
+    practical: {
+      access: 'Metro Hibiya — Estación Tsukiji (salida 1) o Metro Ōedo — Tsukijishijo',
+      hours: 'La asociación del mercado pide a los turistas ir de 9:00 a 14:00 (antes compran los profesionales). Cierra domingos, festivos y algunos miércoles',
+      logistics: [
+        'No se regatea: precios de criterio profesional',
+        'Efectivo en la mayoría de puestos',
+        'Tsukiji Hongwanji a 2 min a pie',
       ],
     },
   },
@@ -134,74 +170,55 @@ export const zones: readonly Zone[] = [
     tags: ['shitamachi', 'historico', 'artesania', 'tranquilo'],
     practical: {
       access: 'JR Yamanote o Keisei — Estación Nippori, salida norte. Metro Chiyoda — Nezu o Sendagi',
-      hours: 'Yanaka Ginza: tiendas desde 10:00, muchas cierran a las 17:00–18:00. Cerrado lunes muchas tiendas',
+      hours: 'Yanaka Ginza: tiendas desde 10:00; muchas cierran a las 17:00–18:00 y bastantes los lunes',
       logistics: [
         'Efectivo en la mayoría de tiendas de Yanaka Ginza',
         'Bajar por las escaleras Yūyake Dandan desde Nippori',
+        'Nezu Jinja: recinto gratuito; el jardín de azaleas solo abre en abril',
         'Combinación natural con Ueno (20 min a pie hacia el sur)',
-        'Nezu Jinja: recinto gratuito, horario aprox. 5:30–18:00 en mayo',
       ],
     },
   },
 
-  // ── Día 12 — Palacio Imperial ───────────────────────────────────────────
+  // ── Tokio · bloque 2 (días 25–27) ────────────────────────────────────────
+
+  // ── Días 8 y 26 — Asakusa ─────────────────────────────────────────────
   {
-    id: 'palacio-imperial',
-    name: 'Palacio Imperial',
+    id: 'asakusa',
+    name: 'Asakusa',
     citySlug: 'tokio',
-    coordinates: [139.7528, 35.6842],
-    tags: ['historico', 'jardines', 'iconico', 'imperial'],
+    coordinates: [139.7966, 35.7148],
+    tags: ['tradicional', 'templos', 'historico', 'shitamachi'],
     practical: {
-      access: 'Metro Marunouchi o Chiyoda — Estación Otemachi o Nijubashimae',
-      hours: 'Jardín Este: 9:00–16:30 (última entrada 16:00), cerrado lunes y viernes',
+      access: 'Metro Ginza (G19) o Toei Asakusa (A18) — Estación Asakusa',
+      hours: 'Sensō-ji: recinto 24 h (iluminado hasta las 23:00); sala principal 6:00–17:00. Nakamise: desde ~9:00',
       logistics: [
-        'Jardín Este: gratuito, acceso por puerta Otemon',
-        'Interior del palacio no accesible sin reserva especial',
-        'Combina fácilmente con Ginza (15 min a pie) y Tsukiji (20 min)',
+        'A las 7:30 está tranquilo; entre semana, mejor',
+        'Efectivo en muchos puestos de Nakamise',
+        'Sanja Matsuri: 14–16 de mayo de 2027, antes de la visita',
       ],
     },
   },
 
-  // ── Día 12 — Ginza ─────────────────────────────────────────────────────
+  // ── Día 26 — Tokyo Skytree ─────────────────────────────────────────────
   {
-    id: 'ginza',
-    name: 'Ginza',
+    id: 'tokyo-skytree',
+    name: 'Tokyo Skytree',
     citySlug: 'tokio',
-    coordinates: [139.7647, 35.6717],
-    tags: ['lujo', 'compras', 'arte', 'gastronomia'],
+    coordinates: [139.8107, 35.7101],
+    tags: ['mirador', 'iconico', 'moderno', 'shitamachi'],
     practical: {
-      access: 'Metro Ginza (líneas Ginza, Marunouchi, Hibiya) — Estación Ginza. JR Yamanote — Estación Yurakucho (5 min a pie)',
-      hours: 'Tiendas: 10:00–20:00. Kabuki-za: sesiones según programa. Chuo-dori peatonal: sáb/dom/festivos 12:00–18:00',
+      access:
+        'Tobu Skytree Line / Metro Hanzōmon — Estación Oshiage o Tokyo Skytree. A 20 min a pie o 3 min en metro desde Asakusa',
+      hours: 'Tembo Deck (350 m) y Tembo Galleria (450 m): ~9:00–22:00 (última entrada 21:00)',
       logistics: [
-        'Itoya (papelería): 12 plantas, entrada gratuita, 10:00–20:00',
-        'Uniqlo Ginza Flagship: 12 plantas, tax-free con pasaporte',
-        'Kabuki-za: entrada de acto único (hitomakumi) desde ¥500, solo efectivo',
-        'Galerías Shiseido y Ginza Graphic: gratuitas',
+        'Entrada con hora para la franja del atardecer: comprar con antelación (entre semana es más barata)',
+        'A los pies está Tokyo Solamachi (centro comercial)',
       ],
     },
   },
 
-  // ── Día 12 — Tsukiji ───────────────────────────────────────────────────
-  {
-    id: 'tsukiji',
-    name: 'Tsukiji (Mercado Exterior)',
-    citySlug: 'tokio',
-    coordinates: [139.7706, 35.6654],
-    tags: ['gastronomia', 'mercado', 'historico', 'marisco'],
-    practical: {
-      access: 'Metro Hibiya — Estación Tsukiji (salida 1) o Metro Oedo — Tsukijishijo',
-      hours: 'Mercado exterior: 7:00–14:00 aprox. Cerrado domingos y algunos miércoles',
-      logistics: [
-        'Llegar entre 7:00 y 9:00 para la mayor variedad',
-        'Efectivo en la mayoría de puestos',
-        'Tsukiji Honganji (templo) a 2 min: acceso libre 6:00–16:00',
-        'Combina perfectamente con Ginza (15 min a pie hacia el norte)',
-      ],
-    },
-  },
-
-  // ── Tokio · bloque 2 ──────────────────────────────────────────────────
-
+  // ── Día 25 — Akihabara ─────────────────────────────────────────────────
   {
     id: 'akihabara',
     name: 'Akihabara',
@@ -209,71 +226,89 @@ export const zones: readonly Zone[] = [
     coordinates: [139.7732, 35.7022],
     tags: ['electronica', 'cultura-pop', 'otaku', 'compras'],
     practical: {
-      access: 'JR Yamanote / Keihin-Tohoku — Estación Akihabara (salida Electric Town). Metro Hibiya — Akihabara',
-      hours: 'Tiendas: 10:00–20:00 en general. Yodobashi-Akiba: 9:30–22:00',
+      access: 'JR Yamanote / Keihin-Tōhoku — Estación Akihabara (salida Electric Town). Metro Hibiya — Akihabara',
+      hours: 'Tiendas: 10:00–20:00 en general (orientativo)',
       logistics: [
-        'Yodobashi-Akiba: tax-free con pasaporte en mostradores designados',
-        'Book Off y Mandarake: segunda mano de manga, videojuegos y figures',
-        'Combina a pie con Ueno (~15 min) y Yanaka',
-        'Días de semana menos masificado que el fin de semana',
+        'Figuras y coleccionismo: Radio Kaikan, Mandarake Complex, Surugaya',
+        'Juegos retro: Super Potato y similares (comprobar en 2027 que siguen abiertas)',
+        'Tax-free con pasaporte en muchas tiendas',
       ],
     },
   },
 
+  // ── Día 27 — Kiyosumi-Shirakawa / Fukagawa ─────────────────────────────
   {
-    id: 'daikanyama',
-    name: 'Daikanyama',
+    id: 'kiyosumi-fukagawa',
+    name: 'Kiyosumi-Shirakawa y Fukagawa',
     citySlug: 'tokio',
-    coordinates: [139.7028, 35.6490],
-    tags: ['barrio-residencial', 'moda', 'lifestyle', 'cafes'],
+    coordinates: [139.798, 35.6818],
+    tags: ['jardin', 'museo', 'historico', 'shitamachi', 'gastronomia'],
     practical: {
-      access: 'Tokyu Toyoko Line — Estación Daikanyama (1 parada desde Shibuya)',
-      hours: 'Tiendas: 11:00–20:00 aprox. Tsutaya Books: 7:00–26:00',
+      access:
+        'Metro Tōzai u Ōedo — Monzen-Nakachō; Ōedo o Hanzōmon — Kiyosumi-Shirakawa (1 parada entre sí, ~15 min a pie)',
+      hours:
+        'Jardín Kiyosumi: 9:00–17:00 (última entrada 16:30), 150 ¥. Fukagawa Edo Museum: ~9:30–17:00 (verificar 2027). Tonkatsu Marushichi: 11:30–17:00',
       logistics: [
-        'Tsutaya Books T-Site: librería-concept store abierta hasta las 2:00',
-        'Barrio compacto: todo a pie en 20–30 min',
-        'Combina con Nakameguro (10 min a pie siguiendo el canal)',
-        'Mejor entre semana para pasear tranquilo',
+        'Tonkatsu Marushichi (yaki-katsudon; sin reservas): confirmar días de cierre en sus redes',
+        'Comer fukagawa-meshi junto a Tomioka Hachimangū',
+        'De Monzen-Nakachō, línea Tōzai directa a Nakano (~35 min)',
       ],
     },
   },
 
-  // ── Takaragawa ────────────────────────────────────────────────────────
+  // ── Día 27 — Nakano Broadway ───────────────────────────────────────────
+  {
+    id: 'nakano',
+    name: 'Nakano Broadway',
+    citySlug: 'tokio',
+    coordinates: [139.6656, 35.7087],
+    tags: ['otaku', 'cultura-pop', 'segunda-mano', 'compras'],
+    practical: {
+      access: 'JR Chūō/Sōbu o Metro Tōzai — Estación Nakano (salida norte), ~5 min a pie por la galería Sun Mall',
+      hours: 'Tiendas: sobre todo 12:00–20:00; algunas cierran los miércoles',
+      logistics: [
+        'Mandarake: unos 35 locales repartidos por las plantas 1–4',
+        'Llegar a partir de las 12:00, cuando ya está todo abierto',
+      ],
+    },
+  },
+
+  // ── Takaragawa (día 12) ──────────────────────────────────────────────────
 
   {
     id: 'takaragawa-onsen',
-    name: 'Takaragawa Onsen (Osenkaku)',
+    name: 'Takaragawa Onsen (Ōsenkaku)',
     citySlug: 'takaragawa',
     coordinates: [138.9206, 36.8367],
     tags: ['onsen', 'ryokan', 'naturaleza', 'rural'],
     practical: {
-      access: 'Tren Jōetsu Shinkansen hasta Jōmō-Kōgen + lanzadera del ryokan (~30 min). Reservar lanzadera con la estancia',
-      hours: 'Baños exteriores: 9:00–16:00 para visitantes externos (reserva recomendada). Huéspedes: acceso ampliado',
+      access:
+        'Jōetsu Shinkansen hasta Jōmō-Kōgen + lanzadera del ryokan (~45 min). Hacia el ryokan a las 13:00 y a las 15:00; hacia la estación, solo a las 9:30. Reserva por teléfono',
+      hours: 'Baños para visitantes de día: 10:00–16:30. Huéspedes: horario ampliado',
       logistics: [
-        'Reservar la lanzadera del ryokan con antelación al hacer la reserva de la estancia',
-        'Valorar takkyubin para el equipaje grande desde Tokio',
-        'Efectivo imprescindible (ryokan y zona rural)',
-        'Check-in ~15:00; cena kaiseki incluida normalmente',
+        'Baño mixto con prenda de baño (yuami-gi) del propio ryokan; no se admiten las traídas de fuera',
+        'Preguntar directamente por la política de tatuajes',
+        'Efectivo recomendado (zona rural)',
+        'Cena incluida normalmente',
       ],
     },
   },
 
-  // ── Kanazawa ──────────────────────────────────────────────────────────
+  // ── Kanazawa (días 13–14) ────────────────────────────────────────────────
 
   {
     id: 'higashi-chaya',
     name: 'Higashi Chaya',
     citySlug: 'kanazawa',
-    coordinates: [136.6612, 36.5720],
+    coordinates: [136.6612, 36.572],
     tags: ['historico', 'tradicional', 'artesania', 'chaya'],
     practical: {
-      access: 'Autobús urbano Loop Bus (Higashi Chaya parada) desde Kanazawa Estación (~15 min)',
+      access: 'Autobús urbano Loop Bus (parada Hashiba-chō) desde la estación de Kanazawa (~15 min)',
       hours: 'Calles: acceso libre. Casas de té visitables: 9:00–18:00 aprox.',
       logistics: [
+        'Al atardecer: menos gente que a mediodía',
         'Efectivo en la mayoría de tiendas de artesanía y dulces',
-        'Mejor llegar a primera hora de la mañana para verlo tranquilo',
-        'Calle principal Higashiyama: libre a pie en 30–40 min',
-        'Combina con Kenroku-en (~20 min a pie)',
+        'Calle principal: a pie en 30–40 min',
       ],
     },
   },
@@ -282,16 +317,15 @@ export const zones: readonly Zone[] = [
     id: 'kenrokuen',
     name: 'Kenroku-en',
     citySlug: 'kanazawa',
-    coordinates: [136.6620, 36.5618],
+    coordinates: [136.662, 36.5618],
     tags: ['jardin', 'historico', 'patrimonio', 'naturaleza'],
     practical: {
-      access: 'Loop Bus — parada Kenrokuen-shita. O 15 min a pie desde Kanazawa Estación',
-      hours: 'Mar–oct: 7:00–18:00. Nov–feb: 8:00–17:00. ¥320 adultos (gratuito antes de las 8:00 en temporada)',
+      access: 'Loop Bus — parada Kenrokuen-shita. O 15 min a pie desde la estación de Kanazawa',
+      hours: 'Mar–oct: 7:00–18:00, 320 ¥. Gratis de 4:00 a 6:45 por las puertas Hasuike y Zuijinzaka',
       logistics: [
-        'Entrada gratuita antes del horario oficial en temporada (verificar en 2027)',
-        'Jardin compacto (~11 ha): 1–2 h suficientes',
-        'Acceso directo al recinto del Castillo de Kanazawa',
-        'Mejor por la mañana temprano para la luz y sin grupos',
+        'A las 7:00, antes que los grupos',
+        'Acceso directo al recinto del castillo de Kanazawa',
+        'El Museo del Siglo XXI, al lado, está cerrado de mayo de 2027 a marzo de 2028',
       ],
     },
   },
@@ -303,11 +337,10 @@ export const zones: readonly Zone[] = [
     coordinates: [136.6577, 36.5627],
     tags: ['castillo', 'historico', 'parque', 'patrimonio'],
     practical: {
-      access: 'Adyacente a Kenroku-en. Loop Bus — parada Kenrokuen-shita',
-      hours: 'Parque: 7:00–18:00 (entrada gratuita). Pabellones interiores: 9:00–16:30, ¥320',
+      access: 'Adyacente a Kenroku-en (puerta Ishikawa-mon). Loop Bus — parada Kenrokuen-shita',
+      hours: 'Parque: 7:00–18:00 (entrada gratuita). Pabellones interiores: 9:00–16:30, 320 ¥',
       logistics: [
-        'Combinar con Kenroku-en en la misma visita (entrada directa entre ambos)',
-        'Pabellones de madera restaurados con técnicas tradicionales',
+        'Combinar con Kenroku-en en la misma mañana',
         'Terreno llano: accesible para todo el grupo',
       ],
     },
@@ -320,12 +353,11 @@ export const zones: readonly Zone[] = [
     coordinates: [136.6515, 36.5598],
     tags: ['historico', 'samurai', 'tradicional', 'museo'],
     practical: {
-      access: 'Loop Bus — parada Korinbo. O 20 min a pie desde Kanazawa Estación',
-      hours: 'Calles: acceso libre. Nomura-ke (casa samurái): 8:30–17:30, ¥550',
+      access: 'Loop Bus — parada Kōrinbō. O 20 min a pie desde la estación de Kanazawa',
+      hours: 'Calles: acceso libre. Casa Nomura (Nomura-ke): 8:30–17:30, ~550 ¥',
       logistics: [
-        'Nomura-ke: casa samurái histórica con jardín interior, entrada ~¥550',
-        'Calles de muros de adobe: paseo de 30–45 min',
-        'Combina con Ōmichō (~10 min a pie caminando hacia la estación)',
+        'Calles de muros de barro: paseo de 30–45 min',
+        'Ōmichō a ~10 min a pie, camino de la estación',
         'Efectivo recomendado para entradas y tiendas pequeñas',
       ],
     },
@@ -338,18 +370,51 @@ export const zones: readonly Zone[] = [
     coordinates: [136.6554, 36.5663],
     tags: ['mercado', 'gastronomia', 'marisco', 'local'],
     practical: {
-      access: 'Loop Bus — parada Musashigatsuji/Ōmichō Ichiba. O 10 min a pie desde Kenroku-en',
-      hours: '9:00–17:00 aprox. Algunos puestos desde 7:00. Cerrado algunos domingos y festivos',
+      access: 'Loop Bus — parada Musashigatsuji/Ōmichō Ichiba. 10 min a pie desde la estación',
+      hours: '9:00–17:00 aprox. Algunos puestos desde 7:00. Cierran algunos domingos y festivos',
       logistics: [
-        'Marisco del Mar de Japón: cangrejo, calamares y peces locales',
-        'Efectivo imprescindible en la mayoría de puestos',
-        'Mejor 9:00–11:00 para mayor variedad y puestos abiertos',
-        'Pequeños restaurantes de sushi en el interior del mercado',
+        'El jueves 13, llegar antes de las 17:00',
+        'Efectivo en la mayoría de puestos',
+        'Restaurantes de sushi y kaisen-don dentro del mercado',
       ],
     },
   },
 
-  // ── Takayama ──────────────────────────────────────────────────────────
+  // ── Día 14 — Nishi Chaya y Teramachi (paseo opcional) ──────────────────
+  {
+    id: 'nishi-chaya',
+    name: 'Nishi Chaya y Teramachi',
+    citySlug: 'kanazawa',
+    coordinates: [136.6488, 36.5552],
+    tags: ['chaya', 'templos', 'historico', 'tranquilo'],
+    practical: {
+      access: 'Orilla oeste del río Sai: autobús desde la estación hasta Hirokōji (~15 min) o ~10 min a pie desde Nagamachi',
+      hours: 'Calles y recintos de templos: acceso libre. Nishi Chaya Shiryōkan: gratuito',
+      logistics: [
+        'Paseo tranquilo y gratuito para la tarde libre',
+        'Myōryū-ji («templo ninja»): solo con reserva previa y visita guiada; descartado en el plan',
+      ],
+    },
+  },
+
+  // ── Takayama (días 15–16) ────────────────────────────────────────────────
+
+  // ── Día 15 — Yatai Kaikan + Sakurayama Hachimangū ──────────────────────
+  {
+    id: 'takayama-yatai',
+    name: 'Yatai Kaikan y Sakurayama Hachimangū',
+    citySlug: 'takayama',
+    coordinates: [137.258, 36.1515],
+    tags: ['santuario', 'museo', 'historico', 'tradicional'],
+    practical: {
+      access: '~20 min a pie desde la estación de Takayama, al norte de Sanmachi',
+      hours: 'Horario y precio por confirmar: ~8:30/9:00–17:00, ~840 ¥',
+      logistics: [
+        'Visita libre de 30–45 min',
+        'Ir hacia las 14:00, antes de Sanmachi (tiendas hasta ~17:00)',
+      ],
+    },
+  },
 
   {
     id: 'sanmachi-suji',
@@ -358,12 +423,11 @@ export const zones: readonly Zone[] = [
     coordinates: [137.2529, 36.1462],
     tags: ['historico', 'tradicional', 'sake', 'casco-antiguo'],
     practical: {
-      access: '10 min a pie desde Takayama Estación hacia el este cruzando el río Miyagawa',
-      hours: 'Calles: acceso libre. Destilerías de sake: 9:00–17:00 aprox. Tiendas de artesanía: 9:00–17:00',
+      access: '10 min a pie desde la estación de Takayama hacia el este, cruzando el río Miyagawa',
+      hours: 'Calles: acceso libre. Bodegas de sake y tiendas: ~9:00–17:00 (muchas cierran hacia las 17:00)',
       logistics: [
-        'Tres calles paralelas históricas de la era Edo: Kami-Sannomachi, Naka-Sannomachi, Shimo-Sannomachi',
-        'Destilerías de sake con degustación gratuita o pequeña tarifa',
-        'Llegar temprano (antes de las 9:00) o al atardecer para menos gentío',
+        'Antes de las 10:00 o desde las 16:00: menos excursionistas de día',
+        'Bodegas de sake con degustación gratuita o de pago',
         'Efectivo recomendado para tiendas pequeñas y artesanía',
       ],
     },
@@ -376,13 +440,11 @@ export const zones: readonly Zone[] = [
     coordinates: [137.2337, 36.1519],
     tags: ['museo', 'arquitectura', 'al-aire-libre', 'tradicional'],
     practical: {
-      access: 'Autobús desde Takayama Estación (~10 min, línea Sarubobo-go). O 30 min a pie',
-      hours: '8:30–17:00 (última entrada 16:30). Abierto todos los días. ¥700 adultos',
+      access: 'Autobús desde la estación de Takayama (~10 min, línea Sarubobo). O 30 min a pie',
+      hours: '8:30–17:00 (última entrada 16:30). Abierto todos los días. ~700 ¥',
       logistics: [
-        'Museo de 30+ casas históricas gassho-zukuri desmontadas y reubicadas',
-        'Entrada ¥700; tarjeta aceptada en taquilla, efectivo en interior',
-        'Combina con Shirakawa-go si se quiere ver casas similares in situ',
-        'Calcular 1,5–2 h para recorrer el recinto cómodamente',
+        'Calcular 1,5–2 h para recorrerlo con calma',
+        'Museo al aire libre: llevar calzado cómodo',
       ],
     },
   },
@@ -395,12 +457,10 @@ export const zones: readonly Zone[] = [
     tags: ['historico', 'patrimonio', 'gobierno-edo', 'museo'],
     practical: {
       access: '5 min a pie desde Sanmachi Suji, al sur del barrio histórico',
-      hours: '8:45–17:00 (ago: hasta 18:00). Cerrado 29 dic–3 ene. ¥450 adultos',
+      hours: '8:45–17:00 (agosto: hasta 18:00). ~450 ¥',
       logistics: [
-        'Único edificio de gobierno provincial de la era Edo que sobrevive en Japón',
-        'Entrada ¥450; audio-guía disponible en español (verificar disponibilidad 2027)',
-        'Visita de 45–60 min suficiente',
-        'Salida de Takayama hacia Kioto idealmente tras visitar este y el mercado de Miyagawa',
+        'Visita de 45–60 min',
+        'Justo al lado del mercado matinal Jinya-mae',
       ],
     },
   },
@@ -412,89 +472,68 @@ export const zones: readonly Zone[] = [
     coordinates: [137.2555, 36.1452],
     tags: ['mercado', 'gastronomia', 'local', 'matutino'],
     practical: {
-      access: 'Orilla derecha del río Miyagawa, frente a Sanmachi Suji. 10 min a pie desde la estación',
-      hours: '6:00–12:00 (abr–oct). 7:00–12:00 (nov–mar). Cerrado el día 31 de cada mes',
+      access: 'Orilla del río Miyagawa, frente a Sanmachi Suji. 10 min a pie desde la estación',
+      hours: '7:00–12:00',
       logistics: [
-        'Llegar entre 7:00 y 8:30 para la mayor variedad de producto',
-        'Verduras locales, conservas, artesanía y comida callejera',
-        'Efectivo imprescindible en todos los puestos',
-        'Breve (200 m de mercado): 30–45 min suficientes antes de coger el tren',
+        'Llegar a las 7:00',
+        'Efectivo en todos los puestos',
+        'Recorrido corto: 30–45 min',
       ],
     },
   },
 
-  // ── Shirakawa-go ──────────────────────────────────────────────────────
+  // ── Shirakawa-go (día 17) ────────────────────────────────────────────────
 
   {
     id: 'shirakawago-ogimachi',
     name: 'Shirakawa-go (Ogimachi)',
     citySlug: 'shirakawago',
-    coordinates: [136.9052, 36.2570],
+    coordinates: [136.9052, 36.257],
     tags: ['patrimonio-unesco', 'arquitectura', 'rural', 'aldea'],
     practical: {
-      access: 'Bus Nohi desde Takayama Estación (~50 min). Reservar con antelación — se llena',
-      hours: 'Aldea: libre. Museo Wada-ke: 9:00–17:00. Mirador Shiroyama: acceso libre todo el día',
+      access: 'Bus Nōhi desde el centro de autobuses de Takayama (~50 min): bus de las 7:20, llegada a las 8:10',
+      hours: 'Aldea: acceso libre. Casa Wada: 9:00–17:00. Mirador Shiroyama: acceso libre',
       logistics: [
-        'MASIFICACIÓN: tomar el primer bus (~7:30) o llegar antes de las 9:00; domingos y festivos se colapsa',
-        'Reservar el bus de ida y vuelta con antelación — los turnos de regreso se agotan',
-        'Efectivo para entradas de casas visitables (~¥300–600) y restaurantes',
-        'Mirador Shiroyama: 10 min a pie desde el aparcamiento, vistas panorámicas de la aldea',
+        'Laborable y antes de las 9:00: antes que los autocares',
+        'En fin de semana hay menos buses',
+        'Excursión sin maletas, de ida y vuelta desde Takayama',
+        'Efectivo para entradas de casas visitables y restaurantes',
       ],
     },
   },
 
-  // ── Kioto ─────────────────────────────────────────────────────────────
-
-  {
-    id: 'kioto-estacion',
-    name: 'Estación de Kioto y centro',
-    citySlug: 'kioto',
-    coordinates: [135.7588, 34.9858],
-    tags: ['transporte', 'compras', 'gastronomia', 'referencia'],
-    practical: {
-      access: 'Shinkansen Tōkaidō/Sanyō — Kioto Estación. JR, bus urbano y metro accesibles desde aquí',
-      hours: 'Estación: 5:30–24:00 aprox. Centro comercial Porta: 10:00–20:30. Isetan: 10:00–20:00',
-      logistics: [
-        'Recoger IC card (ICOCA) en los tornos de JR Kioto si no se trae de Tokio',
-        'Congelar el equipaje en consignas de la estación (coin lockers o servicio de consigna pagado)',
-        'Isetan y Porta en la propia estación para compras de último momento',
-        'Punto de referencia central: todos los buses urbanos y metro salen desde aquí',
-      ],
-    },
-  },
+  // ── Kioto (días 17–21) ───────────────────────────────────────────────────
 
   {
     id: 'kiyomizu-dera',
     name: 'Kiyomizu-dera',
     citySlug: 'kioto',
-    coordinates: [135.7850, 34.9948],
+    coordinates: [135.785, 34.9948],
     tags: ['templo', 'historico', 'patrimonio-unesco', 'montaña'],
     practical: {
-      access: 'Bus urbano línea 100 o 206 desde Kioto Estación — parada Gojo-zaka o Kiyomizu-michi (~20 min)',
-      hours: '6:00–18:00 (ago: hasta 21:30 para illuminación nocturna). ¥500 adultos',
+      access: 'A pie desde Shichijō (~20 min). Bus urbano 100 o 206 — parada Gojō-zaka o Kiyomizu-michi',
+      hours: '6:00–18:00. ~500 ¥',
       logistics: [
-        'Llegar antes de las 8:00 para evitar grupos; por la tarde 16:30+ también hay menos gentío',
-        'Cuesta empinada desde la parada de bus: 15 min a pie subiendo',
-        'Templo en restauración parcial posible (verificar estado obras en 2027)',
-        'Combina a pie con Higashiyama/Sannenzaka bajando desde el templo',
+        'A las 6:00, antes que los grupos escolares',
+        'Cuesta empinada desde la parada de bus: 15 min subiendo',
+        'Se baja a pie por Sannenzaka y Ninenzaka',
       ],
     },
   },
 
   {
     id: 'higashiyama-sannenzaka',
-    name: 'Higashiyama (Sannenzaka / Ninenzaka)',
+    name: 'Higashiyama (Sannenzaka / Ninenzaka / Kōdai-ji)',
     citySlug: 'kioto',
-    coordinates: [135.7806, 34.9990],
+    coordinates: [135.7806, 34.999],
     tags: ['historico', 'tradicional', 'paseo', 'artesania'],
     practical: {
       access: 'Desde Kiyomizu-dera bajando a pie (~5 min). Bus urbano 100/206 — parada Kiyomizu-michi',
-      hours: 'Calles: acceso libre. Tiendas: 9:00–17:00/18:00 aprox.',
+      hours: 'Calles: acceso libre. Tiendas: ~9:00–17:00/18:00. Kōdai-ji: ~9:00–17:30 (de pago)',
       logistics: [
-        'Calles adoquinadas en pendiente: calzado cómodo imprescindible',
-        'Efectivo en tiendas de artesanía y puestos de comida',
-        'Mejor horario: mañana temprana (antes de 9:30) o tarde (16:30+)',
-        'Enlaza con el barrio de Gion hacia el norte a 15–20 min a pie',
+        'Antes de las 9:00: tiendas cerradas y calles vacías',
+        'Calles empedradas en pendiente: calzado cómodo',
+        'Sigue hacia el norte por Maruyama y Yasaka Jinja',
       ],
     },
   },
@@ -506,31 +545,30 @@ export const zones: readonly Zone[] = [
     coordinates: [135.7751, 35.0038],
     tags: ['historico', 'geishas', 'tradicional', 'nocturno'],
     practical: {
-      access: 'Bus urbano 100/206 — parada Gion. Metro Keihan — Gion-Shijo',
-      hours: 'Calles: acceso libre. Hanamikoji: mejor al atardecer. Yasaka Jinja: 24h (recinto exterior)',
+      access: 'Keihan — Gion-Shijō. Bus urbano 100/206 — parada Gion',
+      hours: 'Calles: acceso libre. Yasaka Jinja y parque Maruyama: 24 h. Hanami-kōji: mejor de 17:30 a 19:00',
       logistics: [
-        'Hanamikoji-dori: calle principal de machiyas; respetar la privacidad (no fotografiar geishas sin permiso)',
-        'Mejor hora: 17:00–19:00 para la luz y la actividad de las okiya',
-        'Yasaka Jinja: acceso libre, iluminado por la noche',
-        'No grabar ni fotografiar a gente de frente sin su consentimiento',
+        'No detener, tocar, seguir ni fotografiar sin permiso a geiko y maiko',
+        'Prohibido entrar en los callejones privados (puede haber multa)',
+        'Desde Ginkaku-ji: taxi o autobús',
       ],
     },
   },
 
+  // ── Día 18 — Norte de Higashiyama ──────────────────────────────────────
   {
-    id: 'fushimi-inari',
-    name: 'Fushimi Inari Taisha',
+    id: 'higashiyama-norte',
+    name: 'Nanzen-ji, Camino del Filósofo y Ginkaku-ji',
     citySlug: 'kioto',
-    coordinates: [135.7727, 34.9671],
-    tags: ['santuario', 'torii', 'senderismo', 'patrimonio'],
+    coordinates: [135.795, 35.019],
+    tags: ['templo', 'paseo', 'jardines', 'historico'],
     practical: {
-      access: 'JR Nara Line — Estación Inari (2 min a pie). O Keihan — Fushimi-Inari',
-      hours: 'Recinto exterior: 24h. Oficinas: 8:30–16:30. Entrada gratuita',
+      access: 'Metro Tōzai — Keage (~10 min a pie a Nanzen-ji). A pie desde Yasaka Jinja (~30 min). Vuelta desde Ginkaku-ji en bus o taxi',
+      hours: 'Nanzen-ji: recinto y acueducto libres; Sanmon y Hōjō de pago (~8:40–17:00). Camino del Filósofo: libre. Ginkaku-ji: hasta ~17:00 (por confirmar)',
       logistics: [
-        'Ir al amanecer (5:30–7:00) para los primeros tramos sin nadie',
-        'Subida completa hasta la cima: ~2–3 h ida y vuelta; subida parcial (Yotsutsuji): ~45 min',
-        'Calzado deportivo recomendado para el ascenso',
-        'Efectivo para los puestos de comida de la base',
+        'Camino del Filósofo: ~1,5–2 km a pie de Nanzen-ji a Ginkaku-ji',
+        'Día largo (~8–10 km): si vais cansados, se puede saltar Ginkaku-ji',
+        'Ginkaku-ji: llegar antes de las 16:30',
       ],
     },
   },
@@ -542,31 +580,30 @@ export const zones: readonly Zone[] = [
     coordinates: [135.6726, 35.0094],
     tags: ['naturaleza', 'bambu', 'templo', 'rio'],
     practical: {
-      access: 'JR San-in Line — Saga-Arashiyama. O Randen (Keifuku) — Arashiyama. O Hankyu — Arashiyama',
-      hours: 'Bosque de bambú: acceso libre 24h. Tenryu-ji: 8:30–17:00, ¥500. Togetsukyo: libre',
+      access: 'JR San-in — Saga-Arashiyama. O Randen (Keifuku) — Arashiyama. O Hankyū — Arashiyama',
+      hours: 'Bosque de bambú: acceso libre 24 h. Tenryū-ji: 8:30–17:00 (de pago). Togetsukyō: libre',
       logistics: [
-        'Bosque de bambú: mejor al amanecer o después de las 17:00 (fuera de horario de buses turísticos)',
-        'Tenryu-ji: jardín Patrimonio de la UNESCO; ¥500 jardín / ¥800 con sala Sogenchi',
-        'Rickshaw disponible en la zona (precio orientativo ¥2.000–5.000 por tramo)',
-        'Combina con Kinkaku-ji en la misma jornada si se gestiona bien el tiempo',
+        'Bosque de bambú a las 7:00, antes que los grupos',
+        'Tenryū-ji a la apertura (8:30)',
+        'Vuelta en JR San-in a la estación de Kioto',
       ],
     },
   },
 
+  // ── Día 19 — Sanjūsangen-dō ────────────────────────────────────────────
   {
-    id: 'kinkakuji',
-    name: 'Kinkaku-ji',
+    id: 'sanjusangendo',
+    name: 'Sanjūsangen-dō',
     citySlug: 'kioto',
-    coordinates: [135.7292, 35.0394],
-    tags: ['templo', 'jardines', 'patrimonio-unesco', 'iconico'],
+    coordinates: [135.7718, 34.9879],
+    tags: ['templo', 'historico', 'patrimonio'],
     practical: {
-      access: 'Bus urbano 101 o 204 desde Kioto Estación — parada Kinkakuji-michi (~40 min)',
-      hours: '9:00–17:00. ¥500 adultos. Abierto todos los días',
+      access: 'Keihan — Shichijō (~5 min a pie). Bus urbano 100/206 — parada Hakubutsukan Sanjūsangendō-mae',
+      hours: '8:30–17:00 (abril–mediados de noviembre). 600 ¥',
       logistics: [
-        'Llegar a las 9:00 en punto para la primera entrada; se llena rapidísimo',
-        'Visita de 45–60 min suficiente (circuito exterior único)',
-        'Entrada incluye talismán de papel como ticket',
-        'Combina con Ryōan-ji (jardín zen, ~10 min a pie) para completar la mañana',
+        'Visita de 45–60 min',
+        'Hay que descalzarse; no se permiten fotos en el interior',
+        'A 5 min del hotel de Shichijō',
       ],
     },
   },
@@ -578,13 +615,47 @@ export const zones: readonly Zone[] = [
     coordinates: [135.7481, 35.0142],
     tags: ['castillo', 'historico', 'patrimonio-unesco', 'shogunato'],
     practical: {
-      access: 'Metro Tōzai — Nijōjō-mae. O Bus urbano 9/50 — parada Nijojo-mae',
-      hours: '8:45–17:00 (última entrada 16:00). Cerrado martes en ene y jul. ¥1.030 adultos',
+      access: 'Metro Tōzai — Nijōjō-mae. O bus urbano 9/50 — parada Nijōjō-mae',
+      hours: '8:45–17:00 (última entrada 16:00). De pago (comprobar precio de 2027)',
       logistics: [
-        'Reservar entrada online si se viaja en temporada alta (mayo ya es alta)',
-        'Suelos "ruiseñor" (uguisubari): crujen al caminar como medida de seguridad histórica',
-        'Jardín Ninomaru: incluido en la entrada; floración de ciruelos o azaleas según temporada',
+        'El palacio Honmaru cierra el 17 y el 18 de mayo; el 19 abre',
+        'Hacia las 15:00 los grupos escolares ya se van',
         'Calcular 1,5–2 h para palacio y jardines',
+      ],
+    },
+  },
+
+  {
+    id: 'fushimi-inari',
+    name: 'Fushimi Inari Taisha',
+    citySlug: 'kioto',
+    coordinates: [135.7727, 34.9671],
+    tags: ['santuario', 'torii', 'senderismo', 'patrimonio'],
+    practical: {
+      access: 'Keihan — Fushimi-Inari (3 paradas desde Shichijō). O JR Nara — Inari (2 min a pie)',
+      hours: 'Recinto exterior: 24 h. Entrada gratuita',
+      logistics: [
+        'Primer tren Keihan desde Shichijō (~5:30): llegar hacia las 6:00',
+        'Subida hasta el mirador de Yotsutsuji: ~1h30 ida y vuelta',
+        'Calzado deportivo para el ascenso',
+        'Después, taxi a Kinkaku-ji (~35–40 min; caben los 4)',
+      ],
+    },
+  },
+
+  {
+    id: 'kinkakuji',
+    name: 'Kinkaku-ji y Ryōan-ji',
+    citySlug: 'kioto',
+    coordinates: [135.7292, 35.0394],
+    tags: ['templo', 'jardines', 'patrimonio-unesco', 'iconico'],
+    practical: {
+      access: 'Taxi desde Fushimi Inari (~35–40 min). Bus urbano 101 o 205 — parada Kinkakuji-michi',
+      hours: 'Kinkaku-ji: 9:00–17:00, ~500 ¥, abierto todos los días. Ryōan-ji: de pago',
+      logistics: [
+        'Kinkaku-ji a las 9:00 en punto, antes de la oleada escolar',
+        'Visita de 45–60 min (circuito exterior único)',
+        'Ryōan-ji a ~20 min a pie',
       ],
     },
   },
@@ -596,17 +667,17 @@ export const zones: readonly Zone[] = [
     coordinates: [135.7654, 35.0046],
     tags: ['mercado', 'gastronomia', 'local', 'tradicional'],
     practical: {
-      access: 'Metro Karasuma — Shijo. O bus urbano — parada Shijo-Karasuma. A pie desde Gion (10 min)',
-      hours: '10:00–18:00 aprox. Algunos puestos desde 9:00. Cerrado miércoles varios locales',
+      access: 'Metro Karasuma — Shijō. Hankyū — Karasuma o Kawaramachi. A pie desde Gion (10 min)',
+      hours: '~10:00–18:00. Algunos puestos desde 9:00. Parte de los puestos cierra los miércoles',
       logistics: [
-        'Pasaje cubierto de ~400 m con ~100 puestos de comida y producto local',
-        'Efectivo recomendado en la mayoría de puestos',
-        'Mejor antes de las 11:00 o después de las 15:00 para evitar el pico',
-        'Combina con el barrio de Gion o con el Castillo Nijō (metro directo)',
+        'Pasaje cubierto de ~390 m',
+        'Efectivo en la mayoría de puestos',
+        'No comer caminando: se come junto al puesto',
       ],
     },
   },
 
+  // ── Día 21 — Tō-ji (mercadillo Kōbō-ichi) ──────────────────────────────
   {
     id: 'toji',
     name: 'Tō-ji',
@@ -614,90 +685,70 @@ export const zones: readonly Zone[] = [
     coordinates: [135.7475, 34.9804],
     tags: ['templo', 'historico', 'mercadillo', 'pagoda'],
     practical: {
-      access: 'JR Kintetsu Kyoto Line — Tōji Estación (5 min a pie). O 15 min a pie desde Kioto Estación',
-      hours: 'Recinto: 5:00–17:00 (gratuito). Kodo/Mido: 8:00–17:00, ¥500. Mercadillo del 21: todo el día',
+      access: 'Kintetsu — Tōji (5 min a pie). O 15 min a pie desde la estación de Kioto',
+      hours: 'Recinto: 5:00–17:00 (gratuito). Kondō/Kōdō: 8:00–17:00, de pago. Mercadillo Kōbō-ichi: el día 21 de cada mes, todo el día',
       logistics: [
-        'Mercadillo mensual el día 21 (kobo-ichi): antigüedades, artesanía y comida — gratis',
-        'La visita del día 21 de mayo 2027 es perfecta para el mercadillo mensual',
-        'Pagoda de cinco plantas: monumento nacional más alto de Japón (~55 m)',
-        'Efectivo imprescindible en el mercadillo',
+        'El 21 de mayo de 2027 (viernes) hay mercadillo: ir a las 8:00',
+        'Maletas en el hotel de Shichijō durante la visita',
+        'Efectivo en el mercadillo',
       ],
     },
   },
 
-  // ── Nara ──────────────────────────────────────────────────────────────
+  // ── Nara (día 21, por la tarde) ──────────────────────────────────────────
 
   {
     id: 'nara-todaiji',
-    name: 'Tōdai-ji y parque de Nara',
+    name: 'Tōdai-ji, Kōfuku-ji y parque de Nara',
     citySlug: 'nara',
     coordinates: [135.8399, 34.6895],
     tags: ['templo', 'patrimonio-unesco', 'parque', 'historico'],
     practical: {
-      access: 'Desde Nara Estación (JR o Kintetsu): bus urbano ~10 min o 30 min a pie',
-      hours: 'Gran Buda (Daibutsu-den): 7:30–17:30 (nov–feb: 8:00–17:00). ¥600 adultos. Parque: libre 24h',
+      access: 'Kintetsu-Nara (desde Osaka-Namba, ~40 min): ~20 min a pie hasta Tōdai-ji, pasando por Kōfuku-ji',
+      hours: 'Gran Buda (Daibutsuden): 7:30–17:30 (abr–oct). 800 ¥, solo efectivo. Parque: libre 24 h',
       logistics: [
-        'Ciervos sueltos por el parque: se acercan por comida (sembei de ciervos ~¥200 en puestos)',
-        'Cuidado con los ciervos y los bolsos — son curiosos y a veces muerden',
-        'Combina con Naramachi (~20 min a pie hacia el sur)',
-        'Llegar antes de las 9:00 para el Daibutsu sin aglomeración',
+        'De 15:00 a 17:30: menos grupos escolares',
+        'Kōfuku-ji: la pagoda de cinco pisos está cubierta por la obra hasta ~2034',
+        'Ciervos sueltos: galletas shika senbei en los puestos; cuidado con bolsos y mapas',
       ],
     },
   },
 
-  {
-    id: 'naramachi',
-    name: 'Naramachi',
-    citySlug: 'nara',
-    coordinates: [135.8331, 34.6842],
-    tags: ['historico', 'barrio', 'artesania', 'tradicional'],
-    practical: {
-      access: '20 min a pie hacia el sur desde el parque de Nara y Tōdai-ji',
-      hours: 'Calles: acceso libre. Museos y casas históricas: 9:00–17:00 aprox. Cerrado lunes algunos locales',
-      logistics: [
-        'Barrio histórico de casas machiya mercantiles (era Edo–Meiji) convertidas en tiendas y cafés',
-        'Naramachi Koshi-no-ie: casa mercader restaurada, entrada gratuita (9:00–17:00)',
-        'Efectivo en la mayoría de tiendas de artesanía',
-        'Combina con Tōdai-ji en la misma mañana antes de tomar el tren a Osaka',
-      ],
-    },
-  },
+  // ── Osaka (días 21–24) ───────────────────────────────────────────────────
 
-  // ── Osaka ─────────────────────────────────────────────────────────────
-
+  // ── Día 22 — Katsuo-ji (excursión de media jornada) ────────────────────
   {
     id: 'katsuo-ji',
     name: 'Katsuo-ji',
-    citySlug: 'osaka',
+    citySlug: 'katsuoji',
     coordinates: [135.4889, 34.8569],
     tags: ['templo', 'daruma', 'montana', 'historico'],
     practical: {
       access:
-        'Metro Midosuji hasta Minoh-Kayano (~35 min) + bus Hankyu (~15–20 min, ~¥400). Domingos/festivos con buses frecuentes',
-      hours: '8:00–17:00 (sáb hasta 18:00); último acceso 30 min antes. Entrada ~¥500 (confirmar)',
+        'Metro Midōsuji hasta Senri-Chūō + autobús (solo tarjeta IC). En taxi desde Senri-Chūō: ~3.400 ¥ para 4',
+      hours: '8:00–17:00 (sáb hasta 18:00); último acceso 30 min antes. Entrada de pago (confirmar precio)',
       logistics: [
-        'Templo de montaña famoso por los miles de muñecos daruma (templo de la victoria / buena suerte)',
-        '⚠️ Buses escasos entre semana (1/hora o cada 2h); frecuentes en findes/festivos. Último bus de bajada ~16:48 (dom/festivos), ~16:18 (laborables)',
-        'En mayo no hay hojas de otoño (su pico visual), pero está verde y tranquilo',
-        'Excursión de media jornada desde el norte de Osaka',
+        'El autobús ya no acepta efectivo: llevar Suica/ICOCA',
+        'En fin de semana hay más autobuses (por eso sábado)',
+        'Excursión de media jornada: vuelta a Namba hacia las 12:30',
       ],
     },
   },
 
   {
     id: 'dotonbori',
-    name: 'Dōtonbori',
+    name: 'Dōtonbori y Minami',
     citySlug: 'osaka',
     coordinates: [135.5021, 34.6687],
     tags: ['gastronomia', 'ocio-nocturno', 'iconico', 'entretenimiento'],
     practical: {
-      access: 'Metro Midosuji o Sennichimae — Namba Estación (salida 14). O Keihan — Namba',
-      hours: 'Canal y zona: libre 24h. Tiendas y restaurantes: 11:00–23:00/24:00 aprox.',
+      access: 'Metro Midōsuji o Sennichimae — Estación Namba (salida 14). Kintetsu — Osaka-Namba',
+      hours: 'Canal y zona: libre 24 h. Tiendas y restaurantes: ~11:00–23:00',
       logistics: [
-        'Takoyaki, okonomiyaki y kushikatsu: especialidades locales a pie de calle',
-        'Zona más animada entre 18:00 y 22:00',
-        'Glico man (hombre corriendo): icono fotográfico junto al puente Ebisu',
-        'Efectivo en muchos puestos de comida callejera; tarjeta en restaurantes medianos',
+        'Cartel de Glico: en sustitución; el nuevo está previsto para la primavera de 2027 (puede haber andamios)',
+        'Hōzen-ji y su callejón a 2 min a pie',
+        'Shinsaibashi (galería cubierta) a continuación hacia el norte',
+        'Efectivo en muchos puestos de comida callejera',
       ],
     },
   },
@@ -709,13 +760,12 @@ export const zones: readonly Zone[] = [
     coordinates: [135.5259, 34.6873],
     tags: ['castillo', 'historico', 'parque', 'museo'],
     practical: {
-      access: 'Metro Tanimachi 4-chome o Osaka Business Park. JR Ōsakajō-Kōen',
-      hours: 'Parque: libre. Torre del castillo (museo): 9:00–17:00 (última entrada 16:30). ¥600 adultos',
+      access: 'Metro Tanimachi 4-chōme u Osaka Business Park. JR Ōsakajō-Kōen',
+      hours: 'Parque, fosos y murallas: libre. Torre (museo): 9:00–17:00 (última entrada 16:30), 1.200 ¥',
       logistics: [
-        'Parque exterior gratuito: acceso libre desde primera hora',
-        'Museo en la torre: 8 plantas, ascensor disponible',
-        'Área del castillo es amplia: calcular 1,5–2 h para parque y museo',
-        'Combina con Kuromon (~20 min en metro o autobús)',
+        'Plan: verlo por fuera (parque, fosos y murallas), sin entrar en la torre',
+        'Recinto amplio: calcular ~1,5 h de paseo',
+        'Kuromon a ~20 min en metro',
       ],
     },
   },
@@ -727,13 +777,29 @@ export const zones: readonly Zone[] = [
     coordinates: [135.5065, 34.6686],
     tags: ['mercado', 'gastronomia', 'marisco', 'local'],
     practical: {
-      access: 'Metro Sakaisuji — Nipponbashi (salida 10). O Metro Sennichimae — Nipponbashi',
-      hours: '8:00–18:00 aprox. Algunos puestos desde 7:00. Cerrado algunos domingos y festivos',
+      access: 'Metro Sakaisuji o Sennichimae — Nipponbashi (salida 10)',
+      hours: '~8:00–18:00. Algunos puestos desde 7:00. Cierran algunos domingos y festivos',
       logistics: [
-        'Mercado cubierto de ~600 puestos: fruta, marisco fresco y comida callejera',
         'Efectivo en la mayoría de puestos; algunos aceptan tarjeta',
-        'Mejor 9:00–11:00 para marisco fresco y sin aglomeración turística',
-        'Próximo a Dōtonbori (10 min a pie): combinar en la misma tarde',
+        'Den Den Town a pocos minutos a pie',
+        'Dōtonbori a 10 min a pie',
+      ],
+    },
+  },
+
+  // ── Día 24 — Den Den Town (opcional) ───────────────────────────────────
+  {
+    id: 'den-den-town',
+    name: 'Den Den Town (Nipponbashi)',
+    citySlug: 'osaka',
+    coordinates: [135.5059, 34.661],
+    tags: ['otaku', 'electronica', 'cultura-pop', 'compras'],
+    practical: {
+      access: 'Metro Sakaisuji — Ebisuchō o Nipponbashi. A pie desde Kuromon y Namba (~10 min)',
+      hours: 'Tiendas: ~10:00/11:00–20:00 (orientativo)',
+      logistics: [
+        'Calle Otaroad: anime, manga y figuras',
+        'Opcional, entre Kuromon y Shinsekai',
       ],
     },
   },
@@ -742,21 +808,37 @@ export const zones: readonly Zone[] = [
     id: 'shinsekai',
     name: 'Shinsekai / Tsūtenkaku',
     citySlug: 'osaka',
-    coordinates: [135.5063, 34.6520],
+    coordinates: [135.5063, 34.652],
     tags: ['retro', 'gastronomia', 'iconico', 'barrio'],
     practical: {
-      access: 'Metro Sakaisuji — Ebisucho. O Metro Midosuji — Dobutsuen-mae',
-      hours: 'Calles: libre. Torre Tsūtenkaku: 10:00–20:00, ¥900 adultos. Restaurantes: 11:00–22:00',
+      access: 'Metro Sakaisuji — Ebisuchō. O Metro Midōsuji — Dōbutsuen-mae',
+      hours: 'Calles: libre. Torre Tsūtenkaku: ~10:00–20:00 (de pago). Restaurantes: ~11:00–22:00',
       logistics: [
-        'Torre Tsūtenkaku: mirador retro (imitación de la Torre Eiffel de 1912), ¥900',
-        'Kushikatsu: especialidad del barrio; regla local: no mojar dos veces en la salsa',
-        'Barrio con ambiente auténtico de Osaka obachan-culture',
-        'Efectivo recomendado en los restaurantes tradicionales de kushikatsu',
+        'Kushikatsu: no se moja dos veces en la salsa común',
+        'Efectivo recomendado en los restaurantes tradicionales',
       ],
     },
   },
 
-  // ── Hiroshima ─────────────────────────────────────────────────────────
+  // ── Día 24 — Umeda Sky Building ────────────────────────────────────────
+  {
+    id: 'umeda',
+    name: 'Umeda Sky Building',
+    citySlug: 'osaka',
+    coordinates: [135.4906, 34.7053],
+    tags: ['mirador', 'moderno', 'iconico'],
+    practical: {
+      access: 'JR — Osaka o Metro Midōsuji — Umeda (~10 min a pie hacia el noroeste). Desde Namba, Midōsuji directa',
+      hours: 'Mirador Kūchū Teien: 9:30–22:30. 2.000 ¥',
+      logistics: [
+        'Puesta de sol ~19:00: llegar hacia las 18:30',
+        'Cena en Umeda después',
+        'Se puede adelantar al domingo 23 (Umeda está a una parada de Shin-Osaka)',
+      ],
+    },
+  },
+
+  // ── Hiroshima (día 23) ───────────────────────────────────────────────────
 
   {
     id: 'hiroshima-paz',
@@ -765,56 +847,13 @@ export const zones: readonly Zone[] = [
     coordinates: [132.4533, 34.3955],
     tags: ['memorial', 'historico', 'museo', 'patrimonio'],
     practical: {
-      access: 'Tranvía línea 2 o 6 desde Hiroshima Estación — parada Genbaku-Dome-Mae (~15 min)',
-      hours: 'Parque: libre 24h. Museo: 8:30–18:00 (ago: hasta 19:00). ¥200 adultos',
+      access: 'Tranvía línea 2 o 6 desde la estación de Hiroshima — parada Genbaku-Dome-Mae (~15 min)',
+      hours: 'Parque: libre 24 h. Museo: 7:30–19:00 de marzo a julio (reserva online obligatoria para 7:30–8:30 y 17:30–18:30). ~200 ¥',
       logistics: [
-        'Reservar entrada al museo online si se viaja en temporada alta',
-        'Museo: 2–3 h para recorrerlo con atención; muy intenso emocionalmente',
-        'Cúpula Genbaku (Patrimonio UNESCO): acceso exterior libre desde el parque',
-        'Okonomiyaki estilo Hiroshima para comer antes del shinkansen de vuelta',
-      ],
-    },
-  },
-
-  // ── Día 27 — Odaiba (bahía de Tokio, comodín bloque 2) ──────────────────
-  {
-    id: 'odaiba',
-    name: 'Odaiba',
-    citySlug: 'tokio',
-    coordinates: [139.7745, 35.6271],
-    tags: ['bahia', 'ocio', 'moderno', 'compras', 'vistas'],
-    practical: {
-      access:
-        'Yurikamome desde Shimbashi (~15 min, vistas de la bahía) o Rinkai Line hasta Tokyo Teleport',
-      hours:
-        'Centros comerciales: tiendas 11:00–21:00. The Gundam Base (DiverCity, planta 7): ~10:00–21:00',
-      logistics: [
-        '⚠️ La estatua gigante del Unicorn Gundam fue retirada (ago-2026): la plaza de DiverCity estará vacía en may-2027',
-        'Sí sigue The Gundam Base Tokyo (mayor tienda de Gunpla de Japón, DiverCity planta 7)',
-        'Réplica de la Estatua de la Libertad y playa de Odaiba (Seaside Park) con el Rainbow Bridge de fondo: gratis',
-        'Atracciones en radio andable: DiverCity ↔ Aqua City ↔ Decks ↔ Fuji TV (15–20 min a pie)',
-        'Combinable por la tarde con teamLab Planets en Toyosu (Yurikamome ~15 min; reserva online obligatoria)',
-      ],
-    },
-  },
-
-  // ── Día 27 — Kiyosumi-Shirakawa / Fukagawa (mañana, antes de Odaiba) ────
-  {
-    id: 'kiyosumi-fukagawa',
-    name: 'Kiyosumi-Shirakawa y Fukagawa',
-    citySlug: 'tokio',
-    coordinates: [139.798, 35.6818],
-    tags: ['jardin', 'museo', 'historico', 'shitamachi', 'gastronomia'],
-    practical: {
-      access:
-        'Metro Tozai u Ōedo — Monzen-Nakachō; Ōedo o Hanzōmon — Kiyosumi-Shirakawa (1 parada entre sí, ~15 min a pie)',
-      hours:
-        'Jardín Kiyosumi: 9:00–17:00 (última entrada 16:30), ¥150. Fukagawa Edo Museum: ~9:30–17:00 (verificar 2027). Tonkatsu Marushichi: 11:30–17:00',
-      logistics: [
-        'Jardín Kiyosumi: jardín de paseo con gran estanque y piedras para cruzar el agua (isowatari)',
-        'Fukagawa Edo Museum: recreación a tamaño real de un barrio del final de la era Edo',
-        'Comer en Tonkatsu Marushichi (yaki-katsudon; sin reservas, llegar pronto) — ⚠️ cerrado miércoles',
-        'Combina por la tarde con Odaiba (mismo lado este/bahía)',
+        'Domingo: sin grupos escolares',
+        'Reservar la franja de 7:30–8:30 o llegar hacia las 9:00',
+        'Museo: 2–3 h; Cúpula de la Bomba Atómica por fuera, desde el parque',
+        'Okonomiyaki estilo Hiroshima antes del shinkansen de vuelta',
       ],
     },
   },

@@ -9,7 +9,7 @@ function scrollBehavior(): ScrollBehavior {
   return window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'
 }
 
-/** Id del ancla de la sección de un día (`dia-09`); lo usan DaySection y el rail. */
+/** Id del ancla de la sección de un día (`dia-08`); lo usan DaySection y el rail. */
 export function dayAnchor(id: number): string {
   return `dia-${pad2(id)}`
 }

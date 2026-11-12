@@ -241,6 +241,14 @@
   /* Movimiento: ease-out fuerte para entradas/feedback; ease-in-out fuerte para movimiento en pantalla */
   --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
   --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  /* Hoja inferior (bottom sheet): arranca rápido y frena largo, como un cajón */
+  --ease-drawer: cubic-bezier(.32, .72, 0, 1);
+  /* Tono de cada base en el itinerario día a día (theme.ts → cityTone). Claro: AA como texto
+     sobre --paper y como relleno con --on-c (blanco) encima. */
+  --city-tokio:#c8403a; --city-takaragawa:#23776e; --city-kanazawa:#8a680a; --city-takayama:#8a5a2b; --city-kioto:#7b4fa3; --city-osaka:#2f6db3;
+  --on-c:#fff;
+  /* Sábado en azul y domingo en rojo (como en los calendarios japoneses), AA sobre --paper */
+  --sat:#2f62a8; --sun:#b8362f;
 }
 [data-theme="dark"] {
   --paper:#12141b; --surface:#1b1f2c; --surface-warm:#1f2434; --surface-sun:#23202b;
@@ -256,6 +264,10 @@
   --coral-text:#ff7a6f;
   --focus-ring:#ffd27a;
   --hanko:#b23a36; --hanko-ink:#fffdf9;
+  /* Oscuro: tonos claros, AA como texto sobre --surface y con --on-c (tinta oscura) encima */
+  --city-tokio:#e8665f; --city-takaragawa:#4fbfb3; --city-kanazawa:#d9a93a; --city-takayama:#c08850; --city-kioto:#a77fd0; --city-osaka:#5b9be0;
+  --on-c:#12141b;
+  --sat:#7fa8e8; --sun:#ee8a83;
   color-scheme: dark;
 }
 
@@ -299,15 +311,15 @@ body {
 .skip-link:focus-visible { transform: none; }
 
 /* Anclas de día (#dia-NN): sin margen en escritorio (el rail es lateral); en móvil se
-   compensa la altura del rail sticky (ver la media query de 860 px). */
+   compensa la altura de la tira de fechas sticky (ver «Journey»). */
 [data-day] { scroll-margin-top: 0; }
 
 /* Rail de días: enlaces sin subrayado; hover sutil en los ticks */
 [data-rail] a { color: inherit; text-decoration: none; }
 [data-rail-tick]:hover [data-rail-tick-label] { color: var(--ink) !important; }
 
-/* Variantes pre-renderizadas del rail (bloques y líneas del día activo, anterior/siguiente):
-   `hidden` gana a los display en línea y a los `!important` de la media query móvil. */
+/* Bloques pre-renderizados del rail (uno por día, solo el activo visible): `hidden` gana a
+   los display en línea. */
 [data-rail] [hidden] { display: none !important; }
 
 /* Puntos del rail. El estado va en atributos del enlace (aria-current = día activo,
@@ -765,8 +777,7 @@ button[data-scrollcue] {
 [data-totop] { background: var(--primary-fill); }
 [data-map-expand],
 [data-ttoggle],
-[data-scrollcue],
-[data-day-nav] { transition: transform 160ms var(--ease-out); }
+[data-scrollcue] { transition: transform 160ms var(--ease-out); }
 @media (hover: hover) and (pointer: fine) {
   [data-cta]:hover { background: var(--primary-press); }
   [data-totop]:hover { background: var(--primary-press); }
@@ -779,8 +790,7 @@ button[data-scrollcue] {
 [data-cta]:active,
 [data-map-expand]:active,
 [data-ttoggle]:active,
-[data-scrollcue]:active,
-a[data-day-nav]:active { transform: scale(0.97); }
+[data-scrollcue]:active { transform: scale(0.97); }
 /* ToTop: su transform lo escribe el JS en línea; la presión va por la propiedad `scale` */
 [data-totop]:active { scale: 0.97; }
 
@@ -982,35 +992,30 @@ a[data-day-nav]:active { transform: scale(0.97); }
 ───────────────────────────────────────────── */
 @media (max-width: 860px) {
   [data-nav-meta]    { display: none !important; }
-  [data-journey]     { flex-direction: column !important; }
   [data-nav]         { display: none !important; }
-  /* Rail compacto (56 px): anterior · «Día · ciudad · fecha» + progreso · siguiente */
-  [data-rail]        { position: sticky !important; top: 0 !important; width: 100% !important; flex-direction: row !important; align-items: center !important; height: 56px !important; gap: 10px !important; padding: 8px 12px !important; background: rgba(var(--nav-bg),.94) !important; backdrop-filter: blur(12px); border-right: none !important; border-bottom: 1px solid var(--border-2) !important; z-index: 70; }
-  [data-day-nav]     { display: flex !important; }
-  [data-prog-vertical]   { display: none !important; }
-  [data-prog-horizontal] { display: flex !important; }
-  [data-rail-num]    { font-size: 46px !important; }
-  [data-rail-kanji]  { display: none !important; }
-  [data-rail-block]  { display: none !important; }
-  [data-day]         { scroll-margin-top: 64px; }
+  /* El rail lateral se oculta: en móvil navega la tira de fechas (DateStrip, «Journey») */
+  [data-rail]        { display: none !important; }
   /* «La ruta»: el panel de itinerario pasa debajo del mapa, a ancho completo */
   [data-route-body]  { grid-template-columns: minmax(0, 1fr); gap: 16px; }
   [data-route-panel] { padding: 18px 14px 14px; }
   /* Botones flotantes más pegados al borde para tapar menos contenido */
-  [data-ttoggle]     { left: 16px !important; bottom: 16px !important; }
-  [data-totop]       { right: 16px !important; bottom: 16px !important; }
-  [data-day-inner]   { padding-left: 22px !important; padding-right: 22px !important; }
-  [data-kanji]       { font-size: 34vw !important; opacity: .045 !important; }
-  /* Cabecera del día: la ilustración pasa encima del título, a ancho completo (máx. 420 px).
-     Sin atenuar: el arte isométrico se pinta a opacidad 1 (el antiguo [data-illus]{opacity:.5}
-     era para los motivos planos de fondo). */
-  [data-day-head]    { flex-direction: column-reverse !important; align-items: stretch !important; gap: 18px !important; }
-  [data-day-head] > [data-illus] { flex: none !important; width: 100% !important; max-width: 420px; }
+  [data-ttoggle]     { left: max(16px, env(safe-area-inset-left)) !important; bottom: calc(16px + env(safe-area-inset-bottom)) !important; }
+  [data-totop]       { right: max(16px, env(safe-area-inset-right)) !important; bottom: calc(16px + env(safe-area-inset-bottom)) !important; }
   [data-teaser-grid] { grid-template-columns: 1fr !important; }
+  /* Sobre el itinerario, al bajar leyendo se apartan (journey.ts pone data-fab-hide en <html>)
+     para no tapar la hora ni las casillas de los pasos; vuelven al subir o al llegar al final.
+     `translate` se compone con el transform/scale de cada botón; opacity y pointer-events con
+     !important porque los de ToTop los escribe el JS en línea. El foco de teclado los retiene. */
+  [data-ttoggle]     { transition: transform 160ms var(--ease-out), translate 200ms var(--ease-out), opacity 200ms var(--ease-out); }
+  html[data-fab-hide] :is([data-ttoggle], [data-totop]):not(:focus-visible) {
+    translate: 0 calc(100% + 24px + env(safe-area-inset-bottom));
+    opacity: 0 !important;
+    pointer-events: none !important;
+  }
 }
-@media (min-width: 861px) {
-  [data-prog-horizontal] { display: none !important; }
-  [data-day-nav]         { display: none !important; }
+/* Con reduce-motion, solo funden: sin desplazamiento */
+@media (max-width: 860px) and (prefers-reduced-motion: reduce) {
+  html[data-fab-hide] :is([data-ttoggle], [data-totop]):not(:focus-visible) { translate: none; }
 }
 /* Escritorio con poca altura: los 21 enlaces (24 px) caben quitando el kanji y
    reduciendo el número del día activo. */
@@ -1021,17 +1026,535 @@ a[data-day-nav]:active { transform: scale(0.97); }
 }
 
 /* ─────────────────────────────────────────────
-   Spoiler "El lugar" — <details> con animación de despliegue
+   Journey — itinerario día a día (Journey, DateStrip, DaySection, TransferCard, StepTimeline,
+   ZoneCard y StepSheet). Estilo «Hoy»: color por ciudad, línea de tiempo y hoja por paso.
+
+   Color de la ciudad: cada [data-tone] recibe --c en línea (tono de la base, cityTone) y aquí
+   se derivan --c-ink (texto), --c-soft (fondo suave) y --c-line (trazos). Sobre un relleno
+   --c, el texto va en --on-c. Movimiento solo con transform/opacity (≤ 300 ms); el hover, solo
+   con puntero fino; la presión, scale(.97) en 160 ms.
+───────────────────────────────────────────── */
+[data-journey] { position: relative; display: flex; align-items: flex-start; background: var(--paper); }
+[data-days] { flex: 1; min-width: 0; position: relative; }
+[data-journey] [hidden], [data-sheet-root] [hidden], [data-sheet-root][hidden] { display: none !important; }
+
+[data-tone] {
+  --c-ink: color-mix(in srgb, var(--c) 80%, var(--ink));
+  --c-soft: color-mix(in srgb, var(--c) 11%, var(--surface));
+  --c-line: color-mix(in srgb, var(--c) 38%, transparent);
+}
+[data-theme="dark"] [data-tone] { --c-ink: var(--c); --c-soft: color-mix(in srgb, var(--c) 14%, var(--surface)); }
+
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+
+/* Táctil: sin destello azul y sin el retardo del doble toque; presión con scale */
+[data-journey] :is(a, button, summary),
+[data-sheet-root] :is(a, button, summary) { -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
+:is([data-strip-chip], [data-step-open], [data-now-row], [data-day-hotel] a, [data-sheet-maps], [data-sheet-done], [data-sheet-close], [data-place] > summary, [data-place-retry]) {
+  transition: transform 160ms var(--ease-out);
+}
+:is([data-strip-chip], [data-step-open], [data-now-row], [data-day-hotel] a, [data-sheet-maps], [data-sheet-done], [data-sheet-close], [data-place] > summary, [data-place-retry]):active { transform: scale(.97); }
+
+/* ── Tira de fechas (solo móvil) ───────────── */
+[data-strip] { display: none; }
+[data-strip-list] {
+  display: flex;
+  gap: 6px;
+  margin: 0;
+  list-style: none;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x proximity;
+  scroll-padding-inline: 16px;
+  padding: 10px max(16px, env(safe-area-inset-right)) 10px max(16px, env(safe-area-inset-left));
+  scrollbar-width: none;
+  overscroll-behavior-x: contain;
+}
+[data-strip-list]::-webkit-scrollbar { display: none; }
+[data-strip-list] > li { flex: none; scroll-snap-align: center; }
+[data-strip-list] > li[data-strip-gap] { margin-left: 8px; }
+[data-strip-chip] {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 64px;
+  border-radius: 14px;
+  background: var(--c-soft);
+  color: var(--ink);
+  text-decoration: none;
+  box-shadow: inset 0 -3px 0 var(--c);
+}
+[data-chip-wd] { font-size: 12px; font-weight: 700; line-height: 1.1; letter-spacing: .03em; color: var(--muted); }
+[data-chip-wd="sat"] { color: var(--sat); }
+[data-chip-wd="sun"] { color: var(--sun); }
+[data-chip-n] { margin-top: 1px; font: 700 21px/1.1 var(--font-serif); font-variant-numeric: tabular-nums; }
+[data-chip-marks] { height: 14px; font-size: 11px; line-height: 14px; letter-spacing: -1px; }
+[data-strip-chip][aria-current] { background: var(--c); color: var(--on-c); box-shadow: 0 6px 16px -6px color-mix(in srgb, var(--c) 70%, transparent); }
+[data-strip-chip][aria-current] [data-chip-wd] { color: inherit; }
+[data-strip-chip][data-past]:not([aria-current]) [data-chip-n] { opacity: .55; }
+/* Hoy: punto dorado en la esquina */
+[data-strip-chip][data-today]::after {
+  content: '';
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--gold);
+  box-shadow: 0 0 0 2px var(--paper);
+}
+
+/* ── Sección del día ───────────────────────── */
+[data-day] {
+  position: relative;
+  /* clip y no hidden: no crea contenedor de scroll (el sticky de la tira sigue a la página) */
+  overflow: clip;
+  background: linear-gradient(180deg, color-mix(in srgb, var(--c) 6%, transparent) 0%, transparent 40%);
+}
+[data-day-inner] { max-width: 780px; margin: 0 auto; padding: clamp(64px, 10vh, 120px) clamp(24px, 5vw, 56px); }
+[data-day-top] { display: flex; align-items: center; gap: clamp(16px, 2.4vw, 28px); margin-bottom: 26px; }
+[data-day-head] { position: relative; flex: 1 1 0; min-width: 0; min-height: 168px; }
+/* Hueco para el kanji vertical (la línea del hotel, ya por debajo, usa todo el ancho) */
+[data-day-head] > :not([data-day-kanji], [data-day-hotel]) { padding-right: 84px; }
+/* Ilustración isométrica: proporción reservada (sin saltos al llegar el SVG). content-visibility
+   implica contención de pintura: sin margen recortaría el halo del zócalo. */
+[data-day-top] > [data-illus] {
+  flex: 0 0 clamp(200px, 36%, 280px);
+  aspect-ratio: 440 / 330;
+  content-visibility: auto;
+  overflow-clip-margin: 24px;
+  pointer-events: none;
+}
+[data-day-kanji] {
+  position: absolute;
+  top: 0;
+  right: 0;
+  writing-mode: vertical-rl;
+  font: 800 64px/1 var(--font-serif);
+  letter-spacing: .02em;
+  color: var(--c);
+  user-select: none;
+  pointer-events: none;
+}
+[data-day-kanji]::before { content: ''; position: absolute; top: 4px; bottom: 4px; left: -10px; width: 1.5px; background: var(--c-line); }
+[data-day-eyebrow] { margin: 0; font-size: 13px; font-weight: 700; line-height: 1.4; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); font-variant-numeric: tabular-nums; }
+[data-day-city] { display: flex; align-items: center; gap: 8px; margin: 8px 0 0; font-size: 15px; font-weight: 700; letter-spacing: .02em; color: var(--c-ink); }
+[data-day-city]::before { content: ''; width: 18px; height: 2px; border-radius: 2px; background: var(--c); }
+[data-day-title] { margin: 6px 0 0; font: 700 clamp(26px, 3vw, 32px)/1.18 var(--font-serif); letter-spacing: -.005em; color: var(--ink); text-wrap: balance; }
+[data-day-chips] { display: flex; flex-wrap: wrap; gap: 6px; margin: 14px 0 0; padding: 0; list-style: none; }
+[data-rchip] {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 28px;
+  padding: 0 11px;
+  border: 1px solid color-mix(in srgb, var(--ink) 20%, transparent);
+  border-radius: 999px;
+  background: var(--surface);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--ink);
+  white-space: nowrap;
+}
+[data-rchip] > i { width: 6px; height: 6px; border-radius: 50%; background: var(--c); }
+[data-rchip="laundry"] { background: color-mix(in srgb, var(--gold) 14%, var(--surface)); border-color: color-mix(in srgb, var(--gold) 45%, transparent); }
+[data-day-hotel] { display: flex; align-items: center; gap: 10px; margin-top: 14px; }
+[data-day-hotel] > svg { flex: none; color: var(--c-ink); }
+[data-day-hotel] p { flex: 1; min-width: 0; margin: 0; font-size: 15px; line-height: 1.35; color: var(--ink); }
+[data-day-hotel] p > span:first-child { display: block; font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+[data-hotel-laundry] { color: var(--muted); }
+[data-day-hotel] a { flex: none; display: grid; place-items: center; width: 44px; height: 44px; border-radius: 12px; color: var(--ink); background: color-mix(in srgb, var(--ink) 6%, transparent); }
+
+/* Etiqueta de bloque (El plan, Notas del día, secciones de la hoja) */
+:is([data-plan-head], [data-day-notes] > h3, [data-sheet-notes] > h3) {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 0 0 12px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+[data-plan-head] small { font-size: 13px; font-weight: 500; letter-spacing: .02em; text-transform: none; font-variant-numeric: tabular-nums; }
+
+/* ── «Ahora / Después» (solo hoy) ──────────── */
+[data-now] { margin: 0 0 22px; }
+[data-now-head] {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 0 0 8px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+[data-now-preview] {
+  position: relative;
+  flex: none;
+  padding: 3px 10px;
+  border: 1px dashed color-mix(in srgb, var(--gold) 70%, transparent);
+  border-radius: 999px;
+  font-size: 11px;
+  letter-spacing: .04em;
+  text-transform: none;
+  color: var(--amber-text);
+  text-decoration: none;
+}
+/* Zona táctil de 44 px alrededor de la píldora */
+[data-now-preview]::before { content: ''; position: absolute; inset: -12px -6px; }
+[data-now-card] {
+  border-radius: 18px;
+  background: var(--c);
+  color: var(--on-c);
+  box-shadow: 0 14px 30px -14px color-mix(in srgb, var(--c) 75%, transparent);
+  overflow: hidden;
+}
+[data-theme="dark"] [data-now-card] {
+  --on-c: var(--ink);
+  background: color-mix(in srgb, var(--c) 24%, var(--surface));
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--c) 45%, transparent), 0 14px 30px -16px color-mix(in srgb, var(--c) 60%, transparent);
+}
+[data-now-row] {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 2px 12px;
+  align-items: center;
+  width: 100%;
+  min-height: 64px;
+  margin: 0;
+  padding: 14px 16px;
+  border: 0;
+  background: none;
+  font: inherit;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+[data-now-row]:focus-visible { outline-offset: -4px; outline-color: currentColor; }
+[data-now-row]:not([hidden]) ~ [data-now-row] {
+  border-top: 1px solid color-mix(in srgb, var(--on-c) 22%, transparent);
+  background: color-mix(in srgb, var(--on-c) 7%, transparent);
+}
+[data-now-row="end"] { cursor: default; }
+[data-now-k] { grid-column: 1 / -1; display: flex; align-items: center; gap: 7px; font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+[data-now-k] > i { width: 8px; height: 8px; border-radius: 50%; background: currentColor; box-shadow: 0 0 0 3px color-mix(in srgb, var(--on-c) 25%, transparent); }
+[data-now-l] { min-width: 0; font: 700 19px/1.25 var(--font-serif); }
+:is([data-now-row="next"], [data-now-row="end"]) [data-now-l] { font: 500 16px/1.35 var(--font-sans); }
+[data-now-t] { align-self: end; font-size: 13px; font-weight: 700; white-space: nowrap; font-variant-numeric: tabular-nums; }
+
+/* ── Billete de trayecto ───────────────────── */
+[data-transfer] {
+  position: relative;
+  margin: 0 0 18px;
+  background: var(--surface);
+  border-radius: 16px;
+  box-shadow: 0 1px 2px rgba(27,42,74,.06), 0 2px 8px rgba(27,42,74,.05), inset 0 0 0 1px var(--border);
+  overflow: hidden;
+}
+[data-transfer]::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 5px; background: var(--c); }
+[data-tr-head] { display: flex; align-items: center; gap: 8px; margin: 0; padding: 12px 16px 0 21px; font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+[data-tr-route] { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); align-items: center; gap: 10px; padding: 6px 16px 14px 21px; }
+[data-tr-end] { margin: 0; }
+[data-tr-end] small { display: block; font-size: 12px; letter-spacing: .04em; color: var(--muted); }
+[data-tr-end] strong { display: block; font: 700 19px/1.25 var(--font-serif); color: var(--ink); overflow-wrap: anywhere; }
+[data-tr-end="to"] { text-align: right; }
+[data-tr-arrow] { display: flex; color: var(--c); }
+[data-tr-perf] { position: relative; height: 0; margin: 0 14px 0 19px; border-top: 1.5px dashed color-mix(in srgb, var(--ink) 22%, transparent); }
+[data-tr-perf]::before,
+[data-tr-perf]::after { content: ''; position: absolute; top: -9px; width: 16px; height: 16px; border-radius: 50%; background: var(--paper); box-shadow: inset 0 0 0 1px var(--border); }
+[data-tr-perf]::before { left: -27px; }
+[data-tr-perf]::after { right: -22px; }
+[data-tr-facts] { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 6px 14px; margin: 0; padding: 12px 16px 2px 21px; }
+[data-tr-facts] dt { padding-top: 2px; font-size: 13px; font-weight: 700; color: var(--muted); }
+[data-tr-facts] dd { margin: 0; font-size: 16px; line-height: 1.45; color: var(--ink); }
+[data-tr-notes] { margin: 0; padding: 8px 16px 14px 21px; list-style: none; }
+[data-tr-facts] + [data-tr-notes] { padding-top: 6px; }
+/* Viñeta en rombo del color de la ciudad (notas del billete, del día, de la zona y de la hoja) */
+:is([data-tr-notes], [data-day-notes] ul, [data-sheet-notes] ul, [data-zone-notes]) > li { position: relative; padding-left: 18px; font-size: 16px; line-height: 1.5; color: var(--body); }
+:is([data-tr-notes], [data-day-notes] ul, [data-sheet-notes] ul, [data-zone-notes]) > li + li { margin-top: 6px; }
+:is([data-tr-notes], [data-day-notes] ul, [data-sheet-notes] ul, [data-zone-notes]) > li::before {
+  content: '';
+  position: absolute;
+  left: 2px;
+  top: .65em;
+  width: 7px;
+  height: 7px;
+  border-radius: 2px;
+  background: var(--c, var(--gold));
+  transform: rotate(45deg);
+}
+
+/* ── Reservas del día ──────────────────────── */
+[data-day-res] { display: grid; gap: 8px; margin: 0 0 18px; padding: 0; list-style: none; }
+[data-day-res] li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px 14px;
+  border-radius: 14px;
+  background: color-mix(in srgb, var(--gold) 12%, var(--surface));
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--gold) 35%, transparent);
+  color: var(--ink);
+}
+[data-day-res] svg { flex: none; margin-top: 2px; color: var(--amber-text); }
+[data-day-res] p { margin: 0; font-size: 16px; line-height: 1.4; }
+[data-day-res] b { display: block; font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: var(--amber-text); }
+[data-day-res] small { display: block; margin-top: 2px; font-size: 14px; color: var(--muted); }
+
+/* ── Línea de tiempo («El plan») ───────────── */
+[data-timeline] { margin: 0; padding: 0; list-style: none; }
+[data-step] { position: relative; display: grid; grid-template-columns: 50px 30px minmax(0, 1fr); column-gap: 8px; padding-bottom: 10px; }
+[data-step-time] { padding-top: 15px; text-align: right; font: 700 16px/1.2 var(--font-serif); color: var(--ink); font-variant-numeric: tabular-nums; }
+[data-step-time][data-fuzzy] { padding-top: 17px; font: 600 13px/1.3 var(--font-serif); color: var(--muted); }
+[data-step-rail] { position: relative; display: flex; justify-content: center; }
+[data-step-rail]::before { content: ''; position: absolute; left: 50%; top: 0; bottom: -10px; width: 2px; margin-left: -1px; background: color-mix(in srgb, var(--ink) 20%, transparent); }
+[data-step]:first-child [data-step-rail]::before { top: 26px; }
+[data-step]:last-child [data-step-rail]::before { bottom: auto; height: 26px; }
+[data-step]:only-child [data-step-rail]::before { display: none; }
+:is([data-step][data-state="past"], [data-step][data-state="now"]) [data-step-rail]::before { background: var(--c); }
+[data-step-dot] {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  margin-top: 11px;
+  border-radius: 50%;
+  background: var(--surface);
+  color: var(--c-ink);
+  box-shadow: inset 0 0 0 1.5px var(--c-line), 0 0 0 4px var(--paper);
+}
+[data-step][data-state="past"] [data-step-dot] { background: var(--c-soft); }
+[data-step][data-state="now"] [data-step-dot] { background: var(--c); color: var(--on-c); box-shadow: 0 0 0 4px var(--paper), 0 0 0 7px color-mix(in srgb, var(--c) 28%, transparent); }
+[data-step][data-state="next"] [data-step-dot] { box-shadow: inset 0 0 0 2px var(--c), 0 0 0 4px var(--paper); }
+[data-step-card] { display: flex; align-items: stretch; min-height: 52px; border-radius: 14px; background: var(--surface); box-shadow: inset 0 0 0 1px var(--border); }
+[data-step-open] {
+  flex: 1;
+  min-width: 0;
+  display: block;
+  margin: 0;
+  padding: 12px 4px 12px 14px;
+  border: 0;
+  border-radius: 14px 0 0 14px;
+  background: none;
+  font: inherit;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+[data-step-flag] { display: block; margin-bottom: 3px; font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--c-ink); font-variant-numeric: tabular-nums; }
+[data-step-label] { display: block; font-size: 16px; font-weight: 500; line-height: 1.4; color: var(--ink); overflow-wrap: break-word; }
+[data-step-tags], [data-sheet-tags] { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 7px; }
+[data-tag] { display: inline-flex; align-items: center; gap: 4px; height: 22px; padding: 0 8px; border-radius: 6px; font-size: 12px; font-weight: 700; letter-spacing: .03em; }
+[data-tag="opt"] { color: var(--muted); border: 1px dashed color-mix(in srgb, var(--ink) 30%, transparent); }
+[data-tag="res"] { color: var(--amber-text); background: color-mix(in srgb, var(--gold) 15%, transparent); }
+[data-step-done] { flex: none; display: grid; place-items: center; width: 48px; margin: 0; padding: 0; border: 0; border-radius: 0 14px 14px 0; background: none; color: var(--muted); cursor: pointer; }
+[data-box] {
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 7px;
+  box-shadow: inset 0 0 0 1.5px color-mix(in srgb, var(--ink) 32%, transparent);
+  color: transparent;
+  transition: transform 160ms var(--ease-out);
+}
+:is([data-step-done], [data-sheet-done]):active [data-box] { transform: scale(.88); }
+[aria-checked="true"] > [data-box] { background: var(--c); color: var(--on-c); box-shadow: none; }
+[data-step][data-optional] [data-step-card] { background: transparent; box-shadow: none; border: 1.5px dashed color-mix(in srgb, var(--ink) 22%, transparent); }
+[data-step][data-optional] [data-step-label] { font-weight: 400; color: var(--body); }
+[data-step][data-state="now"] [data-step-card] { background: var(--c-soft); box-shadow: inset 0 0 0 1.5px var(--c), 0 2px 6px rgba(27,42,74,.08), 0 12px 32px -8px rgba(27,42,74,.18); }
+[data-step][data-state="now"][data-optional] [data-step-card] { border-color: var(--c); }
+[data-step][data-state="next"] [data-step-card] { box-shadow: inset 0 0 0 1.5px var(--c-line); }
+:is([data-step][data-state="past"], [data-day][data-past] [data-step]) :is([data-step-time], [data-step-card]) { opacity: .62; }
+[data-step][data-done] [data-step-label] { color: var(--muted); text-decoration: line-through; text-decoration-thickness: 1.5px; text-decoration-color: var(--c-line); }
+
+/* ── Notas del día ─────────────────────────── */
+[data-day-notes] { margin-top: 22px; }
+[data-day-notes] ul { margin: 0; padding: 14px 16px; list-style: none; border-radius: 16px; background: var(--surface); box-shadow: inset 0 0 0 1px var(--border); }
+
+/* ── Hoja de cada paso (bottom sheet) ──────── */
+html[data-sheet-open] { overflow: hidden; scrollbar-gutter: stable; }
+[data-sheet-root] { position: fixed; inset: 0; z-index: 1000; display: flex; align-items: flex-end; justify-content: center; }
+[data-sheet-backdrop] { position: absolute; inset: 0; background: rgba(14,18,30,.42); opacity: 0; transition: opacity 280ms var(--ease-drawer); touch-action: none; }
+[data-theme="dark"] [data-sheet-backdrop] { background: rgba(0,0,0,.6); }
+[data-sheet] {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: min(100%, 560px);
+  max-height: calc(100dvh - 44px - env(safe-area-inset-top));
+  border-radius: 22px 22px 0 0;
+  background: var(--surface);
+  color: var(--body);
+  box-shadow: 0 -10px 40px -10px rgba(0,0,0,.3);
+  transform: translate3d(0, 100%, 0);
+  transition: transform 280ms var(--ease-drawer);
+  will-change: transform;
+}
+/* Tapa el hueco de abajo si se tira de la hoja hacia arriba */
+[data-sheet]::after { content: ''; position: absolute; left: 0; right: 0; top: 100%; height: 200px; background: var(--surface); }
+[data-sheet]:focus, [data-sheet]:focus-visible { outline: none; }
+[data-sheet-root][data-open] [data-sheet-backdrop] { opacity: 1; }
+[data-sheet-root][data-open] [data-sheet] { transform: translate3d(0, 0, 0); }
+[data-sheet][data-dragging] { transition: none; }
+[data-sheet-grab] { flex: none; display: flex; justify-content: center; padding: 10px 0 6px; cursor: grab; touch-action: none; }
+[data-sheet-grab] > span { width: 40px; height: 5px; border-radius: 99px; background: color-mix(in srgb, var(--ink) 22%, transparent); }
+[data-sheet-close] { position: absolute; top: 6px; right: 8px; z-index: 1; display: grid; place-items: center; width: 44px; height: 44px; padding: 0; border: 0; border-radius: 12px; background: none; color: var(--ink); cursor: pointer; }
+[data-sheet-scroll] {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+  padding: 4px max(20px, env(safe-area-inset-right)) calc(28px + env(safe-area-inset-bottom)) max(20px, env(safe-area-inset-left));
+}
+[data-sheet-kicker] { display: flex; align-items: center; gap: 8px; margin: 0; padding-right: 44px; font-size: 13px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--c-ink); font-variant-numeric: tabular-nums; }
+[data-sheet-kicker] > i { width: 8px; height: 8px; border-radius: 50%; background: var(--c); }
+[data-sheet-title] { margin: 8px 0 0; padding-right: 8px; font: 700 25px/1.22 var(--font-serif); color: var(--ink); text-wrap: balance; }
+[data-sheet-tags] { margin-top: 12px; }
+[data-sheet-actions] { display: grid; gap: 10px; margin-top: 18px; }
+[data-sheet-maps], [data-sheet-done] {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 54px;
+  margin: 0;
+  padding: 0 18px;
+  border: 0;
+  border-radius: 15px;
+  font: 700 17px/1.2 var(--font-sans);
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+}
+[data-sheet-maps] { background: var(--primary-fill); color: #fdf3e7; box-shadow: 0 10px 22px -12px rgba(27,42,74,.7); }
+[data-sheet-done] { min-height: 50px; background: color-mix(in srgb, var(--ink) 6%, transparent); color: var(--ink); font-size: 16px; }
+[data-sheet-done][aria-checked="true"] { background: var(--c-soft); box-shadow: inset 0 0 0 1.5px var(--c); }
+[data-sheet-res] [data-day-res] { margin: 18px 0 0; }
+[data-sheet-notes] { margin-top: 22px; }
+[data-sheet-notes] ul { margin: 0; padding: 0; list-style: none; }
+
+/* Ficha de la zona dentro de la hoja (ZoneCard) */
+[data-zone] { margin-top: 24px; padding-top: 18px; border-top: 1px solid var(--border); }
+[data-zone-name] { margin: 0; font: 700 21px/1.25 var(--font-serif); color: var(--ink); }
+[data-zone-tags] { display: flex; flex-wrap: wrap; gap: 6px; margin: 8px 0 0; padding: 0; list-style: none; }
+[data-zone-tags] li { padding: 2px 9px; border-radius: 999px; background: var(--c-soft); font-size: 13px; color: var(--c-ink); }
+[data-zone-facts] { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 8px 14px; margin: 14px 0 0; }
+[data-zone-facts] dt { padding-top: 2px; font-size: 13px; font-weight: 700; color: var(--muted); }
+[data-zone-facts] dd { margin: 0; font-size: 16px; line-height: 1.45; color: var(--ink); }
+[data-zone-notes] { margin: 12px 0 0; padding: 0; list-style: none; }
+[data-place] {
+  margin-top: 18px;
+  border-radius: 16px;
+  background: color-mix(in srgb, var(--gold) 9%, var(--surface));
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--gold) 30%, transparent);
+  overflow: hidden;
+}
+[data-place] > summary { display: flex; align-items: center; gap: 12px; min-height: 64px; padding: 12px 14px; border-radius: 16px; cursor: pointer; user-select: none; }
+[data-place] > summary:focus-visible { outline-offset: -4px; }
+[data-place-k] {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: var(--surface);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--gold) 30%, transparent);
+  font: 800 19px/1 var(--font-serif);
+  color: var(--amber-text);
+}
+[data-place-tx] { flex: 1; min-width: 0; }
+[data-place-tx] b { display: block; font-size: 16px; color: var(--ink); }
+[data-place-tx] small { display: block; font-size: 13px; color: var(--muted); }
+[data-place] [data-spoiler-chev] { display: flex; color: var(--muted); }
+[data-place-body] { padding: 2px 16px 18px; }
+[data-poi] + [data-poi] { margin-top: 20px; }
+[data-poi] h4 { margin: 0; padding-top: 12px; border-top: 1px solid color-mix(in srgb, var(--gold) 25%, transparent); font: 700 19px/1.3 var(--font-serif); color: var(--ink); }
+[data-poi] h5 { margin: 14px 0 4px; font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--amber-text); }
+[data-poi] p { margin: 0; font-size: 16px; line-height: 1.6; }
+[data-poi] ul { margin: 0; padding: 0; list-style: none; }
+[data-poi] ul > li { position: relative; padding-left: 18px; font-size: 16px; line-height: 1.55; }
+[data-poi] ul > li + li { margin-top: 6px; }
+[data-poi] ul > li::before { content: '・'; position: absolute; left: 0; font-weight: 700; color: var(--amber-text); }
+[data-poi-sources] > li { font-size: 15px; }
+[data-poi-sources] a { display: inline-block; padding: 4px 0; color: var(--ink); text-underline-offset: 3px; }
+/* Carga bajo demanda (scripts/place.ts): «Cargando…» y, si falla, aviso con «Reintentar» */
+[data-place-status] { margin: 4px 0 0; font-size: 15px; color: var(--muted); }
+[data-place-error] { display: grid; justify-items: start; gap: 12px; padding-top: 4px; }
+[data-place-error] p { margin: 0; font-size: 16px; line-height: 1.5; color: var(--body); }
+[data-place-retry] { min-height: 44px; padding: 0 18px; border: 0; border-radius: 12px; background: color-mix(in srgb, var(--ink) 8%, transparent); color: var(--ink); font: 700 16px/1.2 var(--font-sans); cursor: pointer; }
+
+/* Hover solo con puntero fino (en táctil el hover falso se queda pegado) */
+@media (hover: hover) and (pointer: fine) {
+  [data-step-open]:hover [data-step-label] { text-decoration: underline; text-decoration-color: var(--c-line); text-underline-offset: 3px; }
+  [data-strip-chip]:not([aria-current]):hover { background: color-mix(in srgb, var(--c) 20%, var(--surface)); }
+  :is([data-day-hotel] a, [data-sheet-close]):hover { background: color-mix(in srgb, var(--ink) 10%, transparent); }
+  [data-sheet-maps]:hover { background: var(--primary-press); }
+  :is([data-sheet-done], [data-place-retry]):hover { background: color-mix(in srgb, var(--ink) 10%, transparent); }
+  button[data-now-row]:hover { background-color: color-mix(in srgb, var(--on-c) 10%, transparent); }
+  [data-place] > summary:hover [data-place-tx] b { text-decoration: underline; text-underline-offset: 3px; }
+}
+
+/* Móvil (≤ 860 px): tira de fechas sticky, ilustración encima del título, márgenes de 16 px */
+@media (max-width: 860px) {
+  :root { --strip-h: 85px; }
+  [data-journey] { display: block; }
+  [data-strip] {
+    display: block;
+    position: sticky;
+    top: 0;
+    z-index: 60;
+    padding-top: env(safe-area-inset-top);
+    background: rgba(var(--nav-bg), .92);
+    -webkit-backdrop-filter: saturate(1.4) blur(14px);
+    backdrop-filter: saturate(1.4) blur(14px);
+    border-bottom: 1px solid var(--border-2);
+  }
+  [data-day] { scroll-margin-top: calc(var(--strip-h) + env(safe-area-inset-top)); }
+  /* Abajo, sitio para que el último paso del día quede por encima de los botones flotantes
+     (16 px + 50 px + margen) cuando el día llega al borde inferior */
+  [data-day-inner] { padding: 20px max(16px, env(safe-area-inset-right)) calc(80px + env(safe-area-inset-bottom)) max(16px, env(safe-area-inset-left)); }
+  [data-day-top] { flex-direction: column-reverse; align-items: stretch; gap: 10px; margin-bottom: 20px; }
+  [data-day-top] > [data-illus] { flex: none; width: 100%; max-width: 420px; align-self: center; }
+  [data-day-head] > :not([data-day-kanji], [data-day-hotel]) { padding-right: 76px; }
+  [data-day-head] { flex: none; scroll-margin-top: calc(var(--strip-h) + env(safe-area-inset-top) + 12px); }
+}
+@media (max-width: 359px) {
+  [data-day-head] > :not([data-day-kanji], [data-day-hotel]) { padding-right: 64px; }
+  [data-day-kanji] { font-size: 54px; }
+  [data-day-title] { font-size: 24px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :is([data-strip-chip], [data-step-open], [data-now-row], [data-day-hotel] a, [data-sheet-maps], [data-sheet-done], [data-sheet-close], [data-place] > summary, [data-place-retry], [data-box]) { transition: none; }
+  /* La hoja funde en lugar de deslizar */
+  [data-sheet] { transform: none; opacity: 0; transition: opacity 180ms linear; }
+  [data-sheet-root][data-open] [data-sheet] { opacity: 1; }
+}
+
+/* ─────────────────────────────────────────────
+   Spoiler "El lugar" — <details> con animación de despliegue (ZoneCard, en la hoja de cada paso)
 ───────────────────────────────────────────── */
 details[data-spoiler] > summary { list-style: none; }
 details[data-spoiler] > summary::-webkit-details-marker { display: none; }
 details[data-spoiler] > summary::marker { content: ""; }
-details[data-spoiler] [data-spoiler-hide] { display: none; }
-details[data-spoiler][open] [data-spoiler-show] { display: none; }
-details[data-spoiler][open] [data-spoiler-hide] { display: inline; }
 details[data-spoiler] [data-spoiler-chev] { transition: transform 200ms var(--ease-out); }
 details[data-spoiler][open] [data-spoiler-chev] { transform: rotate(180deg); }
-details[data-spoiler] > summary:hover [data-spoiler-hint] { opacity: .72; }
 /* La transición que aplica es la del estado DESTINO: la regla base gobierna el cierre y la
    [open], la apertura. content-visibility dura lo mismo que la altura en cada dirección (si
    fuera más corta, el contenido desaparecería antes de cerrarse). */
@@ -1055,24 +1578,6 @@ details[data-spoiler][open]::details-content {
    <style> de cada SVG redefine `animation` en su clase. */
 [data-illus][data-paused] * { animation-play-state: paused !important; }
 
-/* Parallax del kanji de fondo de cada día: animación ligada a su paso por el viewport
-   (scroll-driven, en el compositor), no JS midiendo en cada frame. Recorrido equivalente al
-   antiguo data-parallax="0.14": desplazamiento = -0,14 × (centro − mitad del viewport), así
-   que va de -0,07 × (100vh + alto) al entrar a +0,07 × (100vh + alto) al salir.
-   Sin soporte o con reduce-motion, el kanji se queda quieto (nada que degradar). */
-@keyframes kanji-drift {
-  from { translate: 0 calc(-.07 * (100vh + 100%)); }
-  to   { translate: 0 calc(.07 * (100vh + 100%)); }
-}
-@supports (animation-timeline: view()) {
-  @media (prefers-reduced-motion: no-preference) {
-    [data-kanji] {
-      animation: kanji-drift linear both;
-      animation-timeline: view();
-    }
-  }
-}
-
 /* Aparición de los bloques del itinerario (scripts/reveal.ts): solo se esconde lo que no se veía
    al cargar ([data-reveal="out"]) y se revela al entrar ([data-reveal="in"]). La transición va
    solo en «in»: esconder es instantáneo (fuera de pantalla) y aparecer, suave. */
@@ -1088,7 +1593,6 @@ details[data-spoiler][open]::details-content {
    decoración: se mantiene con reduce-motion (el ajuste global de duración no afecta a una
    línea de tiempo de scroll). */
 @keyframes rail-progress-v { from { transform: scaleY(0); } to { transform: scaleY(1); } }
-@keyframes rail-progress-h { from { transform: scaleX(0); } to { transform: scaleX(1); } }
 @supports (animation-timeline: view()) {
   [data-journey] { view-timeline: --journey block; }
   [data-rail-progress] {
@@ -1096,9 +1600,8 @@ details[data-spoiler][open]::details-content {
     animation-fill-mode: both;
     animation-timeline: --journey;
     animation-range: contain 0% contain 100%;
+    animation-name: rail-progress-v;
   }
-  [data-rail-progress="v"] { animation-name: rail-progress-v; }
-  [data-rail-progress="h"] { animation-name: rail-progress-h; }
 }
 
 /* Respeta reduce-motion */

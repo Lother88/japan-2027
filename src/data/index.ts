@@ -10,19 +10,37 @@ export { itinerary } from './itinerary'
 export { zones } from './zones'
 export { routeOrder } from './route'
 export { excursions } from './excursions'
-export type { City, Day, Zone, ZoneRef, TimeSlot, ZonePractical, LngLat, SlotKey, Transfer, TransferMode, Excursion } from './types'
+export { hotels } from './hotels'
+export { reservations } from './reservations'
+export type {
+  City,
+  Day,
+  DayRule,
+  Excursion,
+  Hotel,
+  LngLat,
+  Reservation,
+  Step,
+  StepType,
+  Transfer,
+  TransferMode,
+  Zone,
+  ZonePractical,
+} from './types'
 
 import { cities } from './cities'
 import { itinerary } from './itinerary'
 import { zones } from './zones'
 import { routeOrder } from './route'
 import { excursions } from './excursions'
+import { hotels } from './hotels'
+import { reservations } from './reservations'
 import { buildRouteLineStringFromCities, buildExcursionLineStrings } from '@/lib/geo'
-import type { City, Day, Excursion, Zone } from './types'
+import type { City, Day, Excursion, Hotel, Reservation, Zone } from './types'
 
 // ── Lookup helpers ───────────────────────────────────────────────────────────
 
-/** Get a Day by its numeric id (1..21). Returns undefined if not found. */
+/** Get a Day by its numeric id (8..28 = day of month). Returns undefined if not found. */
 export function getDay(id: number): Day | undefined {
   return itinerary.find(d => d.id === id)
 }
@@ -43,17 +61,33 @@ export function zonesByCity(citySlug: string): Zone[] {
 }
 
 /**
- * Get all zones referenced in a given day (across all time slots).
- * Returns [] if day not found.
+ * Get all zones referenced in a given day's steps, without duplicates, in order of
+ * appearance. Returns [] if day not found.
  */
 export function zonesForDay(dayId: number): Zone[] {
   const day = getDay(dayId)
   if (!day) return []
 
-  const zoneIds = day.slots.flatMap(slot => slot.zones.map(zr => zr.zoneId))
-  return zoneIds
+  const zoneIds = new Set(day.steps.flatMap(step => (step.zoneId ? [step.zoneId] : [])))
+  return [...zoneIds]
     .map(id => getZone(id))
     .filter((z): z is Zone => z !== undefined)
+}
+
+/** Get a Hotel stay by id. Returns undefined if not found. */
+export function getHotel(id: string): Hotel | undefined {
+  return hotels.find(h => h.id === id)
+}
+
+/** Hotel where you sleep on a given day (undefined on the departure day). */
+export function hotelForDay(dayId: number): Hotel | undefined {
+  const hotelId = getDay(dayId)?.hotelId
+  return hotelId ? getHotel(hotelId) : undefined
+}
+
+/** Reservations used on a given day. Returns [] if none. */
+export function reservationsForDay(dayId: number): Reservation[] {
+  return reservations.filter(r => r.dayId === dayId)
 }
 
 /**
@@ -66,7 +100,7 @@ export function buildRouteLineString() {
 
 /**
  * Build one GeoJSON LineString per excursion (base city → destination).
- * Used by the global map to draw day-trips (Shirakawa-go, Hiroshima) apart
+ * Used by the global map to draw day-trips (Shirakawa-go, Nara, Katsuo-ji, Hiroshima) apart
  * from the main round route.
  */
 export function buildExcursionLines() {
