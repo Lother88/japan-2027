@@ -1,0 +1,587 @@
+/* ─────────────────────────────────────────────
+   Página de hoteles (/hoteles/) — src/pages/hoteles.astro y src/components/hotels/*.
+
+   Solo la carga esa página (la importa su frontmatter), así que no engorda el CSS en línea de
+   la landing. Todo cuelga de [data-hotels] y usa los tokens de index.css (colores, fuentes,
+   easing): sigue al tema claro/oscuro sin reglas propias por tema.
+
+   Pensada primero para el teléfono (~390 px): una columna, las tres listas de cada estancia
+   de una en una (control segmentado) y las tablas anchas con scroll dentro de su caja. A
+   partir de 900 px las tres listas van en columnas. Zonas táctiles de 44 px como mínimo.
+
+   Acentos: cada lista tiene el suyo ([data-rank] → --rank: verde precio, ámbar calidad-precio,
+   azul ubicación), sacado de tokens que ya cumplen AA como texto en los dos temas; su fondo
+   suave (--rank-wash) se mezcla con --surface. La propuesta lleva el bermellón del sello
+   (--hanko). Movimiento: solo color y la presión de los controles (scale .97, 160 ms).
+───────────────────────────────────────────── */
+[data-hotels] {
+  --gutter: 16px;
+  /* Alto de la barra de estancias: lo que se descuenta al saltar a una sección */
+  --nav-h: 61px;
+  --card-shadow: 0 12px 26px -20px rgba(27, 42, 74, .4);
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 var(--gutter) 112px;
+  font-size: 15px;
+  line-height: 1.6;
+  font-variant-numeric: tabular-nums;
+}
+[data-hotels] [data-rank="precio"] { --rank: var(--green); }
+[data-hotels] [data-rank="valor"] { --rank: var(--amber-text); }
+[data-hotels] [data-rank="ubicacion"] { --rank: var(--sat); }
+[data-hotels] [data-rank] { --rank-wash: color-mix(in srgb, var(--rank) 12%, var(--surface)); }
+
+[data-hotels] :is(h1, h2, h3, h4) { margin: 0; color: var(--ink); font-family: var(--font-serif); text-wrap: balance; }
+[data-hotels] p { margin: 0; }
+[data-hotels] a { color: inherit; -webkit-tap-highlight-color: transparent; }
+[data-hotels] :is(button, summary) { -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
+
+/* Etiqueta en mayúsculas (entradillas, cabeceras de tabla, etiquetas de celda) */
+[data-hotels] [data-eyebrow] {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: var(--text-label);
+  line-height: var(--text-label--line-height);
+  letter-spacing: var(--text-label--letter-spacing);
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--amber-text);
+}
+
+/* ── Cabecera: volver al itinerario, título y reglas de la búsqueda ───────── */
+[data-hotels] [data-top] { display: flex; align-items: center; padding-top: 8px; }
+[data-hotels] [data-back] {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--ink);
+  text-decoration: none;
+}
+[data-hotels] [data-intro] { padding-top: 12px; }
+[data-hotels] h1 {
+  margin-top: 6px;
+  font-weight: 800;
+  font-size: clamp(44px, 7vw, 72px);
+  line-height: 1;
+  letter-spacing: -.02em;
+}
+[data-hotels] [data-lede] {
+  max-width: 68ch;
+  margin-top: 14px;
+  font-size: var(--text-lead);
+  line-height: var(--text-lead--line-height);
+  color: var(--slate);
+}
+[data-hotels] [data-lede] strong { color: var(--ink); font-weight: 700; }
+[data-hotels] [data-rules] {
+  list-style: none;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 10px;
+  margin: 20px 0 0;
+  padding: 0;
+}
+[data-hotels] [data-rules] li {
+  padding: 12px 14px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  font-size: 13.5px;
+  line-height: 1.5;
+}
+[data-hotels] [data-rules] b {
+  display: block;
+  margin-bottom: 2px;
+  font: 700 15.5px/1.3 var(--font-serif);
+  color: var(--ink);
+}
+
+/* ── Barra de estancias: fija arriba y con scroll horizontal propio ───────── */
+[data-hotels] [data-stay-nav] {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  margin: 24px calc(-1 * var(--gutter)) 0;
+  padding: 8px calc(var(--gutter) - 3px);
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
+  background: rgba(var(--nav-bg), .92);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+}
+[data-hotels] [data-stay-nav]::-webkit-scrollbar { display: none; }
+[data-hotels] [data-stay-nav] ul { display: flex; width: max-content; margin: 0; padding: 0; list-style: none; }
+/* El enlace mide 44 px de alto; la píldora que se ve dentro, 34 */
+[data-hotels] [data-stay-nav] a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 3px; text-decoration: none; }
+[data-hotels] [data-stay-nav] a:focus-visible { outline-offset: -3px; border-radius: 999px; }
+[data-hotels] [data-stay-nav] a span {
+  display: inline-flex;
+  align-items: center;
+  height: 34px;
+  padding: 0 13px;
+  border: 1px solid var(--border-2);
+  border-radius: 999px;
+  background: var(--surface);
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--ink);
+  white-space: nowrap;
+  transition: background-color 160ms ease, border-color 160ms ease, color 160ms ease, transform 160ms var(--ease-out);
+}
+[data-hotels] [data-stay-nav] a[aria-current] span { background: var(--ink); border-color: var(--ink); color: var(--paper); }
+[data-hotels] [data-stay-nav] a:active span { transform: scale(.97); }
+
+/* ── Secciones ────────────────────────────────────────────────────────────── */
+[data-hotels] :is([data-stay], [data-summary-section]) { margin-top: 44px; scroll-margin-top: calc(var(--nav-h) + 16px); }
+[data-hotels] [data-summary-section] { margin-top: 28px; }
+[data-hotels] h2 { font-weight: 800; font-size: clamp(27px, 3.4vw, 38px); line-height: 1.12; }
+[data-hotels] [data-summary-section] h2 { font-size: clamp(23px, 2.8vw, 30px); line-height: 1.2; }
+[data-hotels] [data-section-note] { max-width: 68ch; margin-top: 8px; font-size: 13.5px; color: var(--muted2); }
+
+/* Cabecera de estancia: el punto y la entradilla llevan el tono de la ciudad en el itinerario */
+[data-hotels] [data-stay] [data-eyebrow] { color: var(--c); }
+[data-hotels] [data-stay] [data-eyebrow]::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: var(--c); }
+[data-hotels] [data-stay-head] h2 { margin-top: 4px; }
+[data-hotels] [data-stay-dates] {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 10px;
+  margin-top: 8px;
+  font-size: 14px;
+  color: var(--slate);
+}
+[data-hotels] [data-stay-why] { max-width: 78ch; margin-top: 12px; }
+[data-hotels] [data-stay-anchors] { max-width: 78ch; margin-top: 6px; font-size: 13px; line-height: 1.5; color: var(--muted2); }
+
+/* ── Piezas comunes: enlace al hotel, precio, avisos y minutos a pie ──────── */
+[data-hotels] [data-hotel-link] {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  text-decoration-color: color-mix(in srgb, currentColor 35%, transparent);
+  transition: text-decoration-color 160ms ease;
+}
+/* Flecha de enlace externo: caja en línea vacía (solo relleno) con el icono como máscara. Va
+   pegada a la última palabra del nombre: entre texto y una caja vacía no hay salto de línea. */
+[data-hotels] [data-ext] {
+  --ext-icon: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' fill='none' stroke='%23000' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 2.5h5.5V8M9.5 2.5 2.5 9.5'/%3E%3C/svg%3E");
+  margin-left: 5px;
+  padding-left: 11px;
+  background: var(--muted2);
+  -webkit-mask: var(--ext-icon) center / 11px 11px no-repeat;
+  mask: var(--ext-icon) center / 11px 11px no-repeat;
+}
+@media (forced-colors: active) {
+  [data-hotels] [data-ext] { forced-color-adjust: none; background: LinkText; }
+}
+/* Zona táctil de 44 px sin separar las líneas: el relleno vertical se compensa con margen */
+[data-hotels] :is(h3, h4) > [data-hotel-link] { display: inline-block; padding: 11px 0; margin: -11px 0; }
+
+[data-hotels] [data-price] { display: flex; flex-wrap: wrap; align-items: baseline; gap: 2px 8px; margin-top: 6px; }
+[data-hotels] [data-price] b { font: 800 22px/1.15 var(--font-serif); color: var(--ink); white-space: nowrap; }
+[data-hotels] [data-price] span { font-size: 12.5px; line-height: 1.45; color: var(--muted2); }
+
+[data-hotels] [data-badges] { display: flex; flex-wrap: wrap; gap: 5px; margin: 8px 0 0; padding: 0; list-style: none; }
+[data-hotels] [data-badge] {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 9px;
+  border: 1px solid var(--border-2);
+  border-radius: 999px;
+  font-size: 11.5px;
+  font-weight: 700;
+  line-height: 1.35;
+  color: var(--ink);
+}
+[data-hotels] [data-badge="score"] { background: var(--ink); border-color: var(--ink); color: var(--paper); }
+[data-hotels] [data-badge="score"] small { font-size: inherit; font-weight: 500; }
+[data-hotels] [data-badge="ok"] {
+  color: var(--green);
+  border-color: color-mix(in srgb, var(--green) 40%, transparent);
+  background: color-mix(in srgb, var(--green) 9%, transparent);
+}
+[data-hotels] [data-badge="warn"] {
+  color: var(--coral-text);
+  border-color: color-mix(in srgb, var(--coral-text) 40%, transparent);
+  background: color-mix(in srgb, var(--coral-text) 8%, transparent);
+}
+
+[data-hotels] [data-walks] { display: flex; flex-wrap: wrap; gap: 5px; margin: 8px 0 0; padding: 0; list-style: none; }
+[data-hotels] [data-walks] li {
+  padding: 3px 8px;
+  border-radius: 8px;
+  background: var(--surface-sun);
+  font-size: 12px;
+  line-height: 1.35;
+  color: var(--body);
+}
+[data-hotels] [data-walks] b { color: var(--ink); font-weight: 700; white-space: nowrap; }
+
+/* ── Propuesta de la estancia ─────────────────────────────────────────────── */
+[data-hotels] [data-pick] {
+  position: relative;
+  margin-top: 18px;
+  padding: 16px 16px 16px 21px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  box-shadow: var(--card-shadow);
+  overflow: clip;
+}
+[data-hotels] [data-pick]::before { content: ''; position: absolute; inset: 0 auto 0 0; width: 5px; background: var(--hanko); }
+[data-hotels] [data-pick-tag] {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 6px;
+  background: var(--hanko);
+  color: var(--hanko-ink);
+  font-size: var(--text-label);
+  line-height: var(--text-label--line-height);
+  letter-spacing: var(--text-label--letter-spacing);
+  text-transform: uppercase;
+  font-weight: 700;
+}
+[data-hotels] [data-pick] h3 { margin-top: 10px; font-weight: 700; font-size: clamp(20px, 2.4vw, 24px); line-height: 1.25; }
+[data-hotels] [data-pick] [data-price] b { font-size: 26px; }
+[data-hotels] [data-pick-facts] { display: flex; flex-wrap: wrap; align-items: center; gap: 5px; margin-top: 10px; }
+[data-hotels] [data-pick-facts] [data-walks] { margin-top: 0; }
+[data-hotels] [data-pick] > p:not([data-pick-tag], [data-price]) { max-width: 82ch; margin-top: 10px; }
+[data-hotels] [data-pick] > [data-pick-alt] { font-size: 13.5px; color: var(--muted2); }
+
+/* ── Las tres listas ──────────────────────────────────────────────────────── */
+[data-hotels] [data-ranks] { margin-top: 16px; }
+[data-hotels] [data-rank-panels] { display: grid; grid-template-columns: minmax(0, 1fr); gap: 12px; align-items: start; }
+[data-hotels] [data-rank-panel] {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  box-shadow: var(--card-shadow);
+  overflow: clip;
+}
+[data-hotels] [data-rank-panel] > header {
+  padding: 11px 16px 12px;
+  background: var(--rank-wash);
+  border-bottom: 1px solid color-mix(in srgb, var(--rank) 24%, transparent);
+}
+[data-hotels] [data-rank-panel] h3 { font-weight: 700; font-size: 18px; line-height: 1.25; color: var(--rank); }
+[data-hotels] [data-rank-panel] > header p { font-size: 12.5px; line-height: 1.45; color: var(--body); }
+[data-hotels] [data-rank-panel] ol { margin: 0; padding: 0; list-style: none; }
+
+[data-hotels] [data-card] { display: grid; grid-template-columns: 28px minmax(0, 1fr); gap: 12px; padding: 15px 16px 16px; }
+[data-hotels] [data-card] + [data-card] { border-top: 1px solid var(--border); }
+[data-hotels] [data-card-pos] {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border: 1px solid var(--border-2);
+  border-radius: 50%;
+  background: var(--paper);
+  font: 700 14px/1 var(--font-serif);
+  color: var(--ink);
+}
+[data-hotels] [data-card]:first-child [data-card-pos] { background: var(--rank); border-color: var(--rank); color: var(--surface); }
+[data-hotels] [data-card] h4 { font-weight: 700; font-size: 16px; line-height: 1.375; }
+[data-hotels] [data-card-why] { margin-top: 9px; font-size: 13.5px; line-height: 1.55; }
+
+/* Control segmentado: solo existe con JavaScript y en pantallas estrechas (ver más abajo) */
+[data-hotels] [data-rank-tabs] { display: none; }
+[data-hotels] [role="tab"] {
+  appearance: none;
+  min-height: 44px;
+  margin: 0;
+  padding: 4px 6px;
+  border: 0;
+  border-radius: 10px;
+  background: transparent;
+  font: 700 13px/1.15 var(--font-sans);
+  color: var(--rank);
+  cursor: pointer;
+  transition: background-color 160ms ease, color 160ms ease, transform 160ms var(--ease-out);
+}
+[data-hotels] [role="tab"][aria-selected="true"] { background: var(--rank); color: var(--surface); box-shadow: 0 1px 3px rgba(0, 0, 0, .18); }
+[data-hotels] [role="tab"]:active { transform: scale(.97); }
+[data-hotels] [role="tab"]:focus-visible { outline-offset: 2px; }
+
+@media (max-width: 899px) {
+  html[data-js] [data-hotels] [data-rank-tabs] {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 4px;
+    margin-bottom: 10px;
+    padding: 4px;
+    border: 1px solid var(--border-2);
+    border-radius: 14px;
+    background: var(--surface-sun);
+  }
+  html[data-js] [data-hotels] [data-rank-panel]:not([data-active]) { display: none; }
+  /* La pestaña ya nombra la lista: el título del panel se queda solo para lectores de pantalla */
+  html[data-js] [data-hotels] [data-rank-panel] h3 {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+  html[data-js] [data-hotels] [data-rank-panel] > header { padding: 9px 16px; }
+  html[data-js] [data-hotels] [data-rank-panel] > header p { font-size: 13px; font-weight: 700; color: var(--rank); }
+}
+@media (min-width: 900px) {
+  [data-hotels] [data-rank-panels] { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+}
+
+/* ── Desplegables: todos los hoteles revisados y avisos de la búsqueda ────── */
+[data-hotels] [data-fold] {
+  margin-top: 12px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  overflow: clip;
+}
+[data-hotels] [data-fold] > summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 48px;
+  padding: 8px 16px;
+  list-style: none;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.35;
+  color: var(--ink);
+  cursor: pointer;
+  user-select: none;
+}
+[data-hotels] [data-fold] > summary::-webkit-details-marker { display: none; }
+[data-hotels] [data-fold] > summary::after {
+  content: '';
+  flex: none;
+  width: 8px;
+  height: 8px;
+  margin-right: 3px;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: translateY(-2px) rotate(45deg);
+  transition: transform 200ms var(--ease-out);
+}
+[data-hotels] [data-fold][open] > summary { border-bottom: 1px solid var(--border); }
+[data-hotels] [data-fold][open] > summary::after { transform: translateY(2px) rotate(-135deg); }
+[data-hotels] [data-fold] > summary:focus-visible { outline-offset: -3px; border-radius: 14px; }
+[data-hotels] [data-caveats] { margin: 0; padding: 12px 16px 14px 34px; font-size: 13.5px; line-height: 1.55; }
+[data-hotels] [data-caveats] li + li { margin-top: 6px; }
+
+/* Tabla ancha: se desplaza dentro de su caja, con el nombre del hotel fijo a la izquierda */
+[data-hotels] [data-scroll] { overflow-x: auto; overscroll-behavior-x: contain; }
+[data-hotels] [data-scroll]:focus-visible { outline-offset: -3px; }
+[data-hotels] [data-full] { width: 100%; min-width: 1180px; border-collapse: separate; border-spacing: 0; font-size: 13px; line-height: 1.45; }
+[data-hotels] [data-full] :is(th, td) { padding: 10px 12px; border-bottom: 1px solid var(--border); text-align: left; vertical-align: top; font-weight: 400; }
+[data-hotels] [data-full] tbody tr:last-child :is(th, td) { border-bottom: 0; }
+[data-hotels] [data-full] thead th {
+  vertical-align: bottom;
+  background: var(--surface-warm);
+  font-size: var(--text-label);
+  line-height: 1.4;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--muted2);
+}
+[data-hotels] [data-full] thead th small { display: block; font-size: inherit; font-weight: 500; letter-spacing: 0; text-transform: none; }
+[data-hotels] [data-full] [data-num] { text-align: right; white-space: nowrap; }
+[data-hotels] [data-full] thead [data-num] { white-space: normal; }
+[data-hotels] [data-full] tr > th:first-child {
+  position: sticky;
+  left: 0;
+  z-index: 1;
+  width: 148px;
+  min-width: 148px;
+  max-width: 148px;
+  background: var(--surface);
+  box-shadow: 1px 0 0 var(--border);
+}
+[data-hotels] [data-full] thead tr > th:first-child { background: var(--surface-warm); }
+[data-hotels] [data-full] tbody th { font-weight: 700; color: var(--ink); overflow-wrap: anywhere; }
+[data-hotels] [data-full] tbody th [data-hotel-link] { display: inline-block; min-height: 44px; }
+[data-hotels] [data-stars] { display: block; margin-top: 2px; font-size: 11px; font-weight: 400; letter-spacing: .08em; color: var(--amber-text); }
+[data-hotels] [data-notes] { min-width: 460px; }
+[data-hotels] [data-notes] [data-fine] { margin-top: 6px; font-size: 12px; color: var(--muted2); }
+
+/* ── Resumen: ficha por estancia en el teléfono, tabla a partir de 760 px ─── */
+[data-hotels] [data-summary] { width: 100%; margin-top: 14px; border-collapse: separate; border-spacing: 0; font-size: 14px; line-height: 1.45; }
+[data-hotels] [data-summary] :is(th, td) { text-align: left; font-weight: 400; vertical-align: top; }
+[data-hotels] [data-summary] tbody th a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  font: 700 17px/1.25 var(--font-serif);
+  color: var(--ink);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  text-decoration-color: color-mix(in srgb, currentColor 35%, transparent);
+}
+[data-hotels] [data-summary] small { display: block; font: 400 12.5px/1.45 var(--font-sans); color: var(--muted2); }
+[data-hotels] [data-summary] td b { font: 800 18px/1.25 var(--font-serif); color: var(--ink); white-space: nowrap; }
+[data-hotels] [data-summary] [data-total] th { font: 700 16px/1.3 var(--font-serif); color: var(--ink); }
+[data-hotels] [data-summary] [data-total] td b { font-size: 22px; }
+[data-hotels] [data-summary] [data-col="pick"] { --rank: var(--coral-text); }
+
+@media (max-width: 759px) {
+  [data-hotels] [data-summary],
+  [data-hotels] [data-summary] :is(tbody, tr, th, td) { display: block; }
+  [data-hotels] [data-summary] thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+  [data-hotels] [data-summary] tr {
+    padding: 4px 16px 6px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    box-shadow: var(--card-shadow);
+  }
+  [data-hotels] [data-summary] tr + tr { margin-top: 10px; }
+  [data-hotels] [data-summary] tbody th { padding: 4px 0 10px; }
+  [data-hotels] [data-summary] td {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: baseline;
+    column-gap: 12px;
+    padding: 9px 0 10px;
+    border-top: 1px solid var(--border);
+  }
+  /* La etiqueta de la celda hace de cabecera de columna; el texto alternativo vacío evita
+     que un lector de pantalla la lea dos veces (ya tiene la cabecera oculta de la tabla) */
+  [data-hotels] [data-summary] td::before {
+    content: attr(data-label);
+    content: attr(data-label) / '';
+    grid-column: 1 / -1;
+    margin-bottom: 1px;
+    font-size: var(--text-label);
+    line-height: var(--text-label--line-height);
+    letter-spacing: var(--text-label--letter-spacing);
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var(--rank);
+  }
+  [data-hotels] [data-summary] td small { text-align: right; }
+  [data-hotels] [data-summary] [data-total] { background: var(--surface-sun); border-color: var(--border-2); }
+  [data-hotels] [data-summary] [data-total] th { padding: 12px 0; }
+}
+@media (min-width: 760px) {
+  [data-hotels] [data-summary] {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    box-shadow: var(--card-shadow);
+    overflow: clip;
+  }
+  [data-hotels] [data-summary] :is(th, td) { padding: 12px 14px; border-top: 1px solid var(--border); }
+  [data-hotels] [data-summary] thead th {
+    border-top: 0;
+    background: var(--rank-wash, var(--surface-warm));
+    font-size: var(--text-label);
+    line-height: var(--text-label--line-height);
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var(--rank, var(--muted2));
+  }
+  [data-hotels] [data-summary] thead [data-col="pick"] { background: color-mix(in srgb, var(--hanko) 10%, var(--surface)); }
+  [data-hotels] [data-summary] tbody th { width: 21%; }
+  [data-hotels] [data-summary] tbody th a { min-height: 0; padding: 10px 0; margin: -10px 0; }
+  [data-hotels] [data-summary] td span,
+  [data-hotels] [data-summary] td b { display: block; }
+  [data-hotels] [data-summary] td b { margin-top: 2px; }
+  [data-hotels] [data-summary] tbody [data-col="pick"] { box-shadow: inset 3px 0 0 var(--hanko); }
+  [data-hotels] [data-summary] [data-total] :is(th, td) { border-top: 2px solid var(--ink); background: var(--surface-sun); }
+}
+
+/* ── Ryokan de Takaragawa (alojamiento único, sin listas) ─────────────────── */
+[data-hotels] [data-ryokan] dl {
+  margin: 18px 0 0;
+  padding: 2px 16px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  box-shadow: var(--card-shadow);
+}
+[data-hotels] [data-ryokan] dl > div { padding: 12px 0; }
+[data-hotels] [data-ryokan] dl > div + div { border-top: 1px solid var(--border); }
+[data-hotels] [data-ryokan] dt {
+  font-size: var(--text-label);
+  line-height: var(--text-label--line-height);
+  letter-spacing: var(--text-label--letter-spacing);
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--muted2);
+}
+[data-hotels] [data-ryokan] dd { margin: 3px 0 0; }
+[data-hotels] [data-button] {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 46px;
+  margin-top: 14px;
+  padding: 0 20px;
+  border-radius: 10px;
+  background: var(--primary-fill);
+  color: #fdf3e7;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: background-color 200ms ease, transform 160ms var(--ease-out);
+}
+[data-hotels] [data-button]:active { transform: scale(.97); }
+
+/* ── Nota final ───────────────────────────────────────────────────────────── */
+[data-hotels] [data-note] { margin-top: 52px; padding-top: 20px; border-top: 1px solid var(--border); }
+[data-hotels] [data-note] p { max-width: 72ch; font-size: 13.5px; line-height: 1.6; color: var(--muted2); }
+[data-hotels] [data-note] [data-back] { margin-top: 10px; }
+
+@media (min-width: 600px) {
+  [data-hotels] { --gutter: 24px; }
+  [data-hotels] [data-rules] { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  [data-hotels] [data-pick] { padding: 20px 22px 20px 27px; }
+  [data-hotels] [data-ryokan] dl > div { display: grid; grid-template-columns: 170px minmax(0, 1fr); gap: 16px; }
+  [data-hotels] [data-ryokan] dd { margin: 0; }
+}
+@media (min-width: 900px) {
+  [data-hotels] { --gutter: 32px; }
+  [data-hotels] [data-full] tr > th:first-child { width: 230px; min-width: 230px; max-width: 230px; }
+}
+@media (min-width: 1000px) {
+  [data-hotels] [data-rules] { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+
+/* Hover solo con puntero fino: en táctil el toque deja un hover pegado */
+@media (hover: hover) and (pointer: fine) {
+  [data-hotels] [data-hotel-link]:hover,
+  [data-hotels] [data-summary] tbody th a:hover { text-decoration-color: currentColor; }
+  [data-hotels] [data-back]:hover { text-decoration: underline; text-underline-offset: 3px; }
+  [data-hotels] [data-stay-nav] a:not([aria-current]):hover span { border-color: var(--ink); }
+  [data-hotels] [role="tab"]:not([aria-selected="true"]):hover { background: color-mix(in srgb, var(--rank) 12%, transparent); }
+  [data-hotels] [data-fold] > summary:hover { background: color-mix(in srgb, var(--ink) 4%, transparent); }
+  [data-hotels] [data-button]:hover { background: var(--primary-press); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-hotels] :is([data-stay-nav] a span, [role="tab"], [data-button], [data-hotel-link]),
+  [data-hotels] [data-fold] > summary::after { transition: none; }
+}

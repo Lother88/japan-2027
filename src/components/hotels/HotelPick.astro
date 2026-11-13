@@ -1,0 +1,42 @@
+---
+/**
+ * HotelPick — la propuesta de una estancia: el hotel que mejor equilibra las tres listas, con
+ * la tarifa exacta elegida, por qué y la alternativa si se prefiere otro criterio.
+ */
+import type { StayResearch } from '@/data/hotelResearch'
+import { euros, score } from '@/features/hotels/format'
+import HotelLink from '@/components/hotels/HotelLink.astro'
+import WalkChips from '@/components/hotels/WalkChips.astro'
+
+interface Props {
+  stay: StayResearch
+}
+
+const { stay } = Astro.props
+const { pick } = stay
+const hotel = pick.hotel
+---
+
+<div data-pick>
+  <p data-pick-tag>Propuesta</p>
+  <h3><HotelLink name={pick.name} url={hotel?.url} /></h3>
+  <p data-price>
+    <b>{euros(pick.price)}</b>
+    <span>{pick.room} · ≈ {euros(pick.perRoomNight)} por habitación y noche</span>
+  </p>
+  {
+    hotel && (
+      <div data-pick-facts>
+        {hotel.score !== null && (
+          <span data-badge="score">
+            <span class="sr-only">Nota </span>
+            {score(hotel.score)}
+          </span>
+        )}
+        <WalkChips anchors={stay.anchors} minutes={hotel.walkMinutes} />
+      </div>
+    )
+  }
+  <p>{pick.why}</p>
+  <p data-pick-alt>{pick.alternative}</p>
+</div>

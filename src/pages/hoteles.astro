@@ -1,0 +1,164 @@
+---
+/**
+ * Página «Hoteles» (/hoteles/) — el informe de la búsqueda de hoteles, para que el grupo vea
+ * las opciones desde el teléfono. Solo lectura: sin formularios ni botones para opinar.
+ * Documento de trabajo con precios de un día concreto, así que va con `noindex`.
+ *
+ * Composición: enlace de vuelta al itinerario · título, entradilla y las cuatro reglas de la
+ * búsqueda · barra fija de estancias · resumen (la propuesta y el número 1 de cada lista) ·
+ * una sección por estancia (HotelStay) · el ryokan de Takaragawa · nota final · interruptor
+ * flotante de tema. Los datos salen de data/hotelResearch.ts y los estilos de
+ * styles/hotels.css, que solo carga esta página.
+ */
+import '@/styles/hotels.css'
+import Base from '@/layouts/Base.astro'
+import ThemeToggle from '@/components/ThemeToggle.astro'
+import HotelStay from '@/components/hotels/HotelStay.astro'
+import HotelSummary from '@/components/hotels/HotelSummary.astro'
+import { hotelResearch } from '@/data/hotelResearch'
+import { cityTone } from '@/features/landing/theme'
+import { euros, longDate, nights, score, stayDates } from '@/features/hotels/format'
+
+const { stays, ryokan } = hotelResearch
+const searchedOn = hotelResearch.searchedAt ? longDate(hotelResearch.searchedAt) : ''
+
+// Resumen para la tarjeta que se ve al compartir el enlace (meta description y Open Graph)
+const description =
+  'Hoteles para el viaje a Japón de mayo de 2027: tres listas de cinco opciones por estancia (por precio, calidad-precio y ubicación) y la propuesta para cada una. Documento de trabajo, sin nada reservado.'
+
+const rules = [
+  { title: '4 adultos, 2 habitaciones', text: 'Dos camas separadas por habitación (2 × twin). Si un hotel no tiene twin, se indica.' },
+  { title: 'Precio total de la estancia', text: 'Para las dos habitaciones, en euros, con cancelación gratuita cuando existe.' },
+  { title: 'Lavandería de monedas', text: 'Obligatoria en Kanazawa, Kioto y Osaka; comprobada en la ficha de cada hotel.' },
+  { title: 'Ubicación a pie', text: 'Minutos estimados en línea recta × 1,3 hasta los puntos que usa el itinerario.' },
+]
+
+const navItems = [
+  { id: 'resumen', label: 'Resumen' },
+  ...stays.map((stay) => ({ id: stay.id, label: stay.navLabel })),
+  ...(ryokan ? [{ id: ryokan.id, label: ryokan.navLabel }] : []),
+]
+
+const ryokanFacts = ryokan
+  ? [
+      { term: 'Disponibilidad', text: ryokan.available },
+      { term: 'Precio total', text: euros(ryokan.price) },
+      { term: 'Habitaciones', text: ryokan.rooms },
+      { term: 'Comidas', text: ryokan.meals },
+      { term: 'Nota', text: score(ryokan.score) },
+      { term: 'Cancelación', text: ryokan.cancel },
+      ...(ryokan.notes ? [{ term: 'Observaciones', text: ryokan.notes }] : []),
+    ]
+  : []
+---
+
+<Base title="Hoteles · Japón 2027" description={description} noindex>
+  {/*
+    Marca «hay JavaScript» antes de pintar el contenido: con ella, hotels.css enseña en el
+    teléfono una lista cada vez (y su control); sin ella se ven las tres listas seguidas.
+  */}
+  <script is:inline>
+    document.documentElement.setAttribute('data-js', '')
+  </script>
+  <a class="skip-link" href="#resumen">Saltar al resumen</a>
+  <div data-hotels>
+    <header data-top>
+      <a data-back href="/">
+        <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M19 12H5M11 6l-6 6 6 6"></path>
+        </svg>
+        Itinerario
+      </a>
+    </header>
+    <main>
+      <div data-intro>
+        <p data-eyebrow>Japón 2027 · documento de trabajo</p>
+        <h1>Hoteles</h1>
+        <p data-lede>
+          Tres listas de cinco hoteles por estancia, cada una con un criterio: <strong>precio</strong>, <strong>calidad-precio</strong> y <strong>ubicación</strong> respecto al itinerario. Búsqueda hecha en Booking{searchedOn && ` el ${searchedOn}`}, sin iniciar sesión y ficha por ficha. En cada estancia aparece primero la propuesta: el hotel que mejor equilibra las tres listas.
+        </p>
+        <ul data-rules role="list">
+          {
+            rules.map((rule) => (
+              <li>
+                <b>{rule.title}</b>
+                {rule.text}
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <nav data-stay-nav aria-label="Estancias">
+        <ul role="list">
+          {
+            navItems.map((item) => (
+              <li>
+                <a href={`#${item.id}`}>
+                  <span>{item.label}</span>
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+
+      <section data-summary-section id="resumen" aria-labelledby="resumen-title">
+        <h2 id="resumen-title">Resumen: la propuesta y el número 1 de cada lista</h2>
+        <p data-section-note>Precio total de cada estancia para las dos habitaciones y, al final, lo que costaría el viaje entero con cada criterio.</p>
+        <HotelSummary research={hotelResearch} />
+      </section>
+
+      {stays.map((stay, i) => <HotelStay stay={stay} index={i + 1} total={stays.length} />)}
+
+      {
+        ryokan && (
+          <section data-stay data-ryokan id={ryokan.id} aria-labelledby={`${ryokan.id}-title`} style={`--c:${cityTone(ryokan.citySlug)}`}>
+            <header data-stay-head>
+              <p data-eyebrow>Ryokan</p>
+              <h2 id={`${ryokan.id}-title`}>{ryokan.title}</h2>
+              <p data-stay-dates>
+                <span>
+                  {stayDates(ryokan.checkIn, ryokan.checkOut)} · {nights(ryokan.nights)} · alojamiento único (sin ranking)
+                </span>
+              </p>
+            </header>
+            <dl>
+              {ryokanFacts.map((fact) => (
+                <div>
+                  <dt>{fact.term}</dt>
+                  <dd>{fact.text}</dd>
+                </div>
+              ))}
+            </dl>
+            {ryokan.url && (
+              <a data-button href={ryokan.url} target="_blank" rel="noopener">
+                Ver en Booking
+                <span class="sr-only"> (pestaña nueva)</span>
+              </a>
+            )}
+          </section>
+        )
+      }
+
+      <footer data-note>
+        <p>
+          Los precios cambian a diario y no hay nada reservado. Antes de reservar hay que confirmar en la ficha de Booking la combinación de habitaciones, los impuestos locales y la política de cancelación. Los minutos a pie son estimaciones, no rutas reales.
+        </p>
+        <a data-back href="/">
+          <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M19 12H5M11 6l-6 6 6 6"></path>
+          </svg>
+          Volver al itinerario
+        </a>
+      </footer>
+    </main>
+  </div>
+  <ThemeToggle />
+  <script>
+    // Comportamiento: tema claro/oscuro y, propio de esta página, el control de las listas, la
+    // estancia activa de la barra y el botón de tema que se aparta al leer en el móvil.
+    import '@/scripts/theme'
+    import '@/scripts/hotels'
+  </script>
+</Base>

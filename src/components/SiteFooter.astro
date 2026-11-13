@@ -4,6 +4,7 @@
  * Fondo navy oscuro (#14203a), resumen del viaje (cifras derivadas de los datos)
  * y notas del viaje. La marca es el spot isométrico de un omamori (amuleto), generado para
  * este azul fijo del pie, así que no cambia con el tema. Se descarga al acercarse al viewport.
+ * Bajo el resumen, el enlace a la página de hoteles (/hoteles/), la única entrada desde la landing.
  */
 import { tripSummary } from '@/data/trip'
 import { css } from '@/lib/style'
@@ -18,6 +19,22 @@ const chipStyle = css({
   border: '1px solid rgba(255,255,255,.1)',
   padding: '5px 12px',
   borderRadius: '20px',
+})
+
+/** Enlace a /hoteles/: zona táctil de 44 px y anillo de foco claro (el del tema claro no contrasta con el azul). */
+const hotelsLinkStyle = css({
+  display: 'inline-flex',
+  alignItems: 'center',
+  minHeight: '44px',
+  marginTop: '6px',
+  fontSize: '13.5px',
+  fontWeight: 700,
+  color: '#fdf3e7',
+  textDecoration: 'underline',
+  textDecorationColor: 'rgba(253,243,231,.45)',
+  textDecorationThickness: '1px',
+  textUnderlineOffset: '4px',
+  '--focus-ring': '#ffd27a',
 })
 
 const notes = ['Hiroshima sin pernocta', 'Shirakawa-go sin maletas', 'Fuji desde el shinkansen', 'Miyajima, para otro viaje']
@@ -51,6 +68,7 @@ const notes = ['Hiroshima sin pernocta', 'Shirakawa-go sin maletas', 'Fuji desde
         <p style={css({ fontSize: '13.5px', lineHeight: 1.6, margin: 0, color: '#9fb0d0' })}>
           Ruta redonda por Narita · {trip.dateRange} · {trip.nights} noches en Japón · {trip.bases} bases · {trip.excursions} excursiones · {trip.travelers} viajeros · eje cultura.
         </p>
+        <a href="/hoteles/" style={hotelsLinkStyle}>Hoteles: opciones por ciudad</a>
       </div>
 
       {/* Bloque derecho — notas del viaje */}

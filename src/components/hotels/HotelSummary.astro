@@ -1,0 +1,78 @@
+---
+/**
+ * HotelSummary — tabla resumen: por estancia, la propuesta y el número 1 de cada lista, y el
+ * total del viaje con cada estrategia (también por persona).
+ *
+ * En pantallas estrechas hotels.css la pinta como una ficha por estancia (cada celda con su
+ * etiqueta, `data-label`). Los roles van escritos a mano para que siga siendo una tabla para
+ * los lectores de pantalla aunque el CSS cambie su `display`.
+ */
+import type { HotelResearch } from '@/data/hotelResearch'
+import { euros, nights, stayDates } from '@/features/hotels/format'
+
+interface Props {
+  research: HotelResearch
+}
+
+const { research } = Astro.props
+const { summary } = research
+const topLabel = (label: string) => `Nº 1 ${label.toLowerCase()}`
+---
+
+<table data-summary role="table">
+  <thead role="rowgroup">
+    <tr role="row">
+      <th role="columnheader" scope="col">Estancia</th>
+      <th role="columnheader" scope="col" data-col="pick">Propuesta</th>
+      {
+        research.rankings.map((ranking) => (
+          <th role="columnheader" scope="col" data-rank={ranking.key}>
+            {topLabel(ranking.label)}
+          </th>
+        ))
+      }
+    </tr>
+  </thead>
+  <tbody role="rowgroup">
+    {
+      summary.rows.map(({ stay, pick, tops }) => (
+        <tr role="row">
+          <th role="rowheader" scope="row">
+            <a href={`#${stay.id}`}>{stay.title}</a>
+            <small>
+              {stayDates(stay.checkIn, stay.checkOut)} · {nights(stay.nights)}
+            </small>
+          </th>
+          <td role="cell" data-col="pick" data-label="Propuesta">
+            <span>{pick.name}</span>
+            <b>{euros(pick.price)}</b>
+          </td>
+          {tops.map((top) => (
+            <td role="cell" data-rank={top.ranking.key} data-label={topLabel(top.ranking.label)}>
+              <span>{top.name}</span>
+              <b>{euros(top.price)}</b>
+            </td>
+          ))}
+        </tr>
+      ))
+    }
+    <tr role="row" data-total>
+      <th role="rowheader" scope="row">
+        Total de las {summary.rows.length} estancias
+        <small>sin el ryokan de Takaragawa</small>
+      </th>
+      <td role="cell" data-col="pick" data-label="Propuesta">
+        <b>{euros(summary.pick.total)}</b>
+        <small>≈ {euros(summary.pick.perPerson)} por persona</small>
+      </td>
+      {
+        summary.tops.map((top) => (
+          <td role="cell" data-rank={top.ranking.key} data-label={topLabel(top.ranking.label)}>
+            <b>{euros(top.total)}</b>
+            <small>≈ {euros(top.perPerson)} por persona</small>
+          </td>
+        ))
+      }
+    </tr>
+  </tbody>
+</table>
