@@ -31,7 +31,7 @@ export const context: Record<string, readonly ContextEntry[]> = {
       historia: 'Se fundó en 730 cerca del actual Ōtemachi. Masakado se rebeló contra la corte, se proclamó «Nuevo Emperador» en 939 y murió en combate en 940; los desastres atribuidos a su espíritu llevaron a venerarlo aquí desde 1309. En 1616 el santuario se trasladó a su sitio actual, al nordeste del castillo de Edo, la dirección nefasta que debía proteger. En 1874 Masakado fue apartado por rebelde y no volvió a la sala principal hasta 1984. La sala actual, de 1934, es de hormigón lacado en bermellón y por eso resistió los bombardeos de 1945.',
       significado: 'Su Kanda Matsuri es uno de los tres grandes festivales de Edo. Lo llamaban «festival bajo el cielo» porque sus carrozas entraban en el castillo y el shōgun presenciaba el desfile. Desde 1681 se alterna con otro festival, así que el grande solo toca en años impares: 2027 lo es.',
       curiosidades: [
-        'Fechas del festival. El rito principal es siempre el 15 de mayo y el gran desfile cae en un fin de semana cercano: en 2027 podría ser el 8–9 de mayo, en pleno viaje, o el 15–16. Conviene confirmarlo cuando se publique el programa.',
+        'Fechas del festival. El rito principal es siempre el 15 de mayo y el gran desfile cae en un fin de semana cercano.',
         'Komainu que te miran. Los perros-león de la sala, colocados tras el terremoto de 1923, miran de frente al visitante y no hacia el centro del camino, algo muy raro.',
         'Un detective con monumento. Busca la estela de Zenigata Heiji, el policía de novela que vivía «bajo Kanda Myōjin». Tiene forma de la moneda que el personaje lanzaba como arma. Cerca está la estatua de piedra de Daikoku más grande de Japón.',
         'La cabeza vengativa. Según la leyenda, la cabeza de Masakado, expuesta en Kioto, no cerraba los ojos y rechinaba los dientes pidiendo venganza; hoy se venera en un montículo de Ōtemachi. El santuario vende amuletos contra desgracias y, muy propio de Akihabara, uno para las tecnologías de la información.',
@@ -48,7 +48,7 @@ export const context: Record<string, readonly ContextEntry[]> = {
         'La torre, en maqueta. Sube a la base de piedra para hacerte una idea de la escala del castillo. Al lado, una maqueta muestra la torre de 1638.',
         'El escenario de los 47 rōnin. Un letrero marca el «gran pasillo de los pinos», donde en 1701 el señor de Akō atacó a Kira Yoshinaka. Lo condenaron al seppuku ese mismo día, y la venganza de sus vasallos se convirtió en el Chūshingura.',
         'Los guardias ninja. El Hyakunin-bansho, de 45 m de largo, alojaba compañías de arcabuceros, entre ellas las de Kōga e Iga, que vigilaban día y noche.',
-        'Un árbol por prefectura. Cada prefectura tiene aquí su árbol, plantado en 1968; el de Okinawa llegó en 1972, cuando Estados Unidos devolvió la isla. Práctico: cierra lunes y viernes, y la entrada es gratuita.',
+        'Un árbol por prefectura. Cada prefectura tiene aquí su árbol, plantado en 1968; el de Okinawa llegó en 1972, cuando Estados Unidos devolvió la isla.',
       ],
     },
   ],
@@ -75,11 +75,10 @@ export const context: Record<string, readonly ContextEntry[]> = {
     },
     {
       nombre: 'Paraíso peatonal de Ginza (銀座歩行者天国, «Hokoten»)',
-      queEs: 'Los sábados, domingos y festivos, la avenida principal de Ginza, Chūō-dōri, se cierra al tráfico y se pasea por la calzada. Entre abril y septiembre, de 12:00 a 18:00.',
+      queEs: 'Los días en que la avenida principal de Ginza, Chūō-dōri, se cierra al tráfico y se pasea por la calzada.',
       historia: 'Lo impulsó el gobernador Minobe Ryōkichi contra los atascos y la contaminación, y se estrenó el 2 de agosto de 1970 a la vez en Ginza, Shinjuku, Ikebukuro y Asakusa. Aquel primer día acudieron unas 800.000 personas. En 1973 se cerró un tramo de 5,5 km de Ginza a Ueno, entonces el paraíso peatonal más largo del mundo.',
       significado: 'Simboliza el giro de los setenta: devolver la calle a las personas. Muchos otros desaparecieron; el de Ginza sigue siendo el más emblemático.',
       curiosidades: [
-        'Coincide con el viaje. El 8 y el 9 de mayo de 2027 son sábado y domingo: si el tiempo lo permite, la avenida estará cerrada desde las 12:00.',
         'Fachadas de frente. Desde el centro de la calzada se ven de cara Wakō, Mitsukoshi y las grandes marcas, algo imposible el resto de la semana.',
         'Normas. No se permiten actuaciones, venta ambulante ni manifestaciones, y las bicis se llevan a mano.',
       ],
@@ -95,7 +94,7 @@ export const context: Record<string, readonly ContextEntry[]> = {
         'El bosque que el primer ministro no quería. Ōkuma Shigenobu pedía una majestuosa avenida de cedros y se quejó de que no quería «un matorral». Los ingenieros forestales le convencieron de que el cedro no prosperaría aquí y plantaron árboles de hoja perenne y ancha. Acertaron: hoy hay menos árboles pero mucho más grandes, y quizá frenaron el fuego en 1945.',
         'El gran torii. Es el mayor torii de madera de su estilo en Japón, con 12 m de alto. El original era de un ciprés taiwanés de unos 1.200 años; un rayo lo destruyó en 1966 y el actual (1975) salió de otro ciprés de Taiwán de unos 1.500 años.',
         'Barriles de sake… y de vino. Los barriles de sake que ofrecen las bodegas están vacíos. Enfrente hay barriles de vino de Borgoña, en recuerdo de la afición del emperador por la cocina y el vino occidentales.',
-        'El pozo de Kiyomasa. En el jardín interior (500 ¥) hay un manantial que, según la tradición, excavó el general Katō Kiyomasa.',
+        'El pozo de Kiyomasa. En el jardín interior hay un manantial que, según la tradición, excavó el general Katō Kiyomasa.',
       ],
     },
     {
@@ -103,7 +102,7 @@ export const context: Record<string, readonly ContextEntry[]> = {
       queEs: 'Calle peatonal frente a la estación de Harajuku, escaparate de la moda juvenil y de la cultura kawaii.',
       historia: 'Se volvió comercial a mediados de los setenta. En 1979 llegaron los Takenoko-zoku, grupos que bailaban con trajes llamativos en la calle cortada al tráfico, y Harajuku se convirtió en el foco de la cultura juvenil.',
       curiosidades: [
-        'Bolardos que suben a las 11. De 11:00 a 18:00 la calle es solo peatonal y unos bolardos retráctiles cortan el paso a los coches.',
+        'Bolardos retráctiles. Mientras la calle es peatonal, unos bolardos cortan el paso a los coches.',
         'Nadie te parará. Está prohibido captar clientes por la calle.',
         'La estación que ya no verás. La estación de Harajuku de 1924, de estilo inglés y la más antigua de madera de Tokio, se sustituyó en 2020 por no cumplir la normativa contra incendios.',
       ],
@@ -127,7 +126,6 @@ export const context: Record<string, readonly ContextEntry[]> = {
       significado: 'Es la imagen de la Tokio actual en el cine y la publicidad: una multitud que se cruza sin chocar.',
       curiosidades: [
         'Solo hay una diagonal. Aunque se imagina como una gran «X», tiene un único paso en diagonal, el que sale de la plaza de Hachikō. El cercano cruce frente a Shibuya 109 sí tiene la X completa.',
-        'Verlo desde arriba. La esquina SKY EDGE de SHIBUYA SKY mira justo hacia el cruce.',
       ],
     },
     {
@@ -196,7 +194,6 @@ export const context: Record<string, readonly ContextEntry[]> = {
       curiosidades: [
         'Un mercado sobre un cementerio. Tras el terremoto de 1923, muchas tumbas del cementerio del Hongwanji se trasladaron y en esos solares se instalaron comerciantes de pescado. Así nació el mercado exterior, y se decía que comerciar sobre un antiguo cementerio traía prosperidad.',
         'El santuario de las olas. Cuenta la tradición que las obras de relleno sufrían el embate del mar hasta que se rescató del agua una imagen sagrada y se le dio culto; entonces el mar se calmó. Es el Namiyoke Inari (1659), protector del barrio.',
-        'A qué hora ir. Mejor entre las 9:00 y las 14:00, porque a primera hora tienen prioridad los profesionales. Y no se regatea.',
       ],
     },
     {
@@ -286,7 +283,6 @@ export const context: Record<string, readonly ContextEntry[]> = {
         'Esvásticas que sobrevivieron a Meiji. Fíjate en el 卍 (manji) de los edificios, emblema del santuario cuando budismo y sintoísmo convivían. Tras su separación en Meiji se quitaron los símbolos budistas, pero aquí se respetaron por el valor de los edificios.',
         'La piedra de los escritores. Busca la piedra donde se sentaban a descansar Natsume Sōseki y Mori Ōgai, vecinos del barrio.',
         'Una cerca con cimientos de 8 m. La cerca calada mide 200 m y no se ha deformado en 300 años: un estudio reciente descubrió que sus cimientos llegan a 8 m de profundidad.',
-        'Azaleas: llegaremos tarde. El jardín de 3.000 azaleas solo abre en abril. En mayo estará cerrado, pero el túnel de torii hasta el Otome Inari se puede recorrer todo el año.',
       ],
     },
   ],
@@ -300,7 +296,6 @@ export const context: Record<string, readonly ContextEntry[]> = {
         'El baño del halcón blanco. Cuenta la leyenda que el príncipe Yamato Takeru, enfermo durante su campaña hacia el este, vio alzar el vuelo a un halcón blanco desde el valle. Al bajar encontró el agua caliente, se bañó y sanó.',
         'Un río con tesoro. Takaragawa significa «río del tesoro»: en sus orillas se extrajo cobre hasta la primera mitad del siglo XX.',
         'El santuario sobre el baño. Encima del Kodakara-no-yu, el baño mixto más grande (unos 200 tatami), hay un pequeño santuario ligado a la leyenda. Este baño salió en la película Thermae Romae II (2014).',
-        'Prenda de baño de la casa. La entrada de día incluye una prenda de baño del propio ryokan y no se admiten las que traiga el cliente.',
       ],
     },
   ],
@@ -372,12 +367,12 @@ export const context: Record<string, readonly ContextEntry[]> = {
   'nishi-chaya': [
     {
       nombre: 'Nishi Chaya-gai (にし茶屋街) y Teramachi (寺町寺院群)',
-      queEs: 'Pequeño barrio de casas de té en la orilla oeste del río Sai y, al lado, la colina de Teramachi, llena de templos. Un paseo tranquilo y gratuito.',
+      queEs: 'Pequeño barrio de casas de té en la orilla oeste del río Sai y, al lado, la colina de Teramachi, llena de templos. Un paseo tranquilo.',
       historia: 'Nishi («oeste») nació en 1820, el mismo año que Higashi. Teramachi se formó en el s. XVII, al reagrupar los templos de la ciudad tras varios grandes incendios. En 2012 se protegió como distrito de preservación, con 52 templos a lo largo de antiguos caminos.',
       significado: 'Con esa declaración, Ishikawa superó a Kioto como la prefectura con más distritos de preservación.',
       curiosidades: [
-        'El escritor que creció en una casa de té. El pequeño museo gratuito de Nishi Chaya ocupa el solar donde pasó su infancia el novelista Shimada Seijirō, autor de un superventas de 1919 que murió a los 31 años.',
-        'Myōryū-ji, el «templo ninja». Fundado en 1643, por fuera parece de dos plantas, pero dentro tiene cuatro pisos y siete niveles, con 29 escaleras, algunas ocultas, y trampillas. No tiene nada que ver con ninjas reales: el apodo es moderno. Solo se visita con reserva.',
+        'El escritor que creció en una casa de té. El pequeño museo de Nishi Chaya ocupa el solar donde pasó su infancia el novelista Shimada Seijirō, autor de un superventas de 1919 que murió a los 31 años.',
+        'Myōryū-ji, el «templo ninja». Fundado en 1643, por fuera parece de dos plantas, pero dentro tiene cuatro pisos y siete niveles, con 29 escaleras, algunas ocultas, y trampillas. No tiene nada que ver con ninjas reales: el apodo es moderno.',
         'Muros en línea recta. Fíjate en los muros de barro de los templos del antiguo camino de Noda, que lleva al cementerio de los Maeda.',
       ],
     },
@@ -515,7 +510,7 @@ export const context: Record<string, readonly ContextEntry[]> = {
         'Solo con presentación. Las ochaya siguen la regla del ichigen-san okotowari: no atienden a quien viene por primera vez sin que lo presente un cliente de confianza.',
         'Farolillos con dango. Los farolillos de las ochaya de Gion Kōbu llevan el emblema del barrio: ocho bolitas de dango encadenadas.',
         'La casa de los 47 rōnin. En la esquina de Shijō con Hanami-kōji, la ochaya de muro rojo Ichiriki sale en el drama de los 47 rōnin: allí su líder finge llevar una vida disipada.',
-        'Respeto en la calle. No detengas, toques, sigas ni fotografíes sin permiso a geiko y maiko, ni entres en callejones privados: puede acabar en multa. En mayo, el espectáculo de danza es el Kamogawa Odori de Ponto-chō.',
+        'Danza en mayo. Ese mes, el espectáculo de danza es el Kamogawa Odori de Ponto-chō.',
       ],
     },
   ],
@@ -534,7 +529,7 @@ export const context: Record<string, readonly ContextEntry[]> = {
     },
     {
       nombre: 'Camino del Filósofo (哲学の道)',
-      queEs: 'Paseo peatonal de entre 1,5 y 2 km junto a un ramal del canal del lago Biwa, entre el santuario Kumano Nyakuōji y Ginkaku-ji.',
+      queEs: 'Paseo peatonal junto a un ramal del canal del lago Biwa, entre el santuario Kumano Nyakuōji y Ginkaku-ji.',
       historia: 'Nació como sendero de servicio del canal. Al estar cerca de la Universidad Imperial de Kioto, desde Meiji la zona se llenó de académicos. Tuvo varios apodos hasta que en 1969, durante una campaña vecinal para conservar el canal, se fijó el de «Camino del Filósofo».',
       significado: 'Recuerda a la Escuela de Kioto: el filósofo Nishida Kitarō y sus discípulos paseaban por aquí mientras pensaban.',
       curiosidades: [
@@ -551,7 +546,7 @@ export const context: Record<string, readonly ContextEntry[]> = {
       curiosidades: [
         '¿Por qué no es de plata? Nunca lo fue: el nombre se popularizó en Edo, por contraste con el Pabellón de Oro de su abuelo Yoshimitsu. En la restauración de 2007 no apareció ni rastro de plata. Junto a la tienda hay una maqueta con su aspecto lacado original.',
         'Los conos de arena son de Edo. El «mar de arena plateada» y el cono truncado Kōgetsudai se añadieron mucho después de Yoshimasa. Que sirvieran para reflejar la luz de la luna es solo una leyenda.',
-        'La sala de cuatro tatamis y medio más famosa de Japón. En el Tōgu-dō, la sala Dōjinsai tiene el escritorio empotrado y los estantes escalonados más antiguos que se conservan: el origen del estilo shoin. Solo abre en visitas especiales de primavera y otoño.',
+        'La sala de cuatro tatamis y medio más famosa de Japón. En el Tōgu-dō, la sala Dōjinsai tiene el escritorio empotrado y los estantes escalonados más antiguos que se conservan: el origen del estilo shoin.',
         'El Daimonji. Cuenta la tradición del templo que, al morir su hijo en 1489, Yoshimasa mandó marcar el gran carácter 大 en el monte de detrás para despedir su alma: sería el origen del fuego Daimonji del 16 de agosto.',
       ],
     },
@@ -565,7 +560,6 @@ export const context: Record<string, readonly ContextEntry[]> = {
       curiosidades: [
         'El torii más antiguo. El torii negro de Nonomiya está hecho con troncos de roble sin descortezar: es la forma más antigua de torii.',
         'El mito de Edison. Se suele decir que el filamento de las bombillas de Edison era bambú de Arashiyama. En realidad venía de los bosques de Yawata, al sur de Kioto.',
-        'Madruga. El sendero es público y gratuito, y a primera hora está mucho más tranquilo.',
       ],
     },
     {
@@ -576,7 +570,7 @@ export const context: Record<string, readonly ContextEntry[]> = {
       curiosidades: [
         'Un templo pagado con barcos. Las donaciones no bastaban, así que se reanudó el comercio con China y los beneficios se destinaron a la obra: fueron los «barcos de Tenryū-ji».',
         'La carpa que se vuelve dragón. Frente al estanque, dos piedras verticales forman la cascada del Dragón, inspirada en la leyenda china de la carpa que remonta la cascada y se convierte en dragón. La piedra-carpa no está al pie, como es habitual, sino a un lado del chorro, en plena transformación.',
-        'Un dragón que te sigue con la mirada. En el techo del Hattō, Kayama Matazō pintó en 1997 un dragón de unos 9 m que parece mirarte desde cualquier punto. Abre fines de semana y festivos, y a diario en temporadas especiales.',
+        'Un dragón que te sigue con la mirada. En el techo del Hattō, Kayama Matazō pintó en 1997 un dragón de unos 9 m que parece mirarte desde cualquier punto.',
         'Una vista de 1346. El puente Togetsukyō ya era una de las «diez vistas» que Musō eligió para el templo.',
       ],
     },
@@ -674,25 +668,25 @@ export const context: Record<string, readonly ContextEntry[]> = {
   toji: [
     {
       nombre: 'Tō-ji / Kyōōgokoku-ji (東寺・教王護国寺) y el mercado Kōbō-ichi (弘法市)',
-      queEs: 'Templo principal del budismo Shingon, al sur de la estación de Kioto. Su pagoda de cinco pisos, de unos 55 m, es el edificio de madera más alto de Japón. Cada día 21 se llena con el mercado Kōbō-ichi.',
+      queEs: 'Templo principal del budismo Shingon, al sur de la estación de Kioto. Su pagoda de cinco pisos, de unos 55 m, es el edificio de madera más alto de Japón.',
       historia: 'Se fundó en 796 como uno de los dos únicos templos permitidos dentro de la nueva capital, a ambos lados de la puerta Rashōmon. En 823 el emperador lo confió a Kūkai, que lo convirtió en el centro del Shingon. La pagoda ardió cuatro veces; la actual, la quinta, es de 1644.',
       significado: 'Es lo único de la Heian-kyō original que sigue en pie: su gemelo del oeste y la Rashōmon desaparecieron. En su sala de lectura, 21 estatuas forman un mandala en tres dimensiones.',
       curiosidades: [
-        '¿Por qué el día 21? Kūkai entró en meditación eterna un día 21 de 835. Para atender a los peregrinos que venían en su memoria surgieron puestos de té de «un cuenco, una moneda»; hoy hay cerca de 1.000 puestos. El viernes 21 de mayo de 2027 hay mercado.',
+        '¿Por qué el día 21? Kūkai entró en meditación eterna un día 21 de 835. Para atender a los peregrinos que venían en su memoria surgieron puestos de té de «un cuenco, una moneda»; hoy hay cerca de 1.000 puestos.',
         'Demonios cargando la pagoda. En las esquinas del primer tejado, pequeñas figuras de demonios parecen sostener el alero. Dentro, el pilar central se venera como el Buda Dainichi.',
         'Un archivo de mil años. Sus unos 27.000 documentos, del siglo VIII al XVIII, son Memoria del Mundo de la UNESCO desde 2015.',
-        'Un espadachín pintor. En el subtemplo Kanchi-in hay un águila y un bosque de bambú pintados por Miyamoto Musashi, el samurái de las dos espadas. Solo se abre en temporadas especiales.',
+        'Un espadachín pintor. En el subtemplo Kanchi-in hay un águila y un bosque de bambú pintados por Miyamoto Musashi, el samurái de las dos espadas.',
       ],
     },
   ],
   'nara-todaiji': [
     {
       nombre: 'Kōfuku-ji y su pagoda de cinco pisos (興福寺・五重塔)',
-      queEs: 'Templo familiar del clan Fujiwara, a cinco minutos a pie de la estación Kintetsu-Nara. Su pagoda de cinco pisos es el símbolo clásico de Nara.',
-      historia: 'Nació en 669 y en 710, con la nueva capital, se instaló aquí con el nombre de Kōfuku-ji. La primera pagoda es de 730; la actual, de hacia 1426, mide unos 50 m. En Meiji, la separación forzosa entre budismo y sintoísmo dejó el templo casi abandonado, y la pagoda estuvo a punto de venderse. Hoy vive su primera gran restauración en unos 120 años, con obras hasta 2034.',
+      queEs: 'Templo familiar del clan Fujiwara. Su pagoda de cinco pisos es el símbolo clásico de Nara.',
+      historia: 'Nació en 669 y en 710, con la nueva capital, se instaló aquí con el nombre de Kōfuku-ji. La primera pagoda es de 730; la actual, de hacia 1426, mide unos 50 m. En Meiji, la separación forzosa entre budismo y sintoísmo dejó el templo casi abandonado, y la pagoda estuvo a punto de venderse. Hoy vive su primera gran restauración en unos 120 años.',
       significado: 'Fue el templo del linaje que dominó la corte en Nara y Heian. En la Edad Media llegó a gobernar de hecho la provincia, con sus propios monjes guerreros.',
       curiosidades: [
-        'En mayo de 2027 veréis una caja, no una pagoda. Desde 2025 una cubierta de obra de unos 60 m la tapa por completo. El remate se desmontó en 2026 y no volverá hasta 2031.',
+        'La obra, en cifras. La cubierta de obra mide unos 60 m y está desde 2025. El remate se desmontó en 2026 y no volverá hasta 2031.',
         'Un edificio de 2018. El gran pabellón rojo del centro, el Chūkondō, ardió en 1717 y no se reconstruyó hasta 2018, unos 300 años después.',
         'La Ashura. La estatua de Ashura, con tres caras y seis brazos, una de las más queridas de Japón, está en el museo del propio templo.',
       ],
@@ -727,7 +721,7 @@ export const context: Record<string, readonly ContextEntry[]> = {
       historia: 'En 1612 Yasui Dōton empezó a excavar el canal con su propio dinero. Murió luchando por los Toyotomi en el asedio de Osaka, y sus parientes lo terminaron en 1615. El primer cartel de Glico, de 1935, era una torre de neón de 33 m que se desmontó en 1943 para dar su acero a la guerra. El sexto, de 2014, fue el primero de LED.',
       significado: 'Es la vitrina del kuidaore, «comer hasta arruinarse», y del espíritu comercial y teatral de Osaka.',
       curiosidades: [
-        '¿Glico nuevo en mayo de 2027? El sexto cartel se apaga a finales de noviembre de 2026 y el séptimo está previsto para la primavera de 2027. Si se cumple el plazo, veréis el estreno. La silueta del corredor se mantiene.',
+        'Un relevo en marcha. El sexto cartel se apaga a finales de noviembre de 2026; en el séptimo, la silueta del corredor se mantiene.',
         'Un canal con nombre de perdedor. Dōton murió luchando contra los Tokugawa, y aun así un señor Tokugawa le dedicó el canal. Además, su apellido real era Nariyasu, no Yasui.',
         'Cada Glico, una sorpresa. El segundo tenía un gran cocodrilo; el tercero lanzaba 12 toneladas de agua en chorros iluminados; el quinto, cuatro símbolos de Osaka a su espalda.',
       ],
@@ -791,7 +785,6 @@ export const context: Record<string, readonly ContextEntry[]> = {
       significado: 'Después fue el corazón de la Osaka obrera, y aquí nació el kushikatsu como comida barata para trabajadores.',
       curiosidades: [
         'Billiken no es japonés. Lo creó en 1908 una artista estadounidense, Florence Pretz. La estatua actual es la tercera; frotarle las plantas de los pies da suerte.',
-        'Prohibido mojar dos veces. La salsa del kushikatsu está en un recipiente común, así que nunca se vuelve a mojar un pincho ya mordido.',
         'Mira hacia arriba. Bajo la torre, el fresco del techo es una restauración del original de 1912.',
       ],
     },
@@ -887,7 +880,7 @@ export const context: Record<string, readonly ContextEntry[]> = {
       historia: 'No se sabe cuándo se fundó. El edificio actual lo donó el shōgun Tokugawa Iemitsu en 1649, en el mismo estilo que el Tōshō-gū de Nikkō, y ha sobrevivido a incendios, al terremoto de 1923 y a la guerra. Con la separación entre budismo y sintoísmo, en 1873 pasó a llamarse Asakusa Jinja.',
       significado: 'Es un caso clarísimo de mezcla de budismo y sintoísmo: los fundadores humanos de un templo budista acabaron venerados como kami justo al lado.',
       curiosidades: [
-        'No coincidiréis con el festival. El Sanja Matsuri, uno de los tres grandes festivales de Edo, será previsiblemente del 14 al 16 de mayo de 2027, cuando estaréis en Kanazawa y Takayama. Reúne a unos 1,8 millones de personas.',
+        'Un festival multitudinario. El Sanja Matsuri, uno de los tres grandes festivales de Edo, reúne a unos 1,8 millones de personas.',
         'Mikoshi zarandeados a propósito. Se sacuden con violencia para avivar el poder de la deidad. En Edo la fiesta era fluvial: los mikoshi recorrían el Sumida en barca.',
         'Leones de la suerte en el amor. La pareja de komainu de principios de Edo es un «matrimonio» y se asocia con la buena suerte en el amor. Hay además una estela dedicada a Ryōtsu Kankichi, protagonista del manga Kochikame, ambientado en este barrio.',
       ],
@@ -933,7 +926,7 @@ export const context: Record<string, readonly ContextEntry[]> = {
     {
       nombre: 'Nakano Broadway (中野ブロードウェイ)',
       queEs: 'Complejo de tiendas y viviendas junto a la estación de Nakano, con unos 300 locales en las plantas bajas. Es la meca del coleccionismo otaku de segunda mano.',
-      historia: 'Se terminó en 1966 como uno de los primeros complejos de tiendas y viviendas de Japón, con apartamentos de lujo y boutiques. Cuando abrieron centros comerciales en Shinjuku y Kichijōji, muchas tiendas cerraron. En 1980 Furukawa Masuzō abrió en la 2.ª planta Mandarake, una tienda de manga de segunda mano de unos 6,6 m². Los alquileres baratos atrajeron otras tiendas de nicho, y en los 90 el edificio ya era lugar sagrado de la subcultura. Hoy Mandarake ocupa unos 35 locales.',
+      historia: 'Se terminó en 1966 como uno de los primeros complejos de tiendas y viviendas de Japón, con apartamentos de lujo y boutiques. Cuando abrieron centros comerciales en Shinjuku y Kichijōji, muchas tiendas cerraron. En 1980 Furukawa Masuzō abrió en la 2.ª planta Mandarake, una tienda de manga de segunda mano de unos 6,6 m². Los alquileres baratos atrajeron otras tiendas de nicho, y en los 90 el edificio ya era lugar sagrado de la subcultura.',
       significado: 'Un edificio de prestigio que se reinventó desde abajo, gracias a pequeños comerciantes especializados y no a un plan urbanístico.',
       curiosidades: [
         'Del lujo al manga. Se anunció como «el mejor edificio de Oriente», y hoy se compararía con Roppongi Hills.',
@@ -968,7 +961,7 @@ export const context: Record<string, readonly ContextEntry[]> = {
       nombre: 'Naritasan Fukagawa Fudō-dō (成田山深川不動堂)',
       queEs: 'Sede en Tokio del gran templo Shingon de Naritasan (Chiba), dedicada a Fudō Myōō.',
       historia: 'Naritasan se fundó en 940. En 1703 la imagen de Fudō de Narita se expuso por primera vez en Edo, aquí en Fukagawa, y de esa exposición nace el templo. El terremoto de 1923 y el bombardeo de 1945 destruyeron los edificios, pero la imagen principal se salvó las dos veces; en 1945 los monjes la evacuaron a Narita. El nuevo hondō se terminó en 2012.',
-      significado: 'Aquí el ritual se vive de cerca: el goma, ritual del fuego con tambores y mantras, se celebra cada día a las 9, 11, 13, 15 y 17 h.',
+      significado: 'Aquí el ritual se vive de cerca: el goma, ritual del fuego con tambores y mantras, se celebra varias veces al día.',
       curiosidades: [
         'El kabuki y Fudō. El primer Ichikawa Danjūrō rezó a Fudō de Narita para tener un hijo. Cuando nació, la familia adoptó el nombre de «Naritaya», el mismo que el público grita aún hoy en los teatros.',
         'Un edificio llegado de Chiba. Tras la guerra no había madera para construir, así que se desmontó y trasladó aquí una sala del siglo XIX de un templo de Chiba.',

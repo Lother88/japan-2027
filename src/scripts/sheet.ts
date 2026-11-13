@@ -4,9 +4,10 @@
  * Abrir: clic en un paso [data-step-open] o en una fila de «Ahora / Después» (su
  * `data-step-ref` apunta al id del botón del paso). Se rellena con lo que ya hay en el HTML:
  * data-* del botón (hora, tipo, enlace de Maps, zona, reserva), sus marcas, la casilla «hecho»
- * del paso, las reservas y notas del día (clonadas de la sección) y la ficha de la zona
- * (clonada de su <template data-zone-tpl>, con «El lugar» plegado). Nada de fetch aquí: el
- * cuerpo de «El lugar» lo pide scripts/place.ts al desplegarlo.
+ * del paso, su trayecto si lo tiene (clonado de <template data-transfer-tpl="id del botón">) y
+ * la ficha de la zona (clonada de su <template data-zone-tpl>, con «El lugar» plegado). Solo lo
+ * propio del paso: las reservas y notas del día viven en la sección del día y no se repiten
+ * aquí. Nada de fetch aquí: el cuerpo de «El lugar» lo pide scripts/place.ts al desplegarlo.
  *
  * Cerrar: botón, fondo, Esc, «atrás» del navegador (la hoja apila una entrada de historial
  * mientras está abierta) o arrastrar hacia abajo desde el asa o con el contenido arriba del
@@ -34,10 +35,8 @@ function initSheet(root: HTMLElement, sheet: HTMLElement, scroller: HTMLElement)
   const maps = q<HTMLAnchorElement>('[data-sheet-maps]')
   const doneBtn = q('[data-sheet-done]')
   const doneLabel = q('[data-sheet-done-label]')
-  const resBox = q('[data-sheet-res]')
+  const transferBox = q('[data-sheet-transfer]')
   const zoneBox = q('[data-sheet-zone]')
-  const notesBox = q('[data-sheet-notes]')
-  const notesList = notesBox.querySelector('ul')!
   const reduceMotion = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
   let open = false
@@ -69,15 +68,11 @@ function initSheet(root: HTMLElement, sheet: HTMLElement, scroller: HTMLElement)
     stepBox = li?.querySelector<HTMLElement>('[data-step-done]') ?? null
     syncDone()
 
-    const res = 'reserve' in step.dataset ? section?.querySelector('[data-day-res]') : null
-    resBox.replaceChildren(...(res ? [res.cloneNode(true)] : []))
+    const trTpl = step.id ? document.querySelector<HTMLTemplateElement>(`template[data-transfer-tpl="${step.id}"]`) : null
+    transferBox.replaceChildren(...(trTpl ? [trTpl.content.cloneNode(true)] : []))
 
     const tpl = step.dataset.zoneId ? document.querySelector<HTMLTemplateElement>(`template[data-zone-tpl="${step.dataset.zoneId}"]`) : null
     zoneBox.replaceChildren(...(tpl ? [tpl.content.cloneNode(true)] : []))
-
-    const notes = section?.querySelectorAll('[data-day-notes] li') ?? []
-    notesList.replaceChildren(...Array.from(notes, (n) => n.cloneNode(true)))
-    notesBox.hidden = !notes.length
   }
 
   function setInert(on: boolean) {

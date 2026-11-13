@@ -9,7 +9,9 @@
  *    ilustración isométrica del día.
  *  - «Ahora / Después»: tarjeta vacía y oculta; scripts/day-plan.ts la rellena y la muestra solo
  *    en el día de hoy (hora de Japón, o la de la vista previa ?hoy=&hora=).
- *  - Billetes de los trayectos, reservas del día, «El plan» (StepTimeline) y notas del día.
+ *  - Reservas del día, notas del día (lo que vale para todo el día) y «El plan»
+ *    (StepTimeline). Los trayectos no van aparte: son pasos del plan (marca «con maletas» o
+ *    «ida y vuelta») y su detalle sale en la hoja del paso.
  *
  * El color de la ciudad va en --c (tono de index.css) y de ahí salen --c-ink/--c-soft/--c-line
  * ([data-tone]). Nada de experiencia por adelantado (NOSPOIL-02): el contexto cultural solo
@@ -26,7 +28,6 @@ import { cityTone, dateParts, getCityMeta, pad2 } from '@/features/landing/theme
 import { pickIllustration } from '@/features/landing/illustrationKind'
 import { dayAnchor } from '@/features/landing/scroll'
 import { RULE_LABELS, cityName, dayPosition, daySubtitle, mapsUrl } from '@/features/landing/dayView'
-import TransferCard from '@/components/TransferCard.astro'
 import StepTimeline from '@/components/StepTimeline.astro'
 import Icon from '@/components/Icon.astro'
 
@@ -50,7 +51,6 @@ const subtitleParts = daySubtitle(day).split(/(\S+-\S+)/)
 const rules = (day.rules ?? []).map((r) => RULE_LABELS[r])
 const hotel = hotelForDay(day.id)
 const reservations = reservationsForDay(day.id)
-const transfers = day.transfers ?? []
 const notes = day.notes ?? []
 const illustration = pickIllustration(day.id)
 ---
@@ -67,30 +67,34 @@ const illustration = pickIllustration(day.id)
   <div data-day-inner>
     <div data-day-top>
       <header data-day-head data-reveal>
-        <span data-day-kanji aria-hidden="true">{kanji}</span>
-        <p data-day-eyebrow>{`${date.weekday} ${date.day} ${date.month}`} · Día {pos.n} de {pos.total}</p>
-        <p data-day-city>{city}</p>
-        <h2 data-day-title id={titleId}>
-          {subtitleParts.map((part, i) => (i % 2 === 1 ? <span style="white-space:nowrap">{part}</span> : part))}
-        </h2>
-        {
-          (rules.length > 0 || day.laundry) && (
-            <ul data-day-chips aria-label="Criterios del día">
-              {rules.map((r) => (
-                <li data-rchip>
-                  <i aria-hidden="true" />
-                  {r.short}
-                  <span class="sr-only">: {r.long}</span>
-                </li>
-              ))}
-              {day.laundry && (
-                <li data-rchip="laundry">
-                  <span aria-hidden="true">🧺</span> Día de colada
-                </li>
-              )}
-            </ul>
-          )
-        }
+        <div data-day-lede>
+          <div data-day-text>
+            <p data-day-eyebrow>{`${date.weekday} ${date.day} ${date.month}`} · Día {pos.n} de {pos.total}</p>
+            <p data-day-city>{city}</p>
+            <h2 data-day-title id={titleId}>
+              {subtitleParts.map((part, i) => (i % 2 === 1 ? <span style="white-space:nowrap">{part}</span> : part))}
+            </h2>
+            {
+              (rules.length > 0 || day.laundry) && (
+                <ul data-day-chips aria-label="Criterios del día">
+                  {rules.map((r) => (
+                    <li data-rchip>
+                      <i aria-hidden="true" />
+                      {r.short}
+                      <span class="sr-only">: {r.long}</span>
+                    </li>
+                  ))}
+                  {day.laundry && (
+                    <li data-rchip="laundry">
+                      <span aria-hidden="true">🧺</span> Día de colada
+                    </li>
+                  )}
+                </ul>
+              )
+            }
+          </div>
+          <span data-day-kanji aria-hidden="true">{kanji}</span>
+        </div>
         {
           hotel && (
             <div data-day-hotel>
@@ -135,8 +139,6 @@ const illustration = pickIllustration(day.id)
       </div>
     </section>
 
-    {transfers.map((t) => <TransferCard transfer={t} />)}
-
     {
       reservations.length > 0 && (
         <ul data-day-res aria-label="Reservas del día">
@@ -153,8 +155,7 @@ const illustration = pickIllustration(day.id)
       )
     }
 
-    <StepTimeline day={day} titleId={titleId} />
-
+    {/* Lo que vale para todo el día, antes del plan (y solo aquí: la hoja del paso no lo repite) */}
     {
       notes.length > 0 && (
         <section data-day-notes aria-label="Notas del día">
@@ -167,5 +168,7 @@ const illustration = pickIllustration(day.id)
         </section>
       )
     }
+
+    <StepTimeline day={day} titleId={titleId} />
   </div>
 </section>

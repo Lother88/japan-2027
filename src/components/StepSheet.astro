@@ -4,8 +4,9 @@
  *
  * Un solo diálogo (role=dialog + aria-modal) hijo directo de <body>; scripts/sheet.ts lo
  * rellena al abrir a partir del paso tocado: hora · tipo, etiqueta, marcas, «Abrir en Google
- * Maps», «Marcar como hecho», reservas del día (si el paso la necesita), la ficha de la zona
- * (clonada de su <template>, con «El lugar» plegado) y las notas del día.
+ * Maps», «Marcar como hecho», el trayecto si el paso lo es (TransferCard, clonada de su
+ * <template data-transfer-tpl>) y la ficha de la zona (clonada de su <template>, con «El lugar»
+ * plegado). Las reservas y notas del día no se repiten aquí: están en la sección del día.
  *
  * Cierre: botón, tocar el fondo, Esc, arrastrar hacia abajo (con velocidad) o el «atrás» del
  * móvil. Mientras está abierta, el resto de la página es `inert` y el foco vuelve al botón que
@@ -35,12 +36,8 @@ import Icon from '@/components/Icon.astro'
           <span data-sheet-done-label>Marcar como hecho</span>
         </button>
       </div>
-      <div data-sheet-res></div>
+      <div data-sheet-transfer></div>
       <div data-sheet-zone></div>
-      <section data-sheet-notes aria-labelledby="hoja-notas">
-        <h3 id="hoja-notas">Notas del día</h3>
-        <ul></ul>
-      </section>
     </div>
   </div>
 </div>

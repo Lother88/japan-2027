@@ -2,7 +2,7 @@
  * Vista de un día del itinerario: textos y datos derivados que comparten la tira de fechas,
  * la cabecera del día, la línea de tiempo y la hoja de cada paso (todo se calcula al compilar).
  */
-import type { Day, DayRule, Step, StepType, TransferMode, Zone } from '@/data/types'
+import type { Day, DayRule, Step, StepType, Zone } from '@/data/types'
 import { cities, itinerary } from '@/data'
 
 /** Nombre corto de la ciudad (sin el paréntesis: «Takaragawa (Minakami)» → «Takaragawa»). */
@@ -47,16 +47,6 @@ export const STEP_TYPE_LABELS: Record<StepType, string> = {
   compras: 'Compras',
   descanso: 'Descanso',
   noche: 'Noche',
-}
-
-export const TRANSFER_MODE_LABELS: Record<TransferMode, string> = {
-  shinkansen: 'Shinkansen',
-  tren: 'Tren',
-  bus: 'Autobús',
-  avion: 'Avión',
-  ferry: 'Ferri',
-  pie: 'A pie',
-  coche: 'Coche',
 }
 
 /** Hora exacta «HH:MM» (frente a las vagas «mañana», «tarde» y «noche»). */
