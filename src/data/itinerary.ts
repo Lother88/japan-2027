@@ -46,7 +46,7 @@ export const itinerary: readonly Day[] = [
     steps: [
       { time: '09:30', label: 'Aterrizaje en Narita T1', type: 'traslado', maps: 'Narita Airport Terminal 1' },
       {
-        time: '10:40',
+        time: '10:38',
         label: 'Tren a Ueno',
         type: 'traslado',
         maps: 'Keisei Ueno Station',
@@ -70,6 +70,7 @@ export const itinerary: readonly Day[] = [
     notes: [
       'Tarde suave: jet lag.',
       'De noche, Sensō-ji está tranquilo.',
+      'Kabuki-za del domingo: las entradas online salen hoy a las 12:00; la taquilla del mismo día (10:00) choca con el Palacio Imperial.',
     ],
   },
 
@@ -152,7 +153,7 @@ export const itinerary: readonly Day[] = [
           to: 'Takaragawa Onsen (Minakami)',
           mode: 'shinkansen',
           line: 'Jōetsu Shinkansen desde Ueno + lanzadera del ryokan',
-          duration: '~1h + ~45 min de lanzadera',
+          duration: '~1h + hasta ~1h de lanzadera',
           notes: [
             'El Toki 319 (Ueno 11:46 → 12:43) enlaza con la lanzadera de las 13:00; el Toki 323 (13:46), con la de las 15:00',
             'Horario de 2026: revisar tras el cambio de marzo de 2027',
@@ -490,7 +491,7 @@ export const itinerary: readonly Day[] = [
     rules: ['finde'],
     steps: [
       {
-        time: '07:10',
+        time: '07:11',
         label: 'Shinkansen a Hiroshima',
         type: 'traslado',
         maps: 'Shin-Osaka Station',
@@ -508,8 +509,8 @@ export const itinerary: readonly Day[] = [
         },
       },
       { time: '09:15', label: 'Museo Memorial de la Paz', type: 'visita', zoneId: 'hiroshima-paz', maps: 'Hiroshima Peace Memorial Museum' },
-      { time: '11:00', label: 'Parque de la Paz y Monumento a los Niños', type: 'visita', zoneId: 'hiroshima-paz', maps: 'Hiroshima Peace Memorial Park' },
-      { time: '12:00', label: 'Cúpula de la Bomba Atómica', type: 'visita', zoneId: 'hiroshima-paz', maps: 'Atomic Bomb Dome' },
+      { time: '11:15', label: 'Parque de la Paz y Monumento a los Niños', type: 'visita', zoneId: 'hiroshima-paz', maps: 'Hiroshima Peace Memorial Park' },
+      { time: '12:15', label: 'Cúpula de la Bomba Atómica', type: 'visita', zoneId: 'hiroshima-paz', maps: 'Atomic Bomb Dome' },
       { time: '13:00', label: 'Okonomiyaki estilo Hiroshima', type: 'comida', maps: 'Okonomimura Hiroshima' },
       { time: 'tarde', label: 'Vuelta a Osaka', type: 'traslado' },
     ],
@@ -567,6 +568,7 @@ export const itinerary: readonly Day[] = [
       { time: '13:30', label: 'Hotel en Asakusa · dejar maletas', type: 'descanso', maps: 'Asakusa Station Tokyo' },
       { time: '15:00', label: 'Akihabara: Radio Kaikan · Mandarake · Surugaya', type: 'compras', zoneId: 'akihabara', maps: 'Akihabara Radio Kaikan' },
       { time: '17:00', label: 'Retro: Super Potato y gachapon', type: 'compras', zoneId: 'akihabara', maps: 'Super Potato Akihabara' },
+      { time: '20:00', label: 'Shinjuku de noche, si quedó pendiente del día 10', type: 'noche', zoneId: 'shinjuku', maps: 'Omoide Yokocho', optional: true },
     ],
   },
 
