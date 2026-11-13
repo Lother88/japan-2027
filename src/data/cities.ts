@@ -13,7 +13,7 @@ export const cities: readonly City[] = [
   {
     slug: 'tokio',
     name: 'Tokio',
-    center: [139.6917, 35.6895], // Tokyo Station area
+    center: [139.6917, 35.6895], // Tokyo metropolitan area center (Shinjuku)
   },
   {
     slug: 'takaragawa',
@@ -23,7 +23,7 @@ export const cities: readonly City[] = [
   {
     slug: 'kanazawa',
     name: 'Kanazawa',
-    center: [136.6256, 36.5613], // Kanazawa city center
+    center: [136.6562, 36.5613], // Kanazawa city center
   },
   {
     slug: 'takayama',
@@ -38,7 +38,7 @@ export const cities: readonly City[] = [
   {
     slug: 'kioto',
     name: 'Kioto',
-    center: [135.7681, 35.0116], // Kyoto Station area
+    center: [135.7681, 35.0116], // Kyoto city center
   },
   {
     slug: 'osaka',

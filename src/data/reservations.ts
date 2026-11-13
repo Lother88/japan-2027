@@ -10,13 +10,13 @@ import type { Reservation } from './types'
 export const reservations: readonly Reservation[] = [
   {
     what: 'Ryokan Ōsenkaku + lanzadera de ida y vuelta',
-    how: 'Ryokan por Booking; lanzadera por teléfono',
+    how: 'Ryokan por Booking; lanzadera por teléfono o formulario web',
     date: '2027-05-12',
     dayId: 12,
   },
   {
     what: 'Bus Nōhi Kanazawa → Takayama',
-    how: 'Reserva online',
+    how: 'Online, desde un mes antes (asiento asignado)',
     date: '2027-05-15',
     dayId: 15,
   },
@@ -27,10 +27,16 @@ export const reservations: readonly Reservation[] = [
     dayId: 10,
   },
   {
-    what: 'Museo de la Paz de Hiroshima (franja 7:30–8:30, opcional)',
-    how: 'Online',
-    date: '2027-05-23',
-    dayId: 23,
+    what: 'Bus Nōhi Takayama ⇄ Shirakawa-go (7:20 ida, 11:10 vuelta)',
+    how: 'Online, desde un mes antes',
+    date: '2027-05-17',
+    dayId: 17,
+  },
+  {
+    what: 'Castillo Nijō: palacio Honmaru (franja con hora, opcional)',
+    how: 'Web oficial, desde 30 días antes; 1.000 ¥ aparte',
+    date: '2027-05-19',
+    dayId: 19,
   },
   {
     what: 'Tokyo Skytree (franja del atardecer)',

@@ -31,8 +31,8 @@ export const zones: readonly Zone[] = [
       access: 'JR Chūō/Sōbu o Metro Marunouchi — Ochanomizu (~5 min a pie). Desde Akihabara, ~7 min a pie',
       hours: 'Recinto: acceso libre',
       logistics: [
-        'Kanda Matsuri 2027: fechas por confirmar; posible desfile el sáb 8 y entrada de mikoshi el dom 9 (alternativa: 15–16)',
-        'El santuario publica el programa en primavera (kandamatsuri.com)',
+        'Kanda Matsuri 2027: fechas sin anunciar; como el 15 de mayo cae en sábado, el desfile (sábado) y la entrada de mikoshi (domingo) pueden caer el 8–9 o el 15–16 de mayo',
+        'El santuario publica el programa en primavera: confirmar en kandamatsuri.com',
       ],
     },
   },
@@ -68,7 +68,7 @@ export const zones: readonly Zone[] = [
       hours: 'Chūō-dōri peatonal: sábados, domingos y festivos 12:00–18:00 (abril–septiembre). Tiendas: 10:00–20:00',
       logistics: [
         'El paso peatonal depende de la policía y del tiempo',
-        'Kabuki-za (makumi-seki): comprobar antes del viaje cómo se venden',
+        'Kabuki-za, un acto suelto (hitomakumi): online desde las 12:00 del día anterior, solo con tarjeta (~70 asientos); en taquilla el mismo día desde las 10:00, uno por persona (~20 asientos)',
         'Itoya (papelería) y Uniqlo Ginza: tax-free con pasaporte',
       ],
     },
@@ -101,7 +101,7 @@ export const zones: readonly Zone[] = [
     tags: ['comercial', 'juvenil', 'iconico', 'entretenimiento'],
     practical: {
       access: 'JR Yamanote o Metro Ginza — Estación Shibuya, salida Hachikō',
-      hours: 'Shibuya Parco: ~10:00–21:00',
+      hours: 'Shibuya Parco: tiendas 11:00–21:00 (planta 6, desde las 10:00)',
       logistics: ['SHIBUYA SKY está en la torre este de Shibuya Scramble Square'],
     },
   },
@@ -164,7 +164,7 @@ export const zones: readonly Zone[] = [
     tags: ['shitamachi', 'historico', 'artesania', 'tranquilo'],
     practical: {
       access: 'JR Yamanote o Keisei — Estación Nippori, salida norte. Metro Chiyoda — Nezu o Sendagi',
-      hours: 'Yanaka Ginza: tiendas desde 10:00; muchas cierran a las 17:00–18:00 y bastantes los lunes',
+      hours: 'Yanaka Ginza: tiendas desde 10:00; muchas cierran a las 17:00–18:00 y bastantes los lunes. Nezu Jinja: puerta karamon 5:30–18:00 en mayo',
       logistics: [
         'Efectivo en la mayoría de tiendas de Yanaka Ginza',
         'Bajar por las escaleras Yūyake Dandan desde Nippori',
@@ -203,7 +203,7 @@ export const zones: readonly Zone[] = [
     practical: {
       access:
         'Tobu Skytree Line / Metro Hanzōmon — Estación Oshiage o Tokyo Skytree. A 20 min a pie o 3 min en metro desde Asakusa',
-      hours: 'Tembo Deck y Tembo Galleria: ~9:00–22:00 (última entrada 21:00)',
+      hours: 'Tembo Deck y Tembo Galleria: lun–sáb 10:00–22:00 (última entrada 21:00); domingos y festivos desde las 9:00',
       logistics: [
         'Entre semana, la entrada es más barata',
         'A los pies está Tokyo Solamachi (centro comercial)',
@@ -239,8 +239,11 @@ export const zones: readonly Zone[] = [
       access:
         'Metro Tōzai u Ōedo — Monzen-Nakachō; Ōedo o Hanzōmon — Kiyosumi-Shirakawa (1 parada entre sí, ~15 min a pie)',
       hours:
-        'Jardín Kiyosumi: 9:00–17:00 (última entrada 16:30), 150 ¥. Fukagawa Edo Museum: ~9:30–17:00 (verificar 2027). Fudō-dō: goma (ritual del fuego) a las 9, 11, 13, 15 y 17 h. Tonkatsu Marushichi: 11:30–17:00',
-      logistics: ['Tonkatsu Marushichi (yaki-katsudon; sin reservas): confirmar días de cierre en sus redes'],
+        'Jardín Kiyosumi: 9:00–17:00 (última entrada 16:30), 150 ¥. Fukagawa Edo Museum: 9:30–17:00 (última entrada 16:30). Fudō-dō: goma (ritual del fuego) a las 9, 11, 13, 15 y 17 h. Fukagawa-juku (fukagawa-meshi): 11:30–15:00 junto al museo y 11:00–15:00 junto a Tomioka Hachimangū; cierra los lunes. Tonkatsu Marushichi (sucursal Fukagawa Fudō): 11:00–17:00',
+      logistics: [
+        'Tonkatsu Marushichi (yaki-katsudon; sin reservas): confirmar días de cierre en sus redes',
+        'Tomioka Hachimangū: pabellón principal en obras y cubierto hasta junio de 2027 (previsto); museo cerrado',
+      ],
     },
   },
 
@@ -264,7 +267,7 @@ export const zones: readonly Zone[] = [
     id: 'takaragawa-onsen',
     name: 'Takaragawa Onsen (Ōsenkaku)',
     citySlug: 'takaragawa',
-    coordinates: [138.9206, 36.8367],
+    coordinates: [139.0467, 36.8479],
     tags: ['onsen', 'ryokan', 'naturaleza', 'rural'],
     practical: {
       hours: 'Baños para visitantes de día: 10:00–16:30. Huéspedes: horario ampliado',
@@ -288,7 +291,7 @@ export const zones: readonly Zone[] = [
     tags: ['historico', 'tradicional', 'artesania', 'chaya'],
     practical: {
       access: 'Autobús urbano Loop Bus (parada Hashiba-chō) desde la estación de Kanazawa (~15 min)',
-      hours: 'Calles: acceso libre. Casas de té visitables: 9:00–18:00 aprox.',
+      hours: 'Calles: acceso libre. Casas de té visitables: Shima 9:30–17:30; Kaikarō 10:00–17:00 (cierre irregular)',
       logistics: [
         'Al atardecer: menos gente que a mediodía',
         'Efectivo en la mayoría de tiendas de artesanía y dulces',
@@ -304,7 +307,7 @@ export const zones: readonly Zone[] = [
     coordinates: [136.662, 36.5618],
     tags: ['jardin', 'historico', 'patrimonio', 'naturaleza'],
     practical: {
-      access: 'Loop Bus — parada Kenrokuen-shita. O 15 min a pie desde la estación de Kanazawa',
+      access: 'Loop Bus — parada Kenrokuen-shita (12 min de autobús + 5 a pie). O ~30 min a pie desde la estación de Kanazawa (2,2 km)',
       hours: 'Mar–oct: 7:00–18:00, 320 ¥. Gratis de 4:00 a 6:45 por las puertas Hasuike y Zuijinzaka',
       logistics: ['El Museo del Siglo XXI, al lado, está cerrado de mayo de 2027 a marzo de 2028'],
     },
@@ -437,7 +440,7 @@ export const zones: readonly Zone[] = [
 
   {
     id: 'miyagawa-asaichi',
-    name: 'Mercado matutino de Miyagawa',
+    name: 'Mercado matinal de Miyagawa',
     citySlug: 'takayama',
     coordinates: [137.2555, 36.1452],
     tags: ['mercado', 'gastronomia', 'local', 'matutino'],
@@ -472,9 +475,9 @@ export const zones: readonly Zone[] = [
     name: 'Kiyomizu-dera',
     citySlug: 'kioto',
     coordinates: [135.785, 34.9948],
-    tags: ['templo', 'historico', 'patrimonio-unesco', 'montaña'],
+    tags: ['templo', 'historico', 'patrimonio-unesco', 'montana'],
     practical: {
-      access: 'A pie desde Shichijō (~20 min). Bus urbano 100 o 206 — parada Gojō-zaka o Kiyomizu-michi',
+      access: 'A pie desde Shichijō (~20 min). Bus urbano 206, 86 o 106 — parada Gojō-zaka o Kiyomizu-michi',
       hours: '6:00–18:00. ~500 ¥',
       logistics: ['Cuesta empinada desde la parada de bus: 15 min subiendo'],
     },
@@ -487,7 +490,7 @@ export const zones: readonly Zone[] = [
     coordinates: [135.7806, 34.999],
     tags: ['historico', 'tradicional', 'paseo', 'artesania'],
     practical: {
-      access: 'Desde Kiyomizu-dera bajando a pie (~5 min). Bus urbano 100/206 — parada Kiyomizu-michi',
+      access: 'Desde Kiyomizu-dera bajando a pie (~5 min). Bus urbano 206, 86 o 106 — parada Kiyomizu-michi',
       hours: 'Calles: acceso libre. Tiendas: ~9:00–17:00/18:00. Kōdai-ji: ~9:00–17:30 (de pago)',
       logistics: ['Calles empedradas en pendiente: calzado cómodo'],
     },
@@ -500,7 +503,7 @@ export const zones: readonly Zone[] = [
     coordinates: [135.7751, 35.0038],
     tags: ['historico', 'geishas', 'tradicional', 'nocturno'],
     practical: {
-      access: 'Keihan — Gion-Shijō. Bus urbano 100/206 — parada Gion',
+      access: 'Keihan — Gion-Shijō. Bus urbano 206 — parada Gion',
       hours: 'Calles: acceso libre. Yasaka Jinja y parque Maruyama: 24 h. Hanami-kōji: mejor de 17:30 a 19:00',
       logistics: [
         'No detener, tocar, seguir ni fotografiar sin permiso a geiko y maiko',
@@ -518,7 +521,7 @@ export const zones: readonly Zone[] = [
     tags: ['templo', 'paseo', 'jardines', 'historico'],
     practical: {
       access: 'Metro Tōzai — Keage (~10 min a pie a Nanzen-ji). A pie desde Yasaka Jinja (~30 min). Vuelta desde Ginkaku-ji en bus o taxi',
-      hours: 'Nanzen-ji: recinto y acueducto libres; Sanmon y Hōjō de pago (~8:40–17:00). Camino del Filósofo: libre. Ginkaku-ji: hasta ~17:00 (por confirmar); la sala Tōgu-dō solo abre en visitas especiales de primavera y otoño',
+      hours: 'Nanzen-ji: recinto y acueducto libres; Sanmon y Hōjō de pago (~8:40–17:00). Camino del Filósofo: libre. Ginkaku-ji: 8:30–17:00; la sala Tōgu-dō solo abre en visitas especiales (en 2026, la de primavera acabó el 6 de mayo)',
       logistics: [
         'Camino del Filósofo: ~1,5–2 km a pie de Nanzen-ji a Ginkaku-ji',
         'Ginkaku-ji: llegar antes de las 16:30',
@@ -534,7 +537,7 @@ export const zones: readonly Zone[] = [
     tags: ['naturaleza', 'bambu', 'templo', 'rio'],
     practical: {
       access: 'JR San-in — Saga-Arashiyama. O Randen (Keifuku) — Arashiyama. O Hankyū — Arashiyama',
-      hours: 'Bosque de bambú: acceso libre 24 h. Tenryū-ji: 8:30–17:00 (de pago); el Hattō abre fines de semana y festivos, y a diario en temporadas especiales. Togetsukyō: libre',
+      hours: 'Bosque de bambú: acceso libre 24 h. Tenryū-ji: 8:30–17:00 (de pago); el Hattō (9:00–16:30, de pago aparte) abre fines de semana y festivos, y a diario en primavera (en 2026, del 1 de marzo al 31 de mayo). Togetsukyō: libre',
     },
   },
 
@@ -546,7 +549,7 @@ export const zones: readonly Zone[] = [
     coordinates: [135.7718, 34.9879],
     tags: ['templo', 'historico', 'patrimonio'],
     practical: {
-      access: 'Keihan — Shichijō (~5 min a pie). Bus urbano 100/206 — parada Hakubutsukan Sanjūsangendō-mae',
+      access: 'Keihan — Shichijō (~5 min a pie). Bus urbano 206 — parada Hakubutsukan Sanjūsangendō-mae',
       hours: '8:30–17:00 (abril–mediados de noviembre). 600 ¥',
       logistics: [
         'Visita de 45–60 min',
@@ -565,7 +568,7 @@ export const zones: readonly Zone[] = [
       access: 'Metro Tōzai — Nijōjō-mae. O bus urbano 9/50 — parada Nijōjō-mae',
       hours: '8:45–17:00 (última entrada 16:00). De pago (comprobar precio de 2027)',
       logistics: [
-        'El palacio Honmaru cierra el 17 y el 18 de mayo; el 19 abre',
+        'El palacio Honmaru cierra el 17 y el 18 de mayo; el 19 abre, solo con reserva de hora (9:30–16:00)',
         'Calcular 1,5–2 h para palacio y jardines',
       ],
     },
@@ -594,7 +597,7 @@ export const zones: readonly Zone[] = [
     coordinates: [135.7292, 35.0394],
     tags: ['templo', 'jardines', 'patrimonio-unesco', 'iconico'],
     practical: {
-      access: 'Bus urbano 101 o 205 — parada Kinkakuji-michi',
+      access: 'Bus urbano 205 — parada Kinkakuji-michi',
       hours: 'Kinkaku-ji: 9:00–17:00, ~500 ¥, abierto todos los días. Ryōan-ji: de pago',
       logistics: [
         'Visita de 45–60 min (circuito exterior único)',
@@ -628,7 +631,7 @@ export const zones: readonly Zone[] = [
     tags: ['templo', 'historico', 'mercadillo', 'pagoda'],
     practical: {
       access: 'Kintetsu — Tōji (5 min a pie). O 15 min a pie desde la estación de Kioto',
-      hours: 'Recinto: 5:00–17:00 (gratuito). Kondō/Kōdō: 8:00–17:00, de pago. Subtemplo Kanchi-in: solo en temporadas especiales. Mercadillo Kōbō-ichi: el día 21 de cada mes, todo el día',
+      hours: 'Recinto: 5:00–17:00 (gratuito). Kondō/Kōdō: 8:00–17:00, de pago. Subtemplo Kanchi-in: 9:00–17:00, de pago. Planta baja de la pagoda: apertura especial de primavera (en 2026, del 25 de abril al 25 de mayo). Mercadillo Kōbō-ichi: el día 21 de cada mes, todo el día',
       logistics: ['Efectivo en el mercadillo'],
     },
   },
@@ -645,7 +648,7 @@ export const zones: readonly Zone[] = [
       access: 'Estación Kintetsu-Nara: Kōfuku-ji a ~5 min a pie; Tōdai-ji a ~20 min, pasando por Kōfuku-ji',
       hours: 'Gran Buda (Daibutsuden): 7:30–17:30 (abr–oct). 800 ¥, solo efectivo. Parque: libre 24 h',
       logistics: [
-        'Kōfuku-ji: la pagoda de cinco pisos está cubierta por la obra hasta ~2034',
+        'Kōfuku-ji: la pagoda de cinco pisos está cubierta por la obra hasta marzo de 2034 (previsto)',
         'Ciervos sueltos: galletas shika senbei en los puestos; cuidado con bolsos y mapas',
       ],
     },
