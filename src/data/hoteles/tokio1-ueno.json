@@ -1,0 +1,594 @@
+{
+  "stay": "Tokio 1 · Ueno",
+  "checkIn": "2027-05-08",
+  "checkOut": "2027-05-12",
+  "nights": 4,
+  "searchedAt": "2026-11-13T13:21:29Z",
+  "anchors": [
+    {
+      "name": "Keisei Ueno (Skyliner)",
+      "lat": 35.7112,
+      "lng": 139.7737
+    },
+    {
+      "name": "JR Ueno (Shinkansen)",
+      "lat": 35.7138,
+      "lng": 139.7773
+    },
+    {
+      "name": "Ueno-Hirokōji (línea Ginza)",
+      "lat": 35.7077,
+      "lng": 139.7729
+    }
+  ],
+  "candidates": [
+    {
+      "name": "Tabist HOTEL UENO 39",
+      "url": "https://www.booking.com/hotel/jp/tabist-ueno-39.es.html?checkin=2027-05-08&checkout=2027-05-12&group_adults=4&no_rooms=2&group_children=0&selected_currency=EUR",
+      "stars": 3,
+      "score": 8.0,
+      "reviews": 469,
+      "priceTotalEUR": 998,
+      "roomCombo": "Combinación recomendada por Booking (bloque 'recomendado para 4 adultos', 998 €; en el buscador sin filtro twin aparece como 2 × Deluxe 1 cama grande 17 m²)",
+      "twinPriceTotalEUR": 1054,
+      "taxesIncluded": "sí",
+      "freeCancel": "Sí, gratis antes del 7 de mayo de 2027",
+      "breakfast": "No incluido (la página no ofrece desayuno en la tarifa)",
+      "coinLaundry": "no indicado",
+      "lat": 35.710041,
+      "lng": 139.7756725,
+      "distM": {
+        "Keisei Ueno (Skyliner)": 220,
+        "JR Ueno (Shinkansen)": 443,
+        "Ueno-Hirokōji (línea Ginza)": 361
+      },
+      "walkMin": {
+        "Keisei Ueno (Skyliner)": 4,
+        "JR Ueno (Shinkansen)": 7,
+        "Ueno-Hirokōji (línea Ginza)": 6
+      },
+      "notes": "2 × 'Habitación Doble - 2 camas' 18 m² (2 individuales + 1 sofá cama) = 2 × 527 € = 1.054 €; 6 unidades disponibles. La tabla muestra 516 € (deluxe cama grande) y 527 € (twin) por habitación, pero el bloque recomendado dice 998 €: posible descuento no reflejado en la tabla, confirmar al reservar. Puntuación de ubicación 9,4. Pocas opiniones (469)."
+    },
+    {
+      "name": "Tosei Hotel Cocone Ueno",
+      "url": "https://www.booking.com/hotel/jp/toseihoterukokoneshang-ye.es.html?checkin=2027-05-08&checkout=2027-05-12&group_adults=4&no_rooms=2&group_children=0&selected_currency=EUR",
+      "stars": 3,
+      "score": 8.4,
+      "reviews": 1997,
+      "priceTotalEUR": 878,
+      "roomCombo": "2 × doble de 11 m² con cama doble pequeña (semidoble) - NO es twin",
+      "twinPriceTotalEUR": 1344,
+      "taxesIncluded": "no indicado",
+      "freeCancel": "Sí, gratis antes del 6 de mayo de 2027",
+      "breakfast": "No incluido (+14 €/persona; con desayuno 2 × twin = 1.448 €)",
+      "coinLaundry": "sí",
+      "lat": 35.710032,
+      "lng": 139.776996,
+      "distM": {
+        "Keisei Ueno (Skyliner)": 325,
+        "JR Ueno (Shinkansen)": 420,
+        "Ueno-Hirokōji (línea Ginza)": 452
+      },
+      "walkMin": {
+        "Keisei Ueno (Skyliner)": 5,
+        "JR Ueno (Shinkansen)": 7,
+        "Ueno-Hirokōji (línea Ginza)": 7
+      },
+      "notes": "2 × 'Doble de 14 m² con 2 camas individuales - No fumadores' = 2 × 672 € = 1.344 €. Combo doble 11 m² + twin 14 m² = 1.111 €. También twin 19 m² con tatami a 732 €/hab (2 disponibles) = 1.464 €. Lavadora y secadora citadas en comentarios de huéspedes (no confirmado que sean de monedas). Bandera roja: habitaciones pequeñas (11 m² las dobles, 14 m² el twin). Puntuación de ubicación 9,4. La página muestra 'Se pueden aplicar otros cargos' bajo el precio (no dice 'Incluye impuestos y cargos')."
+    },
+    {
+      "name": "Hotel New Ueno",
+      "url": "https://www.booking.com/hotel/jp/new-ueno.es.html?checkin=2027-05-08&checkout=2027-05-12&group_adults=4&no_rooms=2&group_children=0&selected_currency=EUR",
+      "stars": 3,
+      "score": 8.0,
+      "reviews": 1142,
+      "priceTotalEUR": 1191,
+      "roomCombo": "2 × Habitación Doble - 2 camas (twin) según la página de resultados",
+      "twinPriceTotalEUR": 1191,
+      "taxesIncluded": "no indicado",
+      "freeCancel": "Depende de la oferta: gratis antes del 3 o 4 de mayo de 2027 en unas; 'parcialmente reembolsable' en otra",
+      "breakfast": "No incluido (+10 €; con desayuno ~686-694 €/hab)",
+      "coinLaundry": "no indicado",
+      "lat": 35.71286793826275,
+      "lng": 139.77746151387691,
+      "distM": {
+        "Keisei Ueno (Skyliner)": 387,
+        "JR Ueno (Shinkansen)": 105,
+        "Ueno-Hirokōji (línea Ginza)": 707
+      },
+      "walkMin": {
+        "Keisei Ueno (Skyliner)": 6,
+        "JR Ueno (Shinkansen)": 2,
+        "Ueno-Hirokōji (línea Ginza)": 11
+      },
+      "notes": "Solo twin (16 m², no fumadores). Todas las tarifas son 'Oferta de un colaborador' de Booking: pago por adelantado, no modificable y solo se puede seleccionar 1 unidad por oferta (596 / 598 / 602 € por habitación), así que las 2 habitaciones probablemente exijan 2 reservas; 598 + 602 = 1.200 € con cancelación gratis. El total 1.191 € es el de la página de resultados. Puntuación de ubicación 8,8. La página muestra 'Se pueden aplicar otros cargos' bajo el precio (no dice 'Incluye impuestos y cargos')."
+    },
+    {
+      "name": "Mitsui Garden Hotel Ueno",
+      "url": "https://www.booking.com/hotel/jp/mitsui-garden-ueno.es.html?checkin=2027-05-08&checkout=2027-05-12&group_adults=4&no_rooms=2&group_children=0&selected_currency=EUR",
+      "stars": 4,
+      "score": 8.5,
+      "reviews": 2371,
+      "priceTotalEUR": 1332,
+      "roomCombo": "2 × Habitación Doble Estándar 18 m² (1 cama doble) - NO es twin",
+      "twinPriceTotalEUR": 1624,
+      "taxesIncluded": "no indicado",
+      "freeCancel": "Sí, gratis antes del 5 de mayo de 2027",
+      "breakfast": "No incluido (+14 €; con desayuno 2 × Hollywood twin = 1.842 €)",
+      "coinLaundry": "sí",
+      "lat": 35.71186905559244,
+      "lng": 139.7780080139637,
+      "distM": {
+        "Keisei Ueno (Skyliner)": 396,
+        "JR Ueno (Shinkansen)": 224,
+        "Ueno-Hirokōji (línea Ginza)": 654
+      },
+      "walkMin": {
+        "Keisei Ueno (Skyliner)": 6,
+        "JR Ueno (Shinkansen)": 4,
+        "Ueno-Hirokōji (línea Ginza)": 11
+      },
+      "notes": "2 × 'Doble Hollywood Estándar - 2 camas' 18 m² = 2 × 812 € = 1.624 € (camas individuales juntas, 6 disponibles). Twin de camas separadas ('estilo separado') 22 m² = 2 × 958 € = 1.916 €. Combo doble + Hollywood twin = 1.478 €. La página indica lavandería de autoservicio. Puntuación de ubicación 9,4. La página muestra 'Se pueden aplicar otros cargos' bajo el precio (no dice 'Incluye impuestos y cargos')."
+    },
+    {
+      "name": "Tosei Hotel Cocone Ueno Okachimachi",
+      "url": "https://www.booking.com/hotel/jp/tosei-hotel-cocone-ueno-okachimachi.es.html?checkin=2027-05-08&checkout=2027-05-12&group_adults=4&no_rooms=2&group_children=0&selected_currency=EUR",
+      "stars": 3,
+      "score": 8.5,
+      "reviews": 1977,
+      "priceTotalEUR": 962,
+      "roomCombo": "2 × Habitación Doble (1 cama doble, m² no indicados) - NO es twin",
+      "twinPriceTotalEUR": 1290,
+      "taxesIncluded": "no indicado",
+      "freeCancel": "Sí, gratis antes del 6 de mayo de 2027",
+      "breakfast": "No incluido (+6 €; con desayuno 2 × twin = 1.356 €)",
+      "coinLaundry": "no indicado",
+      "lat": 35.706447,
+      "lng": 139.773145,
+      "distM": {
+        "Keisei Ueno (Skyliner)": 531,
+        "JR Ueno (Shinkansen)": 900,
+        "Ueno-Hirokōji (línea Ginza)": 141
+      },
+      "walkMin": {
+        "Keisei Ueno (Skyliner)": 9,
+        "JR Ueno (Shinkansen)": 15,
+        "Ueno-Hirokōji (línea Ginza)": 2
+      },
+      "notes": "2 × 'Doble con 2 camas moderna y de estilo japonés con baño privado' 18 m² (2 individuales + sofá cama) = 2 × 645 € = 1.290 €; 9 disponibles (también 'Deluxe - 2 camas' 17 m² al mismo precio). Combo doble + twin = 1.126 €. Puntuación de ubicación 9,6 (la más alta de la lista). La página solo menciona 'servicio de lavandería'. La página muestra 'Se pueden aplicar otros cargos' bajo el precio (no dice 'Incluye impuestos y cargos')."
+    },
+    {
+      "name": "APA Hotel Keisei Ueno Ekimae Minami",
+      "url": "https://www.booking.com/hotel/jp/apa-keisei-ueno-ekimae-minami.es.html?checkin=2027-05-08&checkout=2027-05-12&group_adults=4&no_rooms=2&group_children=0&selected_currency=EUR",
+      "stars": 3,
+      "score": 8.5,
+      "reviews": 238,
+      "priceTotalEUR": 934,
+      "roomCombo": "2 × Standard Room (2 adultos) con 1 cama doble, no fumadores - NO es twin (m² no indicados)",
+      "twinPriceTotalEUR": 1848,
+      "taxesIncluded": "sí",
+      "freeCancel": "Sí, gratis antes del 7 de mayo de 2027",
+      "breakfast": "No incluido (con desayuno la doble sube a 565 €/hab y el twin a 1.021 €/hab)",
+      "coinLaundry": "no indicado",
+      "lat": 35.7086873,
+      "lng": 139.7727959,
+      "distM": {
+        "Keisei Ueno (Skyliner)": 291,
+        "JR Ueno (Shinkansen)": 699,
+        "Ueno-Hirokōji (línea Ginza)": 110
+      },
+      "walkMin": {
+        "Keisei Ueno (Skyliner)": 5,
+        "JR Ueno (Shinkansen)": 11,
+        "Ueno-Hirokōji (línea Ginza)": 2
+      },
+      "notes": "El único twin es 'Doble Deluxe no fumadores - 2 camas individuales' 22 m² a 924 €/hab; solo quedan 2 -> 2 × twin = 1.848 €. Combo doble + twin = 1.391 €. Puntuación de ubicación 9,4. Pocas opiniones (238)."
+    },
+    {
+      "name": "Hotel Paul House",
+      "url": "https://www.booking.com/hotel/jp/tsubaki-tokyo.es.html?checkin=2027-05-08&checkout=2027-05-12&group_adults=4&no_rooms=2&group_children=0&selected_currency=EUR",
+      "stars": 3,
+      "score": 9.2,
+      "reviews": 1051,
+      "priceTotalEUR": 750,
+      "roomCombo": "2 × Habitación Doble Económica (1 cama doble, m² no indicados) - NO es twin",
+      "twinPriceTotalEUR": 996,
+      "taxesIncluded": "no indicado",
+      "freeCancel": "Sí, gratis antes del 1 de mayo de 2027 (tarifa no reembolsable más barata)",
+      "breakfast": "No incluido",
+      "coinLaundry": "sí",
+      "lat": 35.7059188,
+      "lng": 139.77861269999994,
+      "distM": {
+        "Keisei Ueno (Skyliner)": 736,
+        "JR Ueno (Shinkansen)": 884,
+        "Ueno-Hirokōji (línea Ginza)": 553
+      },
+      "walkMin": {
+        "Keisei Ueno (Skyliner)": 12,
+        "JR Ueno (Shinkansen)": 14,
+        "Ueno-Hirokōji (línea Ginza)": 9
+      },
+      "notes": "2 × 'Doble Estándar - 2 camas' 15 m² = 2 × 498 € = 996 € con cancelación gratis; 948 € no reembolsable (2 × 474). Solo quedan 2 de ese tipo. Twin superior 20 m² (2 individuales + sofá cama) a 600 €/hab = 1.200 € (4 disponibles). Lavandería citada en un comentario de huésped (sin confirmar que sea de monedas). Puntuación de ubicación 9,1; mejor nota global de la lista. La página muestra 'Se pueden aplicar otros cargos' bajo el precio (no dice 'Incluye impuestos y cargos')."
+    },
+    {
+      "name": "Best Western Hotel Fino Tokyo Akihabara",
+      "url": "https://www.booking.com/hotel/jp/best-western-hotel-fino-tokyo.es.html?checkin=2027-05-08&checkout=2027-05-12&group_adults=4&no_rooms=2&group_children=0&selected_currency=EUR",
+      "stars": 3,
+      "score": 8.5,
+      "reviews": 3334,
+      "priceTotalEUR": 790,
+      "roomCombo": "2 × Habitación Doble 15 m² (1 cama doble grande) - NO es twin",
+      "twinPriceTotalEUR": 950,
+      "taxesIncluded": "no indicado",
+      "freeCancel": "Sí, gratis antes del 6 de mayo de 2027",
+      "breakfast": "No incluido (+12 €; con desayuno 2 × twin = 1.026 €)",
+      "coinLaundry": "no indicado",
+      "lat": 35.70321615758558,
+      "lng": 139.77551294477462,
+      "distM": {
+        "Keisei Ueno (Skyliner)": 903,
+        "JR Ueno (Shinkansen)": 1188,
+        "Ueno-Hirokōji (línea Ginza)": 552
+      },
+      "walkMin": {
+        "Keisei Ueno (Skyliner)": 15,
+        "JR Ueno (Shinkansen)": 19,
+        "Ueno-Hirokōji (línea Ginza)": 9
+      },
+      "notes": "2 × 'Doble - 2 camas' 16 m² = 2 × 475 € = 950 € (5 disponibles); twin superior 18 m² = 2 × 493 = 986 €. Está al sur (zona Suehirocho/Akihabara): fuera del radio de 1 km de JR Ueno, pero cerca de la línea Ginza. Puntuación de ubicación 8,7. La página muestra 'Se pueden aplicar otros cargos' bajo el precio (no dice 'Incluye impuestos y cargos')."
+    },
+    {
+      "name": "LANDABOUT TOKYO",
+      "url": "https://www.booking.com/hotel/jp/landabout.es.html?checkin=2027-05-08&checkout=2027-05-12&group_adults=4&no_rooms=2&group_children=0&selected_currency=EUR",
+      "stars": 3,
+      "score": 8.7,
+      "reviews": 3680,
+      "priceTotalEUR": 932,
+      "roomCombo": "2 × Habitación Doble compacta (1 cama doble) con desayuno - NO es twin",
+      "twinPriceTotalEUR": 968,
+      "taxesIncluded": "no indicado",
+      "freeCancel": "Sí, gratis antes del 7 de mayo de 2027 (no reembolsable más barata)",
+      "breakfast": "Incluido en todas las tarifas",
+      "coinLaundry": "no indicado",
+      "lat": 35.721815,
+      "lng": 139.780563,
+      "distM": {
+        "Keisei Ueno (Skyliner)": 1333,
+        "JR Ueno (Shinkansen)": 939,
+        "Ueno-Hirokōji (línea Ginza)": 1715
+      },
+      "walkMin": {
+        "Keisei Ueno (Skyliner)": 22,
+        "JR Ueno (Shinkansen)": 15,
+        "Ueno-Hirokōji (línea Ginza)": 28
+      },
+      "notes": "2 × 'Doble Pequeña - 2 camas' (m² no indicados) = 2 × 484 € = 968 € con desayuno y cancelación gratis; 908 € no reembolsable. Twin estándar = 2 × 526 = 1.052 €. Alternativa: 1 'Habitación comunicada (twin + twin)' con 4 camas individuales, 22 m² en total, 862 € para 4 con desayuno (810 no reembolsable). Está en Uguisudani, al norte: lejos de Keisei Ueno y de Ueno-Hirokōji a pie. Puntuación de ubicación 9,0. La página muestra 'Se pueden aplicar otros cargos' bajo el precio (no dice 'Incluye impuestos y cargos')."
+    },
+    {
+      "name": "Candeo Hotels Ueno Park",
+      "url": "https://www.booking.com/hotel/jp/candeo-hotels-ueno-park.es.html?checkin=2027-05-08&checkout=2027-05-12&group_adults=4&no_rooms=2&group_children=0&selected_currency=EUR",
+      "stars": 3,
+      "score": 7.7,
+      "reviews": 1865,
+      "priceTotalEUR": 820,
+      "roomCombo": "2 × Doble Hollywood - 2 camas - No fumadores 16 m² (camas individuales juntas)",
+      "twinPriceTotalEUR": 852,
+      "taxesIncluded": "no indicado",
+      "freeCancel": "Sí, gratis antes del 7 de mayo de 2027",
+      "breakfast": "No incluido (+9 €; con desayuno 2 × Hollywood twin = 918 €)",
+      "coinLaundry": "sí",
+      "lat": 35.7217929159539,
+      "lng": 139.77983325719833,
+      "distM": {
+        "Keisei Ueno (Skyliner)": 1302,
+        "JR Ueno (Shinkansen)": 918,
+        "Ueno-Hirokōji (línea Ginza)": 1687
+      },
+      "walkMin": {
+        "Keisei Ueno (Skyliner)": 21,
+        "JR Ueno (Shinkansen)": 15,
+        "Ueno-Hirokōji (línea Ginza)": 27
+      },
+      "notes": "Twin de camas separadas: 2 × 'Doble - No fumadores - 2 camas' 17 m² = 2 × 426 € = 852 € (5 disponibles); twin superior 19 m² = 884 €. Del Hollywood twin solo quedan 2. Lavadoras en la 3.ª planta según un comentario de huésped. Está en Negishi/Uguisudani, al norte: lejos de Keisei Ueno y de Ueno-Hirokōji a pie. Puntuación de ubicación 8,1. La página muestra 'Se pueden aplicar otros cargos' bajo el precio (no dice 'Incluye impuestos y cargos')."
+    },
+    {
+      "name": "Villa Fontaine Tokyo Ueno Okachimachi",
+      "url": "https://www.booking.com/hotel/jp/villa-fontaine-ueno.es.html?checkin=2027-05-08&checkout=2027-05-12&group_adults=4&no_rooms=2&group_children=0&selected_currency=EUR",
+      "stars": 3,
+      "score": 8.1,
+      "reviews": 715,
+      "priceTotalEUR": 1008,
+      "roomCombo": "2 × Habitación Doble - No fumadores - 2 camas (twin) 16 m²",
+      "twinPriceTotalEUR": 1008,
+      "taxesIncluded": "no indicado",
+      "freeCancel": "Sí, gratis antes del 6 de mayo de 2027",
+      "breakfast": "No incluido (+9 €)",
+      "coinLaundry": "sí",
+      "lat": 35.70540280078874,
+      "lng": 139.78179989757336,
+      "distM": {
+        "Keisei Ueno (Skyliner)": 975,
+        "JR Ueno (Shinkansen)": 1018,
+        "Ueno-Hirokōji (línea Ginza)": 843
+      },
+      "walkMin": {
+        "Keisei Ueno (Skyliner)": 16,
+        "JR Ueno (Shinkansen)": 17,
+        "Ueno-Hirokōji (línea Ginza)": 14
+      },
+      "notes": "2 × 504 € = 1.008 € (hay además 1 unidad del mismo twin a 456 €). Twin planta alta 526 €/hab; twin superior 20 m² 630 €/hab. La página indica lavandería automática de monedas. Está al este (Shin-Okachimachi): ~1 km de las tres anclas. Puntuación de ubicación 8,0. La página muestra 'Se pueden aplicar otros cargos' bajo el precio (no dice 'Incluye impuestos y cargos')."
+    },
+    {
+      "name": "ICI HOTEL Ueno Shin Okachimachi",
+      "url": "https://www.booking.com/hotel/jp/ici-hotel-ueno-shinokachimachi-by-relief.es.html?checkin=2027-05-08&checkout=2027-05-12&group_adults=4&no_rooms=2&group_children=0&selected_currency=EUR",
+      "stars": 3,
+      "score": 8.4,
+      "reviews": 1755,
+      "priceTotalEUR": 982,
+      "roomCombo": "2 × Habitación Doble Estándar no fumadores (1 cama doble, m² no indicados) - NO es twin; solo quedan 2",
+      "twinPriceTotalEUR": 1272,
+      "taxesIncluded": "no indicado",
+      "freeCancel": "Sí, gratis antes del 7 de mayo de 2027",
+      "breakfast": "No incluido (con desayuno 2 × twin = 1.398 €)",
+      "coinLaundry": "no indicado",
+      "lat": 35.706046965318556,
+      "lng": 139.7815880565529,
+      "distM": {
+        "Keisei Ueno (Skyliner)": 914,
+        "JR Ueno (Shinkansen)": 945,
+        "Ueno-Hirokōji (línea Ginza)": 806
+      },
+      "walkMin": {
+        "Keisei Ueno (Skyliner)": 15,
+        "JR Ueno (Shinkansen)": 15,
+        "Ueno-Hirokōji (línea Ginza)": 13
+      },
+      "notes": "2 × 'Doble Estándar - 2 camas - No fumadores' 18 m² = 2 × 636 € = 1.272 € (6 disponibles). Combo doble + twin = 1.127 €. Está al este (Shin-Okachimachi). Puntuación de ubicación 8,6. La página muestra 'Se pueden aplicar otros cargos' bajo el precio (no dice 'Incluye impuestos y cargos')."
+    },
+    {
+      "name": "Sutton Place Hotel Ueno",
+      "url": "https://www.booking.com/hotel/jp/satutonpureisuhoterushang-ye.es.html?checkin=2027-05-08&checkout=2027-05-12&group_adults=4&no_rooms=2&group_children=0&selected_currency=EUR",
+      "stars": 3,
+      "score": 7.7,
+      "reviews": 2239,
+      "priceTotalEUR": 1290,
+      "roomCombo": "2 × Habitación Doble Estándar (1 cama doble, m² no indicados) - NO es twin",
+      "twinPriceTotalEUR": 1308,
+      "taxesIncluded": "no indicado",
+      "freeCancel": "Sí, gratis antes del 5 de mayo de 2027 (no reembolsable más barata)",
+      "breakfast": "No incluido según la tabla de tarifas",
+      "coinLaundry": "no indicado",
+      "lat": 35.714103,
+      "lng": 139.779142,
+      "distM": {
+        "Keisei Ueno (Skyliner)": 588,
+        "JR Ueno (Shinkansen)": 170,
+        "Ueno-Hirokōji (línea Ginza)": 908
+      },
+      "walkMin": {
+        "Keisei Ueno (Skyliner)": 10,
+        "JR Ueno (Shinkansen)": 3,
+        "Ueno-Hirokōji (línea Ginza)": 15
+      },
+      "notes": "2 × 'Doble Estándar - 2 camas' 17 m² = 2 × 654 € = 1.308 €; 1.176 € no reembolsable (2 × 588); 7 disponibles. Puntuación de ubicación 8,6. La página muestra 'Se pueden aplicar otros cargos' bajo el precio (no dice 'Incluye impuestos y cargos')."
+    },
+    {
+      "name": "HOTEL LiVEMAX Ueno-Ekimae",
+      "url": "https://www.booking.com/hotel/jp/hoteruribumatukusushang-ye-yi-qian.es.html?checkin=2027-05-08&checkout=2027-05-12&group_adults=4&no_rooms=2&group_children=0&selected_currency=EUR",
+      "stars": null,
+      "score": 7.6,
+      "reviews": 284,
+      "priceTotalEUR": 686,
+      "roomCombo": "2 × Habitación Doble con cama doble pequeña (semidoble), m² no indicados - NO es twin",
+      "twinPriceTotalEUR": 1243,
+      "taxesIncluded": "no indicado",
+      "freeCancel": "Sí, gratis antes del 7 de mayo de 2027 (no pagas nada hasta el 5 de mayo)",
+      "breakfast": "No incluido",
+      "coinLaundry": "no indicado",
+      "lat": 35.713449,
+      "lng": 139.780068,
+      "distM": {
+        "Keisei Ueno (Skyliner)": 627,
+        "JR Ueno (Shinkansen)": 253,
+        "Ueno-Hirokōji (línea Ginza)": 910
+      },
+      "walkMin": {
+        "Keisei Ueno (Skyliner)": 10,
+        "JR Ueno (Shinkansen)": 4,
+        "Ueno-Hirokōji (línea Ginza)": 15
+      },
+      "notes": "OJO: el buscador muestra 621 €, pero es UNA sola habitación twin (2 camas) vendida para 4 personas. 2 × 'Doble - No fumadores - 2 camas' = 1.243 € (el selector de la página muestra '2 (EUR 1.243)'); quedan 3 no fumadores. Hay versión fumadores del mismo cuarto: elegir no fumadores. Tamaño de habitación no indicado (la ficha de la versión fumadores dice '110 m²', claramente un error). Estrellas no mostradas. Pocas opiniones (284); puntuación de ubicación 8,1. La página muestra 'Se pueden aplicar otros cargos' bajo el precio (no dice 'Incluye impuestos y cargos')."
+    },
+    {
+      "name": "APA Hotel Ueno Ekikita",
+      "url": "https://www.booking.com/hotel/jp/apa-ueno-ekimae.es.html?checkin=2027-05-08&checkout=2027-05-12&group_adults=4&no_rooms=2&group_children=0&selected_currency=EUR",
+      "stars": 3,
+      "score": 8.0,
+      "reviews": 2665,
+      "priceTotalEUR": 728,
+      "roomCombo": "2 × Habitación Doble Estándar no fumadores (1 cama doble, m² no indicados) - NO es twin",
+      "twinPriceTotalEUR": null,
+      "taxesIncluded": "no indicado",
+      "freeCancel": "Sí, gratis antes del 7 de mayo de 2027",
+      "breakfast": "No incluido (+10 €)",
+      "coinLaundry": "no indicado",
+      "lat": 35.71586988562654,
+      "lng": 139.78040724992752,
+      "distM": {
+        "Keisei Ueno (Skyliner)": 798,
+        "JR Ueno (Shinkansen)": 363,
+        "Ueno-Hirokōji (línea Ginza)": 1133
+      },
+      "walkMin": {
+        "Keisei Ueno (Skyliner)": 13,
+        "JR Ueno (Shinkansen)": 6,
+        "Ueno-Hirokōji (línea Ginza)": 18
+      },
+      "notes": "No hay 2 × twin: solo queda 1 'Doble Deluxe no fumadores - 2 camas individuales' 22 m² a 726 €. Combo doble + twin = 364 + 726 = 1.090 €. Puntuación de ubicación 7,9. La página muestra 'Se pueden aplicar otros cargos' bajo el precio (no dice 'Incluye impuestos y cargos')."
+    },
+    {
+      "name": "Hotel Sunroute Stellar Ueno",
+      "url": "https://www.booking.com/hotel/jp/sunroute-quot-stellar-quot-ueno.es.html?checkin=2027-05-08&checkout=2027-05-12&group_adults=4&no_rooms=2&group_children=0&selected_currency=EUR",
+      "stars": 3,
+      "score": 8.5,
+      "reviews": 4271,
+      "priceTotalEUR": 910,
+      "roomCombo": "2 × Habitación Doble Pequeña no fumadores 16 m² (1 cama doble) - NO es twin",
+      "twinPriceTotalEUR": null,
+      "taxesIncluded": "no indicado",
+      "freeCancel": "Sí, gratis antes del 5 de mayo de 2027",
+      "breakfast": "No incluido",
+      "coinLaundry": "sí",
+      "lat": 35.7135958,
+      "lng": 139.7781484,
+      "distM": {
+        "Keisei Ueno (Skyliner)": 482,
+        "JR Ueno (Shinkansen)": 80,
+        "Ueno-Hirokōji (línea Ginza)": 809
+      },
+      "walkMin": {
+        "Keisei Ueno (Skyliner)": 8,
+        "JR Ueno (Shinkansen)": 1,
+        "Ueno-Hirokōji (línea Ginza)": 13
+      },
+      "notes": "Sin habitaciones twin para estas fechas: solo dobles (16 m² a 455 €/hab, 17 m² a 507 €/hab). Junto a JR Ueno. Lavadora y secadora en el hotel según un comentario de huésped. Puntuación de ubicación 9,2. Vigilar por si liberan twins. La página muestra 'Se pueden aplicar otros cargos' bajo el precio (no dice 'Incluye impuestos y cargos')."
+    },
+    {
+      "name": "hotel MONday Premium Ueno Okachimachi",
+      "url": "https://www.booking.com/hotel/jp/hotel-monday-urno-okachimachi.es.html?checkin=2027-05-08&checkout=2027-05-12&group_adults=4&no_rooms=2&group_children=0&selected_currency=EUR",
+      "stars": 4,
+      "score": 8.6,
+      "reviews": 1719,
+      "priceTotalEUR": 1605,
+      "roomCombo": "2 × Habitación estándar con 2 camas individuales y cama supletoria (twin) 18 m²",
+      "twinPriceTotalEUR": 1605,
+      "taxesIncluded": "no indicado",
+      "freeCancel": "Sí, gratis antes del 7 de mayo de 2027 (no reembolsable más barata)",
+      "breakfast": "No incluido (+12 €; con desayuno 2 × 889 = 1.778 €)",
+      "coinLaundry": "no indicado",
+      "lat": 35.70531784852726,
+      "lng": 139.77631443187715,
+      "distM": {
+        "Keisei Ueno (Skyliner)": 695,
+        "JR Ueno (Shinkansen)": 947,
+        "Ueno-Hirokōji (línea Ginza)": 406
+      },
+      "walkMin": {
+        "Keisei Ueno (Skyliner)": 11,
+        "JR Ueno (Shinkansen)": 15,
+        "Ueno-Hirokōji (línea Ginza)": 7
+      },
+      "notes": "2 × 802 € = 1.605 € con cancelación gratis; 1.444 € no reembolsable (2 × 722). Además hay una 'oferta de colaborador' del mismo twin a 609 €/hab (cancelación gratis antes del 4 de mayo, 1 unidad por reserva): es el origen de los 1.219 € que salen en el buscador. Twin deluxe 21 m² = 920 €/hab. Puntuación de ubicación 9,2. La página muestra 'Se pueden aplicar otros cargos' bajo el precio (no dice 'Incluye impuestos y cargos')."
+    },
+    {
+      "name": "Hotel Comfact",
+      "url": "https://www.booking.com/hotel/jp/shang-ye-kang-fu-jiu-dian.es.html?checkin=2027-05-08&checkout=2027-05-12&group_adults=4&no_rooms=2&group_children=0&selected_currency=EUR",
+      "stars": 3,
+      "score": 7.1,
+      "reviews": 582,
+      "priceTotalEUR": 712,
+      "roomCombo": "2 × Habitación Doble Estándar - 2 camas (twin) 15 m²",
+      "twinPriceTotalEUR": 712,
+      "taxesIncluded": "no indicado",
+      "freeCancel": "Sí, gratis antes del 1 de mayo de 2027 (no reembolsable más barata)",
+      "breakfast": "No incluido (+6 €; con desayuno y cancelación gratis 2 × 401 = 802 €)",
+      "coinLaundry": "no indicado",
+      "lat": 35.717837366049,
+      "lng": 139.781980889989,
+      "distM": {
+        "Keisei Ueno (Skyliner)": 1051,
+        "JR Ueno (Shinkansen)": 617,
+        "Ueno-Hirokōji (línea Ginza)": 1394
+      },
+      "walkMin": {
+        "Keisei Ueno (Skyliner)": 17,
+        "JR Ueno (Shinkansen)": 10,
+        "Ueno-Hirokōji (línea Ginza)": 23
+      },
+      "notes": "2 × 356 € = 712 € con cancelación gratis; 606 € no reembolsable (2 × 303); 5 disponibles. NO cumple el mínimo de nota (7,1 < 7,5) y la puntuación de ubicación es 7,4: descartado de los tops. La página muestra 'Se pueden aplicar otros cargos' bajo el precio (no dice 'Incluye impuestos y cargos')."
+    }
+  ],
+  "tops": {
+    "dinero": [
+      {
+        "name": "Candeo Hotels Ueno Park",
+        "why": "El 2 × twin más barato con nota >= 7,5: 820 € (Hollywood twin 16 m²) u 852 € con camas separadas 17 m²; a cambio está en Uguisudani, fuera de la zona a pie de Keisei Ueno."
+      },
+      {
+        "name": "Best Western Hotel Fino Tokyo Akihabara",
+        "why": "950 € por 2 × twin de 16 m² con nota 8,5 y cancelación gratis; al sur, a unos 9 min de Ueno-Hirokōji."
+      },
+      {
+        "name": "LANDABOUT TOKYO",
+        "why": "968 € por 2 × twin con desayuno incluido (862 € en habitación comunicada twin + twin), nota 8,7; ubicado en Uguisudani."
+      },
+      {
+        "name": "Hotel Paul House",
+        "why": "996 € por 2 × twin 15 m² (948 € no reembolsable) con la mejor nota de la lista, 9,2."
+      },
+      {
+        "name": "Villa Fontaine Tokyo Ueno Okachimachi",
+        "why": "1.008 € por 2 × twin 16 m², nota 8,1 y lavandería de monedas confirmada en la página."
+      }
+    ],
+    "calidadPrecio": [
+      {
+        "name": "Hotel Paul House",
+        "why": "Nota 9,2 y ubicación 9,1 por 996 € en 2 × twin; el único pero son los 15 m² y que solo quedan 2 twin."
+      },
+      {
+        "name": "Tabist HOTEL UENO 39",
+        "why": "1.054 € con impuestos incluidos por 2 × twin de 18 m² a ~4 min de Keisei Ueno y ~7 de JR Ueno; nota 8,0 con pocas opiniones."
+      },
+      {
+        "name": "Best Western Hotel Fino Tokyo Akihabara",
+        "why": "950 € por 2 × twin 16 m², nota 8,5 con 3.334 opiniones; más lejos de JR Ueno para la salida en Shinkansen."
+      },
+      {
+        "name": "Tosei Hotel Cocone Ueno Okachimachi",
+        "why": "1.290 € por 2 × twin de 18 m², nota 8,5 y ubicación 9,6, pegado a Ueno-Hirokōji."
+      },
+      {
+        "name": "LANDABOUT TOKYO",
+        "why": "Desayuno incluido y nota 8,7 por 968 €; pierde puestos solo por estar en Uguisudani."
+      }
+    ],
+    "ubicacion": [
+      {
+        "name": "Tabist HOTEL UENO 39",
+        "why": "El más equilibrado respecto a las tres anclas: ~4 min de Keisei Ueno, ~7 de JR Ueno y ~6 de Ueno-Hirokōji."
+      },
+      {
+        "name": "Tosei Hotel Cocone Ueno",
+        "why": "Entre Keisei Ueno (~5 min) y JR Ueno (~7 min), ubicación 9,4; twin de solo 14 m² a 1.344 €."
+      },
+      {
+        "name": "Hotel New Ueno",
+        "why": "A ~2 min de JR Ueno y ~6 de Keisei Ueno por 1.191 €; solo ofertas de colaborador de pago anticipado."
+      },
+      {
+        "name": "Mitsui Garden Hotel Ueno",
+        "why": "4 estrellas a ~4 min de JR Ueno y ~6 de Keisei Ueno, con lavandería de autoservicio; 1.624 € en Hollywood twin."
+      },
+      {
+        "name": "Tosei Hotel Cocone Ueno Okachimachi",
+        "why": "A ~2 min de Ueno-Hirokōji y ~9 de Keisei Ueno, ubicación 9,6; JR Ueno queda a ~15 min con maletas."
+      }
+    ]
+  },
+  "caveats": [
+    "Precios vistos en Booking.com (sitio en español, EUR) el 13 nov 2026 para 8-12 may 2027, 4 adultos en 2 habitaciones; cambian a diario.",
+    "priceTotalEUR = combinación de 2 habitaciones más barata con cancelación gratis (o la recomendada por Booking), que a menudo NO es twin; twinPriceTotalEUR = total real de 2 × twin con cancelación gratis. Las tarifas no reembolsables figuran en notes.",
+    "Impuestos: casi todas las fichas muestran 'Se pueden aplicar otros cargos' en lugar de 'Incluye impuestos y cargos'; no pude confirmar qué cargo queda fuera, por eso figura 'no indicado'. Solo Tabist HOTEL UENO 39 y APA Keisei Ueno Ekimae Minami muestran 'Incluye impuestos y cargos'.",
+    "El precio del buscador no siempre coincide con el de la ficha: HOTEL LiVEMAX Ueno-Ekimae (621 € es 1 habitación para 4, 2 × twin = 1.243 €), hotel MONday Premium (1.219 € en buscador por una oferta de colaborador frente a 1.605 € en ficha), Tabist HOTEL UENO 39 (998 € recomendado frente a 1.043-1.054 € sumando la tabla).",
+    "Respecto al 12 nov 2026 los precios apenas se han movido: Comfact 712 (antes ~710), Candeo 820 (~819), Tosei Cocone Ueno 1.110 en combo doble + twin (~1.108), Mitsui Garden 1.479 en combo doble + twin (~1.475), MONday 1.605 (~1.601).",
+    "Lavandería de monedas: 'sí' solo está confirmado por texto de la ficha en Villa Fontaine (monedas) y Mitsui Garden (autoservicio); en Tosei Cocone Ueno, Candeo, Paul House y Sunroute Stellar procede de comentarios de huéspedes. 'no indicado' significa que la ficha solo menciona 'servicio de lavandería' o nada.",
+    "Distancias en línea recta (haversine) desde las coordenadas de la ficha de Booking; minutos a pie = metros × 1,3 / 80. Las coordenadas de las anclas son las aproximadas del encargo, no verificadas en un mapa.",
+    "Tamaño de habitación 'no indicado' cuando la ficha no lo muestra (twin pequeño de LANDABOUT, dobles estándar de APA, LiVEMAX).",
+    "Sin twin disponible para estas fechas en hoteles muy bien situados: Hotel Sunroute Stellar Ueno (2 × doble 910 €), Hotel Resol Ueno (2 × doble 1.266 €, solo visto en buscador), Dormy Inn Ueno Okachimachi (2 × semidoble 1.223 €, solo buscador). APA Hotel Ueno Ekikita solo tiene 1 twin.",
+    "Vistos solo en el buscador, sin abrir ficha: WASHINGTON R&B Hotel Ueno Hirokoji (4 habitaciones individuales 980 €, nota 8,8: camas separadas pero 4 cuartos), NOHGA HOTEL UENO TOKYO (2.464 € doble + twin, nota 9,1), Four Points Flex by Sheraton Tokyo Ueno (1.430 € doble + twin, nota 7,6), Hotel Marutani (820 €, cuarto japonés + triple, nota 7,5), Hotel New Green Okachimachi (1.051 €, nota 7,1), Centurion Hotel&Spa Ueno Station (2.089 €). Los MIMARU y Toki Stay son un único apartamento/cuarto familiar para 4, descartados.",
+    "Hotel Comfact queda fuera de los tops por nota 7,1 (< 7,5). Candeo y LANDABOUT están a ~15 min a pie de JR Ueno y ~21-28 min de Keisei Ueno y Ueno-Hirokōji: la llegada con maletas sería en taxi o un tramo en JR desde Uguisudani.",
+    "Sin bloqueos ni captcha; 18 fichas de hotel abiertas. No se inició ninguna reserva ni sesión."
+  ]
+}

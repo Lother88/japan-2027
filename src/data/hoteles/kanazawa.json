@@ -1,0 +1,637 @@
+{
+  "stay": "Kanazawa",
+  "checkIn": "2027-05-13",
+  "checkOut": "2027-05-15",
+  "nights": 2,
+  "searchedAt": "2026-11-13T13:36:58.668Z",
+  "anchors": [
+    {
+      "key": "busOeste",
+      "name": "Estación de Kanazawa – parada de autobús salida oeste (bus 08:10 a Takayama)",
+      "lat": 36.5783,
+      "lng": 136.6465
+    },
+    {
+      "key": "estacionEste",
+      "name": "Estación de Kanazawa – salida este (Tsuzumi-mon)",
+      "lat": 36.5781,
+      "lng": 136.649
+    },
+    {
+      "key": "omicho",
+      "name": "Mercado de Ōmichō",
+      "lat": 36.5716,
+      "lng": 136.6563
+    },
+    {
+      "key": "kenrokuen",
+      "name": "Kenroku-en (puerta Katsurazaka)",
+      "lat": 36.5647,
+      "lng": 136.6606
+    }
+  ],
+  "candidates": [
+    {
+      "name": "Smile Hotel Kanazawa Nishiguchi Ekimae",
+      "url": "https://www.booking.com/hotel/jp/sumairuhoterujin-ze-xi-kou-yi-qian.es.html?checkin=2027-05-13&checkout=2027-05-15&group_adults=4&no_rooms=2&group_children=0&selected_currency=EUR",
+      "stars": 3,
+      "score": 8.6,
+      "reviews": 1849,
+      "priceTotalEUR": 200,
+      "roomCombo": "2 × Habitación Doble 15 m² (1 cama doble por habitación) — combinación recomendada por Booking, NO es twin",
+      "twinPriceTotalEUR": 270,
+      "taxesIncluded": "sí",
+      "freeCancel": "Sí, gratis antes del 12 de mayo de 2027",
+      "breakfast": "No incluido (opcional ~€10/persona; twin con desayuno €169/hab.)",
+      "coinLaundry": "sí",
+      "lat": 36.58080425,
+      "lng": 136.64477608,
+      "distM": {
+        "busOeste": 318,
+        "estacionEste": 482,
+        "omicho": 1451,
+        "kenrokuen": 2281
+      },
+      "walkMin": {
+        "busOeste": 5,
+        "estacionEste": 8,
+        "omicho": 24,
+        "kenrokuen": 37
+      },
+      "notes": "2×twin = 2 × Corner Twin Room with View 21 m² a €135/hab. (4 disponibles). Lavandería de monedas confirmada en reseñas (sala con lavadoras y secadoras separadas; una reseña dice que las secadoras fallaban). Lado oeste de la estación, barrio tranquilo. La página no indica si las habitaciones son de fumadores/no fumadores. En resultados de búsqueda aparecía a €235 (1 doble + 1 corner twin)."
+    },
+    {
+      "name": "KOKO HOTEL Kanazawa Station",
+      "url": "https://www.booking.com/hotel/jp/wing-international-kanazawa-ekimae.es.html?checkin=2027-05-13&checkout=2027-05-15&group_adults=4&no_rooms=2&group_children=0&selected_currency=EUR",
+      "stars": 3,
+      "score": 8.4,
+      "reviews": 997,
+      "priceTotalEUR": 233,
+      "roomCombo": "2 × Habitación Doble No fumadores 15 m² (1 cama doble) con oferta de reserva anticipada (precio original €291) — NO es twin",
+      "twinPriceTotalEUR": 260,
+      "taxesIncluded": "no indicado",
+      "freeCancel": "Sí, pero depende de la tarifa: la más barata cancela gratis antes del 14 de marzo de 2027; hay tarifas con cancelación antes del 13 de abril y del 12 de mayo",
+      "breakfast": "No incluido (twin con desayuno desde €171/hab.)",
+      "coinLaundry": "sí",
+      "lat": 36.58061182,
+      "lng": 136.65044527,
+      "distM": {
+        "busOeste": 436,
+        "estacionEste": 308,
+        "omicho": 1130,
+        "kenrokuen": 1988
+      },
+      "walkMin": {
+        "busOeste": 7,
+        "estacionEste": 5,
+        "omicho": 18,
+        "kenrokuen": 32
+      },
+      "notes": "2×twin = 2 × Habitación Doble No fumadores 2 camas 20 m²: €130/hab. (€260), €139/hab. (€278) o €155/hab. (€310) según tarifa, por orden creciente de flexibilidad tal como las lista Booking (10 disponibles). Lavandería confirmada en reseñas (sala con 2 lavadoras-secadoras). Lado este/norte de la estación. Booking indica \"Se pueden aplicar otros cargos\": la tasa turística de alojamiento (por persona y noche) se paga aparte en el hotel."
+    },
+    {
+      "name": "Smile Hotel Premium Kanazawa Higashiguchiekimae",
+      "url": "https://www.booking.com/hotel/jp/smile-premium-kanazawa-higashiguchiekimae.es.html?checkin=2027-05-13&checkout=2027-05-15&group_adults=4&no_rooms=2&group_children=0&selected_currency=EUR",
+      "stars": 3,
+      "score": 8.8,
+      "reviews": 3083,
+      "priceTotalEUR": 271,
+      "roomCombo": "2 × Habitación Doble Estándar No fumadores 18 m² (1 cama doble) — NO es twin",
+      "twinPriceTotalEUR": 282,
+      "taxesIncluded": "sí",
+      "freeCancel": "Sí, gratis antes del 12 de mayo de 2027",
+      "breakfast": "No incluido (opcional ~€10/persona; twin con desayuno €181/hab.)",
+      "coinLaundry": "sí",
+      "lat": 36.5789918,
+      "lng": 136.6504241,
+      "distM": {
+        "busOeste": 359,
+        "estacionEste": 161,
+        "omicho": 975,
+        "kenrokuen": 1831
+      },
+      "walkMin": {
+        "busOeste": 6,
+        "estacionEste": 3,
+        "omicho": 16,
+        "kenrokuen": 30
+      },
+      "notes": "2×twin = 2 × Habitación Doble Estándar Hollywood 2 camas No fumadores 21 m² a €141/hab. (10 disponibles); twin grande 27 m² a €155/hab. (€310). Lavandería de monedas confirmada en reseñas (\"Coin laundry machines available\", lavandería en varias plantas). Check-in automático. A ~150 m de la salida este."
+    },
+    {
+      "name": "Toyoko Inn Kanazawa-eki Higashi-guchi",
+      "url": "https://www.booking.com/hotel/jp/toyoko-inn-kanazawa-eki-higashi-guchi.es.html?checkin=2027-05-13&checkout=2027-05-15&group_adults=4&no_rooms=2&group_children=0&selected_currency=EUR",
+      "stars": 3,
+      "score": 7.9,
+      "reviews": 402,
+      "priceTotalEUR": 261,
+      "roomCombo": "1 × Habitación Doble Económica Fumadores + 1 × Habitación Doble Fumadores 15 m² (camas dobles) — NO es twin y es de fumadores",
+      "twinPriceTotalEUR": 284,
+      "taxesIncluded": "no indicado",
+      "freeCancel": "Sí, gratis antes del 12 de mayo de 2027",
+      "breakfast": "Incluido",
+      "coinLaundry": "no indicado",
+      "lat": 36.57454921,
+      "lng": 136.6475248,
+      "distM": {
+        "busOeste": 427,
+        "estacionEste": 416,
+        "omicho": 849,
+        "kenrokuen": 1601
+      },
+      "walkMin": {
+        "busOeste": 7,
+        "estacionEste": 7,
+        "omicho": 14,
+        "kenrokuen": 26
+      },
+      "notes": "ALERTA: las únicas twin disponibles son de FUMADORES (2 × Habitación Doble Fumadores 2 camas 15 m² a €142/hab., quedan 4). En no fumadores solo hay dobles con 1 cama (2 × €136 = €272). Lavandería: Booking solo indica \"Servicio de lavandería (de pago)\" y la búsqueda en reseñas no devuelve menciones; la cadena suele tener lavandería de monedas pero NO está confirmado. Booking indica \"Se pueden aplicar otros cargos\": la tasa turística de alojamiento (por persona y noche) se paga aparte en el hotel."
+    },
+    {
+      "name": "Kanazawa Manten Hotel Ekimae",
+      "url": "https://www.booking.com/hotel/jp/kanazawa-manten-ekimae.es.html?checkin=2027-05-13&checkout=2027-05-15&group_adults=4&no_rooms=2&group_children=0&selected_currency=EUR",
+      "stars": 4,
+      "score": 8.1,
+      "reviews": 1999,
+      "priceTotalEUR": 285,
+      "roomCombo": "2 × Habitación Doble No fumadores 15 m² (1 cama doble) — NO es twin",
+      "twinPriceTotalEUR": 306,
+      "taxesIncluded": "no indicado",
+      "freeCancel": "Sí, gratis antes del 12 de mayo de 2027",
+      "breakfast": "No incluido (opcional ~€10/persona; twin con desayuno €189/hab.)",
+      "coinLaundry": "sí",
+      "lat": 36.5813903,
+      "lng": 136.64978117,
+      "distM": {
+        "busOeste": 452,
+        "estacionEste": 372,
+        "omicho": 1234,
+        "kenrokuen": 2092
+      },
+      "walkMin": {
+        "busOeste": 7,
+        "estacionEste": 6,
+        "omicho": 20,
+        "kenrokuen": 34
+      },
+      "notes": "2×twin = 2 × Habitación Doble No fumadores 2 camas 18 m² a €153/hab. (10 disponibles); twin superior/Hollywood 21 m² a €163/hab. (€326). Lavandería de monedas confirmada en la descripción de Booking (\"lavandería automática que funciona con monedas\") y en reseñas. Baño público/sauna. Reseñas: habitaciones algo anticuadas. Al norte de la estación. Booking indica \"Se pueden aplicar otros cargos\": la tasa turística de alojamiento (por persona y noche) se paga aparte en el hotel."
+    },
+    {
+      "name": "APA Hotel Kanazawa Ekimae",
+      "url": "https://www.booking.com/hotel/jp/apa-kanazawa-ekimae.es.html?checkin=2027-05-13&checkout=2027-05-15&group_adults=4&no_rooms=2&group_children=0&selected_currency=EUR",
+      "stars": 3,
+      "score": 8,
+      "reviews": 2482,
+      "priceTotalEUR": 305,
+      "roomCombo": "2 × Habitación Doble con cama doble pequeña (semidoble, 1 cama por habitación; m² no indicados) — NO es twin",
+      "twinPriceTotalEUR": 390,
+      "taxesIncluded": "no indicado",
+      "freeCancel": "Sí, gratis antes del 12 de mayo de 2027; pago en el alojamiento",
+      "breakfast": "No incluido (opcional ~€14/persona; twin con desayuno €246/hab.)",
+      "coinLaundry": "sí",
+      "lat": 36.57789023,
+      "lng": 136.64687097,
+      "distM": {
+        "busOeste": 56,
+        "estacionEste": 192,
+        "omicho": 1095,
+        "kenrokuen": 1912
+      },
+      "walkMin": {
+        "busOeste": 1,
+        "estacionEste": 3,
+        "omicho": 18,
+        "kenrokuen": 31
+      },
+      "notes": "2×twin = 2 × Habitación Doble No fumadores 2 camas 16 m² a €195/hab. (10 disponibles); twin grande 18 m² a €217/hab. Lavandería de monedas confirmada en la descripción (\"Coin-operated laundry machines are available for all guests\") y reseñas, pero se quejan: pocas máquinas, situada en la zona del baño público, saturada. Pegado a la salida oeste (parada del bus). Baño público. Booking no indica impuestos incluidos (\"Se pueden aplicar otros cargos\")."
+    },
+    {
+      "name": "ANA Holiday Inn Kanazawa Sky by IHG",
+      "url": "https://www.booking.com/hotel/jp/holiday-inn-ana-kanazawa-sky.es.html?checkin=2027-05-13&checkout=2027-05-15&group_adults=4&no_rooms=2&group_children=0&selected_currency=EUR",
+      "stars": 3,
+      "score": 7.9,
+      "reviews": 336,
+      "priceTotalEUR": 282,
+      "roomCombo": "1 × Habitación Individual (1 cama individual) + 1 × Habitación Doble Premium 2 camas 24 m² (hasta 3 personas) — combinación de la búsqueda, no válida como 2 twin",
+      "twinPriceTotalEUR": 294,
+      "taxesIncluded": "no indicado",
+      "freeCancel": "Sí: tarifa barata gratis antes del 13 de abril de 2027; tarifa flexible (€167/hab., total €334) con cancelación gratis posterior (fecha no capturada); pago en el alojamiento",
+      "breakfast": "No incluido (opcional ~€17/persona; twin con desayuno €202/hab.)",
+      "coinLaundry": "no indicado",
+      "lat": 36.5726789,
+      "lng": 136.654935,
+      "distM": {
+        "busOeste": 979,
+        "estacionEste": 803,
+        "omicho": 171,
+        "kenrokuen": 1021
+      },
+      "walkMin": {
+        "busOeste": 16,
+        "estacionEste": 13,
+        "omicho": 3,
+        "kenrokuen": 17
+      },
+      "notes": "2×twin = 2 × Habitación Doble Estándar 2 camas 18 m² a €147/hab. (6 disponibles). Lavandería: Booking solo indica \"Servicio de lavandería (de pago)\" y la búsqueda de \"laundry\"/\"lavadora\" en reseñas no devuelve nada: NO confirmado. Encima del centro comercial M'za, junto a Ōmichō. Booking indica \"Se pueden aplicar otros cargos\": la tasa turística de alojamiento (por persona y noche) se paga aparte en el hotel."
+    },
+    {
+      "name": "Hotel Resol Trinity Kanazawa",
+      "url": "https://www.booking.com/hotel/jp/resol-trinity-kanazawa.es.html?checkin=2027-05-13&checkout=2027-05-15&group_adults=4&no_rooms=2&group_children=0&selected_currency=EUR",
+      "stars": 4,
+      "score": 9,
+      "reviews": 1910,
+      "priceTotalEUR": 300,
+      "roomCombo": "2 × Habitación Doble con 1 cama doble pequeña No fumadores 15 m² — NO es twin",
+      "twinPriceTotalEUR": 363,
+      "taxesIncluded": "no indicado",
+      "freeCancel": "Sí, gratis antes del 11 de mayo de 2027",
+      "breakfast": "No incluido (opcional ~€11/persona)",
+      "coinLaundry": "sí",
+      "lat": 36.57045877,
+      "lng": 136.65453404,
+      "distM": {
+        "busOeste": 1129,
+        "estacionEste": 983,
+        "omicho": 202,
+        "kenrokuen": 839
+      },
+      "walkMin": {
+        "busOeste": 18,
+        "estacionEste": 16,
+        "omicho": 3,
+        "kenrokuen": 14
+      },
+      "notes": "2×twin = 1 × Habitación Económica 2 camas individuales 18 m² (€170) + 1 × Habitación Doble Estándar 2 camas 24 m² (€193); solo queda 1 unidad de cada tipo twin (también Designer's Twin 24 m² a €205). Lavandería de monedas confirmada en reseñas (\"coin laundry on the 2nd floor\"). A ~130 m de Ōmichō. Booking indica \"Se pueden aplicar otros cargos\": la tasa turística de alojamiento (por persona y noche) se paga aparte en el hotel."
+    },
+    {
+      "name": "Four Points Flex by Sheraton Kanazawa",
+      "url": "https://www.booking.com/hotel/jp/four-points-flex-by-sheraton-kanazawa.es.html?checkin=2027-05-13&checkout=2027-05-15&group_adults=4&no_rooms=2&group_children=0&selected_currency=EUR",
+      "stars": 3,
+      "score": 8.6,
+      "reviews": 1305,
+      "priceTotalEUR": 261,
+      "roomCombo": "2 × Habitación Doble No fumadores (1 cama doble; m² no indicados) — NO es twin",
+      "twinPriceTotalEUR": 436,
+      "taxesIncluded": "no indicado",
+      "freeCancel": "Sí, gratis antes del 11 de mayo de 2027; pago en el alojamiento",
+      "breakfast": "No incluido (opcional ~€10/persona)",
+      "coinLaundry": "sí",
+      "lat": 36.56952495,
+      "lng": 136.6553153,
+      "distM": {
+        "busOeste": 1254,
+        "estacionEste": 1108,
+        "omicho": 247,
+        "kenrokuen": 715
+      },
+      "walkMin": {
+        "busOeste": 20,
+        "estacionEste": 18,
+        "omicho": 4,
+        "kenrokuen": 12
+      },
+      "notes": "2×twin = 2 × Habitación Doble No fumadores 2 camas 18 m² a €218/hab. (5 disponibles); 1 doble + 1 twin = €349. Lavandería de pago confirmada (lista de servicios \"Lavadora\" y reseñas), pero ALERTA para el día de colada: reseñas hablan de \"one laundry machine for the whole building\" y colas. Booking indica \"Se pueden aplicar otros cargos\": la tasa turística de alojamiento (por persona y noche) se paga aparte en el hotel."
+    },
+    {
+      "name": "Hotel Vista Kanazawa",
+      "url": "https://www.booking.com/hotel/jp/hotel-vista-kanazawa.es.html?checkin=2027-05-13&checkout=2027-05-15&group_adults=4&no_rooms=2&group_children=0&selected_currency=EUR",
+      "stars": 3,
+      "score": 8.8,
+      "reviews": 2607,
+      "priceTotalEUR": 316,
+      "roomCombo": "2 × Habitación Doble Moderate 18 m² (1 cama doble) con oferta de reserva anticipada (original €395) — NO es twin",
+      "twinPriceTotalEUR": 324,
+      "taxesIncluded": "no indicado",
+      "freeCancel": "Sí, gratis antes del 6 de mayo de 2027",
+      "breakfast": "No incluido (opcional ~€14/persona; twin con desayuno €198/hab.)",
+      "coinLaundry": "sí",
+      "lat": 36.58016642,
+      "lng": 136.64331809,
+      "distM": {
+        "busOeste": 352,
+        "estacionEste": 557,
+        "omicho": 1500,
+        "kenrokuen": 2311
+      },
+      "walkMin": {
+        "busOeste": 6,
+        "estacionEste": 9,
+        "omicho": 24,
+        "kenrokuen": 38
+      },
+      "notes": "2×twin = 2 × Habitación Doble Económica 2 camas 19 m² a €162/hab. (10 disponibles); twin superior 24 m² a €178/hab. (€356). Lavandería de monedas confirmada por varias reseñas (\"Coin laundry and ice machine...\", \"Laundry machine is very clean\"), aunque una reseña aislada dice que solo había servicio de lavandería. Baño público. Lado oeste, a ~350 m de la parada del bus. Booking no indica impuestos incluidos (\"Se pueden aplicar otros cargos\")."
+    },
+    {
+      "name": "Hotel Intergate Kanazawa",
+      "url": "https://www.booking.com/hotel/jp/intergate-kanazawa.es.html?checkin=2027-05-13&checkout=2027-05-15&group_adults=4&no_rooms=2&group_children=0&selected_currency=EUR",
+      "stars": 4,
+      "score": 8.9,
+      "reviews": 3700,
+      "priceTotalEUR": 397,
+      "roomCombo": "2 × Standard Double Room Non-Smoking 17 m² (1 cama doble grande) con descuento (original €567) — NO es twin",
+      "twinPriceTotalEUR": 448,
+      "taxesIncluded": "no indicado",
+      "freeCancel": "Sí, gratis antes del 10 de mayo de 2027; pago en el alojamiento",
+      "breakfast": "No incluido (opcional ~€16/persona; twin con desayuno €269/hab.). Acceso gratis al lounge",
+      "coinLaundry": "sí",
+      "lat": 36.56815358,
+      "lng": 136.6534577,
+      "distM": {
+        "busOeste": 1288,
+        "estacionEste": 1175,
+        "omicho": 460,
+        "kenrokuen": 745
+      },
+      "walkMin": {
+        "busOeste": 21,
+        "estacionEste": 19,
+        "omicho": 7,
+        "kenrokuen": 12
+      },
+      "notes": "2×twin = 2 × Standard Twin Room Non-Smoking 19 m² a €224/hab. (quedan 3); Superior Twin 22 m² a €238/hab. (€476). Lavandería de monedas confirmada en reseñas, pero solo 2 lavadoras (monedas de ¥100) y esperas. Booking indica \"Se pueden aplicar otros cargos\": la tasa turística de alojamiento (por persona y noche) se paga aparte en el hotel."
+    },
+    {
+      "name": "HOTEL MYSTAYS Kanazawa Castle",
+      "url": "https://www.booking.com/hotel/jp/castle-inn-kanazawa.es.html?checkin=2027-05-13&checkout=2027-05-15&group_adults=4&no_rooms=2&group_children=0&selected_currency=EUR",
+      "stars": 3,
+      "score": 7.8,
+      "reviews": 1863,
+      "priceTotalEUR": 233,
+      "roomCombo": "2 × Habitación Doble Estándar con cama doble pequeña No fumadores (m² no indicados; quedan 2) — NO es twin",
+      "twinPriceTotalEUR": 238,
+      "taxesIncluded": "no indicado",
+      "freeCancel": "Sí: tarifa barata gratis antes del 15 de abril de 2027; tarifa flexible (€132/hab., total €264) gratis antes del 12 de mayo y pago en el alojamiento",
+      "breakfast": "No incluido (opcional ~€11/persona; twin con desayuno desde €164/hab.)",
+      "coinLaundry": "sí",
+      "lat": 36.5782181,
+      "lng": 136.65241629,
+      "distM": {
+        "busOeste": 528,
+        "estacionEste": 305,
+        "omicho": 814,
+        "kenrokuen": 1671
+      },
+      "walkMin": {
+        "busOeste": 9,
+        "estacionEste": 5,
+        "omicho": 13,
+        "kenrokuen": 27
+      },
+      "notes": "2×twin = 2 × Habitación Doble Hollywood 2 camas No fumadores a €119/hab. (m² no indicados; 10 disponibles). Twin del anexo 15 m² a €124/hab.; twin deluxe 21 m² a €152/hab. (€304). Lavandería: confirmada por la mayoría de reseñas (\"Easy access to laundry facilities\", \"lavandería disponible\", secadoras lentas), pero una reseña dice \"No laundry\": verificar. Baño público. Booking indica \"Se pueden aplicar otros cargos\": la tasa turística de alojamiento (por persona y noche) se paga aparte en el hotel."
+    },
+    {
+      "name": "Arigato Stay Kanazawa Ekimae",
+      "url": "https://www.booking.com/hotel/jp/hotel-trend-kanazawa-ekimae.es.html?checkin=2027-05-13&checkout=2027-05-15&group_adults=4&no_rooms=2&group_children=0&selected_currency=EUR",
+      "stars": 4,
+      "score": 8.2,
+      "reviews": 425,
+      "priceTotalEUR": 260,
+      "roomCombo": "2 × Habitación Doble Fumadores (1 cama doble; m² no indicados) — NO es twin y es de fumadores",
+      "twinPriceTotalEUR": 284,
+      "taxesIncluded": "sí",
+      "freeCancel": "Sí, gratis antes del 12 de mayo de 2027",
+      "breakfast": "No incluido (no se ofrece tarifa con desayuno)",
+      "coinLaundry": "no indicado",
+      "lat": 36.58085972,
+      "lng": 136.64746717,
+      "distM": {
+        "busOeste": 297,
+        "estacionEste": 336,
+        "omicho": 1297,
+        "kenrokuen": 2146
+      },
+      "walkMin": {
+        "busOeste": 5,
+        "estacionEste": 5,
+        "omicho": 21,
+        "kenrokuen": 35
+      },
+      "notes": "2×twin = 2 × Habitación Doble No fumadores 2 camas 16 m² a €142/hab. (9 disponibles). Lavandería: Booking solo indica \"Servicio de lavandería (de pago)\"; sin menciones en reseñas: NO confirmado. Lado oeste/norte de la estación."
+    },
+    {
+      "name": "Hotel Kanazawa",
+      "url": "https://www.booking.com/hotel/jp/hotel-kanazawa.es.html?checkin=2027-05-13&checkout=2027-05-15&group_adults=4&no_rooms=2&group_children=0&selected_currency=EUR",
+      "stars": 4,
+      "score": 8.7,
+      "reviews": 2004,
+      "priceTotalEUR": 390,
+      "roomCombo": "2 × Habitación Doble Fumadores 22 m² (1 cama doble) — NO es twin; mismo precio que 2×twin",
+      "twinPriceTotalEUR": 390,
+      "taxesIncluded": "no indicado",
+      "freeCancel": "Sí, gratis antes del 12 de mayo de 2027; pago en el alojamiento",
+      "breakfast": "No incluido (opcional ~€15/persona; twin con desayuno €245/hab.)",
+      "coinLaundry": "no",
+      "lat": 36.57862902,
+      "lng": 136.65013924,
+      "distM": {
+        "busOeste": 327,
+        "estacionEste": 118,
+        "omicho": 956,
+        "kenrokuen": 1809
+      },
+      "walkMin": {
+        "busOeste": 5,
+        "estacionEste": 2,
+        "omicho": 16,
+        "kenrokuen": 29
+      },
+      "notes": "DESCARTADO por lavandería: varias reseñas dicen que el hotel NO tiene lavandería de autoservicio (\"The hotel doesn't have a laundry but there is a laundromat within a five minute walk\", \"No laundry\"); una reseña aislada habla de \"onsite laundry\". 2×twin = 2 × Habitación Doble No fumadores 2 camas 22 m² a €195/hab. Frente a la salida este. Booking indica \"Se pueden aplicar otros cargos\": la tasa turística de alojamiento (por persona y noche) se paga aparte en el hotel."
+    },
+    {
+      "name": "HOTEL TORIFITO KANAZAWA",
+      "url": "https://www.booking.com/hotel/jp/torifito-kanazawa.es.html?checkin=2027-05-13&checkout=2027-05-15&group_adults=4&no_rooms=2&group_children=0&selected_currency=EUR",
+      "stars": 4,
+      "score": 8.8,
+      "reviews": 3210,
+      "priceTotalEUR": 374,
+      "roomCombo": "2 × Habitación Estándar 1 cama grande 16 m² — NO es twin",
+      "twinPriceTotalEUR": 446,
+      "taxesIncluded": "sí",
+      "freeCancel": "Sí, gratis antes del 10 de mayo de 2027",
+      "breakfast": "No incluido (opcional ~€16/persona; twin con desayuno €284/hab.)",
+      "coinLaundry": "sí",
+      "lat": 36.575418,
+      "lng": 136.649622,
+      "distM": {
+        "busOeste": 425,
+        "estacionEste": 303,
+        "omicho": 732,
+        "kenrokuen": 1543
+      },
+      "walkMin": {
+        "busOeste": 7,
+        "estacionEste": 5,
+        "omicho": 12,
+        "kenrokuen": 25
+      },
+      "notes": "2×twin = 2 × Habitación Doble Estándar 2 camas 22 m² a €223/hab. (2 de ese tipo; también \"con sofá\" ×3 y Hollywood Twin ×2 al mismo precio). Lavandería de monedas confirmada en reseñas: 3 máquinas, estado consultable desde la TV de la habitación (zona pequeña). Baño público. Entre la estación y Ōmichō."
+    },
+    {
+      "name": "Onyado Nono Kanazawa",
+      "url": "https://www.booking.com/hotel/jp/onyado-nono-kanazawa.es.html?checkin=2027-05-13&checkout=2027-05-15&group_adults=4&no_rooms=2&group_children=0&selected_currency=EUR",
+      "stars": 4,
+      "score": 9,
+      "reviews": 5683,
+      "priceTotalEUR": 353,
+      "roomCombo": "2 × Habitación Doble Moderate sin limpieza diaria 15 m² (1 cama doble) — NO es twin",
+      "twinPriceTotalEUR": 510,
+      "taxesIncluded": "sí",
+      "freeCancel": "Sí, gratis antes del 12 de mayo de 2027; pago en el alojamiento",
+      "breakfast": "No incluido (opcional ~€17/persona; twin con desayuno €319/hab.)",
+      "coinLaundry": "sí",
+      "lat": 36.56995837,
+      "lng": 136.65480164,
+      "distM": {
+        "busOeste": 1187,
+        "estacionEste": 1043,
+        "omicho": 226,
+        "kenrokuen": 781
+      },
+      "walkMin": {
+        "busOeste": 19,
+        "estacionEste": 17,
+        "omicho": 4,
+        "kenrokuen": 13
+      },
+      "notes": "2×twin = 2 × Habitación Doble Moderate 2 camas sin servicio de limpieza diaria 22 m² a €255/hab. (con limpieza €260/hab., €520). Mejor lavandería de la lista según reseñas: lavadoras GRATIS, secadoras ¥100/20 min, sin esperas. Onsen de aguas termales; hotel sin zapatos (tatami). A ~200 m de Ōmichō."
+    },
+    {
+      "name": "Daiwa Roynet Hotel Kanazawa Eki Nishiguchi",
+      "url": "https://www.booking.com/hotel/jp/daiwa-roynet-hotel-kanazawa-eki-nishiguchi.es.html?checkin=2027-05-13&checkout=2027-05-15&group_adults=4&no_rooms=2&group_children=0&selected_currency=EUR",
+      "stars": 4,
+      "score": 8.9,
+      "reviews": 3087,
+      "priceTotalEUR": 482,
+      "roomCombo": "2 × Habitación que se asigna al llegar – Fumadores 21 m² (1 cama doble) — NO es twin y es de fumadores",
+      "twinPriceTotalEUR": 532,
+      "taxesIncluded": "sí",
+      "freeCancel": "Sí, gratis antes del 12 de mayo de 2027",
+      "breakfast": "No incluido (opcional ~€12/persona; twin con desayuno €319/hab.)",
+      "coinLaundry": "sí",
+      "lat": 36.57651121,
+      "lng": 136.64608985,
+      "distM": {
+        "busOeste": 202,
+        "estacionEste": 314,
+        "omicho": 1063,
+        "kenrokuen": 1845
+      },
+      "walkMin": {
+        "busOeste": 3,
+        "estacionEste": 5,
+        "omicho": 17,
+        "kenrokuen": 30
+      },
+      "notes": "2×twin = 2 × Habitación Doble Superior No fumadores 2 camas 27 m² a €266/hab. (10 disponibles). Lavandería de monedas confirmada en reseñas (3 lavadoras-secadoras, disponibilidad consultable). Junto a la salida oeste (parada del bus a Takayama)."
+    },
+    {
+      "name": "Mitsui Garden Hotel Kanazawa",
+      "url": "https://www.booking.com/hotel/jp/mitsui-garden-kanazawa-dong-jing.es.html?checkin=2027-05-13&checkout=2027-05-15&group_adults=4&no_rooms=2&group_children=0&selected_currency=EUR",
+      "stars": 4,
+      "score": 8.9,
+      "reviews": 2863,
+      "priceTotalEUR": 514,
+      "roomCombo": "2 × Habitación Doble Estándar 2 camas 21 m² (twin real; quedan 2)",
+      "twinPriceTotalEUR": 514,
+      "taxesIncluded": "no indicado",
+      "freeCancel": "Sí, gratis antes del 10 de mayo de 2027; pago en el alojamiento",
+      "breakfast": "No incluido (twin con desayuno €317/hab.)",
+      "coinLaundry": "sí",
+      "lat": 36.56897589,
+      "lng": 136.65453409,
+      "distM": {
+        "busOeste": 1261,
+        "estacionEste": 1129,
+        "omicho": 332,
+        "kenrokuen": 721
+      },
+      "walkMin": {
+        "busOeste": 20,
+        "estacionEste": 18,
+        "omicho": 5,
+        "kenrokuen": 12
+      },
+      "notes": "Twin superior 24 m² a €286/hab. (€572). Lavandería de autoservicio confirmada en reseñas, pero solo 2 máquinas de poca capacidad y colas. Baño público en la última planta. Booking indica \"Se pueden aplicar otros cargos\": la tasa turística de alojamiento (por persona y noche) se paga aparte en el hotel."
+    }
+  ],
+  "tops": {
+    "dinero": [
+      {
+        "name": "HOTEL MYSTAYS Kanazawa Castle",
+        "why": "La 2×twin no fumadores más barata (€238; €264 con cancelación hasta el 12 de mayo), 5 min a la salida este y 13 a Ōmichō; nota 7,8 y lavandería confirmada por la mayoría de reseñas (una la niega)."
+      },
+      {
+        "name": "KOKO HOTEL Kanazawa Station",
+        "why": "2×twin 20 m² por €260 (tarifa con cancelación solo hasta marzo; €310 la flexible), nota 8,4 y lavandería confirmada (2 máquinas)."
+      },
+      {
+        "name": "Smile Hotel Kanazawa Nishiguchi Ekimae",
+        "why": "2×corner twin 21 m² por €270 con impuestos incluidos y cancelación hasta el 12 de mayo; 5 min a la parada del bus; lejos de Ōmichō (24 min)."
+      },
+      {
+        "name": "Smile Hotel Premium Kanazawa Higashiguchiekimae",
+        "why": "2×twin 21 m² por €282 con impuestos incluidos, nota 8,8 y lavandería de monedas en varias plantas; solo €12–44 más que las anteriores."
+      },
+      {
+        "name": "Kanazawa Manten Hotel Ekimae",
+        "why": "2×twin 18 m² por €306, lavandería de monedas confirmada en la propia descripción y baño público; habitaciones algo anticuadas."
+      }
+    ],
+    "calidadPrecio": [
+      {
+        "name": "Smile Hotel Premium Kanazawa Higashiguchiekimae",
+        "why": "Mejor equilibrio: €282 por 2×twin 21 m² no fumadores, nota 8,8 (3.083 reseñas), impuestos incluidos, cancelación hasta el 12 de mayo, lavandería confirmada y a 3 min de la estación / 6 del bus."
+      },
+      {
+        "name": "Smile Hotel Kanazawa Nishiguchi Ekimae",
+        "why": "€270 por 2×corner twin 21 m², nota 8,6, impuestos incluidos y sala de lavandería bien equipada; ideal para el bus de las 08:10, peor para ir a pie al centro."
+      },
+      {
+        "name": "Hotel Resol Trinity Kanazawa",
+        "why": "Nota 9,0 y a 3 min de Ōmichō / 14 de Kenroku-en por €363 (twin 18 m² + twin 24 m²), lavandería de monedas en la 2.ª planta; solo queda 1 unidad de cada twin y está a 18 min del bus."
+      },
+      {
+        "name": "Hotel Vista Kanazawa",
+        "why": "€324 por 2×twin 19 m², nota 8,8, baño público y lavandería de monedas; lado oeste a 6 min del bus (cancelación solo hasta el 6 de mayo)."
+      },
+      {
+        "name": "KOKO HOTEL Kanazawa Station",
+        "why": "Twin 20 m² desde €260 (hasta €310 según flexibilidad), nota 8,4 y lavandería; buena relación si se acepta la tarifa poco flexible."
+      }
+    ],
+    "ubicacion": [
+      {
+        "name": "HOTEL TORIFITO KANAZAWA",
+        "why": "El punto medio real: 5 min a la salida este, 7 al bus y 12 a Ōmichō (25 a Kenroku-en); twin 22 m², nota 8,8, lavandería con 3 máquinas (€446)."
+      },
+      {
+        "name": "Smile Hotel Premium Kanazawa Higashiguchiekimae",
+        "why": "Lado estación sin alejarse del centro: 3 min a la salida este, 6 al bus con maletas y 16 a Ōmichō, por €282."
+      },
+      {
+        "name": "HOTEL MYSTAYS Kanazawa Castle",
+        "why": "En el lado este ya camino de Ōmichō: 5 min a la estación, 9 al bus y 13 al mercado (27 a Kenroku-en) por €238; lavandería con reseñas contradictorias."
+      },
+      {
+        "name": "Daiwa Roynet Hotel Kanazawa Eki Nishiguchi",
+        "why": "Prioriza maletas y bus: a 3 min de la parada de la salida oeste, twin 27 m², nota 8,9 y lavandería de 3 máquinas; 17 min a Ōmichō (€532). Alternativa más barata en la misma puerta: APA Ekimae (€390, 1 min al bus, lavandería saturada)."
+      },
+      {
+        "name": "Hotel Resol Trinity Kanazawa",
+        "why": "Prioriza el turismo a pie: 3 min a Ōmichō y 14 a Kenroku-en (ideal para las 07:00); a cambio, 16–18 min con maletas (o taxi) a la llegada y para el bus de las 08:10 (€363)."
+      }
+    ]
+  },
+  "caveats": [
+    "Precios leídos en Booking.com (sitio en español, EUR) el 13 de noviembre de 2026 para 13–15 de mayo de 2027, 4 adultos, 2 habitaciones; son totales por las 2 habitaciones y las 2 noches. \"priceTotalEUR\" es la combinación más barata/recomendada por Booking (casi siempre 2 dobles con 1 cama, NO twin); \"twinPriceTotalEUR\" es el objetivo real (2 × twin, no fumadores salvo que se indique). Los tops usan el precio 2×twin.",
+    "Booking no distingue la lavandería de monedas en su lista de servicios (solo \"Servicio de lavandería – de pago\"). \"coinLaundry: sí\" significa que lo confirma la descripción del hotel (Manten, APA) o reseñas de huéspedes encontradas con el buscador de comentarios de la ficha (resto). Evidencia contradictoria: HOTEL MYSTAYS Kanazawa Castle y Hotel Vista (una reseña aislada lo niega en cada uno).",
+    "Sin confirmar lavandería de autoservicio (excluidos de los tops): Toyoko Inn Kanazawa-eki Higashi-guchi (además solo tiene twin de fumadores), ANA Holiday Inn Kanazawa Sky y Arigato Stay Kanazawa Ekimae. Hotel Kanazawa queda descartado: varias reseñas dicen que no tiene lavandería.",
+    "Capacidad de lavandería limitada según reseñas (riesgo de colas la tarde del día 14): Four Points Flex (1 máquina), Intergate (2), Mitsui Garden (2), KOKO Station (2), Torifito (3), Daiwa Roynet Nishiguchi (3), APA Ekimae (saturada). La mejor valorada es Onyado Nono (lavadoras gratis, sin esperas).",
+    "Impuestos: \"sí\" = Booking muestra \"Incluye impuestos y cargos\". \"no indicado\" = Booking muestra \"Se pueden aplicar otros cargos\"; en esas fichas se avisa de que la tasa turística de alojamiento por persona y noche se paga aparte en el hotel.",
+    "Cambios respecto a la investigación previa (12 nov 2026): los precios de búsqueda apenas varían (€1 arriba), pero esos importes eran de combinaciones doble+twin o individual+twin; el 2×twin real cuesta más: Resol Trinity €363 (búsqueda €320), Four Points Flex €436 (€348), Daiwa Roynet Nishiguchi €532 (€500), ANA Holiday Inn Sky €294 (€282), Toyoko Inn €284 solo fumadores (€267). Smile Hotel Nishiguchi aparecía a €235 en la búsqueda (1 doble + 1 corner twin).",
+    "KOKO HOTEL Kanazawa Station: la correspondencia precio–fecha de cancelación (€130/14 mar, €139/13 abr, €155/12 may por habitación) se deduce del orden en que Booking lista las tarifas. ANA Holiday Inn Sky: no se capturó la fecha límite de la tarifa flexible.",
+    "Distancias en línea recta (haversine) a los anclajes indicados; minutos a pie estimados como metros × 1,3 / 80. Desde los hoteles del lado este, la parada de la salida oeste se alcanza cruzando el vestíbulo de la estación. Las coordenadas de los anclajes son aproximadas pero coherentes con las distancias que muestra Booking.",
+    "Límite de 18 fichas abiertas: no se verificaron Daiwa Roynet KANAZAWA-MIYABI (€506 en búsqueda, doble + deluxe twin fumadores), Hotel Route-Inn Kanazawa Ekimae (€322, twin de fumadores en la combinación mostrada), Garden Hotel Kanazawa (€362), Hotel Forza Kanazawa (€397, doble + triple), the square hotel KANAZAWA (€410), Tokyu Stay Kanazawa (€478), Henn na Hotel Kanazawa Korimbo (€230, lejos de la estación) ni Via Inn Kanazawa (sin twin disponibles con el filtro). Dormy Inn Kanazawa no apareció en los resultados para estas fechas.",
+    "Sin bloqueos ni captcha durante la sesión. Las estrellas son la categoría que muestra Booking. Varias tarifas baratas son ofertas de reserva anticipada y pueden cambiar."
+  ]
+}

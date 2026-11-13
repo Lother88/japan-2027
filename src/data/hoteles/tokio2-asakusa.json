@@ -1,0 +1,634 @@
+{
+  "stay": "Tokio 2 · Asakusa",
+  "checkIn": "2027-05-25",
+  "checkOut": "2027-05-28",
+  "nights": 3,
+  "searchedAt": "2026-11-13T13:51:41.895Z",
+  "anchors": [
+    {
+      "name": "Kaminarimon (Sensō-ji)",
+      "lat": 35.7111,
+      "lng": 139.7964
+    },
+    {
+      "name": "Estación Asakusa del Tsukuba Express",
+      "lat": 35.7138,
+      "lng": 139.7921
+    },
+    {
+      "name": "Estación Asakusa (líneas Ginza / Toei Asakusa)",
+      "lat": 35.71,
+      "lng": 139.7975
+    },
+    {
+      "name": "Estación Tawaramachi (línea Ginza)",
+      "lat": 35.7098,
+      "lng": 139.7903
+    }
+  ],
+  "candidates": [
+    {
+      "name": "Henn na Hotel Premier Tokyo Asakusa Tawaramachi",
+      "url": "https://www.booking.com/hotel/jp/henn-na-hotel-tokyo-asakusa-tawaramachi.es.html?checkin=2027-05-25&checkout=2027-05-28&group_adults=4&no_rooms=2&group_children=0&selected_currency=EUR",
+      "stars": 3,
+      "score": 8.7,
+      "reviews": 4822,
+      "priceTotalEUR": 552,
+      "roomCombo": "2 × Habitación Doble - No fumadores - 2 camas (twin, 16 m²) a 276 € cada una",
+      "twinPriceTotalEUR": 552,
+      "taxesIncluded": "no indicado",
+      "freeCancel": "Sí, cancelación gratis antes del 24 de mayo de 2027; sin pago hasta el 22 de mayo",
+      "breakfast": "No incluido; opcional 12 € por persona (tarifa con desayuno: 335 € por habitación)",
+      "coinLaundry": "sí",
+      "lat": 35.708166655919044,
+      "lng": 139.79138813376449,
+      "distM": {
+        "Kaminarimon (Sensō-ji)": 558,
+        "Estación Asakusa del Tsukuba Express": 630,
+        "Estación Asakusa (líneas Ginza / Toei Asakusa)": 588,
+        "Estación Tawaramachi (línea Ginza)": 206
+      },
+      "walkMin": {
+        "Kaminarimon (Sensō-ji)": 9,
+        "Estación Asakusa del Tsukuba Express": 10,
+        "Estación Asakusa (líneas Ginza / Toei Asakusa)": 10,
+        "Estación Tawaramachi (línea Ginza)": 3
+      },
+      "notes": "Precio de buscador confirmado en la ficha (2 × twin). Lavandería de autoservicio citada en opiniones de huéspedes en Booking («servicio de auto lavandería»), no en la lista oficial de servicios. Al menos 3 unidades de la twin básica; otras twin: Superior 18 m² a 307 € y Deluxe 20 m² a 329 €. Booking indica «Se pueden aplicar otros cargos»."
+    },
+    {
+      "name": "Hotel Trend Asakusa Annex",
+      "url": "https://www.booking.com/hotel/jp/hoterutorendoqian-cao-ii.es.html?checkin=2027-05-25&checkout=2027-05-28&group_adults=4&no_rooms=2&group_children=0&selected_currency=EUR",
+      "stars": 1,
+      "score": 7.7,
+      "reviews": 240,
+      "priceTotalEUR": 488,
+      "roomCombo": "1 × Habitación Doble - No fumadores (239 €) + 1 × Habitación Doble A - 2 camas - No fumadores (twin, 249 €)",
+      "twinPriceTotalEUR": 498,
+      "taxesIncluded": "sí",
+      "freeCancel": "Sí, cancelación gratis antes del 24 de mayo de 2027",
+      "breakfast": "No incluido; no se ofrece opción de desayuno en la ficha",
+      "coinLaundry": "no indicado",
+      "lat": 35.712069,
+      "lng": 139.792856,
+      "distM": {
+        "Kaminarimon (Sensō-ji)": 338,
+        "Estación Asakusa del Tsukuba Express": 204,
+        "Estación Asakusa (líneas Ginza / Toei Asakusa)": 478,
+        "Estación Tawaramachi (línea Ginza)": 342
+      },
+      "walkMin": {
+        "Kaminarimon (Sensō-ji)": 5,
+        "Estación Asakusa del Tsukuba Express": 3,
+        "Estación Asakusa (líneas Ginza / Toei Asakusa)": 8,
+        "Estación Tawaramachi (línea Ginza)": 6
+      },
+      "notes": "2 × twin = 498 € con impuestos y cargos incluidos. Solo 2 unidades twin a la venta (justo las necesarias). Superficie de las habitaciones no indicada. Hotel sencillo (1 estrella en Booking) y pocas opiniones (240)."
+    },
+    {
+      "name": "Ano Hotel Asakusa",
+      "url": "https://www.booking.com/hotel/jp/ano.es.html?checkin=2027-05-25&checkout=2027-05-28&group_adults=4&no_rooms=2&group_children=0&selected_currency=EUR",
+      "stars": 2,
+      "score": 7.9,
+      "reviews": 1015,
+      "priceTotalEUR": 468,
+      "roomCombo": "1 × Habitación Doble (219 €) + 1 × Habitación Doble - 2 camas (twin, 249 €)",
+      "twinPriceTotalEUR": 498,
+      "taxesIncluded": "no indicado",
+      "freeCancel": "Sí, cancelación gratis antes del 22 de mayo de 2027",
+      "breakfast": "No incluido; tarifa con desayuno a 280 € por habitación twin",
+      "coinLaundry": "no indicado",
+      "lat": 35.70571460159211,
+      "lng": 139.798441136302,
+      "distM": {
+        "Kaminarimon (Sensō-ji)": 627,
+        "Estación Asakusa del Tsukuba Express": 1066,
+        "Estación Asakusa (líneas Ginza / Toei Asakusa)": 484,
+        "Estación Tawaramachi (línea Ginza)": 864
+      },
+      "walkMin": {
+        "Kaminarimon (Sensō-ji)": 10,
+        "Estación Asakusa del Tsukuba Express": 17,
+        "Estación Asakusa (líneas Ginza / Toei Asakusa)": 8,
+        "Estación Tawaramachi (línea Ginza)": 14
+      },
+      "notes": "Está en Sumida-ku (Higashi-Komagata), al otro lado del río Sumida: la distancia en línea recta subestima el paseo a Sensō-ji porque hay que cruzar el puente Komagata. Bien para Skytree y la línea Toei Asakusa. Superficie de la twin no indicada. 10 unidades twin disponibles. La ficha solo lista «servicio de lavandería» (de pago), no autoservicio. Booking indica «Se pueden aplicar otros cargos»."
+    },
+    {
+      "name": "Hotel Keihan Asakusa",
+      "url": "https://www.booking.com/hotel/jp/keihan-asakusa.es.html?checkin=2027-05-25&checkout=2027-05-28&group_adults=4&no_rooms=2&group_children=0&selected_currency=EUR",
+      "stars": 3,
+      "score": 8.5,
+      "reviews": 3051,
+      "priceTotalEUR": 563,
+      "roomCombo": "1 × Habitación Doble Económica (278 €) + 1 × Habitación Doble Económica - 2 camas (twin, 285 €)",
+      "twinPriceTotalEUR": 570,
+      "taxesIncluded": "no indicado",
+      "freeCancel": "Sí, cancelación gratis antes del 22 de mayo de 2027",
+      "breakfast": "No incluido; opcional 11 € por persona (tarifa con desayuno: 347 € por habitación)",
+      "coinLaundry": "no indicado",
+      "lat": 35.71498822519517,
+      "lng": 139.79273669421673,
+      "distM": {
+        "Kaminarimon (Sensō-ji)": 544,
+        "Estación Asakusa del Tsukuba Express": 144,
+        "Estación Asakusa (líneas Ginza / Toei Asakusa)": 702,
+        "Estación Tawaramachi (línea Ginza)": 617
+      },
+      "walkMin": {
+        "Kaminarimon (Sensō-ji)": 9,
+        "Estación Asakusa del Tsukuba Express": 2,
+        "Estación Asakusa (líneas Ginza / Toei Asakusa)": 11,
+        "Estación Tawaramachi (línea Ginza)": 10
+      },
+      "notes": "2 × twin económica = 570 € (5 unidades). Superficie de la twin económica no indicada en la ficha; la twin estándar de 17 m² cuesta 346 € (2 × = 692 €). Pegado a la estación TX Asakusa. Booking muestra una oferta de colaborador de 267 € limitada a 1 unidad: no usarla como referencia. La ficha solo lista «servicio de lavandería». Booking indica «Se pueden aplicar otros cargos»."
+    },
+    {
+      "name": "Tosei Hotel Cocone Asakusa",
+      "url": "https://www.booking.com/hotel/jp/toseihoterukokoneqian-cao.es.html?checkin=2027-05-25&checkout=2027-05-28&group_adults=4&no_rooms=2&group_children=0&selected_currency=EUR",
+      "stars": 3,
+      "score": 8.7,
+      "reviews": 1048,
+      "priceTotalEUR": 590,
+      "roomCombo": "1 × Habitación Doble (288 €) + 1 × Habitación Doble - 2 camas (twin, 18 m², 302 €)",
+      "twinPriceTotalEUR": 604,
+      "taxesIncluded": "no indicado",
+      "freeCancel": "Sí, cancelación gratis antes del 24 de mayo de 2027",
+      "breakfast": "No incluido; no se ofrece opción de desayuno en la ficha",
+      "coinLaundry": "no indicado",
+      "lat": 35.716619,
+      "lng": 139.798278,
+      "distM": {
+        "Kaminarimon (Sensō-ji)": 637,
+        "Estación Asakusa del Tsukuba Express": 640,
+        "Estación Asakusa (líneas Ginza / Toei Asakusa)": 739,
+        "Estación Tawaramachi (línea Ginza)": 1046
+      },
+      "walkMin": {
+        "Kaminarimon (Sensō-ji)": 10,
+        "Estación Asakusa del Tsukuba Express": 10,
+        "Estación Asakusa (líneas Ginza / Toei Asakusa)": 12,
+        "Estación Tawaramachi (línea Ginza)": 17
+      },
+      "notes": "2 × twin de 18 m² = 604 € (10 unidades). Al noreste de Sensō-ji (Asakusa 3-chōme): es el más alejado de la estación TX y de la línea Ginza de los económicos. Booking indica «Se pueden aplicar otros cargos»."
+    },
+    {
+      "name": "The Kanzashi Tokyo Asakusa",
+      "url": "https://www.booking.com/hotel/jp/the-kanzashi-tokyo-asakusa.es.html?checkin=2027-05-25&checkout=2027-05-28&group_adults=4&no_rooms=2&group_children=0&selected_currency=EUR",
+      "stars": 3,
+      "score": 8.8,
+      "reviews": 3453,
+      "priceTotalEUR": 596,
+      "roomCombo": "1 × Habitación Doble (287 €) + 1 × Habitación Doble Superior - 2 camas (twin, 17 m², 309 €)",
+      "twinPriceTotalEUR": 618,
+      "taxesIncluded": "no indicado",
+      "freeCancel": "Sí, cancelación gratis antes del 24 de mayo de 2027",
+      "breakfast": "No incluido; tarifa con desayuno a 362 € por habitación twin",
+      "coinLaundry": "no indicado",
+      "lat": 35.716421,
+      "lng": 139.795228,
+      "distM": {
+        "Kaminarimon (Sensō-ji)": 601,
+        "Estación Asakusa del Tsukuba Express": 406,
+        "Estación Asakusa (líneas Ginza / Toei Asakusa)": 743,
+        "Estación Tawaramachi (línea Ginza)": 860
+      },
+      "walkMin": {
+        "Kaminarimon (Sensō-ji)": 10,
+        "Estación Asakusa del Tsukuba Express": 7,
+        "Estación Asakusa (líneas Ginza / Toei Asakusa)": 12,
+        "Estación Tawaramachi (línea Ginza)": 14
+      },
+      "notes": "2 × twin superior de 17 m² = 618 € (10 unidades). Al norte de Sensō-ji, zona Hanayashiki / Kototoi-dōri. La ficha solo lista «servicio de lavandería». Booking indica «Se pueden aplicar otros cargos»."
+    },
+    {
+      "name": "Far East Village Hotel Tokyo, Asakusa",
+      "url": "https://www.booking.com/hotel/jp/far-east-village-asakusa-tokyo.es.html?checkin=2027-05-25&checkout=2027-05-28&group_adults=4&no_rooms=2&group_children=0&selected_currency=EUR",
+      "stars": 3,
+      "score": 8.5,
+      "reviews": 1236,
+      "priceTotalEUR": 632,
+      "roomCombo": "2 × Habitación Doble Estándar - 2 camas (twin, 15 m²) a 316 € cada una, tarifa no reembolsable",
+      "twinPriceTotalEUR": 632,
+      "taxesIncluded": "sí",
+      "freeCancel": "La tarifa más barata (632 €) no es reembolsable; con cancelación gratis antes del 18 de mayo de 2027 son 666 € (2 × 333 €) y antes del 22 de mayo 702 € (2 × 351 €)",
+      "breakfast": "No incluido; opcional 9 € por persona",
+      "coinLaundry": "no indicado",
+      "lat": 35.71224,
+      "lng": 139.792489,
+      "distM": {
+        "Kaminarimon (Sensō-ji)": 375,
+        "Estación Asakusa del Tsukuba Express": 177,
+        "Estación Asakusa (líneas Ginza / Toei Asakusa)": 516,
+        "Estación Tawaramachi (línea Ginza)": 336
+      },
+      "walkMin": {
+        "Kaminarimon (Sensō-ji)": 6,
+        "Estación Asakusa del Tsukuba Express": 3,
+        "Estación Asakusa (líneas Ginza / Toei Asakusa)": 8,
+        "Estación Tawaramachi (línea Ginza)": 5
+      },
+      "notes": "Impuestos y cargos incluidos. Habitaciones de 15 m² (justas con 4 maletas en total). 4 unidades de la twin básica; twin con vistas a la ciudad a 336 € no reembolsable. En Kokusai-dōri, entre TX Asakusa y Tawaramachi."
+    },
+    {
+      "name": "Tosei Hotel Cocone Asakusa Kuramae",
+      "url": "https://www.booking.com/hotel/jp/toseihoterukokoneqian-cao-zang-qian.es.html?checkin=2027-05-25&checkout=2027-05-28&group_adults=4&no_rooms=2&group_children=0&selected_currency=EUR",
+      "stars": 3,
+      "score": 8.7,
+      "reviews": 2611,
+      "priceTotalEUR": 615,
+      "roomCombo": "1 × Habitación Doble Estándar (291 €) + 1 × Habitación Doble Estándar - 2 camas (twin, 18 m², 324 €)",
+      "twinPriceTotalEUR": 648,
+      "taxesIncluded": "no indicado",
+      "freeCancel": "Sí, cancelación gratis antes del 24 de mayo de 2027",
+      "breakfast": "No incluido; opcional 6 € por persona (tarifa con desayuno: 351 € por habitación)",
+      "coinLaundry": "no indicado",
+      "lat": 35.705216138561,
+      "lng": 139.793724488773,
+      "distM": {
+        "Kaminarimon (Sensō-ji)": 697,
+        "Estación Asakusa del Tsukuba Express": 966,
+        "Estación Asakusa (líneas Ginza / Toei Asakusa)": 632,
+        "Estación Tawaramachi (línea Ginza)": 596
+      },
+      "walkMin": {
+        "Kaminarimon (Sensō-ji)": 11,
+        "Estación Asakusa del Tsukuba Express": 16,
+        "Estación Asakusa (líneas Ginza / Toei Asakusa)": 10,
+        "Estación Tawaramachi (línea Ginza)": 10
+      },
+      "notes": "Solo 2 unidades twin a la venta (justo las necesarias). El precio del buscador (606 €) combinaba una twin con una habitación de literas marcada como compartida: no es válido. En Komagata, cerca de Kuramae (Toei Ōedo / Asakusa): bien para el día 27, más lejos de Sensō-ji. La ficha solo lista «servicio de lavandería». Booking indica «Se pueden aplicar otros cargos»."
+    },
+    {
+      "name": "Hotel Sunroute Asakusa",
+      "url": "https://www.booking.com/hotel/jp/sunroute-asakusa.es.html?checkin=2027-05-25&checkout=2027-05-28&group_adults=4&no_rooms=2&group_children=0&selected_currency=EUR",
+      "stars": 3,
+      "score": 8.3,
+      "reviews": 3455,
+      "priceTotalEUR": 592,
+      "roomCombo": "1 × Habitación Doble con 1 cama doble pequeña - No fumadores (269 €) + 1 × Habitación Económica con 2 camas individuales (twin, 17 m², 323 €)",
+      "twinPriceTotalEUR": 665,
+      "taxesIncluded": "no indicado",
+      "freeCancel": "Sí, cancelación gratis antes del 24 de mayo de 2027",
+      "breakfast": "No incluido; opcional 9 € por persona (tarifa con desayuno: +52 € por habitación)",
+      "coinLaundry": "no indicado",
+      "lat": 35.71074740144113,
+      "lng": 139.79177669444277,
+      "distM": {
+        "Kaminarimon (Sensō-ji)": 419,
+        "Estación Asakusa del Tsukuba Express": 341,
+        "Estación Asakusa (líneas Ginza / Toei Asakusa)": 523,
+        "Estación Tawaramachi (línea Ginza)": 170
+      },
+      "walkMin": {
+        "Kaminarimon (Sensō-ji)": 7,
+        "Estación Asakusa del Tsukuba Express": 6,
+        "Estación Asakusa (líneas Ginza / Toei Asakusa)": 9,
+        "Estación Tawaramachi (línea Ginza)": 3
+      },
+      "notes": "2 × twin = 665 €: solo queda 1 twin económica (323 €), la segunda tiene que ser la twin económica con vistas al Skytree (342 €, 17 m²); 2 × twin con vistas = 684 €. Las twin del edificio nuevo (20 m²) cuestan 375 €. La cama doble pequeña del combo barato no sirve para dos adultos que quieren camas separadas. En Kokusai-dōri con Kaminarimon-dōri, junto a Tawaramachi. Lavandería y limpieza en seco de pago. Booking indica «Se pueden aplicar otros cargos»."
+    },
+    {
+      "name": "Hotel Trend Tobu Asakusa-Eki Kita",
+      "url": "https://www.booking.com/hotel/jp/hoterutorendodong-wu-qian-cao-yi-bei.es.html?checkin=2027-05-25&checkout=2027-05-28&group_adults=4&no_rooms=2&group_children=0&selected_currency=EUR",
+      "stars": 2,
+      "score": 7.8,
+      "reviews": 924,
+      "priceTotalEUR": 490,
+      "roomCombo": "1 × Habitación Doble (232 €) + 1 × Non-smoking Twin Room with Asakusa Temple View (twin, 258 €)",
+      "twinPriceTotalEUR": null,
+      "taxesIncluded": "no indicado",
+      "freeCancel": "Sí, cancelación gratis antes del 24 de mayo de 2027",
+      "breakfast": "No incluido; no se ofrece opción de desayuno en la ficha",
+      "coinLaundry": "no indicado",
+      "lat": 35.71361145391431,
+      "lng": 139.79819721230365,
+      "distM": {
+        "Kaminarimon (Sensō-ji)": 323,
+        "Estación Asakusa del Tsukuba Express": 551,
+        "Estación Asakusa (líneas Ginza / Toei Asakusa)": 406,
+        "Estación Tawaramachi (línea Ginza)": 829
+      },
+      "walkMin": {
+        "Kaminarimon (Sensō-ji)": 5,
+        "Estación Asakusa del Tsukuba Express": 9,
+        "Estación Asakusa (líneas Ginza / Toei Asakusa)": 7,
+        "Estación Tawaramachi (línea Ginza)": 13
+      },
+      "notes": "Solo queda 1 habitación twin: no es posible reservar 2 × twin. Superficies no indicadas. Lado este de Sensō-ji, junto a la estación Tobu Asakusa. Booking indica «Se pueden aplicar otros cargos»."
+    },
+    {
+      "name": "B:CONTE Asakusa",
+      "url": "https://www.booking.com/hotel/jp/b-conte-asakusa.es.html?checkin=2027-05-25&checkout=2027-05-28&group_adults=4&no_rooms=2&group_children=0&selected_currency=EUR",
+      "stars": 3,
+      "score": 9.3,
+      "reviews": 1440,
+      "priceTotalEUR": 776,
+      "roomCombo": "2 × Habitación Triple Confort con ducha (3 camas individuales, 22 m²) ocupadas por 2 personas, a 388 € cada una, tarifa no reembolsable",
+      "twinPriceTotalEUR": 776,
+      "taxesIncluded": "no indicado",
+      "freeCancel": "La tarifa más barata (776 €) no es reembolsable; con cancelación gratis antes del 11 de mayo de 2027 son 818 € (2 × 409 €)",
+      "breakfast": "No incluido; no se ofrece opción de desayuno en la ficha",
+      "coinLaundry": "no indicado",
+      "lat": 35.71325742509095,
+      "lng": 139.79415625333786,
+      "distM": {
+        "Kaminarimon (Sensō-ji)": 314,
+        "Estación Asakusa del Tsukuba Express": 195,
+        "Estación Asakusa (líneas Ginza / Toei Asakusa)": 472,
+        "Estación Tawaramachi (línea Ginza)": 519
+      },
+      "walkMin": {
+        "Kaminarimon (Sensō-ji)": 5,
+        "Estación Asakusa del Tsukuba Express": 3,
+        "Estación Asakusa (líneas Ginza / Toei Asakusa)": 8,
+        "Estación Tawaramachi (línea Ginza)": 8
+      },
+      "notes": "El total «twin» corresponde a dos triples de 3 camas individuales (camas separadas garantizadas). La twin propiamente dicha (Doble Superior «1 cama extragrande o 2 individuales», 25 m²) cuesta 427 € no reembolsable (2 × = 854 €) o 449 € con cancelación gratis (2 × = 898 €). El buscador mostraba 817 € con una triple + una habitación de cama grande. Tipo aparthotel: no se ha verificado en la ficha si hay recepción con consigna de equipaje; conviene confirmarlo antes de reservar. La triple es «con ducha» (sin bañera). Booking indica «Se pueden aplicar otros cargos»."
+    },
+    {
+      "name": "Stay SAKURA Tokyo ASAKUSA ART DECO HOTEL",
+      "url": "https://www.booking.com/hotel/jp/stay-sakura-tokyo-asakusa-art-deco.es.html?checkin=2027-05-25&checkout=2027-05-28&group_adults=4&no_rooms=2&group_children=0&selected_currency=EUR",
+      "stars": 3,
+      "score": 8.7,
+      "reviews": 1153,
+      "priceTotalEUR": 748,
+      "roomCombo": "2 × Habitación Doble Superior - 2 camas (twin, 20 m²) a 374 € cada una, tarifa no reembolsable",
+      "twinPriceTotalEUR": 748,
+      "taxesIncluded": "no indicado",
+      "freeCancel": "La tarifa más barata (748 €) no es reembolsable; con cancelación gratis antes del 22 de mayo de 2027 son 830 € (2 × 415 €)",
+      "breakfast": "No incluido; no se ofrece opción de desayuno en la ficha",
+      "coinLaundry": "no indicado",
+      "lat": 35.71500248875576,
+      "lng": 139.7921919705696,
+      "distM": {
+        "Kaminarimon (Sensō-ji)": 577,
+        "Estación Asakusa del Tsukuba Express": 134,
+        "Estación Asakusa (líneas Ginza / Toei Asakusa)": 734,
+        "Estación Tawaramachi (línea Ginza)": 603
+      },
+      "walkMin": {
+        "Kaminarimon (Sensō-ji)": 9,
+        "Estación Asakusa del Tsukuba Express": 2,
+        "Estación Asakusa (líneas Ginza / Toei Asakusa)": 12,
+        "Estación Tawaramachi (línea Ginza)": 10
+      },
+      "notes": "Solo 3 unidades twin. Alternativa en una sola unidad: Suite Familiar de 43 m² con 2 dormitorios de 2 camas individuales cada uno (668 € no reembolsable / 742 € con cancelación gratis), pero es una única unidad y queda 1. Pegado a la estación TX Asakusa, en Nishi-Asakusa. La ficha solo lista «servicio de lavandería». Booking indica «Se pueden aplicar otros cargos»."
+    },
+    {
+      "name": "浅草雷門 竹乃宿",
+      "url": "https://www.booking.com/hotel/jp/qian-cao-lei-men-zhu-nai-su.es.html?checkin=2027-05-25&checkout=2027-05-28&group_adults=4&no_rooms=2&group_children=0&selected_currency=EUR",
+      "stars": 2,
+      "score": 9.2,
+      "reviews": 249,
+      "priceTotalEUR": 830,
+      "roomCombo": "2 × Habitación Doble Estándar - 2 camas (twin) a 415 € cada una",
+      "twinPriceTotalEUR": 830,
+      "taxesIncluded": "no indicado",
+      "freeCancel": "Sí, cancelación gratis antes del 18 de mayo de 2027; sin pago por adelantado",
+      "breakfast": "No incluido; no se ofrece opción de desayuno en la ficha",
+      "coinLaundry": "no indicado",
+      "lat": 35.710412,
+      "lng": 139.793568,
+      "distM": {
+        "Kaminarimon (Sensō-ji)": 267,
+        "Estación Asakusa del Tsukuba Express": 399,
+        "Estación Asakusa (líneas Ginza / Toei Asakusa)": 358,
+        "Estación Tawaramachi (línea Ginza)": 303
+      },
+      "walkMin": {
+        "Kaminarimon (Sensō-ji)": 4,
+        "Estación Asakusa del Tsukuba Express": 6,
+        "Estación Asakusa (líneas Ginza / Toei Asakusa)": 6,
+        "Estación Tawaramachi (línea Ginza)": 5
+      },
+      "notes": "Único tipo de habitación a la venta (8 unidades). Superficie no indicada. La ficha no menciona recepción ni consigna de equipaje: hay que confirmarlo antes de reservar, porque se llega a las 13:30 con 4 maletas. Pocas opiniones (249). Ubicación muy equilibrada entre Kaminarimon y Tawaramachi. Booking indica «Se pueden aplicar otros cargos»."
+    },
+    {
+      "name": "APA Hotel Asakusa Tawaramachi Ekimae",
+      "url": "https://www.booking.com/hotel/jp/apa-hote-asakusa-taharamachi-ekimae.es.html?checkin=2027-05-25&checkout=2027-05-28&group_adults=4&no_rooms=2&group_children=0&selected_currency=EUR",
+      "stars": 3,
+      "score": 8.3,
+      "reviews": 7178,
+      "priceTotalEUR": 697,
+      "roomCombo": "1 × Habitación Doble - No fumadores (287 €) + 1 × Habitación Doble - No fumadores - 2 camas (twin, 410 €)",
+      "twinPriceTotalEUR": 820,
+      "taxesIncluded": "no indicado",
+      "freeCancel": "Sí, cancelación gratis antes del 24 de mayo de 2027; sin pago por adelantado",
+      "breakfast": "No incluido; tarifa con desayuno a 437 € por habitación twin",
+      "coinLaundry": "no indicado",
+      "lat": 35.7101096861803,
+      "lng": 139.79008545277907,
+      "distM": {
+        "Kaminarimon (Sensō-ji)": 581,
+        "Estación Asakusa del Tsukuba Express": 449,
+        "Estación Asakusa (líneas Ginza / Toei Asakusa)": 670,
+        "Estación Tawaramachi (línea Ginza)": 40
+      },
+      "walkMin": {
+        "Kaminarimon (Sensō-ji)": 9,
+        "Estación Asakusa del Tsukuba Express": 7,
+        "Estación Asakusa (líneas Ginza / Toei Asakusa)": 11,
+        "Estación Tawaramachi (línea Ginza)": 1
+      },
+      "notes": "La twin es cara (410 €) frente a la doble (287 €): 2 × twin = 820 €. Superficies no indicadas en la ficha. Encima de la estación Tawaramachi; el más alejado de Sensō-ji del lado oeste. La ficha solo lista «servicio de lavandería». Booking indica «Se pueden aplicar otros cargos»."
+    },
+    {
+      "name": "Asakusa Tobu Hotel",
+      "url": "https://www.booking.com/hotel/jp/asakusa-tobu.es.html?checkin=2027-05-25&checkout=2027-05-28&group_adults=4&no_rooms=2&group_children=0&selected_currency=EUR",
+      "stars": 3,
+      "score": 9.1,
+      "reviews": 7752,
+      "priceTotalEUR": 999,
+      "roomCombo": "1 × Habitación Doble A - 2 camas (twin, 20 m², sin vistas / delante del ascensor) en oferta de colaborador a 451 € (solo 1 unidad) + 1 × la misma habitación a 548 €",
+      "twinPriceTotalEUR": 1096,
+      "taxesIncluded": "sí",
+      "freeCancel": "Sí, cancelación gratis antes del 23 de mayo de 2027",
+      "breakfast": "No incluido; opcional 20 € por persona (tarifa con desayuno: 615 € por habitación)",
+      "coinLaundry": "no indicado",
+      "lat": 35.711322,
+      "lng": 139.797564,
+      "distM": {
+        "Kaminarimon (Sensō-ji)": 108,
+        "Estación Asakusa del Tsukuba Express": 565,
+        "Estación Asakusa (líneas Ginza / Toei Asakusa)": 147,
+        "Estación Tawaramachi (línea Ginza)": 677
+      },
+      "walkMin": {
+        "Kaminarimon (Sensō-ji)": 2,
+        "Estación Asakusa del Tsukuba Express": 9,
+        "Estación Asakusa (líneas Ginza / Toei Asakusa)": 2,
+        "Estación Tawaramachi (línea Ginza)": 11
+      },
+      "notes": "El buscador mostraba 901 € (2 × la oferta de colaborador), pero esa oferta solo tiene 1 unidad: el total real sin oferta de colaborador es 2 × 548 € = 1.096 €, impuestos incluidos. Twin B de 21 m² a 560 €. Frente a Kaminarimon y encima de la estación Asakusa de la línea Ginza; el mejor punto para ir a pie al Skytree. La ficha solo lista «servicio de lavandería»."
+    },
+    {
+      "name": "OMO3 Asakusa by Hoshino Resorts",
+      "url": "https://www.booking.com/hotel/jp/omo3-asakusa-by-hoshino-resorts.es.html?checkin=2027-05-25&checkout=2027-05-28&group_adults=4&no_rooms=2&group_children=0&selected_currency=EUR",
+      "stars": 4,
+      "score": 8.5,
+      "reviews": 989,
+      "priceTotalEUR": 1001,
+      "roomCombo": "1 × Habitación Doble - 2 camas (twin, 18 m²) en oferta de colaborador no reembolsable a 471 € (solo 1 unidad) + 1 × YOSE Twin Room (18 m²) no reembolsable a 530 €",
+      "twinPriceTotalEUR": 1060,
+      "taxesIncluded": "sí",
+      "freeCancel": "Las tarifas baratas no son reembolsables; con cancelación gratis antes del 13 de abril de 2027 son 1.178 € (2 × 589 €)",
+      "breakfast": "No incluido; tarifa no reembolsable con desayuno a 557 € por habitación",
+      "coinLaundry": "sí",
+      "lat": 35.713807752030306,
+      "lng": 139.79826346255106,
+      "distM": {
+        "Kaminarimon (Sensō-ji)": 345,
+        "Estación Asakusa del Tsukuba Express": 556,
+        "Estación Asakusa (líneas Ginza / Toei Asakusa)": 429,
+        "Estación Tawaramachi (línea Ginza)": 846
+      },
+      "walkMin": {
+        "Kaminarimon (Sensō-ji)": 6,
+        "Estación Asakusa del Tsukuba Express": 9,
+        "Estación Asakusa (líneas Ginza / Toei Asakusa)": 7,
+        "Estación Tawaramachi (línea Ginza)": 14
+      },
+      "notes": "El buscador mostraba 942 € (2 × la oferta de colaborador de 471 €), pero solo hay 1 unidad: el total real es 2 × 530 € = 1.060 € no reembolsable, impuestos incluidos. La cancelación gratis caduca muy pronto (13 de abril). Lavadoras citadas en opiniones de huéspedes en Booking, no en la lista oficial de servicios. Lado este de Sensō-ji (Hanakawado)."
+    },
+    {
+      "name": "Hotel Gracery Asakusa",
+      "url": "https://www.booking.com/hotel/jp/gracery-asakusa.es.html?checkin=2027-05-25&checkout=2027-05-28&group_adults=4&no_rooms=2&group_children=0&selected_currency=EUR",
+      "stars": 4,
+      "score": 8.7,
+      "reviews": 2996,
+      "priceTotalEUR": 1039,
+      "roomCombo": "1 × Habitación Doble - No fumadores (18 m², 454 €) + 1 × Habitación Doble - No fumadores - 2 camas (twin, 23 m², 585 €)",
+      "twinPriceTotalEUR": 1170,
+      "taxesIncluded": "no indicado",
+      "freeCancel": "Sí, cancelación gratis antes del 24 de mayo de 2027; sin pago por adelantado",
+      "breakfast": "No incluido; opcional 16 € por persona (tarifa con desayuno: 678 € por habitación twin)",
+      "coinLaundry": "no indicado",
+      "lat": 35.709638417206904,
+      "lng": 139.79534438525013,
+      "distM": {
+        "Kaminarimon (Sensō-ji)": 188,
+        "Estación Asakusa del Tsukuba Express": 548,
+        "Estación Asakusa (líneas Ginza / Toei Asakusa)": 199,
+        "Estación Tawaramachi (línea Ginza)": 456
+      },
+      "walkMin": {
+        "Kaminarimon (Sensō-ji)": 3,
+        "Estación Asakusa del Tsukuba Express": 9,
+        "Estación Asakusa (líneas Ginza / Toei Asakusa)": 3,
+        "Estación Tawaramachi (línea Ginza)": 7
+      },
+      "notes": "Twin amplias (23 m²), 4 unidades. El mejor situado para la alternativa del día 28 (Access Express directo desde la estación Asakusa de la línea Toei Asakusa) y a 3 minutos de Kaminarimon. Una opinión de huésped menciona un servicio de lavandería económico; la ficha solo lista «servicio de lavandería». Booking indica «Se pueden aplicar otros cargos»."
+    },
+    {
+      "name": "Richmond Hotel Premier Asakusa International",
+      "url": "https://www.booking.com/hotel/jp/richmond-premier-asakusa-international.es.html?checkin=2027-05-25&checkout=2027-05-28&group_adults=4&no_rooms=2&group_children=0&selected_currency=EUR",
+      "stars": 4,
+      "score": 8.9,
+      "reviews": 3233,
+      "priceTotalEUR": 1142,
+      "roomCombo": "2 × Habitación Doble Estándar - No fumadores (1 cama doble, 18 m²) a 571 € cada una: no cumple el requisito de camas separadas",
+      "twinPriceTotalEUR": 2016,
+      "taxesIncluded": "no indicado",
+      "freeCancel": "Sí, cancelación gratis antes del 24 de mayo de 2027",
+      "breakfast": "No incluido; opcional 21 € por persona",
+      "coinLaundry": "no indicado",
+      "lat": 35.713955281119,
+      "lng": 139.79379415512096,
+      "distM": {
+        "Kaminarimon (Sensō-ji)": 395,
+        "Estación Asakusa del Tsukuba Express": 154,
+        "Estación Asakusa (líneas Ginza / Toei Asakusa)": 553,
+        "Estación Tawaramachi (línea Ginza)": 559
+      },
+      "walkMin": {
+        "Kaminarimon (Sensō-ji)": 6,
+        "Estación Asakusa del Tsukuba Express": 3,
+        "Estación Asakusa (líneas Ginza / Toei Asakusa)": 9,
+        "Estación Tawaramachi (línea Ginza)": 9
+      },
+      "notes": "Las twin solo existen en categoría Superior con vistas (27 m²) a 1.008 € cada una: 2 × twin = 2.016 €, fuera de rango. El buscador mostraba 1.104 € usando una oferta de colaborador de 552 € limitada a 1 unidad y sin tipo de cama indicado. Las opiniones mencionan lavandería; la ficha lista lavandería y limpieza en seco de pago. Booking indica «Se pueden aplicar otros cargos»."
+    }
+  ],
+  "tops": {
+    "dinero": [
+      {
+        "name": "Hotel Trend Asakusa Annex",
+        "why": "2 × twin por 498 € con impuestos incluidos y cancelación gratis, a 3 min del TX Asakusa y 5 de Kaminarimon. Sencillo (7,7) y solo quedan 2 twin."
+      },
+      {
+        "name": "Ano Hotel Asakusa",
+        "why": "2 × twin por 498 € con 10 unidades y nota 7,9. Queda al otro lado del río, más lejos de Sensō-ji y del TX."
+      },
+      {
+        "name": "Henn na Hotel Premier Tokyo Asakusa Tawaramachi",
+        "why": "2 × twin de 16 m² por 552 € con nota 8,7 y 4.800 opiniones. Solo 54 € más que el más barato y mucho más hotel."
+      },
+      {
+        "name": "Hotel Keihan Asakusa",
+        "why": "2 × twin económica por 570 € con nota 8,5, pegado a la estación TX Asakusa."
+      },
+      {
+        "name": "Tosei Hotel Cocone Asakusa",
+        "why": "2 × twin de 18 m² por 604 € con nota 8,7. Es el más alejado de las estaciones del grupo barato."
+      }
+    ],
+    "calidadPrecio": [
+      {
+        "name": "Henn na Hotel Premier Tokyo Asakusa Tawaramachi",
+        "why": "Por 552 € da nota 8,7, twin de 16 m², lavandería de autoservicio y disponibilidad amplia. A 3 min de Tawaramachi y bien situado para el taxi a Ueno."
+      },
+      {
+        "name": "Hotel Keihan Asakusa",
+        "why": "Cadena fiable con nota 8,5 por 570 €, a 2 min del TX Asakusa y 9 de Kaminarimon. Falta confirmar los m² de la twin económica."
+      },
+      {
+        "name": "B:CONTE Asakusa",
+        "why": "La mejor nota (9,3) y habitaciones de 22 m² con 3 camas individuales por 776 € (818 € con cancelación gratis), a 3 min del TX y 5 de Kaminarimon."
+      },
+      {
+        "name": "The Kanzashi Tokyo Asakusa",
+        "why": "Nota 8,8 con twin de 17 m² por 618 € y 10 unidades disponibles. A 10 min de Kaminarimon, por el lado norte del templo."
+      },
+      {
+        "name": "Far East Village Hotel Tokyo, Asakusa",
+        "why": "Ubicación de primera en Kokusai-dōri por 632 € (666 € con cancelación gratis), impuestos incluidos y nota 8,5. Habitaciones de 15 m²."
+      }
+    ],
+    "ubicacion": [
+      {
+        "name": "B:CONTE Asakusa",
+        "why": "A 5 min de Kaminarimon y 3 del TX Asakusa, dentro del barrio del templo y con la mejor nota (9,3). Confirmar recepción y consigna."
+      },
+      {
+        "name": "Far East Village Hotel Tokyo, Asakusa",
+        "why": "En Kokusai-dōri: 3 min al TX, 6 a Kaminarimon y 5 a Tawaramachi, con salida directa en taxi hacia Ueno el día del vuelo."
+      },
+      {
+        "name": "Hotel Sunroute Asakusa",
+        "why": "Esquina de Kokusai-dōri con Kaminarimon-dōri: 3 min a Tawaramachi, 6 al TX y 7 a Kaminarimon en línea recta. Lado bueno para el taxi a Keisei Ueno."
+      },
+      {
+        "name": "浅草雷門 竹乃宿",
+        "why": "El más equilibrado entre las cuatro referencias: 4 min a Kaminarimon, 5 a Tawaramachi y 6 al TX y a la estación Asakusa. Falta confirmar recepción y consigna."
+      },
+      {
+        "name": "Asakusa Tobu Hotel",
+        "why": "Frente a Kaminarimon (2 min) y sobre la línea Ginza, el punto de partida más corto a pie al Skytree y con nota 9,1. A 9 min del TX y caro (1.096 €)."
+      }
+    ]
+  },
+  "caveats": [
+    "Precios leídos en Booking.com (sitio en español, EUR) el 13 de noviembre de 2026 para 4 adultos en 2 habitaciones; son totales de las 3 noches y pueden cambiar.",
+    "Cada total se ha confirmado en la ficha del hotel sumando las dos habitaciones necesarias; el precio del buscador era engañoso en varios casos (ofertas de colaborador de 1 sola unidad en Asakusa Tobu, OMO3 y Richmond Premier; una habitación de literas compartida en Tosei Cocone Asakusa Kuramae).",
+    "«taxesIncluded» es «sí» solo cuando Booking muestra «Incluye impuestos y cargos». En el resto la ficha dice «Se pueden aplicar otros cargos» sin desglose visible (posible tasa de alojamiento de Tokio u otros cargos a pagar en el hotel): se ha dejado como «no indicado».",
+    "Las estrellas son la clasificación de calidad que muestra Booking, no una categoría oficial.",
+    "«coinLaundry» es «sí» solo donde las opiniones de huéspedes en Booking citan lavadoras o lavandería de autoservicio (Henn na y OMO3); ninguna ficha lo confirma en su lista oficial de servicios. «Servicio de lavandería» en la ficha significa lavandería de pago, no autoservicio.",
+    "Los minutos a pie son estimaciones: distancia en línea recta (haversine) × 1,3 / 80 m por minuto, redondeada. Para Ano Hotel Asakusa el paseo real es más largo porque hay que cruzar el río Sumida por el puente Komagata. «distM» son los metros en línea recta.",
+    "Las coordenadas de referencia son aproximadas; la estación Asakusa agrupa en un solo punto las líneas Ginza y Toei Asakusa, cuyos andenes están separados unos 150 m.",
+    "Varias fichas no indican la superficie de la habitación más barata (Hotel Keihan twin económica, Ano, Hotel Trend, APA, 竹乃宿): no se ha podido descartar que midan menos de 14 m².",
+    "No se ha verificado en las fichas la consigna de equipaje ni la existencia de recepción en B:CONTE Asakusa y 浅草雷門 竹乃宿; confirmarlo antes de reservar por la llegada a las 13:30 con 4 maletas.",
+    "Sin el filtro de camas individuales aparecen además Toyoko Inn (Tawaramachi y Kuramae No.2), APA Hotel Asakusa Ekimae, Dormy Inn EXPRESS Asakusa y the b asakusa, pero para estas fechas solo ofrecían habitaciones dobles, por lo que no se abrieron sus fichas.",
+    "Vistos solo en el buscador y descartados por precio o tipo: Asakusa View Hotel Annex Rokku (1.241 €), Richmond Hotel Asakusa (1.039 € con individual + triple), hotel MONday Asakusa (1.067 €), CROSS Suites (1.036 €), Onyado Nono (desde 1.130 €), The Gate Hotel Kaminarimon (1.290 €); Hotel Trend Asakusa (498 €) queda fuera por nota 6,8 y Asakusa Kokono Club por baño compartido en la twin."
+  ]
+}

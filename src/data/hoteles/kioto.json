@@ -1,0 +1,502 @@
+{
+  "stay": "Kioto · Shichijō",
+  "checkIn": "2027-05-17",
+  "checkOut": "2027-05-21",
+  "nights": 4,
+  "searchedAt": "2026-11-13T13:53:17.946Z",
+  "anchors": [
+    {
+      "name": "Keihan Shichijō",
+      "lat": 34.9895,
+      "lng": 135.768
+    },
+    {
+      "name": "Estación de Kioto",
+      "lat": 34.9858,
+      "lng": 135.7588
+    },
+    {
+      "name": "Sanjūsangen-dō",
+      "lat": 34.9879,
+      "lng": 135.7717
+    },
+    {
+      "name": "Kiyomizu-dera",
+      "lat": 34.9949,
+      "lng": 135.785
+    }
+  ],
+  "candidates": [
+    {
+      "name": "Hotel Glad One Kyoto Shichijo by M's",
+      "url": "https://www.booking.com/hotel/jp/glad-one-kyoto-shichijo.es.html?checkin=2027-05-17&checkout=2027-05-21&group_adults=4&no_rooms=2&group_children=0&selected_currency=EUR",
+      "stars": 3,
+      "score": 8.7,
+      "reviews": 866,
+      "priceTotalEUR": 464,
+      "roomCombo": "2 × Habitación Doble Deluxe - 2 camas (twin, 15 m²) con oferta de colaborador de Booking: 232 € por habitación, pago por adelantado, no modificable (el selector permitía 2 unidades)",
+      "twinPriceTotalEUR": 644,
+      "taxesIncluded": "no",
+      "freeCancel": "Oferta de colaborador (464 €): gratis hasta el 16 may 2027. Tarifa directa 644 €: no reembolsable. Tarifa flexible 680 €: gratis hasta el 16 may 2027, sin pago hasta el 14 may",
+      "breakfast": "No incluido",
+      "coinLaundry": "sí",
+      "lat": 34.9916678865072,
+      "lng": 135.76591578119405,
+      "walkMin": {
+        "Keihan Shichijō": 5,
+        "Estación de Kioto": 15,
+        "Sanjūsangen-dō": 11,
+        "Kiyomizu-dera": 29
+      },
+      "notes": "Lavandería de monedas confirmada por comentarios (lavadora-secadora de pago en el hotel; varias quejas de que la secadora seca poco). Ficha: solo \"Servicio de lavandería\". Guardaequipaje en ficha y en comentarios (dejaron maletas antes del check-in). Único tipo de habitación a la venta: twin de 15 m². twinPriceTotalEUR = 2 × 322 € tarifa directa no reembolsable; flexible 2 × 340 € = 680 €. Precio \"se pueden aplicar otros cargos\" (impuestos no incluidos)."
+    },
+    {
+      "name": "Wander Kyoto Nanajo",
+      "url": "https://www.booking.com/hotel/jp/m-39-s-est-nanajo.es.html?checkin=2027-05-17&checkout=2027-05-21&group_adults=4&no_rooms=2&group_children=0&selected_currency=EUR",
+      "stars": 3,
+      "score": 9,
+      "reviews": 4147,
+      "priceTotalEUR": 722,
+      "roomCombo": "2 × Habitación Doble - 2 camas (twin, 17 m²) con oferta de colaborador: 361 € por habitación, no reembolsable, pago por adelantado",
+      "twinPriceTotalEUR": 812,
+      "taxesIncluded": "no",
+      "freeCancel": "Tarifa directa 812 €: gratis hasta el 16 may 2027, pago en el alojamiento. Oferta de colaborador 722 €: no reembolsable",
+      "breakfast": "No incluido",
+      "coinLaundry": "sí",
+      "lat": 34.98944943523817,
+      "lng": 135.7659323707695,
+      "walkMin": {
+        "Keihan Shichijō": 3,
+        "Estación de Kioto": 12,
+        "Sanjūsangen-dō": 9,
+        "Kiyomizu-dera": 30
+      },
+      "notes": "Lavandería de autoservicio confirmada por comentarios, pero con muy pocas máquinas (un comentario habla de una sola) y secadora floja; hay una lavandería de monedas a pocas puertas. Guardaequipaje en ficha y comentarios. Recepción 24 h. Twin superior 19 m²: 2 × 455 € = 910 €. Dos dobles (1 cama): 2 × 406 € = 812 €. Precio \"se pueden aplicar otros cargos\"."
+    },
+    {
+      "name": "MR T Kyoto Station East 29",
+      "url": "https://www.booking.com/hotel/jp/gu-ting-jun-jing-du-yi-dong-29.es.html?checkin=2027-05-17&checkout=2027-05-21&group_adults=4&no_rooms=2&group_children=0&selected_currency=EUR",
+      "stars": 3,
+      "score": 9.1,
+      "reviews": 1294,
+      "priceTotalEUR": 648,
+      "roomCombo": "2 × Habitación Doble Estándar - 2 camas (2 individuales + sofá cama, 22 m², cocina y lavadora): 324 € por habitación, no reembolsable, pago online",
+      "twinPriceTotalEUR": 648,
+      "taxesIncluded": "sí",
+      "freeCancel": "Tarifa 648 €: no reembolsable. Tarifa flexible 696 € (2 × 348 €): gratis hasta el 14 may 2027, sin pago hasta el 12 may",
+      "breakfast": "No incluido",
+      "coinLaundry": "sí",
+      "lat": 34.9905999,
+      "lng": 135.769056,
+      "walkMin": {
+        "Keihan Shichijō": 3,
+        "Estación de Kioto": 17,
+        "Sanjūsangen-dō": 6,
+        "Kiyomizu-dera": 25
+      },
+      "notes": "OJO: no es coin laundry común sino lavadora DENTRO de cada habitación (sin función de secado; dan tendedero), confirmado por comentarios. Tipo aparthotel catalogado como hotel de 3 estrellas, con recepción atendida (comentarios) y guardaequipaje (ficha; un comentario dice que guardaron las maletas horas después del check-out). Precio \"incluye impuestos y cargos\"."
+    },
+    {
+      "name": "HOTEL LiVEMAX Kyoto Kamogawamae",
+      "url": "https://www.booking.com/hotel/jp/hotel-live-max-kyotokamogawamae.es.html?checkin=2027-05-17&checkout=2027-05-21&group_adults=4&no_rooms=2&group_children=0&selected_currency=EUR",
+      "stars": 3,
+      "score": 7.7,
+      "reviews": 940,
+      "priceTotalEUR": 794,
+      "roomCombo": "2 × Habitación Estándar para FUMADORES - 2 camas (twin, 16 m²) con oferta de colaborador: 397 € por habitación, no reembolsable",
+      "twinPriceTotalEUR": 1118,
+      "taxesIncluded": "no",
+      "freeCancel": "Twin no fumadores 1.118 € y twin fumadores 906 €: gratis hasta el 16 may 2027, sin pago hasta el 14 may. Oferta de colaborador 794 €: no reembolsable",
+      "breakfast": "No incluido",
+      "coinLaundry": "sí",
+      "lat": 34.99412082884023,
+      "lng": 135.76637658895493,
+      "walkMin": {
+        "Keihan Shichijō": 9,
+        "Estación de Kioto": 19,
+        "Sanjūsangen-dō": 14,
+        "Kiyomizu-dera": 28
+      },
+      "notes": "Lavandería de monedas en planta baja confirmada por comentarios. Banderas rojas: las twin baratas son de FUMADORES (2 × 453 € = 906 € directo); twin no fumadores 2 × 559 € = 1.118 € y el selector solo dejaba 2 unidades. Nota 7,7; un comentario menciona olor a moho en pasillos. Guardaequipaje no aparece en la ficha. Check-out a las 10:00 según un comentario."
+    },
+    {
+      "name": "ALA HOTEL KYOTO",
+      "url": "https://www.booking.com/hotel/jp/ala-kyoto.es.html?checkin=2027-05-17&checkout=2027-05-21&group_adults=4&no_rooms=2&group_children=0&selected_currency=EUR",
+      "stars": 4,
+      "score": 9.1,
+      "reviews": 2865,
+      "priceTotalEUR": 764,
+      "roomCombo": "2 × Habitación Doble Estándar (1 cama doble grande, 20 m²): 382 € por habitación, no reembolsable — NO es twin",
+      "twinPriceTotalEUR": 928,
+      "taxesIncluded": "no",
+      "freeCancel": "Twin 928 €: no reembolsable. Twin 994 €: gratis hasta el 19 abr 2027. Twin 1.030 €: gratis hasta el 15 may 2027, pago en el alojamiento",
+      "breakfast": "No incluido (opcional, 20 € por persona y día)",
+      "coinLaundry": "sí",
+      "lat": 34.988621291242204,
+      "lng": 135.76127475134274,
+      "walkMin": {
+        "Keihan Shichijō": 10,
+        "Estación de Kioto": 6,
+        "Sanjūsangen-dō": 15,
+        "Kiyomizu-dera": 37
+      },
+      "notes": "Sala de lavandería de autoservicio confirmada por comentarios; un huésped dice que es gratuita; otros la describen saturada y calurosa. Twin estándar de 25 m² (la más amplia del grupo): 2 × 464 € = 928 €. Sauna/spa. Guardaequipaje en ficha. Precio \"se pueden aplicar otros cargos\"."
+    },
+    {
+      "name": "APA Hotel Kyoto Ekihigashi",
+      "url": "https://www.booking.com/hotel/jp/apahoteru-jing-du-yi-dong.es.html?checkin=2027-05-17&checkout=2027-05-21&group_adults=4&no_rooms=2&group_children=0&selected_currency=EUR",
+      "stars": 3,
+      "score": 8.5,
+      "reviews": 4919,
+      "priceTotalEUR": 844,
+      "roomCombo": "2 × Habitación con cama extragrande - No fumadores (1 cama por habitación): 422 € por habitación — NO es twin",
+      "twinPriceTotalEUR": 944,
+      "taxesIncluded": "sí",
+      "freeCancel": "Gratis hasta el 16 may 2027, pago en el alojamiento",
+      "breakfast": "No incluido (opcional, 12 € por persona y día)",
+      "coinLaundry": "sí",
+      "lat": 34.987916,
+      "lng": 135.761228,
+      "walkMin": {
+        "Keihan Shichijō": 10,
+        "Estación de Kioto": 5,
+        "Sanjūsangen-dō": 16,
+        "Kiyomizu-dera": 37
+      },
+      "notes": "Sala de lavandería confirmada por comentarios (pocas máquinas para un hotel tan grande). Twin A no fumadores de 15 m²: 2 × 472 € = 944 €. Existe una oferta de colaborador de 2 × 384 € = 768 € pero es \"habitación asignada al hacer el check-in\" (tipo de cama no garantizado, pago por adelantado): no válida para asegurar twin. Baños comunes tipo onsen según comentarios. Guardaequipaje en ficha. Precio \"incluye impuestos y cargos\"."
+    },
+    {
+      "name": "unito KYOTO STATION north",
+      "url": "https://www.booking.com/hotel/jp/reisidence-unito-kyoto-station-north.es.html?checkin=2027-05-17&checkout=2027-05-21&group_adults=4&no_rooms=2&group_children=0&selected_currency=EUR",
+      "stars": 3,
+      "score": 8.5,
+      "reviews": 239,
+      "priceTotalEUR": 756,
+      "roomCombo": "2 × Habitación Doble - 2 camas (twin) con oferta de colaborador: 378 € por habitación, pago por adelantado, no modificable",
+      "twinPriceTotalEUR": 872,
+      "taxesIncluded": "no",
+      "freeCancel": "Oferta de colaborador 756 €: gratis hasta el 10 may 2027. Tarifa directa 872 €: no reembolsable. Tarifa flexible 1.046 € (2 × 523 €): gratis hasta el 15 may 2027",
+      "breakfast": "No incluido",
+      "coinLaundry": "sí",
+      "lat": 34.9922176,
+      "lng": 135.7646033,
+      "walkMin": {
+        "Keihan Shichijō": 7,
+        "Estación de Kioto": 14,
+        "Sanjūsangen-dō": 13,
+        "Kiyomizu-dera": 31
+      },
+      "notes": "Lavadoras y secadoras 24 h para huéspedes, gratuitas según varios comentarios (sala de lavandería, lounge y cocina compartida). Superficie de la twin no indicada en la ficha; los comentarios dicen que las habitaciones son algo pequeñas. Solo 239 comentarios. Guardaequipaje no aparece en la ficha. Precio \"se pueden aplicar otros cargos\"."
+    },
+    {
+      "name": "Sakura Cross Hotel Kyoto Kiyomizu",
+      "url": "https://www.booking.com/hotel/jp/sakurakurosuhoterujing-du-qing-shui-si.es.html?checkin=2027-05-17&checkout=2027-05-21&group_adults=4&no_rooms=2&group_children=0&selected_currency=EUR",
+      "stars": 3,
+      "score": 8.5,
+      "reviews": 1908,
+      "priceTotalEUR": 878,
+      "roomCombo": "2 × Compact Twin Room Max4 Comfort2 (2 camas dobles por habitación, 15 m²): 439 € por habitación, no reembolsable",
+      "twinPriceTotalEUR": 878,
+      "taxesIncluded": "no",
+      "freeCancel": "878 €: no reembolsable. 928 €: gratis hasta el 17 abr 2027. 1.302 €: gratis hasta el 3 may 2027",
+      "breakfast": "No incluido",
+      "coinLaundry": "no",
+      "lat": 34.9950932231482,
+      "lng": 135.769365011657,
+      "walkMin": {
+        "Keihan Shichijō": 10,
+        "Estación de Kioto": 23,
+        "Sanjūsangen-dō": 13,
+        "Kiyomizu-dera": 23
+      },
+      "notes": "DESCARTADO: varios comentarios confirman que NO hay lavadoras para huéspedes. El precio de 464 € de la página de resultados era UNA sola habitación para 4 personas. Sin limpieza diaria según comentarios. Guardaequipaje no aparece en la ficha."
+    },
+    {
+      "name": "Dormy Inn Premium Kyoto Ekimae Natural Hot Spring",
+      "url": "https://www.booking.com/hotel/jp/dormy-inn-premium-kyoto-ekimae.es.html?checkin=2027-05-17&checkout=2027-05-21&group_adults=4&no_rooms=2&group_children=0&selected_currency=EUR",
+      "stars": 4,
+      "score": 8.7,
+      "reviews": 2528,
+      "priceTotalEUR": 1470,
+      "roomCombo": "2 × Habitación Doble sin servicio de limpieza - 2 camas - No fumadores (twin, 20 m²) con oferta de colaborador: 735 € por habitación, pago por adelantado",
+      "twinPriceTotalEUR": 1504,
+      "taxesIncluded": "no",
+      "freeCancel": "Gratis hasta el 16 may 2027 (tarifa directa 1.504 €: sin pago hasta el 14 may)",
+      "breakfast": "No incluido (opcional, 14 € por persona y día)",
+      "coinLaundry": "sí",
+      "lat": 34.98731051424011,
+      "lng": 135.76175808906555,
+      "walkMin": {
+        "Keihan Shichijō": 10,
+        "Estación de Kioto": 5,
+        "Sanjūsangen-dō": 15,
+        "Kiyomizu-dera": 37
+      },
+      "notes": "Lavadoras gratuitas y secadoras de pago, confirmado por comentarios y por la descripción. Onsen, ramen nocturno gratis. Twin sin limpieza diaria 2 × 752 € = 1.504 €; con limpieza 2 × 769 € = 1.538 €. Guardaequipaje en ficha. Precio \"se pueden aplicar otros cargos\"."
+    },
+    {
+      "name": "Hotel Ethnography Kiyomizu Gojo",
+      "url": "https://www.booking.com/hotel/jp/ethnography-kiyomizu-gojo-kyoto.es.html?checkin=2027-05-17&checkout=2027-05-21&group_adults=4&no_rooms=2&group_children=0&selected_currency=EUR",
+      "stars": 3,
+      "score": 9,
+      "reviews": 329,
+      "priceTotalEUR": 800,
+      "roomCombo": "2 × Habitación con cama grande (1 cama doble grande, 18 m²) con desayuno: 400 € por habitación — NO es twin",
+      "twinPriceTotalEUR": null,
+      "taxesIncluded": "no indicado",
+      "freeCancel": "no indicado (la página de resultados mostraba cancelación gratis a 874 € por las 2 dobles)",
+      "breakfast": "Incluido en todas las tarifas vistas",
+      "coinLaundry": "no",
+      "lat": 34.991836,
+      "lng": 135.7741886,
+      "walkMin": {
+        "Keihan Shichijō": 10,
+        "Estación de Kioto": 25,
+        "Sanjūsangen-dō": 8,
+        "Kiyomizu-dera": 17
+      },
+      "notes": "DESCARTADO: comentarios confirman que no hay lavadoras (solo servicio externo de recogida) y no hay twin para 2 (solo familiares de 38–41 m² a 689 € cada una). Guardaequipaje no aparece en la ficha."
+    },
+    {
+      "name": "Kyonoyado Kiyomizu Gojo Kuretakeso",
+      "url": "https://www.booking.com/hotel/jp/hotel-kuretakeso-kyoto-kiyomizu-gojyo.es.html?checkin=2027-05-17&checkout=2027-05-21&group_adults=4&no_rooms=2&group_children=0&selected_currency=EUR",
+      "stars": 3,
+      "score": 8,
+      "reviews": 334,
+      "priceTotalEUR": 950,
+      "roomCombo": "2 × Habitación Doble (1 cama) con oferta de colaborador: 475 € por habitación, pago por adelantado — NO es twin",
+      "twinPriceTotalEUR": 1538,
+      "taxesIncluded": "sí",
+      "freeCancel": "Twin 1.538 €: no reembolsable. Twin 1.580 € (2 × 790 €): gratis hasta el 10 may 2027. Oferta de colaborador 950 €: gratis hasta el 15 may 2027",
+      "breakfast": "No incluido (opcional, 8 € por persona y día)",
+      "coinLaundry": "sí",
+      "lat": 34.994738250321554,
+      "lng": 135.77262488880342,
+      "walkMin": {
+        "Keihan Shichijō": 12,
+        "Estación de Kioto": 26,
+        "Sanjūsangen-dō": 12,
+        "Kiyomizu-dera": 18
+      },
+      "notes": "Lavandería de autoservicio confirmada por comentarios (uno dice que la lavadora no limpia bien). Twin estándar 2 × 769 € = 1.538 €; superficie no indicada. Baño termal común. Guardaequipaje y recepción 24 h en ficha. Precio \"incluye impuestos y cargos\". Zona Kiyomizu-Gojō, a ~12 min de Keihan Shichijō."
+    },
+    {
+      "name": "Hotel Japanesque Kyoto Station ZEQUU ANNEX",
+      "url": "https://www.booking.com/hotel/jp/hoteruziyapanesukujing-du-yi-zequu-annex.es.html?checkin=2027-05-17&checkout=2027-05-21&group_adults=4&no_rooms=2&group_children=0&selected_currency=EUR",
+      "stars": 3,
+      "score": 8.6,
+      "reviews": 801,
+      "priceTotalEUR": 1010,
+      "roomCombo": "2 × Habitación Doble - 2 camas (twin, 16 m²): 505 € por habitación",
+      "twinPriceTotalEUR": 1010,
+      "taxesIncluded": "sí",
+      "freeCancel": "1.010 €: gratis hasta el 3 may 2027. 1.076 €: gratis hasta el 15 may 2027",
+      "breakfast": "No incluido",
+      "coinLaundry": "no",
+      "lat": 34.9824407,
+      "lng": 135.7640515,
+      "walkMin": {
+        "Keihan Shichijō": 14,
+        "Estación de Kioto": 10,
+        "Sanjūsangen-dō": 15,
+        "Kiyomizu-dera": 38
+      },
+      "notes": "DESCARTADO: sin lavandería propia (los comentarios indican una lavandería de monedas en la acera de enfrente). Está al SUR de la estación (Minami-ku), fuera de la zona elegida. Un comentario dice que no hay personal antes de las 8:00. Guardaequipaje en ficha."
+    },
+    {
+      "name": "HIYORI RESIDENCE KYOTO KAMOGAWA formerly HIYORI STAY KYOTO KAMOGAWA",
+      "url": "https://www.booking.com/hotel/jp/hoterusuitojing-du-ya-chuan-zheng-mian-jing-du-fu-jing-du-shi.es.html?checkin=2027-05-17&checkout=2027-05-21&group_adults=4&no_rooms=2&group_children=0&selected_currency=EUR",
+      "stars": 3,
+      "score": 9.2,
+      "reviews": 952,
+      "priceTotalEUR": 880,
+      "roomCombo": "2 × Habitación Doble con cocina y lavadora (1 cama doble, 22 m²) con desayuno: 440 € por habitación — NO es twin",
+      "twinPriceTotalEUR": null,
+      "taxesIncluded": "no indicado",
+      "freeCancel": "no indicado (la página de resultados mostraba cancelación gratis a 991 € por las 2 dobles)",
+      "breakfast": "Incluido en todas las tarifas vistas",
+      "coinLaundry": "sí",
+      "lat": 34.99263330451108,
+      "lng": 135.76835156934666,
+      "walkMin": {
+        "Keihan Shichijō": 6,
+        "Estación de Kioto": 19,
+        "Sanjūsangen-dō": 10,
+        "Kiyomizu-dera": 25
+      },
+      "notes": "Lavadora DENTRO de cada habitación con secado en el baño (nombre de la habitación y comentarios); no es coin laundry común. No hay twin estándar: la opción con dos camas separadas es \"Doble con cama elevada, cocina y lavadora\" (1 litera/altillo + 1 cama doble grande, 28 m²) a 2 × 555 € = 1.110 € con desayuno. Guardaequipaje y conserjería en ficha."
+    },
+    {
+      "name": "Onyado Nono Kyoto Shichijo Natural Hot Spring",
+      "url": "https://www.booking.com/hotel/jp/onyado-nono-kyoto-shichijo.es.html?checkin=2027-05-17&checkout=2027-05-21&group_adults=4&no_rooms=2&group_children=0&selected_currency=EUR",
+      "stars": 4,
+      "score": 9,
+      "reviews": 9686,
+      "priceTotalEUR": 1676,
+      "roomCombo": "2 × Habitación Estándar con suelo de tatami - 1 cama grande (17 m²): 838 € por habitación — NO es twin",
+      "twinPriceTotalEUR": 1864,
+      "taxesIncluded": "sí",
+      "freeCancel": "Gratis hasta el 16 may 2027, sin pago hasta el 14 may",
+      "breakfast": "No incluido (opcional, 17 € por persona y día)",
+      "coinLaundry": "sí",
+      "lat": 34.989084,
+      "lng": 135.761872,
+      "walkMin": {
+        "Keihan Shichijō": 9,
+        "Estación de Kioto": 7,
+        "Sanjūsangen-dō": 15,
+        "Kiyomizu-dera": 36
+      },
+      "notes": "Lavandería gratuita para huéspedes (planta 7) confirmada por comentarios; secadoras lentas. Onsen. Twin de 22 m² sin limpieza diaria 2 × 932 € = 1.864 €; con limpieza 2 × 944 € = 1.888 €. Guardaequipaje en ficha. Precio \"incluye impuestos y cargos\"."
+    },
+    {
+      "name": "KIORI Exec Gojo",
+      "url": "https://www.booking.com/hotel/jp/kiori-gojo.es.html?checkin=2027-05-17&checkout=2027-05-21&group_adults=4&no_rooms=2&group_children=0&selected_currency=EUR",
+      "stars": 3,
+      "score": 8.7,
+      "reviews": 739,
+      "priceTotalEUR": 402,
+      "roomCombo": "2 × Habitación Doble Estándar - 2 camas (twin, 17 m²) con oferta de colaborador: 201 € por habitación, no reembolsable, pago por adelantado",
+      "twinPriceTotalEUR": 460,
+      "taxesIncluded": "sí",
+      "freeCancel": "Twin 460 €: no reembolsable. Twin 532 € (2 × 266 €): gratis hasta el 15 may 2027, pago en el alojamiento",
+      "breakfast": "No incluido (opcional, 9 € por persona y día)",
+      "coinLaundry": "sí",
+      "lat": 34.9966019698393,
+      "lng": 135.751847157461,
+      "walkMin": {
+        "Keihan Shichijō": 27,
+        "Estación de Kioto": 22,
+        "Sanjūsangen-dō": 33,
+        "Kiyomizu-dera": 49
+      },
+      "notes": "FUERA DE LA ZONA ELEGIDA (Gojō, al oeste de Karasuma): incluido solo como comparación de precio. Lavandería de autoservicio con lavadora y secadora según la descripción de la ficha y comentarios, pero hay UNA sola máquina (y un comentario la encontró averiada). Guardaequipaje y recepción 24 h en ficha. Precio \"incluye impuestos y cargos\"."
+    },
+    {
+      "name": "APA Hotel Kyoto Ekimae Chuoguchi",
+      "url": "https://www.booking.com/hotel/jp/apa-villa-kyoto-ekimae.es.html?checkin=2027-05-17&checkout=2027-05-21&group_adults=4&no_rooms=2&group_children=0&selected_currency=EUR",
+      "stars": 3,
+      "score": 7.8,
+      "reviews": 752,
+      "priceTotalEUR": 704,
+      "roomCombo": "2 × Habitación Doble Pequeña - No fumadores (1 cama por habitación): 352 € por habitación — NO es twin",
+      "twinPriceTotalEUR": null,
+      "taxesIncluded": "sí",
+      "freeCancel": "Gratis hasta el 16 may 2027, pago en el alojamiento",
+      "breakfast": "No incluido (opcional, 7 € por persona y día)",
+      "coinLaundry": "no",
+      "lat": 34.98794448409312,
+      "lng": 135.76096281409264,
+      "walkMin": {
+        "Keihan Shichijō": 11,
+        "Estación de Kioto": 5,
+        "Sanjūsangen-dō": 16,
+        "Kiyomizu-dera": 38
+      },
+      "notes": "DESCARTADO: comentarios confirman que no hay lavandería en el hotel y no se vende ninguna twin. Consigna de equipaje antes del check-in y después del check-out indicada en la ficha."
+    },
+    {
+      "name": "Henn na Hotel Premier Kyoto Eki Hachijoguchimae",
+      "url": "https://www.booking.com/hotel/jp/bian-nahoterujing-du-ba-tiao-kou-yi-qian.es.html?checkin=2027-05-17&checkout=2027-05-21&group_adults=4&no_rooms=2&group_children=0&selected_currency=EUR",
+      "stars": 4,
+      "score": 8.6,
+      "reviews": 3262,
+      "priceTotalEUR": 890,
+      "roomCombo": "2 × Habitación Doble (1 cama doble grande, 20 m²): 445 € por habitación — NO es twin",
+      "twinPriceTotalEUR": 908,
+      "taxesIncluded": "no",
+      "freeCancel": "Gratis hasta el 16 may 2027, pago en el alojamiento",
+      "breakfast": "No incluido (opcional, 9 € por persona y día)",
+      "coinLaundry": "sí",
+      "lat": 34.984167,
+      "lng": 135.761983,
+      "walkMin": {
+        "Keihan Shichijō": 13,
+        "Estación de Kioto": 6,
+        "Sanjūsangen-dō": 16,
+        "Kiyomizu-dera": 39
+      },
+      "notes": "Lavandería de monedas confirmada por comentarios (solo 2 lavadoras-secadoras; secan mal). Twin de 20 m²: 2 × 454 € = 908 €. Está al SUR de la estación (salida Hachijō), lado opuesto a Shichijō: el peor acceso a Keihan de los que tienen lavandería. Check-in con robots. Guardaequipaje en ficha. Precio \"se pueden aplicar otros cargos\"."
+    }
+  ],
+  "tops": {
+    "dinero": [
+      {
+        "name": "Hotel Glad One Kyoto Shichijo by M's",
+        "why": "La twin más barata de la zona: 644 € directo (464 € con la oferta de colaborador prepago), nota 8,7 y a 5 min de Keihan Shichijō; habitación de 15 m²."
+      },
+      {
+        "name": "MR T Kyoto Station East 29",
+        "why": "648 € con impuestos incluidos por dos twin de 22 m² con lavadora en la habitación, a 3 min de Keihan Shichijō."
+      },
+      {
+        "name": "Wander Kyoto Nanajo",
+        "why": "812 € con cancelación gratis (722 € prepago no reembolsable), nota 9,0, a 3 min de Keihan y 12 de la estación."
+      },
+      {
+        "name": "unito KYOTO STATION north",
+        "why": "872 € no reembolsable (756 € con oferta de colaborador cancelable) y lavandería gratuita 24 h; habitaciones pequeñas."
+      },
+      {
+        "name": "ALA HOTEL KYOTO",
+        "why": "928 € por dos twin de 25 m² en un 4 estrellas con lavandería gratuita, a 6 min de la estación."
+      }
+    ],
+    "calidadPrecio": [
+      {
+        "name": "MR T Kyoto Station East 29",
+        "why": "Nota 9,1, twin de 22 m² con cocina y lavadora propia, impuestos incluidos y la mejor posición para el Keihan por 648 €."
+      },
+      {
+        "name": "Wander Kyoto Nanajo",
+        "why": "Nota 9,0 con más de 4.000 comentarios, recepción 24 h, tarifa flexible de 812 € y equilibrio Keihan/estación; lavandería escasa."
+      },
+      {
+        "name": "Hotel Glad One Kyoto Shichijo by M's",
+        "why": "El precio más bajo con nota 8,7 y lavandería de monedas; a cambio, 15 m² y secadora floja."
+      },
+      {
+        "name": "ALA HOTEL KYOTO",
+        "why": "Lo que más da por euro en comodidad: 4 estrellas, 9,1, twin de 25 m², sauna y lavandería gratis por 928 €; a 10 min de Keihan."
+      },
+      {
+        "name": "unito KYOTO STATION north",
+        "why": "Lavadoras y secadoras gratis 24 h y 8,5 por 872 €; pocas reseñas y habitaciones justas."
+      }
+    ],
+    "ubicacion": [
+      {
+        "name": "Wander Kyoto Nanajo",
+        "why": "El mejor equilibrio: 3 min a Keihan Shichijō para el tren de las 05:09 y 12 min a pie a la estación de Kioto."
+      },
+      {
+        "name": "MR T Kyoto Station East 29",
+        "why": "El más cercano a Keihan Shichijō (3 min) y a Sanjūsangen-dō, y el más corto hacia Kiyomizu de los cercanos; la estación queda a 17 min (taxi con maletas)."
+      },
+      {
+        "name": "Hotel Glad One Kyoto Shichijo by M's",
+        "why": "5 min a Keihan Shichijō y 15 a la estación, junto a Kawaramachi-Shichijō (buses 206)."
+      },
+      {
+        "name": "unito KYOTO STATION north",
+        "why": "7 min a Keihan y 14 a la estación; algo más al norte, entre Shichijō y Gojō."
+      },
+      {
+        "name": "HIYORI RESIDENCE KYOTO KAMOGAWA formerly HIYORI STAY KYOTO KAMOGAWA",
+        "why": "Al este del río, 6 min a Keihan Shichijō y más cerca de Kiyomizu, con lavadora en la habitación; pero no vende twin estándar (dos camas separadas solo en la habitación con altillo, 1.110 €)."
+      }
+    ]
+  },
+  "caveats": [
+    "Precios vistos en Booking.com (sitio en español, EUR) el 13 nov 2026 para 4 adultos en 2 habitaciones; cambian de una carga a otra (p. ej. Wander apareció a 812 € y a 722 € en dos cargas de la misma búsqueda).",
+    "priceTotalEUR = total más barato de 2 habitaciones comprobado en la ficha del hotel (puede ser una oferta de colaborador prepago o dos dobles: ver roomCombo). twinPriceTotalEUR = 2 × twin con la tarifa directa más barata del hotel en Booking, sin ofertas de colaborador.",
+    "Las \"ofertas de colaborador\" (Glad One 464 €, Wander 722 €, unito 756 €, LiVEMAX 794 €, Dormy Inn 1.470 €, KIORI 402 €) son de un tercero, con pago por adelantado y sin modificaciones; el selector permitía 2 unidades en todas, pero la disponibilidad es volátil.",
+    "Impuestos: en las fichas marcadas \"no\" Booking indica \"se pueden aplicar otros cargos\"; en las marcadas \"sí\" indica \"incluye impuestos y cargos\". Ninguna ficha mencionaba expresamente el impuesto de alojamiento de Kioto en lo que se pudo leer; conviene contar con que se cobre aparte en el hotel.",
+    "La lavandería de autoservicio se ha confirmado sobre todo por comentarios de huéspedes (búsqueda \"laundry\" en las reseñas de cada ficha); Booking solo lista \"Servicio de lavandería\". En varios hoteles hay muy pocas máquinas (Wander, KIORI, Henn na) o secadoras flojas (Glad One, Wander, Onyado Nono): el jueves 20 por la tarde puede haber cola.",
+    "MR T Kyoto Station East 29 y HIYORI Residence tienen lavadora dentro de la habitación, no sala de coin laundry; en MR T no seca (tendedero).",
+    "Los minutos a pie son estimaciones en línea recta (haversine × 1,3 / 80 m por min), no rutas reales; cruzar el río Kamo o las vías puede alargarlas.",
+    "Guardaequipaje: figura en la ficha de Glad One, Wander, MR T, ALA, APA Ekihigashi, Dormy Inn, Kuretakeso, ZEQUU Annex, HIYORI, Onyado Nono, KIORI, APA Chuoguchi y Henn na; no aparece en las de unito, LiVEMAX Kamogawamae, Sakura Cross ni Ethnography (confirmar por mensaje antes de reservar).",
+    "Zona de reserva (Gion-Shijō/Kawaramachi) no investigada en detalle: Shichijō ofrece opciones buenas. Travelodge Kyoto Shijo Kawaramachi no apareció disponible con los filtros al buscarlo por nombre. KIORI Exec Gojo se incluye solo como referencia de precio fuera de zona.",
+    "La búsqueda por punto de interés usa el templo Sanjūsangen-dō (dest_id 257056) como centro, no la estación Keihan Shichijō; se revisaron los 25 hoteles más baratos de los 41 a menos de 1 km. Se abrieron 17 fichas; no hubo captcha ni bloqueo."
+  ]
+}
