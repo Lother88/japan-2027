@@ -67,30 +67,34 @@ const illustration = pickIllustration(day.id)
   <div data-day-inner>
     <div data-day-top>
       <header data-day-head data-reveal>
-        <span data-day-kanji aria-hidden="true">{kanji}</span>
-        <p data-day-eyebrow>{`${date.weekday} ${date.day} ${date.month}`} · Día {pos.n} de {pos.total}</p>
-        <p data-day-city>{city}</p>
-        <h2 data-day-title id={titleId}>
-          {subtitleParts.map((part, i) => (i % 2 === 1 ? <span style="white-space:nowrap">{part}</span> : part))}
-        </h2>
-        {
-          (rules.length > 0 || day.laundry) && (
-            <ul data-day-chips aria-label="Criterios del día">
-              {rules.map((r) => (
-                <li data-rchip>
-                  <i aria-hidden="true" />
-                  {r.short}
-                  <span class="sr-only">: {r.long}</span>
-                </li>
-              ))}
-              {day.laundry && (
-                <li data-rchip="laundry">
-                  <span aria-hidden="true">🧺</span> Día de colada
-                </li>
-              )}
-            </ul>
-          )
-        }
+        <div data-day-lede>
+          <div data-day-text>
+            <p data-day-eyebrow>{`${date.weekday} ${date.day} ${date.month}`} · Día {pos.n} de {pos.total}</p>
+            <p data-day-city>{city}</p>
+            <h2 data-day-title id={titleId}>
+              {subtitleParts.map((part, i) => (i % 2 === 1 ? <span style="white-space:nowrap">{part}</span> : part))}
+            </h2>
+            {
+              (rules.length > 0 || day.laundry) && (
+                <ul data-day-chips aria-label="Criterios del día">
+                  {rules.map((r) => (
+                    <li data-rchip>
+                      <i aria-hidden="true" />
+                      {r.short}
+                      <span class="sr-only">: {r.long}</span>
+                    </li>
+                  ))}
+                  {day.laundry && (
+                    <li data-rchip="laundry">
+                      <span aria-hidden="true">🧺</span> Día de colada
+                    </li>
+                  )}
+                </ul>
+              )
+            }
+          </div>
+          <span data-day-kanji aria-hidden="true">{kanji}</span>
+        </div>
         {
           hotel && (
             <div data-day-hotel>

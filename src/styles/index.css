@@ -1118,8 +1118,10 @@ button[data-scrollcue] {
 [data-day-inner] { max-width: 780px; margin: 0 auto; padding: clamp(64px, 10vh, 120px) clamp(24px, 5vw, 56px); }
 [data-day-top] { display: flex; align-items: center; gap: clamp(16px, 2.4vw, 28px); margin-bottom: 26px; }
 [data-day-head] { position: relative; flex: 1 1 0; min-width: 0; min-height: 168px; }
-/* Hueco para el kanji vertical (la línea del hotel, ya por debajo, usa todo el ancho) */
-[data-day-head] > :not([data-day-kanji], [data-day-hotel]) { padding-right: 84px; }
+/* Texto + kanji vertical en fila: la cabecera mide lo que el más alto de los dos, así la línea
+   del hotel (todo el ancho) siempre empieza por debajo del kanji, sea corto o largo el título */
+[data-day-lede] { display: flex; align-items: flex-start; gap: 20px; }
+[data-day-text] { flex: 1 1 auto; min-width: 0; }
 /* Ilustración isométrica: proporción reservada (sin saltos al llegar el SVG). content-visibility
    implica contención de pintura: sin margen recortaría el halo del zócalo. */
 [data-day-top] > [data-illus] {
@@ -1130,9 +1132,8 @@ button[data-scrollcue] {
   pointer-events: none;
 }
 [data-day-kanji] {
-  position: absolute;
-  top: 0;
-  right: 0;
+  position: relative;
+  flex: none;
   writing-mode: vertical-rl;
   font: 800 64px/1 var(--font-serif);
   letter-spacing: .02em;
@@ -1529,11 +1530,11 @@ html[data-sheet-open] { overflow: hidden; scrollbar-gutter: stable; }
   [data-day-inner] { padding: 20px max(16px, env(safe-area-inset-right)) calc(80px + env(safe-area-inset-bottom)) max(16px, env(safe-area-inset-left)); }
   [data-day-top] { flex-direction: column-reverse; align-items: stretch; gap: 10px; margin-bottom: 20px; }
   [data-day-top] > [data-illus] { flex: none; width: 100%; max-width: 420px; align-self: center; }
-  [data-day-head] > :not([data-day-kanji], [data-day-hotel]) { padding-right: 76px; }
+  [data-day-lede] { gap: 12px; }
   [data-day-head] { flex: none; scroll-margin-top: calc(var(--strip-h) + env(safe-area-inset-top) + 12px); }
 }
 @media (max-width: 359px) {
-  [data-day-head] > :not([data-day-kanji], [data-day-hotel]) { padding-right: 64px; }
+  [data-day-lede] { gap: 10px; }
   [data-day-kanji] { font-size: 54px; }
   [data-day-title] { font-size: 24px; }
 }
