@@ -13,8 +13,19 @@
  * `steps` es la fuente del plan de cada día (la UI lo pinta como línea de tiempo).
  *
  * Transfers (trayectos): cada cambio de hotel y cada excursión de ida y vuelta lleva su
- * `Transfer`. Solo logística, sin spoilers. Las maletas viajan siempre con el grupo (sin
- * mensajería): taxi del hotel a la estación y de la estación al hotel siguiente.
+ * `Transfer` en el paso donde se hace (`Step.transfer`; en la ida, si es de ida y vuelta). La
+ * etiqueta del paso dice acción + destino; el `Transfer`, el detalle (línea, duración, avisos).
+ * Solo logística, sin spoilers. Las maletas viajan siempre con el grupo (sin mensajería): taxi
+ * del hotel a la estación y de la estación al hotel siguiente.
+ *
+ * UN DATO, UN SITIO (sin repetir nada entre paneles del día):
+ * - Day.notes: lo global del día (ritmo/cansancio, qué saltarse, orden, por qué a esa hora,
+ *   plan B, maletas del día). Nada que ya digan un paso, una zona, un trayecto o una reserva.
+ * - Zone.practical: lo propio del lugar (acceso, horario, cierres, precio, normas, duración).
+ *   Una zona puede usarse en varios días: nada del plan de un día concreto.
+ * - Transfer: el trayecto entre ciudades o de una excursión (línea, transbordos, equipaje,
+ *   asientos), en su paso. Nada que ya diga la etiqueta del paso. Reservas con antelación: solo reservations.ts (el paso lleva `reserve`).
+ * - context.ts: solo narrativa (sin horarios, entradas ni consejos prácticos).
  *
  * Data source: docs/revision-itinerario-fechas-2027.md (§3, decisiones) y
  * docs/propuestas-diseno/itinerario-data.js (pasos y horas).
@@ -32,31 +43,32 @@ export const itinerary: readonly Day[] = [
     citySlug: 'tokio',
     title: 'Tokio · bloque 1 — Llegada a Tokio',
     hotelId: 'tokio1',
-    transfers: [
-      {
-        from: 'Aeropuerto de Narita (NRT T1)',
-        to: 'Ueno (hotel)',
-        mode: 'tren',
-        line: 'Keisei Skyliner (Narita T1 → Keisei Ueno) + taxi al hotel',
-        duration: '~41 min',
-        notes: [
-          'Aterrizaje a las 09:30 (LH710); hotel hacia las 11:30',
-          'Comprar o activar la tarjeta IC (Suica/PASMO) en el aeropuerto',
-          'Dejar las maletas en el hotel si aún no se puede hacer el check-in',
-        ],
-      },
-    ],
     steps: [
       { time: '09:30', label: 'Aterrizaje en Narita T1', type: 'traslado', maps: 'Narita Airport Terminal 1' },
-      { time: '10:15', label: 'Skyliner a Ueno', type: 'traslado', maps: 'Keisei Ueno Station' },
+      {
+        time: '10:15',
+        label: 'Tren a Ueno',
+        type: 'traslado',
+        maps: 'Keisei Ueno Station',
+        transfer: {
+          from: 'Aeropuerto de Narita (NRT T1)',
+          to: 'Ueno (hotel)',
+          mode: 'tren',
+          line: 'Keisei Skyliner (Narita T1 → Keisei Ueno) + taxi al hotel',
+          duration: '~41 min',
+          notes: [
+            'Vuelo de llegada: LH710',
+            'Comprar o activar la tarjeta IC (Suica/PASMO) en el aeropuerto',
+          ],
+        },
+      },
       { time: '11:30', label: 'Hotel en Ueno · dejar maletas', type: 'descanso', maps: 'Ueno Station Tokyo' },
       { time: '16:00', label: 'Kanda Matsuri: el desfile al paso (si se confirma)', type: 'visita', zoneId: 'kanda', maps: 'Kanda Myojin', optional: true },
       { time: '19:00', label: 'Si no hay festival: Asakusa de noche (Sensō-ji)', type: 'noche', zoneId: 'asakusa', maps: 'Senso-ji', optional: true },
     ],
     notes: [
       'Tarde suave: jet lag.',
-      'Kanda Matsuri 2027: fechas por confirmar (posible desfile el sáb 8 y entrada de mikoshi el dom 9; alternativa, 15–16).',
-      'Sensō-ji: iluminado hasta las 23:00 y tranquilo de noche.',
+      'De noche, Sensō-ji está tranquilo.',
     ],
   },
 
@@ -74,11 +86,6 @@ export const itinerary: readonly Day[] = [
       { time: '12:30', label: 'Comida en Marunouchi', type: 'comida', maps: 'Marunouchi Tokyo' },
       { time: '13:30', label: 'Ginza peatonal (12:00–18:00)', type: 'compras', zoneId: 'ginza', maps: 'Ginza Chuo-dori' },
       { time: '16:00', label: 'Kabuki-za: un acto (hitomakumi, efectivo)', type: 'visita', zoneId: 'ginza', maps: 'Kabukiza Theatre', optional: true },
-    ],
-    notes: [
-      'Jardines del Este: cierran lunes y viernes.',
-      'Ginza solo es peatonal en fin de semana.',
-      'Tsukiji cierra el domingo: por eso va el martes.',
     ],
   },
 
@@ -100,10 +107,6 @@ export const itinerary: readonly Day[] = [
       { time: '18:00', label: 'Shibuya Sky al atardecer (~18:40)', type: 'visita', zoneId: 'shibuya', maps: 'Shibuya Sky', reserve: true },
       { time: '20:00', label: 'Shinjuku de noche: Omoide Yokochō · Golden Gai · Kabukichō', type: 'noche', zoneId: 'shinjuku', maps: 'Omoide Yokocho' },
     ],
-    notes: [
-      'Harajuku es intransitable en fin de semana: por eso lunes.',
-      'Shibuya Sky: entrada con hora para la franja del atardecer, comprar con antelación.',
-    ],
   },
 
   // ── Día 11 — Martes 11 mayo 2027 ─────────────────────────────────────────
@@ -123,11 +126,6 @@ export const itinerary: readonly Day[] = [
       { time: '15:00', label: 'Yanaka: Yanaka Ginza, cementerio, Tennō-ji', type: 'visita', zoneId: 'yanaka', maps: 'Yanaka Ginza' },
       { time: '17:00', label: 'Nezu Jinja', type: 'visita', zoneId: 'yanaka', maps: 'Nezu Shrine' },
     ],
-    notes: [
-      'El museo cierra los lunes y Tsukiji los domingos.',
-      'Tsukiji: la asociación del mercado pide a los turistas ir de 9:00 a 14:00.',
-      'Nezu Jinja: el jardín de azaleas solo abre en abril.',
-    ],
   },
 
   // ── Día 12 — Miércoles 12 mayo 2027 — Takaragawa Onsen (1 noche) ─────────
@@ -138,30 +136,28 @@ export const itinerary: readonly Day[] = [
     title: 'Tokio → Takaragawa — Onsen en Takaragawa',
     hotelId: 'takaragawa',
     rules: ['laborable'],
-    transfers: [
-      {
-        from: 'Tokio (Ueno)',
-        to: 'Takaragawa Onsen (Minakami)',
-        mode: 'shinkansen',
-        line: 'Jōetsu Shinkansen (Ueno → Jōmō-Kōgen) + lanzadera del ryokan',
-        duration: '~1h15 + ~45 min de lanzadera',
-        notes: [
-          'Lanzadera hacia el ryokan a las 13:00 o a las 15:00: reserva por teléfono',
-          'Llegada al ryokan hacia las 13:45 o las 15:45',
-          'Equipaje: taxi del hotel a la estación (2 taxis o uno grande para 4 maletas)',
-        ],
-      },
-    ],
     steps: [
       { time: 'mañana', label: 'Mañana tranquila y check-out', type: 'descanso' },
-      { time: '11:00', label: 'Jōetsu Shinkansen desde Ueno a Jōmō-Kōgen', type: 'traslado', maps: 'Jomo-Kogen Station' },
+      {
+        time: '11:00',
+        label: 'Shinkansen a Jōmō-Kōgen',
+        type: 'traslado',
+        maps: 'Jomo-Kogen Station',
+        transfer: {
+          from: 'Tokio (Ueno)',
+          to: 'Takaragawa Onsen (Minakami)',
+          mode: 'shinkansen',
+          line: 'Jōetsu Shinkansen desde Ueno + lanzadera del ryokan',
+          duration: '~1h15 + ~45 min de lanzadera',
+          notes: [
+            'Llegada al ryokan hacia las 13:45 o las 15:45',
+            'Equipaje: taxi del hotel a la estación (2 taxis o uno grande para 4 maletas)',
+          ],
+        },
+      },
       { time: '13:00', label: 'Lanzadera del ryokan (o la de las 15:00)', type: 'traslado', reserve: true },
       { time: 'tarde', label: 'Ryokan Ōsenkaku: baños', type: 'visita', zoneId: 'takaragawa-onsen', maps: 'Takaragawa Onsen Osenkaku' },
       { time: 'noche', label: 'Cena en el ryokan', type: 'comida', zoneId: 'takaragawa-onsen' },
-    ],
-    notes: [
-      'Lanzadera: reserva por teléfono. Solo hay una de vuelta, a las 9:30.',
-      'Entre semana hay menos bañistas de día (10:00–16:30) y la noche es más barata que el sábado.',
     ],
   },
 
@@ -172,22 +168,23 @@ export const itinerary: readonly Day[] = [
     citySlug: 'kanazawa',
     title: 'Takaragawa → Kanazawa — Llegada a Kanazawa',
     hotelId: 'kanazawa',
-    transfers: [
-      {
-        from: 'Takaragawa Onsen (Minakami)',
-        to: 'Kanazawa',
-        mode: 'shinkansen',
-        line: 'Lanzadera 9:30 → Jōmō-Kōgen + Jōetsu Shinkansen a Takasaki + Hokuriku Shinkansen a Kanazawa',
-        duration: '~4h30 (llegada hacia las 14:00)',
-        notes: [
-          'La lanzadera de las 9:30 es la única hacia la estación',
-          'Transbordo en Takasaki',
-          'Reservar asientos con espacio para el equipaje',
-        ],
-      },
-    ],
     steps: [
-      { time: '09:30', label: 'Lanzadera a Jōmō-Kōgen (la única)', type: 'traslado' },
+      {
+        time: '09:30',
+        label: 'Lanzadera y trenes a Kanazawa',
+        type: 'traslado',
+        transfer: {
+          from: 'Takaragawa Onsen (Minakami)',
+          to: 'Kanazawa',
+          mode: 'shinkansen',
+          line: 'Lanzadera del ryokan a Jōmō-Kōgen + Jōetsu Shinkansen a Takasaki + Hokuriku Shinkansen',
+          duration: '~4h30',
+          notes: [
+            'La lanzadera de las 9:30 es la única',
+            'Reservar asientos con espacio para el equipaje',
+          ],
+        },
+      },
       { time: '14:00', label: 'Llegada a Kanazawa · hotel', type: 'traslado', maps: 'Kanazawa Station' },
       { time: '15:30', label: 'Mercado Ōmichō (antes de las 17:00)', type: 'comida', zoneId: 'omicho', maps: 'Omicho Market' },
       { time: '17:30', label: 'Higashi Chaya al atardecer', type: 'visita', zoneId: 'higashi-chaya', maps: 'Higashi Chaya District' },
@@ -212,10 +209,7 @@ export const itinerary: readonly Day[] = [
       { time: 'tarde', label: 'Tarde libre · colada 1', type: 'descanso' },
       { time: 'tarde', label: 'Paseo por Nishi Chaya y Teramachi', type: 'visita', zoneId: 'nishi-chaya', maps: 'Nishi Chaya District', optional: true },
     ],
-    notes: [
-      'Kenroku-en: gratis de 4:00 a 6:45 por las puertas Hasuike y Zuijinzaka.',
-      'Higashi Chaya, si quedó pendiente el jueves.',
-    ],
+    notes: ['Higashi Chaya, si quedó pendiente el jueves.'],
   },
 
   // ── Día 15 — Sábado 15 mayo 2027 — Takayama (noche 1) ────────────────────
@@ -226,30 +220,29 @@ export const itinerary: readonly Day[] = [
     title: 'Kanazawa → Takayama — Llegada a Takayama',
     hotelId: 'takayama',
     rules: ['finde'],
-    transfers: [
-      {
-        from: 'Kanazawa',
-        to: 'Takayama',
-        mode: 'bus',
-        line: 'Bus Nōhi (Kanazawa → Takayama), con reserva',
-        duration: '~2h15',
-        notes: [
-          'Sale de la terminal de la salida este de la estación de Kanazawa',
-          'Alternativa en tren por Toyama: solo 4 trenes Hida al día',
-          'Comprobar los horarios de 2027 tras el cambio de marzo',
-        ],
-      },
-    ],
     steps: [
-      { time: '09:00', label: 'Bus Nōhi a Takayama', type: 'traslado', maps: 'Kanazawa Station East Exit Bus Terminal', reserve: true },
+      {
+        time: '09:00',
+        label: 'Autobús a Takayama',
+        type: 'traslado',
+        maps: 'Kanazawa Station East Exit Bus Terminal',
+        reserve: true,
+        transfer: {
+          from: 'Kanazawa',
+          to: 'Takayama',
+          mode: 'bus',
+          line: 'Bus Nōhi desde la terminal de la salida este de la estación de Kanazawa',
+          duration: '~2h15',
+          notes: [
+            'Alternativa en tren por Toyama: solo 4 trenes Hida al día',
+            'Comprobar los horarios de 2027 tras el cambio de marzo',
+          ],
+        },
+      },
       { time: '11:30', label: 'Hotel · dejar maletas', type: 'descanso', maps: 'Takayama Station' },
       { time: '12:30', label: 'Comida: ternera de Hida', type: 'comida' },
       { time: '14:00', label: 'Yatai Kaikan + santuario Sakurayama Hachimangū', type: 'visita', zoneId: 'takayama-yatai', maps: 'Takayama Festival Floats Exhibition Hall' },
       { time: '16:00', label: 'Sanmachi (tiendas y bodegas de sake hasta ~17:00)', type: 'visita', zoneId: 'sanmachi-suji', maps: 'Sanmachi Suji' },
-    ],
-    notes: [
-      'Yatai Kaikan: visita libre de 30–45 min; horario y precio por confirmar (~8:30/9:00–17:00, ~840 ¥).',
-      'Sanmachi desde las 16:00: ya se han ido los excursionistas de día.',
     ],
   },
 
@@ -267,10 +260,7 @@ export const itinerary: readonly Day[] = [
       { time: '10:00', label: 'Sanmachi tranquilo', type: 'visita', zoneId: 'sanmachi-suji', maps: 'Sanmachi Suji' },
       { time: '13:00', label: 'Hida no Sato', type: 'visita', zoneId: 'hida-no-sato', maps: 'Hida Folk Village' },
     ],
-    notes: [
-      'Mercado de Miyagawa: 7:00–12:00.',
-      'En domingo, mejor Takayama que Shirakawa-go: la ciudad absorbe a la gente.',
-    ],
+    notes: ['En domingo, mejor Takayama que Shirakawa-go: la ciudad absorbe a la gente.'],
   },
 
   // ── Día 17 — Lunes 17 mayo 2027 — Shirakawa-go y Kioto (noche 1) ─────────
@@ -281,39 +271,41 @@ export const itinerary: readonly Day[] = [
     title: 'Takayama → Kioto — Shirakawa-go y tren a Kioto',
     hotelId: 'kioto',
     rules: ['laborable', 'oleada'],
-    transfers: [
-      {
-        from: 'Takayama',
-        to: 'Shirakawa-go',
-        mode: 'bus',
-        line: 'Bus Nōhi (Takayama ↔ Shirakawa-go)',
-        duration: '~50 min cada sentido',
-        roundTrip: true,
-        notes: [
-          'Bus de las 7:20, llegada a las 8:10, antes que los autocares',
-          'Sin maletas: se quedan en el hotel de Takayama',
-        ],
-      },
-      {
-        from: 'Takayama',
-        to: 'Kioto',
-        mode: 'tren',
-        line: 'JR Hida (limited express) a Nagoya + Tōkaidō Shinkansen a Kioto',
-        duration: '~3h30 (llegada hacia las 17:00)',
-        notes: [
-          'Transbordo en Nagoya',
-          'Taxi de la estación de Kioto al hotel de Shichijō',
-        ],
-      },
-    ],
     steps: [
-      { time: '07:20', label: 'Bus Nōhi a Shirakawa-go', type: 'traslado', maps: 'Takayama Nohi Bus Center' },
+      {
+        time: '07:20',
+        label: 'Autobús a Shirakawa-go',
+        type: 'traslado',
+        maps: 'Takayama Nohi Bus Center',
+        transfer: {
+          from: 'Takayama',
+          to: 'Shirakawa-go',
+          mode: 'bus',
+          line: 'Bus Nōhi desde el centro de autobuses de Takayama',
+          duration: '~50 min cada sentido',
+          roundTrip: true,
+          notes: ['Sin maletas: se quedan en el hotel de Takayama'],
+        },
+      },
       { time: '08:10', label: 'Aldea de Ogimachi y mirador Shiroyama', type: 'visita', zoneId: 'shirakawago-ogimachi', maps: 'Shirakawa-go Ogimachi' },
       { time: '11:00', label: 'Bus de vuelta a Takayama · recoger maletas', type: 'traslado' },
-      { time: '13:00', label: 'Tren Hida a Nagoya + Shinkansen a Kioto', type: 'traslado', maps: 'Kyoto Station' },
+      {
+        time: '13:00',
+        label: 'Tren a Kioto',
+        type: 'traslado',
+        maps: 'Kyoto Station',
+        transfer: {
+          from: 'Takayama',
+          to: 'Kioto',
+          mode: 'tren',
+          line: 'JR Hida (limited express) a Nagoya + Tōkaidō Shinkansen a Kioto',
+          duration: '~3h30',
+          notes: ['Taxi de la estación de Kioto al hotel de Shichijō'],
+        },
+      },
       { time: '17:00', label: 'Hotel en Shichijō', type: 'descanso', maps: 'Shichijo Station Keihan Kyoto' },
     ],
-    notes: ['Shirakawa-go un laborable antes de las 9:00 es la mejor franja: en fin de semana hay menos buses y más gente.'],
+    notes: ['Shirakawa-go, mejor un laborable y antes de las 9:00, antes que los autocares: en fin de semana hay menos buses y más gente.'],
   },
 
   // ── Día 18 — Martes 18 mayo 2027 — Kioto (noche 2) ───────────────────────
@@ -335,11 +327,7 @@ export const itinerary: readonly Day[] = [
       { time: '15:30', label: 'Ginkaku-ji (cierra ~17:00)', type: 'visita', zoneId: 'higashiyama-norte', maps: 'Ginkaku-ji' },
       { time: '17:30', label: 'Gion y Hanami-kōji al anochecer', type: 'noche', zoneId: 'gion', maps: 'Hanamikoji Street' },
     ],
-    notes: [
-      'Día largo: unos 8–10 km a pie. Si vais cansados, se puede saltar Ginkaku-ji.',
-      'De Ginkaku-ji a Gion: taxi o autobús.',
-      'El palacio Honmaru de Nijō cierra el 17 y el 18: por eso Nijō va el miércoles.',
-    ],
+    notes: ['Día largo: unos 8–10 km a pie. Si vais cansados, se puede saltar Ginkaku-ji.'],
   },
 
   // ── Día 19 — Miércoles 19 mayo 2027 — Kioto (noche 3) ────────────────────
@@ -358,10 +346,7 @@ export const itinerary: readonly Day[] = [
       { time: '13:30', label: 'Sanjūsangen-dō', type: 'visita', zoneId: 'sanjusangendo', maps: 'Sanjusangendo' },
       { time: '15:00', label: 'Castillo Nijō (última entrada 16:00)', type: 'visita', zoneId: 'nijo', maps: 'Nijo Castle' },
     ],
-    notes: [
-      'Nishiki cierra parte de sus puestos los miércoles; el palacio Honmaru de Nijō cierra el 17 y el 18.',
-      'Sanjūsangen-dō: 8:30–17:00, 600 ¥; unos 45–60 min.',
-    ],
+    notes: ['Nijō hacia las 15:00: los grupos escolares ya se van.'],
   },
 
   // ── Día 20 — Jueves 20 mayo 2027 — Kioto (noche 4) ───────────────────────
@@ -396,47 +381,43 @@ export const itinerary: readonly Day[] = [
     title: 'Kioto → Osaka — Tō-ji, Osaka y Nara por la tarde',
     hotelId: 'osaka',
     rules: ['cierre', 'oleada'],
-    transfers: [
-      {
-        from: 'Kioto',
-        to: 'Osaka (Namba)',
-        mode: 'tren',
-        line: 'JR Kioto → Osaka + taxi al hotel de Namba',
-        duration: '~30 min + taxi',
-        notes: [
-          'Antes, Tō-ji con las maletas en el hotel de Shichijō',
-          'Dejar las maletas en el hotel de Namba hacia las 12:30',
-        ],
-      },
-      {
-        from: 'Osaka (Namba)',
-        to: 'Nara',
-        mode: 'tren',
-        line: 'Kintetsu (Osaka-Namba → Kintetsu-Nara)',
-        duration: '~40 min cada sentido',
-        roundTrip: true,
-        notes: [
-          'Sin maletas: nunca se va con equipaje por Nara',
-          'Vuelta a Namba para cenar',
-        ],
-      },
-    ],
     steps: [
       { time: '08:00', label: 'Mercadillo Kōbō-ichi en Tō-ji (solo el día 21)', type: 'visita', zoneId: 'toji', maps: 'To-ji' },
       { time: '10:30', label: 'Recoger las maletas en el hotel', type: 'traslado' },
-      { time: '11:00', label: 'JR a Osaka + taxi al hotel de Namba', type: 'traslado', maps: 'Namba Station Osaka' },
+      {
+        time: '11:00',
+        label: 'Tren a Osaka (Namba)',
+        type: 'traslado',
+        maps: 'Namba Station Osaka',
+        transfer: {
+          from: 'Kioto',
+          to: 'Osaka (Namba)',
+          mode: 'tren',
+          line: 'JR Kioto → Osaka + taxi al hotel',
+          duration: '~30 min + taxi',
+        },
+      },
       { time: '12:30', label: 'Dejar las maletas · comida', type: 'comida' },
-      { time: '14:00', label: 'Kintetsu de Namba a Nara (~40 min)', type: 'traslado', maps: 'Kintetsu Nara Station' },
+      {
+        time: '14:00',
+        label: 'Tren a Nara',
+        type: 'traslado',
+        maps: 'Kintetsu Nara Station',
+        transfer: {
+          from: 'Osaka (Namba)',
+          to: 'Nara',
+          mode: 'tren',
+          line: 'Kintetsu (Osaka-Namba → Kintetsu-Nara)',
+          duration: '~40 min cada sentido',
+          roundTrip: true,
+          notes: ['Sin maletas: nunca se va con equipaje por Nara'],
+        },
+      },
       { time: '14:45', label: 'Kōfuku-ji y el parque de Nara', type: 'visita', zoneId: 'nara-todaiji', maps: 'Kofuku-ji' },
       { time: '15:30', label: 'Tōdai-ji y el Gran Buda (hasta 17:30)', type: 'visita', zoneId: 'nara-todaiji', maps: 'Todai-ji' },
       { time: '19:00', label: 'Cena en Dōtonbori', type: 'noche', zoneId: 'dotonbori', maps: 'Dotonbori' },
     ],
-    notes: [
-      'Tō-ji: el mercadillo Kōbō-ichi es el día 21 de cada mes, y este viernes es 21.',
-      'Kōfuku-ji: la pagoda de cinco pisos está cubierta por la obra hasta ~2034.',
-      'Tōdai-ji: 800 ¥, solo efectivo.',
-      'Nara a última hora: se evitan los grupos escolares.',
-    ],
+    notes: ['Nara a última hora: se evitan los grupos escolares.'],
   },
 
   // ── Día 22 — Sábado 22 mayo 2027 — Osaka (noche 2), Katsuo-ji ────────────
@@ -447,23 +428,24 @@ export const itinerary: readonly Day[] = [
     title: 'Osaka — Katsuo-ji y Minami',
     hotelId: 'osaka',
     rules: ['finde'],
-    transfers: [
-      {
-        from: 'Osaka (Namba)',
-        to: 'Katsuo-ji (Minoh)',
-        mode: 'bus',
-        line: 'Metro Midōsuji a Senri-Chūō + autobús (o taxi)',
-        duration: '~1h cada sentido (orientativo)',
-        roundTrip: true,
-        notes: [
-          'El autobús ya no acepta efectivo: solo tarjeta IC',
-          'En taxi desde Senri-Chūō: unos 3.400 ¥ para los cuatro',
-          'En fin de semana hay más autobuses',
-        ],
-      },
-    ],
     steps: [
-      { time: '08:30', label: 'Midōsuji a Senri-Chūō + autobús (solo tarjeta IC)', type: 'traslado' },
+      {
+        time: '08:30',
+        label: 'Metro y autobús a Katsuo-ji',
+        type: 'traslado',
+        transfer: {
+          from: 'Osaka (Namba)',
+          to: 'Katsuo-ji (Minoh)',
+          mode: 'bus',
+          line: 'Metro Midōsuji a Senri-Chūō + autobús (o taxi)',
+          duration: '~1h cada sentido (orientativo)',
+          roundTrip: true,
+          notes: [
+            'El autobús solo acepta tarjeta IC',
+            'En taxi desde Senri-Chūō: unos 3.400 ¥ para los cuatro',
+          ],
+        },
+      },
       { time: '09:30', label: 'Katsuo-ji', type: 'visita', zoneId: 'katsuo-ji', maps: 'Katsuo-ji' },
       { time: '12:30', label: 'Vuelta a Namba', type: 'traslado' },
       { time: '14:00', label: 'Minami: Hōzen-ji, Shinsaibashi y Dōtonbori', type: 'compras', zoneId: 'dotonbori', maps: 'Hozenji Yokocho' },
@@ -479,32 +461,28 @@ export const itinerary: readonly Day[] = [
     title: 'Osaka — Excursión a Hiroshima',
     hotelId: 'osaka',
     rules: ['finde'],
-    transfers: [
-      {
-        from: 'Osaka',
-        to: 'Hiroshima',
-        mode: 'shinkansen',
-        line: 'Sanyō Shinkansen (Shin-Osaka → Hiroshima)',
-        duration: '~1h25 cada sentido',
-        roundTrip: true,
-        notes: [
-          'Ida y vuelta en el día, sin pernocta',
-          'Tranvía de la estación de Hiroshima al Parque de la Paz (~15 min)',
-        ],
-      },
-    ],
     steps: [
-      { time: '07:00', label: 'Shinkansen de Shin-Osaka a Hiroshima (~1h25)', type: 'traslado', maps: 'Shin-Osaka Station' },
+      {
+        time: '07:00',
+        label: 'Shinkansen a Hiroshima',
+        type: 'traslado',
+        maps: 'Shin-Osaka Station',
+        transfer: {
+          from: 'Osaka',
+          to: 'Hiroshima',
+          mode: 'shinkansen',
+          line: 'Sanyō Shinkansen desde Shin-Osaka',
+          duration: '~1h25 cada sentido',
+          roundTrip: true,
+        },
+      },
       { time: '09:00', label: 'Museo Memorial de la Paz', type: 'visita', zoneId: 'hiroshima-paz', maps: 'Hiroshima Peace Memorial Museum', reserve: true },
       { time: '11:00', label: 'Parque de la Paz y Monumento a los Niños', type: 'visita', zoneId: 'hiroshima-paz', maps: 'Hiroshima Peace Memorial Park' },
       { time: '12:00', label: 'Cúpula de la Bomba Atómica', type: 'visita', zoneId: 'hiroshima-paz', maps: 'Atomic Bomb Dome' },
       { time: '13:00', label: 'Okonomiyaki estilo Hiroshima', type: 'comida', maps: 'Okonomimura Hiroshima' },
       { time: 'tarde', label: 'Vuelta a Osaka', type: 'traslado' },
     ],
-    notes: [
-      'En domingo no hay grupos escolares.',
-      'Museo: 7:30–19:00 de marzo a julio; la franja de 7:30–8:30 se reserva online. Si no, llegar hacia las 9:00.',
-    ],
+    notes: ['En domingo no hay grupos escolares.'],
   },
 
   // ── Día 24 — Lunes 24 mayo 2027 — Osaka (noche 4) ────────────────────────
@@ -526,7 +504,7 @@ export const itinerary: readonly Day[] = [
     ],
     notes: [
       'Día de respiro tras ocho días seguidos con mucho ritmo (17–24).',
-      'Umeda Sky: 9:30–22:30, 2.000 ¥. Si se vuelve de Hiroshima con energía, se puede adelantar al domingo 23.',
+      'Si se vuelve de Hiroshima con energía, Umeda Sky se puede adelantar al domingo 23: Umeda está a una parada de Shin-Osaka.',
     ],
   },
 
@@ -537,26 +515,28 @@ export const itinerary: readonly Day[] = [
     citySlug: 'tokio',
     title: 'Osaka → Tokio — Vuelta a Tokio y Akihabara',
     hotelId: 'tokio2',
-    transfers: [
-      {
-        from: 'Osaka',
-        to: 'Tokio',
-        mode: 'shinkansen',
-        line: 'Tōkaidō Shinkansen (Shin-Osaka → Tokio)',
-        duration: '~2h30–3h (llegada al hotel hacia las 13:30)',
-        notes: [
-          'Asiento E: lado del Fuji',
-          'Taxi del hotel de Namba a Shin-Osaka; en Tokio, al hotel de Asakusa',
-        ],
-      },
-    ],
     steps: [
-      { time: '10:00', label: 'Check-out · Shinkansen desde Shin-Osaka (asiento E)', type: 'traslado', maps: 'Shin-Osaka Station' },
+      {
+        time: '10:00',
+        label: 'Check-out · Shinkansen a Tokio',
+        type: 'traslado',
+        maps: 'Shin-Osaka Station',
+        transfer: {
+          from: 'Osaka',
+          to: 'Tokio',
+          mode: 'shinkansen',
+          line: 'Tōkaidō Shinkansen desde Shin-Osaka',
+          duration: '~2h30–3h',
+          notes: [
+            'Asiento E: lado del Fuji',
+            'Taxi del hotel de Namba a Shin-Osaka; en Tokio, al hotel de Asakusa',
+          ],
+        },
+      },
       { time: '13:30', label: 'Hotel en Asakusa · dejar maletas', type: 'descanso', maps: 'Asakusa Station Tokyo' },
       { time: '15:00', label: 'Akihabara: Radio Kaikan · Mandarake · Surugaya', type: 'compras', zoneId: 'akihabara', maps: 'Akihabara Radio Kaikan' },
       { time: '17:00', label: 'Retro: Super Potato y gachapon', type: 'compras', zoneId: 'akihabara', maps: 'Super Potato Akihabara' },
     ],
-    notes: ['Tiendas retro: comprobar en 2027 que siguen abiertas.'],
   },
 
   // ── Día 26 — Miércoles 26 mayo 2027 — Tokio · bloque 2 (noche 2) ─────────
@@ -572,10 +552,6 @@ export const itinerary: readonly Day[] = [
       { time: '09:30', label: 'Nakamise y Asakusa Jinja', type: 'visita', zoneId: 'asakusa', maps: 'Nakamise Shopping Street' },
       { time: 'tarde', label: 'Libre', type: 'descanso' },
       { time: '17:30', label: 'Tokyo Skytree al atardecer', type: 'visita', zoneId: 'tokyo-skytree', maps: 'Tokyo Skytree', reserve: true },
-    ],
-    notes: [
-      'El Sanja Matsuri ya pasó (14–16 de mayo).',
-      'Skytree: entrada con hora, comprar con antelación (entre semana es más barata).',
     ],
   },
 
@@ -595,10 +571,6 @@ export const itinerary: readonly Day[] = [
       { time: '13:45', label: 'Nakano Broadway (Mandarake)', type: 'compras', zoneId: 'nakano', maps: 'Nakano Broadway' },
       { time: 'noche', label: 'Hacer maletas', type: 'descanso' },
     ],
-    notes: [
-      'Nakano Broadway: tiendas sobre todo de 12:00 a 20:00; algunas cierran los miércoles.',
-      'El vuelo sale mañana a las 11:20: maletas hechas esta noche.',
-    ],
   },
 
   // ── Día 28 — Viernes 28 mayo 2027 — Regreso ──────────────────────────────
@@ -607,23 +579,22 @@ export const itinerary: readonly Day[] = [
     date: '2027-05-28',
     citySlug: 'tokio',
     title: 'Tokio → Narita — Vuelo de regreso',
-    transfers: [
-      {
-        from: 'Asakusa (hotel)',
-        to: 'Aeropuerto de Narita (NRT T1)',
-        mode: 'tren',
-        line: 'Taxi a Ueno + Keisei Skyliner',
-        duration: '~10 min de taxi + ~41 min de tren',
-        notes: [
-          'Check-out hacia las 7:15; en la T1 hacia las 8:45',
-          'Vuelo LH711 a las 11:20 (escala en Fráncfort; llegada a Barcelona a las 23:05)',
-          'Alternativa: trenes directos a Narita desde la estación de Asakusa (comprobar el horario de 2027)',
-        ],
-      },
-    ],
     steps: [
-      { time: '07:15', label: 'Check-out · taxi a Ueno', type: 'traslado' },
-      { time: '07:40', label: 'Skyliner a Narita', type: 'traslado', maps: 'Keisei Ueno Station' },
+      { time: '07:15', label: 'Check-out · taxi a Ueno (~10 min)', type: 'traslado' },
+      {
+        time: '07:40',
+        label: 'Tren a Narita',
+        type: 'traslado',
+        maps: 'Keisei Ueno Station',
+        transfer: {
+          from: 'Ueno',
+          to: 'Aeropuerto de Narita (NRT T1)',
+          mode: 'tren',
+          line: 'Keisei Skyliner (Keisei Ueno → Narita T1)',
+          duration: '~41 min',
+          notes: ['Alternativa: trenes directos a Narita desde la estación de Asakusa (comprobar el horario de 2027)'],
+        },
+      },
       { time: '08:45', label: 'Narita T1 · facturación', type: 'traslado', maps: 'Narita Airport Terminal 1' },
       { time: '11:20', label: 'LH711 → Fráncfort → Barcelona (23:05)', type: 'traslado' },
     ],

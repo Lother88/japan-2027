@@ -4,7 +4,9 @@
  *
  * Cada paso: hora (cifras tabulares; las vagas «mañana/tarde/noche» en gris), icono del tipo
  * sobre el conector, y una tarjeta con la etiqueta (NOSPOIL-04: lugar + acción u hora), las
- * marcas «opcional» y «reserva» y una casilla «hecho» (role=checkbox).
+ * marcas «opcional», «reserva» y, si el paso es un trayecto (Step.transfer), «con maletas»
+ * (cambio de ciudad) o «ida y vuelta» (excursión), y una casilla «hecho» (role=checkbox). El
+ * detalle del trayecto (línea, duración, avisos) solo está en la hoja del paso.
  *
  * Tocar la tarjeta abre la hoja del paso (scripts/sheet.ts): el botón lleva en data-* lo que la
  * hoja necesita (hora, tipo, enlace de Maps, zona y si requiere reserva), así que la hoja se
@@ -61,8 +63,17 @@ const steps = day.steps.map((s, i) => ({
             >
               <span data-step-flag hidden />
               <span data-step-label>{s.label}</span>
-              {(s.optional || s.reserve) && (
+              {(s.optional || s.reserve || s.transfer) && (
                 <span data-step-tags>
+                  {s.transfer &&
+                    (s.transfer.roundTrip ? (
+                      <span data-tag="trip">ida y vuelta</span>
+                    ) : (
+                      <span data-tag="bags">
+                        <span aria-hidden="true">🧳</span>
+                        con maletas
+                      </span>
+                    ))}
                   {s.optional && <span data-tag="opt">opcional</span>}
                   {s.reserve && (
                     <span data-tag="res">

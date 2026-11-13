@@ -35,8 +35,11 @@ export type TransferMode =
 
 /**
  * A transfer leg between two locations (inter-city move or day-trip round trip).
- * Pure logistics — NO spoilers. Rendered at the top of a Day, before the steps.
- * A day can have 0..n legs (e.g. Kioto → Nara → Osaka has two).
+ * Pure logistics — NO spoilers. It lives on the Step where the leg happens (`Step.transfer`):
+ * the timeline marks that step and its sheet shows the leg. A round trip goes on the outbound
+ * step; the way back is a plain step. A day can have 0..n legs (e.g. Kioto → Osaka → Nara).
+ * The step label is the short action + destination; `line` holds the route detail (never the
+ * same sentence twice).
  */
 export interface Transfer {
   readonly from: string                  // 'Tokio' | 'Takayama'
@@ -87,6 +90,7 @@ export interface Step {
   readonly maps?: string         // Google Maps search text
   readonly optional?: boolean    // optional step (e.g. depends on a festival)
   readonly reserve?: boolean     // needs a booking in advance
+  readonly transfer?: Transfer   // the leg done in this step (inter-city move or day-trip outbound)
 }
 
 /**
@@ -104,7 +108,6 @@ export interface Day {
   readonly date: string           // ISO 'YYYY-MM-DD' (2027-05-08 ... 2027-05-28)
   readonly citySlug: string       // → City.slug (city where you sleep that night / base city)
   readonly title: string          // 'Tokio · bloque 1 — Llegada a Tokio' (UI takes the text after the last '—')
-  readonly transfers?: readonly Transfer[]   // inter-city / day-trip legs (optional, ordered)
   readonly steps: readonly Step[]            // hour-by-hour plan (source of truth for the day)
   readonly notes?: readonly string[]         // logistic notes (closures, tickets, cash...)
   readonly rules?: readonly DayRule[]        // planning criteria applied to this day

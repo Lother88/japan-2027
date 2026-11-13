@@ -9,8 +9,8 @@ import type { Reservation } from './types'
 
 export const reservations: readonly Reservation[] = [
   {
-    what: 'Ryokan Ōsenkaku + lanzadera (13:00 o 15:00 a la ida · 9:30 a la vuelta)',
-    how: 'Reservar por Booking + teléfono',
+    what: 'Ryokan Ōsenkaku + lanzadera de ida y vuelta',
+    how: 'Ryokan por Booking; lanzadera por teléfono',
     date: '2027-05-12',
     dayId: 12,
   },

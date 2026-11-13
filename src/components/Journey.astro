@@ -7,21 +7,26 @@
  * sticky (DateStrip) encima de los días. `#itinerario` es el destino del skip-link; el día
  * activo lo llevan scripts/journey.ts (rail y tira) y el plan de hoy scripts/day-plan.ts.
  *
- * Al final, un <template data-zone-tpl> por zona usada en algún paso: la hoja de cada paso
- * (StepSheet + scripts/sheet.ts) clona de ahí la ficha de la zona y su «El lugar» plegado.
- * Los <template> no se pintan ni cargan nada hasta que se clonan. Solo llevan lo práctico:
- * el contexto cultural de «El lugar» es JSON aparte (scripts/place.ts, al desplegarlo).
+ * Al final, un <template data-zone-tpl> por zona usada en algún paso y un
+ * <template data-transfer-tpl> por paso con trayecto (su id = el del botón del paso): la hoja
+ * de cada paso (StepSheet + scripts/sheet.ts) clona de ahí el trayecto y la ficha de la zona
+ * con su «El lugar» plegado. Los <template> no se pintan ni cargan nada hasta que se clonan.
+ * Solo llevan lo práctico: el contexto cultural de «El lugar» es JSON aparte
+ * (scripts/place.ts, al desplegarlo).
  */
 import { getZone, itinerary } from '@/data'
 import type { Zone } from '@/data/types'
+import { stepId } from '@/features/landing/dayView'
 import DayRail from '@/components/DayRail.astro'
 import DateStrip from '@/components/DateStrip.astro'
 import DaySection from '@/components/DaySection.astro'
 import JourneyIcons from '@/components/JourneyIcons.astro'
+import TransferCard from '@/components/TransferCard.astro'
 import ZoneCard from '@/components/ZoneCard.astro'
 
 const zoneIds = [...new Set(itinerary.flatMap((d) => d.steps.flatMap((s) => (s.zoneId ? [s.zoneId] : []))))]
 const zones = zoneIds.map((id) => getZone(id)).filter((z): z is Zone => z !== undefined)
+const transfers = itinerary.flatMap((d) => d.steps.flatMap((s, i) => (s.transfer ? [{ stepId: stepId(d, i), transfer: s.transfer }] : [])))
 ---
 
 <section id="itinerario" aria-label="Itinerario día a día" data-journey>
@@ -33,6 +38,13 @@ const zones = zoneIds.map((id) => getZone(id)).filter((z): z is Zone => z !== un
     {itinerary.map((day) => <DaySection day={day} />)}
   </div>
 
+  {
+    transfers.map((t) => (
+      <template data-transfer-tpl={t.stepId}>
+        <TransferCard transfer={t.transfer} />
+      </template>
+    ))
+  }
   {
     zones.map((zone) => (
       <template data-zone-tpl={zone.id}>

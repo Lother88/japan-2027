@@ -1,33 +1,25 @@
 ---
 /**
- * TransferCard — «billete» de un trayecto del día: cabecera (🧳 Traslado o Ida y vuelta + modo),
- * origen → destino, perforado, línea y duración, y las notas (transbordos, equipaje, reservas).
- * Franja lateral con el color de la ciudad del día (--c, heredado de la sección). Estilos en
- * index.css («Journey · billete»).
+ * TransferCard — el trayecto de un paso, dentro de su hoja (StepSheet).
+ *
+ * Journey.astro la pinta una vez por paso con trayecto dentro de un
+ * <template data-transfer-tpl="id del paso"> y scripts/sheet.ts la clona al abrir ese paso,
+ * antes de la ficha de la zona: Cómo, Duración y los avisos (transbordos, equipaje, asientos).
+ * Sin línea de ruta visible: el destino ya es el título del paso, el modo su icono y el origen
+ * va en «Cómo»; Desde → Hasta solo queda como nombre accesible del bloque. «Con maletas» o «ida y vuelta» no
+ * van aquí: son marcas del paso (StepTimeline), que la hoja ya copia. Estilos en index.css
+ * («Trayecto en la hoja»).
  */
 import type { Transfer } from '@/data/types'
-import { TRANSFER_MODE_LABELS } from '@/features/landing/dayView'
-import Icon from '@/components/Icon.astro'
 
 interface Props {
   transfer: Transfer
 }
 
 const { transfer: t } = Astro.props
-const kind = t.roundTrip ? 'Ida y vuelta' : 'Traslado'
 ---
 
-<section data-transfer aria-label={`${kind}: de ${t.from} a ${t.to}`}>
-  <p data-tr-head>
-    {!t.roundTrip && <span aria-hidden="true">🧳</span>}
-    <span>{kind} · {TRANSFER_MODE_LABELS[t.mode]}</span>
-  </p>
-  <div data-tr-route>
-    <p data-tr-end><small>Desde</small><strong>{t.from}</strong></p>
-    <span data-tr-arrow><Icon name="arrow" size={22} /></span>
-    <p data-tr-end="to"><small>Hasta</small><strong>{t.to}</strong></p>
-  </div>
-  <div data-tr-perf aria-hidden="true"></div>
+<div data-transfer role="group" aria-label={`Trayecto de ${t.from} a ${t.to}`}>
   {
     (t.line || t.duration) && (
       <dl data-tr-facts>
@@ -48,11 +40,11 @@ const kind = t.roundTrip ? 'Ida y vuelta' : 'Traslado'
   }
   {
     t.notes && t.notes.length > 0 && (
-      <ul data-tr-notes>
+      <ul data-tr-notes aria-label="Avisos del trayecto">
         {t.notes.map((n) => (
           <li>{n}</li>
         ))}
       </ul>
     )
   }
-</section>
+</div>
