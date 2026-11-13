@@ -59,7 +59,7 @@ export const context: Record<string, readonly ContextEntry[]> = {
       historia: 'Lo promovió el periodista Fukuchi Ōchi para modernizar el teatro, y abrió en 1889 con fachada occidental e interior japonés. Ardió en 1921, el terremoto de 1923 frenó su reconstrucción y los bombardeos de 1945 lo dejaron casi destruido. Renació en 1924 y en 1951, y el edificio actual, del estudio de Kengo Kuma entre otros, abrió en 2013.',
       significado: 'El kabuki es Patrimonio Inmaterial de la UNESCO desde 2008, y el Kabuki-za es su escenario de referencia.',
       curiosidades: [
-        'Cifras del escenario. Tiene 1.808 butacas, un escenario giratorio de 18,18 m de diámetro y una pasarela hanamichi de 18,18 m de largo. Hay además 96 localidades para ver un solo acto.',
+        'Cifras del escenario. Tiene 1.808 butacas, un escenario giratorio de 18,18 m de diámetro y una pasarela hanamichi de 18,18 m de largo. Hay además unas 90 localidades para ver un solo acto.',
         'Sin entrada también se sube. Desde la torre se llega a una galería sobre la historia del kabuki y a un jardín en la azotea.',
       ],
     },
@@ -391,7 +391,7 @@ export const context: Record<string, readonly ContextEntry[]> = {
   ],
   'miyagawa-asaichi': [
     {
-      nombre: 'Mercado matutino de Miyagawa (宮川朝市)',
+      nombre: 'Mercado matinal de Miyagawa (宮川朝市)',
       queEs: 'Mercado diario de mañana a orillas del río Miyagawa, con verduras, encurtidos, flores y artesanía local.',
       historia: 'Su origen es un mercado de hojas de morera para los gusanos de seda que hacia 1819 se celebraba frente a un templo de Takayama. A finales del s. XIX pasó a vender verduras de cosecha propia. La guerra lo paralizó, y el 1 de mayo de 1960 se instaló junto al río, en un terreno sin pavimentar donde los propios comerciantes levantaron sus puestos.',
       significado: 'Junto con el mercado frente a la Jinya, se cuenta entre los mercados matutinos más importantes de Japón.',
@@ -530,7 +530,7 @@ export const context: Record<string, readonly ContextEntry[]> = {
     {
       nombre: 'Camino del Filósofo (哲学の道)',
       queEs: 'Paseo peatonal junto a un ramal del canal del lago Biwa, entre el santuario Kumano Nyakuōji y Ginkaku-ji.',
-      historia: 'Nació como sendero de servicio del canal. Al estar cerca de la Universidad Imperial de Kioto, desde Meiji la zona se llenó de académicos. Tuvo varios apodos hasta que en 1969, durante una campaña vecinal para conservar el canal, se fijó el de «Camino del Filósofo».',
+      historia: 'Nació como sendero de servicio del canal. Al estar cerca de la Universidad Imperial de Kioto, desde Meiji la zona se llenó de académicos. Tuvo varios apodos hasta que en 1972, durante una campaña vecinal para conservar el canal, se fijó el de «Camino del Filósofo».',
       significado: 'Recuerda a la Escuela de Kioto: el filósofo Nishida Kitarō y sus discípulos paseaban por aquí mientras pensaban.',
       curiosidades: [
         'Los cerezos de un pintor. El pintor Hashimoto Kansetsu y su esposa, que vivían cerca, plantaron los primeros árboles hacia 1922. En mayo no habrá flor, pero sí un túnel verde sobre el agua.',
@@ -555,7 +555,7 @@ export const context: Record<string, readonly ContextEntry[]> = {
     {
       nombre: 'Bosque de bambú de Sagano (嵯峨野竹林)',
       queEs: 'El sendero entre bambús que va del santuario Nonomiya, junto a la puerta norte de Tenryū-ji, hacia la villa Ōkōchi Sansō. Tiene unos 400 m.',
-      historia: 'Sagano fue zona de villas y retiros de la corte desde Heian. Al final del sendero, el santuario Nonomiya ocupa uno de los lugares donde se purificaban las saiō, princesas imperiales elegidas para servir en el santuario de Ise en nombre del emperador. La institución desapareció en el siglo XIV con las guerras de la época.',
+      historia: 'Sagano fue zona de villas y retiros de la corte desde Heian. Al inicio del sendero, el santuario Nonomiya ocupa uno de los lugares donde se purificaban las saiō, princesas imperiales elegidas para servir en el santuario de Ise en nombre del emperador. La institución desapareció en el siglo XIV con las guerras de la época.',
       significado: 'Aquí transcurre el capítulo «Sakaki» del Genji monogatari, cuando Genji visita a la dama Rokujō. Por eso Sagano es, en la literatura japonesa, tierra de despedidas y melancolía.',
       curiosidades: [
         'El torii más antiguo. El torii negro de Nonomiya está hecho con troncos de roble sin descortezar: es la forma más antigua de torii.',
@@ -623,7 +623,7 @@ export const context: Record<string, readonly ContextEntry[]> = {
         '¿Cuántos torii? Unos 10.000 por todo el monte. Se donan para que el deseo «pase», o porque ya «pasó». Y los Senbon torii («mil torii») no son mil: es un nombre poético.',
         'Los zorros no son Inari. Son sus mensajeros, y además invisibles: se veneran como «zorros blancos». Fíjate en lo que llevan en la boca las estatuas.',
         'El bermellón protege. El color aleja las fuerzas malignas, y el pigmento tradicional, a base de mercurio, también protegía la madera.',
-        'El estanque del eco. En el cruce de Yotsutsuji, a media subida, está el mirador clásico. Más arriba, en el estanque Shin-ike, para encontrar a un desaparecido se da una palmada y se busca hacia donde vuelve el eco.',
+        'El estanque del eco. En el cruce de Yotsutsuji, a media subida, está el mirador clásico. Antes de llegar, en el estanque Shin-ike, para encontrar a un desaparecido se da una palmada y se busca hacia donde vuelve el eco.',
       ],
     },
   ],
@@ -674,7 +674,7 @@ export const context: Record<string, readonly ContextEntry[]> = {
       curiosidades: [
         '¿Por qué el día 21? Kūkai entró en meditación eterna un día 21 de 835. Para atender a los peregrinos que venían en su memoria surgieron puestos de té de «un cuenco, una moneda»; hoy hay cerca de 1.000 puestos.',
         'Demonios cargando la pagoda. En las esquinas del primer tejado, pequeñas figuras de demonios parecen sostener el alero. Dentro, el pilar central se venera como el Buda Dainichi.',
-        'Un archivo de mil años. Sus unos 27.000 documentos, del siglo VIII al XVIII, son Memoria del Mundo de la UNESCO desde 2015.',
+        'Un archivo de mil años. Sus unos 25.000 documentos, del siglo VIII al XVIII, son Memoria del Mundo de la UNESCO desde 2015.',
         'Un espadachín pintor. En el subtemplo Kanchi-in hay un águila y un bosque de bambú pintados por Miyamoto Musashi, el samurái de las dos espadas.',
       ],
     },
@@ -686,7 +686,7 @@ export const context: Record<string, readonly ContextEntry[]> = {
       historia: 'Nació en 669 y en 710, con la nueva capital, se instaló aquí con el nombre de Kōfuku-ji. La primera pagoda es de 730; la actual, de hacia 1426, mide unos 50 m. En Meiji, la separación forzosa entre budismo y sintoísmo dejó el templo casi abandonado, y la pagoda estuvo a punto de venderse. Hoy vive su primera gran restauración en unos 120 años.',
       significado: 'Fue el templo del linaje que dominó la corte en Nara y Heian. En la Edad Media llegó a gobernar de hecho la provincia, con sus propios monjes guerreros.',
       curiosidades: [
-        'La obra, en cifras. La cubierta de obra mide unos 60 m y está desde 2025. El remate se desmontó en 2026 y no volverá hasta 2031.',
+        'La obra, en cifras. La cubierta de obra mide unos 60 m y está desde 2025. El remate se desmontó en 2026 y no volverá hasta 2031. La obra entera acaba en 2034.',
         'Un edificio de 2018. El gran pabellón rojo del centro, el Chūkondō, ardió en 1717 y no se reconstruyó hasta 2018, unos 300 años después.',
         'La Ashura. La estatua de Ashura, con tres caras y seis brazos, una de las más queridas de Japón, está en el museo del propio templo.',
       ],
@@ -721,7 +721,7 @@ export const context: Record<string, readonly ContextEntry[]> = {
       historia: 'En 1612 Yasui Dōton empezó a excavar el canal con su propio dinero. Murió luchando por los Toyotomi en el asedio de Osaka, y sus parientes lo terminaron en 1615. El primer cartel de Glico, de 1935, era una torre de neón de 33 m que se desmontó en 1943 para dar su acero a la guerra. El sexto, de 2014, fue el primero de LED.',
       significado: 'Es la vitrina del kuidaore, «comer hasta arruinarse», y del espíritu comercial y teatral de Osaka.',
       curiosidades: [
-        'Un relevo en marcha. El sexto cartel se apaga a finales de noviembre de 2026; en el séptimo, la silueta del corredor se mantiene.',
+        'Un relevo en marcha. El sexto cartel se apagó a finales de noviembre de 2026; en el séptimo, la silueta del corredor se mantiene.',
         'Un canal con nombre de perdedor. Dōton murió luchando contra los Tokugawa, y aun así un señor Tokugawa le dedicó el canal. Además, su apellido real era Nariyasu, no Yasui.',
         'Cada Glico, una sorpresa. El segundo tenía un gran cocodrilo; el tercero lanzaba 12 toneladas de agua en chorros iluminados; el quinto, cuatro símbolos de Osaka a su espalda.',
       ],
@@ -949,7 +949,7 @@ export const context: Record<string, readonly ContextEntry[]> = {
     {
       nombre: 'Fukagawa Edo Museum (深川江戸資料館)',
       queEs: 'Museo que reconstruye a tamaño real un trozo del barrio de Fukagawa a finales de la época Edo. Se puede entrar en las casas.',
-      historia: 'Abrió en noviembre de 1986, así que en 2026 cumple 40 años. Para la reconstrucción se usó un plano catastral de 1760. En 2014 se añadió una sala dedicada al yokozuna Taihō.',
+      historia: 'Abrió en noviembre de 1986, así que en 2026 cumplió 40 años. Para la reconstrucción se usó un plano catastral de 1760. En 2014 se añadió una sala dedicada al yokozuna Taihō.',
       significado: 'Muestra la vida de la gente corriente: un almacén de abonos, una frutería, posadas de barqueros y un nagaya, la casa de vecinos, con pozo, retrete y santuario compartidos.',
       curiosidades: [
         'Un día entero. Luces y sonido simulan un día completo, de la mañana a la noche.',
@@ -977,7 +977,7 @@ export const context: Record<string, readonly ContextEntry[]> = {
         'La Estela de los Yokozuna. Es de 1900, mide 3,5 m, pesa 20 toneladas y lleva los nombres de todos los yokozuna desde el primero. Al lado hay huellas de manos y pies de luchadores gigantes: compara tu mano.',
         'El mayor mikoshi de Japón. El «gran mikoshi de oro» de 1991 pesa unas 4,5 toneladas y lleva 24 kg de oro puro, ojos de diamante y 2.010 rubíes. Es tan pesado que no se puede llevar a hombros cada año, así que en 1997 se hizo un segundo.',
         'Aquí empezó el mapa de Japón. Inō Tadataka vivía al lado y rezaba aquí antes de cada viaje de medición; el primero salió en 1800. Su estatua está junto al gran torii.',
-        '400 años en 2027. El santuario está en obras por su aniversario y su museo está cerrado.',
+        '400 años en 2027. El santuario se renueva por su aniversario.',
       ],
     },
   ],

@@ -36,7 +36,7 @@ export const hotels: readonly Hotel[] = [
     maps: 'Takaragawa Onsen Osenkaku',
     laundry: false,
     reasons: [
-      'Ryokan único del manantial: se reserva aparte, con la lanzadera (reserva por teléfono)',
+      'Ryokan único del manantial: se reserva aparte, con la lanzadera (reserva por teléfono o web)',
     ],
   },
   {
@@ -79,7 +79,7 @@ export const hotels: readonly Hotel[] = [
     maps: 'Shichijo Station Keihan Kyoto',
     laundry: true,
     reasons: [
-      'Línea Keihan: Fushimi Inari a 3 paradas con el primer tren',
+      'Línea Keihan: Fushimi Inari a 3 paradas, con trenes desde las 5:09',
       'Sanjūsangen-dō a 5 min a pie; Kiyomizu a unos 20',
       'Cerca de la estación de Kioto para los dos días con maletas (17 y 21)',
     ],
@@ -95,7 +95,7 @@ export const hotels: readonly Hotel[] = [
     laundry: true,
     reasons: [
       'El Kintetsu de Nara termina en Namba',
-      'Línea Midōsuji directa a Shin-Osaka, a Umeda y hacia Katsuo-ji',
+      'Línea Midōsuji directa a Shin-Osaka, a Umeda y a Minoh-Kayano (Katsuo-ji)',
       'Kuromon, Dōtonbori y Den Den Town a pie',
     ],
   },
