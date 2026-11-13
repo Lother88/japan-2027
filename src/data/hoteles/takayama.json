@@ -1,0 +1,596 @@
+{
+  "stay": "Takayama",
+  "checkIn": "2027-05-15",
+  "checkOut": "2027-05-17",
+  "nights": 2,
+  "searchedAt": "2026-11-13T13:21:26Z",
+  "anchors": [
+    {
+      "name": "Estación JR Takayama / Nōhi Bus Center",
+      "lat": 36.1411,
+      "lng": 137.2513
+    },
+    {
+      "name": "Sanmachi (casco antiguo)",
+      "lat": 36.141,
+      "lng": 137.2595
+    },
+    {
+      "name": "Mercado matutino de Miyagawa",
+      "lat": 36.1445,
+      "lng": 137.2575
+    }
+  ],
+  "candidates": [
+    {
+      "name": "Hida Takayama Washington Hotel Plaza",
+      "url": "https://www.booking.com/hotel/jp/hida-takayama-washington-plaza.es.html?checkin=2027-05-15&checkout=2027-05-17&group_adults=4&no_rooms=2&group_children=0&selected_currency=EUR",
+      "stars": 3,
+      "score": 8,
+      "reviews": 1983,
+      "priceTotalEUR": 263,
+      "roomCombo": "2 × Habitación Doble Económica no fumadores (1 cama por habitación, compartida por 2 personas) — combinación recomendada por Booking; NO son camas separadas",
+      "twinPriceTotalEUR": 348,
+      "taxesIncluded": "no indicado",
+      "freeCancel": "Sí, cancelación gratis antes del 14 de mayo de 2027; sin pago por adelantado (se paga en el alojamiento)",
+      "breakfast": "No incluido; desayuno opcional por 9 € (tarifa con desayuno: twin económica 217 €/hab., twin superior 251 €/hab.)",
+      "onsen": "sí",
+      "coinLaundry": "no indicado",
+      "lat": 36.140862,
+      "lng": 137.252144,
+      "distM": {
+        "Estación JR Takayama / Nōhi Bus Center": 80,
+        "Sanmachi (casco antiguo)": 661,
+        "Mercado matutino de Miyagawa": 628
+      },
+      "walkMin": {
+        "Estación JR Takayama / Nōhi Bus Center": 1,
+        "Sanmachi (casco antiguo)": 11,
+        "Mercado matutino de Miyagawa": 10
+      },
+      "notes": "2 × twin real = 2 × \"Habitación Económica con 2 camas individuales\" (15 m², quedaban 2) a 174 €/hab. = 348 €. Alternativa más amplia: 2 × \"Doble Superior – 2 camas\" (24 m², quedaban 3) a 206 €/hab. = 412 €. Doble económica + twin económica = 305 €. El listado mostraba 254 € con una oferta de colaborador (2 × Habitación Individual, prepago, no modificable). Baños públicos en el hotel (las opiniones lo llaman onsen). Guardaequipaje y \"servicio de lavandería\" listados; lavandería de monedas no indicada. Aviso: la habitación twin económica es pequeña (15 m²)."
+    },
+    {
+      "name": "Hotel Alpha-One Takayama",
+      "url": "https://www.booking.com/hotel/jp/alpha-one-takayama.es.html?checkin=2027-05-15&checkout=2027-05-17&group_adults=4&no_rooms=2&group_children=0&selected_currency=EUR",
+      "stars": 3,
+      "score": 7.3,
+      "reviews": 285,
+      "priceTotalEUR": 340,
+      "roomCombo": "1 × Habitación Doble fumadores + 1 × Habitación Doble no fumadores (1 cama doble cada una; 170 € c/u)",
+      "twinPriceTotalEUR": 406,
+      "taxesIncluded": "no indicado",
+      "freeCancel": "Sí, cancelación gratis antes de las 18:00 del 15 de mayo de 2027; se paga en el alojamiento",
+      "breakfast": "No incluido (tarifa con desayuno: doble 197 €, twin 231 € por habitación)",
+      "onsen": "no indicado",
+      "coinLaundry": "no indicado",
+      "lat": 36.143189,
+      "lng": 137.257229,
+      "distM": {
+        "Estación JR Takayama / Nōhi Bus Center": 581,
+        "Sanmachi (casco antiguo)": 318,
+        "Mercado matutino de Miyagawa": 148
+      },
+      "walkMin": {
+        "Estación JR Takayama / Nōhi Bus Center": 9,
+        "Sanmachi (casco antiguo)": 5,
+        "Mercado matutino de Miyagawa": 2
+      },
+      "notes": "AVISO: nota 7,3 (por debajo del 7,5). El 2 × twin (406 €) obliga a una habitación twin de FUMADORES: solo quedaba 1 twin no fumadores y 1 twin fumadores (203 € c/u). Doble no fumadores + twin no fumadores = 373 €. Booking no muestra superficie de las habitaciones. A medio camino entre estación y casco antiguo."
+    },
+    {
+      "name": "hotel around TAKAYAMA, an Ascend Collection Hotel",
+      "url": "https://www.booking.com/hotel/jp/around-takayama.es.html?checkin=2027-05-15&checkout=2027-05-17&group_adults=4&no_rooms=2&group_children=0&selected_currency=EUR",
+      "stars": 4,
+      "score": 9,
+      "reviews": 2031,
+      "priceTotalEUR": 508,
+      "roomCombo": "2 × Habitación con cama grande y sofá no fumadores (18 m², 1 cama doble grande; 254 € c/u) — no son camas separadas",
+      "twinPriceTotalEUR": 666,
+      "taxesIncluded": "no indicado",
+      "freeCancel": "Sí, cancelación gratis antes del 10 de mayo de 2027; se paga en el alojamiento",
+      "breakfast": "No incluido; desayuno opcional por 12 € (tarifa con desayuno: twin superior 383 €/hab. → 766 € las dos)",
+      "onsen": "sí",
+      "coinLaundry": "no indicado",
+      "lat": 36.143709,
+      "lng": 137.251308,
+      "distM": {
+        "Estación JR Takayama / Nōhi Bus Center": 290,
+        "Sanmachi (casco antiguo)": 795,
+        "Mercado matutino de Miyagawa": 563
+      },
+      "walkMin": {
+        "Estación JR Takayama / Nōhi Bus Center": 5,
+        "Sanmachi (casco antiguo)": 13,
+        "Mercado matutino de Miyagawa": 9
+      },
+      "notes": "2 × twin real = 2 × \"Doble Superior – 2 camas\" (24 m², quedaban 2) a 333 €/hab. = 666 €. Twin + doble (cama grande) = 587 €. El listado mostraba 479 € con oferta de colaborador (239 €, prepago) para la doble. Baños públicos / baños termales listados. Guardaequipaje. \"Servicio de lavandería\" listado; lavandería de monedas no indicada."
+    },
+    {
+      "name": "Tabino Hotel Base Takayama Station",
+      "url": "https://www.booking.com/hotel/jp/tabinohoterubasegao-shan-yi-qian.es.html?checkin=2027-05-15&checkout=2027-05-17&group_adults=4&no_rooms=2&group_children=0&selected_currency=EUR",
+      "stars": 3,
+      "score": 8.3,
+      "reviews": 55,
+      "priceTotalEUR": 616,
+      "roomCombo": "2 × Habitación Doble Confort – 2 camas (16 m², 2 camas individuales + 1 sofá cama) en tarifa NO reembolsable (308 € c/u)",
+      "twinPriceTotalEUR": 616,
+      "taxesIncluded": "sí",
+      "freeCancel": "Solo en la tarifa flexible: 712 € (356 € c/u) con cancelación gratis antes del 8 de mayo de 2027; la tarifa de 616 € es no reembolsable",
+      "breakfast": "No incluido (no se ofrece tarifa con desayuno)",
+      "onsen": "no",
+      "coinLaundry": "no indicado",
+      "lat": 36.141675,
+      "lng": 137.252146,
+      "distM": {
+        "Estación JR Takayama / Nōhi Bus Center": 99,
+        "Sanmachi (casco antiguo)": 665,
+        "Mercado matutino de Miyagawa": 574
+      },
+      "walkMin": {
+        "Estación JR Takayama / Nōhi Bus Center": 2,
+        "Sanmachi (casco antiguo)": 11,
+        "Mercado matutino de Miyagawa": 9
+      },
+      "notes": "Único con \"Incluye impuestos y cargos\". Quedaban 2 habitaciones twin. Habitación pequeña (16 m²). La ficha lista \"Toallas/sábanas (cargo adicional)\". Pocas opiniones (55). Guardaequipaje listado. No aparece baño público ni onsen en la lista de servicios."
+    },
+    {
+      "name": "Hida Takayama Onsen Takayama Green Hotel - KEIO GROUP HOTELS -",
+      "url": "https://www.booking.com/hotel/jp/takayama-green.es.html?checkin=2027-05-15&checkout=2027-05-17&group_adults=4&no_rooms=2&group_children=0&selected_currency=EUR",
+      "stars": 5,
+      "score": 8.8,
+      "reviews": 2709,
+      "priceTotalEUR": 670,
+      "roomCombo": "2 × Habitación de estilo japonés – Ala principal no fumadores (36 m², futones; 335 € c/u para 2 personas)",
+      "twinPriceTotalEUR": 670,
+      "taxesIncluded": "no indicado",
+      "freeCancel": "Sí, cancelación gratis antes del 12 de mayo de 2027",
+      "breakfast": "No incluido (con desayuno: japonesa 386 €/hab. → 772 €; twin confort 441 €/hab. → 882 €; hay tarifas con desayuno + cena buffet desde 537 €/hab.)",
+      "onsen": "sí",
+      "coinLaundry": "no indicado",
+      "lat": 36.137545,
+      "lng": 137.248077,
+      "distM": {
+        "Estación JR Takayama / Nōhi Bus Center": 490,
+        "Sanmachi (casco antiguo)": 1095,
+        "Mercado matutino de Miyagawa": 1146
+      },
+      "walkMin": {
+        "Estación JR Takayama / Nōhi Bus Center": 8,
+        "Sanmachi (casco antiguo)": 18,
+        "Mercado matutino de Miyagawa": 19
+      },
+      "notes": "Twin occidental: 2 × \"Doble Confort – 2 camas, ala Orinkaku (nueva)\" (33 m², quedaban 5) a 390 €/hab. = 780 €. Japonesa + twin confort = 725 €. Onsen con baño al aire libre, baños públicos y sauna. Guardaequipaje. \"Servicio de lavandería\" listado. Queda al suroeste de la estación, del lado contrario al casco antiguo. Las estrellas (5) son el recuento leído en la ficha de Booking; no reconfirmado."
+    },
+    {
+      "name": "Hida Takayama Onsen Hida Hotel Plaza",
+      "url": "https://www.booking.com/hotel/jp/hida-plaza.es.html?checkin=2027-05-15&checkout=2027-05-17&group_adults=4&no_rooms=2&group_children=0&selected_currency=EUR",
+      "stars": 4,
+      "score": 8.8,
+      "reviews": 199,
+      "priceTotalEUR": 678,
+      "roomCombo": "2 × Habitación Doble Estándar – 2 camas (27 m², 2 camas individuales; 339 € c/u)",
+      "twinPriceTotalEUR": 678,
+      "taxesIncluded": "no indicado",
+      "freeCancel": "Sí, cancelación gratis antes del 12 de mayo de 2027",
+      "breakfast": "No incluido (con desayuno 376 €/hab. → 752 € las dos)",
+      "onsen": "sí",
+      "coinLaundry": "no indicado",
+      "lat": 36.145352,
+      "lng": 137.252412,
+      "distM": {
+        "Estación JR Takayama / Nōhi Bus Center": 483,
+        "Sanmachi (casco antiguo)": 800,
+        "Mercado matutino de Miyagawa": 467
+      },
+      "walkMin": {
+        "Estación JR Takayama / Nōhi Bus Center": 8,
+        "Sanmachi (casco antiguo)": 13,
+        "Mercado matutino de Miyagawa": 8
+      },
+      "notes": "Quedaban 2 habitaciones twin estándar. Onsen con baño al aire libre, baños públicos y sauna. Guardaequipaje. Al norte de la estación."
+    },
+    {
+      "name": "Rickshaw inn",
+      "url": "https://www.booking.com/hotel/jp/rickshaw-inn.es.html?checkin=2027-05-15&checkout=2027-05-17&group_adults=4&no_rooms=2&group_children=0&selected_currency=EUR",
+      "stars": 3,
+      "score": 9,
+      "reviews": 769,
+      "priceTotalEUR": 716,
+      "roomCombo": "1 × Habitación Familiar japonesa con baño \"101 Bamboo\" (21 m², 4 futones; 293 €) + 1 × Habitación Familiar de lujo con baño \"102 Sakura\" (32 m², 2 sofás cama + 4 futones; 423 €)",
+      "twinPriceTotalEUR": 716,
+      "taxesIncluded": "no indicado",
+      "freeCancel": "Sí, cancelación gratis antes del 10 de mayo de 2027",
+      "breakfast": "No incluido",
+      "onsen": "no",
+      "coinLaundry": "no indicado",
+      "lat": 36.143303,
+      "lng": 137.255491,
+      "distM": {
+        "Estación JR Takayama / Nōhi Bus Center": 449,
+        "Sanmachi (casco antiguo)": 442,
+        "Mercado matutino de Miyagawa": 224
+      },
+      "walkMin": {
+        "Estación JR Takayama / Nōhi Bus Center": 7,
+        "Sanmachi (casco antiguo)": 7,
+        "Mercado matutino de Miyagawa": 4
+      },
+      "notes": "Solo quedaban estas 2 habitaciones familiares (1 de cada). Alternativa fuera del objetivo de 2 habitaciones: los 4 en la \"Bamboo\" (4 futones separados, baño privado) por 293 €. Las \"estrellas\" son la valoración de calidad de Booking (cuadrados), no estrellas oficiales. Cocina y salón compartidos; guardaequipaje; \"servicio de lavandería\" listado."
+    },
+    {
+      "name": "Chisun Grand Takayama",
+      "url": "https://www.booking.com/hotel/jp/tisan-gurando-gao-shan.es.html?checkin=2027-05-15&checkout=2027-05-17&group_adults=4&no_rooms=2&group_children=0&selected_currency=EUR",
+      "stars": 4,
+      "score": 8.7,
+      "reviews": 4341,
+      "priceTotalEUR": 796,
+      "roomCombo": "1 × Doble Estándar cama doble pequeña (18 m², 385 €) + 1 × Doble Estándar – 2 camas (23 m², 411 €), tarifa flexible",
+      "twinPriceTotalEUR": 841,
+      "taxesIncluded": "no indicado",
+      "freeCancel": "Sí en tarifa flexible: cancelación gratis antes del 14 de mayo de 2027 y pago en el alojamiento. Tarifa no reembolsable más barata: 773 € (doble + twin) / 816 € (2 × twin)",
+      "breakfast": "No incluido (con desayuno: twin 457–476 €/hab.)",
+      "onsen": "no indicado",
+      "coinLaundry": "no indicado",
+      "lat": 36.141694,
+      "lng": 137.252881,
+      "distM": {
+        "Estación JR Takayama / Nōhi Bus Center": 157,
+        "Sanmachi (casco antiguo)": 599,
+        "Mercado matutino de Miyagawa": 519
+      },
+      "walkMin": {
+        "Estación JR Takayama / Nōhi Bus Center": 3,
+        "Sanmachi (casco antiguo)": 10,
+        "Mercado matutino de Miyagawa": 8
+      },
+      "notes": "2 × twin = 1 × \"Doble Estándar – 2 camas\" (23 m², quedaba 1; 411 €) + 1 × \"Doble – 2 camas\" (27 m², quedaban 2; 430 €) = 841 € flexible (816 € no reembolsable). 2 × twin de 27 m² = 860 € flexible. La ficha lista \"Spa y centro de bienestar\", sauna e \"instalaciones de spa\" (\"Spa incluido en el precio\"), pero no usa las palabras baño público/onsen. Disponibilidad muy justa (1–2 habitaciones por tipo)."
+    },
+    {
+      "name": "Tenman Hotel (天满テンマンHotel)",
+      "url": "https://www.booking.com/hotel/jp/tian-man-su-takayama.es.html?checkin=2027-05-15&checkout=2027-05-17&group_adults=4&no_rooms=2&group_children=0&selected_currency=EUR",
+      "stars": null,
+      "score": 8.8,
+      "reviews": 277,
+      "priceTotalEUR": 814,
+      "roomCombo": "1 × Habitación de estilo japonés (30 m², 4 futones; 356 €) + 1 × Habitación Familiar con baño privado (30 m², 4 futones; 458 €), desayuno incluido",
+      "twinPriceTotalEUR": 814,
+      "taxesIncluded": "no indicado",
+      "freeCancel": "Sí, cancelación gratis antes del 14 de mayo de 2027",
+      "breakfast": "Desayuno incluido",
+      "onsen": "no indicado",
+      "coinLaundry": "no indicado",
+      "lat": 36.13835,
+      "lng": 137.254198,
+      "distM": {
+        "Estación JR Takayama / Nōhi Bus Center": 402,
+        "Sanmachi (casco antiguo)": 560,
+        "Mercado matutino de Miyagawa": 745
+      },
+      "walkMin": {
+        "Estación JR Takayama / Nōhi Bus Center": 7,
+        "Sanmachi (casco antiguo)": 9,
+        "Mercado matutino de Miyagawa": 12
+      },
+      "notes": "Alternativa fuera del objetivo de 2 habitaciones: los 4 en la habitación japonesa (4 futones) por 356 € con desayuno. No pude confirmar si la \"Habitación de estilo japonés\" tiene baño privado (solo la \"Familiar\" lo dice en el nombre). Japonesa + \"Triple Confort\" (2 camas dobles grandes, 20 m²) = 610 €. Sin categoría de estrellas en Booking. \"Lavadora\" listada en servicios (no se indica si es de monedas)."
+    },
+    {
+      "name": "Takayama Ouan",
+      "url": "https://www.booking.com/hotel/jp/takayama-ouan.es.html?checkin=2027-05-15&checkout=2027-05-17&group_adults=4&no_rooms=2&group_children=0&selected_currency=EUR",
+      "stars": 4,
+      "score": 8.7,
+      "reviews": 4456,
+      "priceTotalEUR": 818,
+      "roomCombo": "1 × Doble Estándar (16 m², 1 cama doble; 394 €) + 1 × Doble – 2 camas (21 m², 2 camas individuales; 424 €), tarifas \"mínimo 2 noches, sin limpieza diaria\"",
+      "twinPriceTotalEUR": 848,
+      "taxesIncluded": "no indicado",
+      "freeCancel": "Sí, cancelación gratis antes del 8 o del 10 de mayo de 2027 según tarifa",
+      "breakfast": "No incluido (con desayuno: twin 503 €/hab. → 1.006 € las dos)",
+      "onsen": "sí",
+      "coinLaundry": "no indicado",
+      "lat": 36.138655,
+      "lng": 137.252028,
+      "distM": {
+        "Estación JR Takayama / Nōhi Bus Center": 280,
+        "Sanmachi (casco antiguo)": 720,
+        "Mercado matutino de Miyagawa": 815
+      },
+      "walkMin": {
+        "Estación JR Takayama / Nōhi Bus Center": 5,
+        "Sanmachi (casco antiguo)": 12,
+        "Mercado matutino de Miyagawa": 13
+      },
+      "notes": "2 × twin = 2 × \"Doble – 2 camas, mínimo 2 noches, sin limpieza diaria\" (21 m², quedaban 5) a 424 €/hab. = 848 €; con limpieza diaria (\"Doble con ducha – 2 camas\") 449 €/hab. = 898 €. Onsen con baño al aire libre, baños públicos y sauna. Guardaequipaje."
+    },
+    {
+      "name": "KOKO HOTEL Hidatakayama",
+      "url": "https://www.booking.com/hotel/jp/wing-international-hida-takayama.es.html?checkin=2027-05-15&checkout=2027-05-17&group_adults=4&no_rooms=2&group_children=0&selected_currency=EUR",
+      "stars": 3,
+      "score": 8.5,
+      "reviews": 4291,
+      "priceTotalEUR": 832,
+      "roomCombo": "2 × Habitación Estándar – 1 cama grande (1 cama doble grande; 416 € c/u) — no son camas separadas",
+      "twinPriceTotalEUR": null,
+      "taxesIncluded": "no indicado",
+      "freeCancel": "Sí, cancelación gratis antes del 13 de mayo de 2027 (una tarifa indica antes del 3 de abril); se paga en el alojamiento",
+      "breakfast": "No incluido (con desayuno 457 €/hab.)",
+      "onsen": "sí",
+      "coinLaundry": "no indicado",
+      "lat": 36.144712,
+      "lng": 137.253379,
+      "distM": {
+        "Estación JR Takayama / Nōhi Bus Center": 443,
+        "Sanmachi (casco antiguo)": 687,
+        "Mercado matutino de Miyagawa": 371
+      },
+      "walkMin": {
+        "Estación JR Takayama / Nōhi Bus Center": 7,
+        "Sanmachi (casco antiguo)": 11,
+        "Mercado matutino de Miyagawa": 6
+      },
+      "notes": "AVISO: sin habitaciones twin disponibles para estas fechas (solo camas dobles e individuales). El listado mostró 832 € y minutos después 647 € (oferta de colaborador de 324 €/hab., prepago). Baños públicos / baños termales listados. Guardaequipaje; \"servicio de lavandería\"."
+    },
+    {
+      "name": "Hotel and Spa Gift TAKAYAMA",
+      "url": "https://www.booking.com/hotel/jp/and-spa-gift-takayama.es.html?checkin=2027-05-15&checkout=2027-05-17&group_adults=4&no_rooms=2&group_children=0&selected_currency=EUR",
+      "stars": 4,
+      "score": 8.9,
+      "reviews": 2281,
+      "priceTotalEUR": 866,
+      "roomCombo": "2 × Habitación Doble (15 m², 1 cama doble; 433 € c/u) — no son camas separadas",
+      "twinPriceTotalEUR": 886,
+      "taxesIncluded": "no indicado",
+      "freeCancel": "Sí, cancelación gratis antes del 13 de mayo de 2027",
+      "breakfast": "No incluido (con desayuno: twin 479 €/hab. → 958 €; con desayuno y cena 629 €/hab.)",
+      "onsen": "sí",
+      "coinLaundry": "no indicado",
+      "lat": 36.142126,
+      "lng": 137.253407,
+      "distM": {
+        "Estación JR Takayama / Nōhi Bus Center": 221,
+        "Sanmachi (casco antiguo)": 561,
+        "Mercado matutino de Miyagawa": 453
+      },
+      "walkMin": {
+        "Estación JR Takayama / Nōhi Bus Center": 4,
+        "Sanmachi (casco antiguo)": 9,
+        "Mercado matutino de Miyagawa": 7
+      },
+      "notes": "2 × twin = 2 × \"Doble Estándar – 2 camas\" (16 m², quedaban 4) a 443 €/hab. = 886 €. Doble + twin = 876 €. El listado mostraba 717 € con oferta de colaborador (359 €/hab., prepago) para la doble. Baños públicos y baño al aire libre listados (no dice \"termales\"); sauna. Habitaciones pequeñas (15–16 m²)."
+    },
+    {
+      "name": "HOTEL WOOD TAKAYAMA",
+      "url": "https://www.booking.com/hotel/jp/jia-wood-gao-shan.es.html?checkin=2027-05-15&checkout=2027-05-17&group_adults=4&no_rooms=2&group_children=0&selected_currency=EUR",
+      "stars": 4,
+      "score": 9.2,
+      "reviews": 4496,
+      "priceTotalEUR": 892,
+      "roomCombo": "2 × Habitación Triple Superior (28 m², 3 camas individuales; 446 € c/u)",
+      "twinPriceTotalEUR": 892,
+      "taxesIncluded": "no indicado",
+      "freeCancel": "Sí, cancelación gratis antes del 12 de mayo de 2027",
+      "breakfast": "No incluido (con desayuno 497 €/hab. → 994 € las dos)",
+      "onsen": "sí",
+      "coinLaundry": "no indicado",
+      "lat": 36.141436,
+      "lng": 137.260443,
+      "distM": {
+        "Estación JR Takayama / Nōhi Bus Center": 822,
+        "Sanmachi (casco antiguo)": 98,
+        "Mercado matutino de Miyagawa": 431
+      },
+      "walkMin": {
+        "Estación JR Takayama / Nōhi Bus Center": 13,
+        "Sanmachi (casco antiguo)": 2,
+        "Mercado matutino de Miyagawa": 7
+      },
+      "notes": "Única tipología disponible: triple con 3 camas individuales (quedaban 2), así que cada pareja tiene camas separadas. Baños públicos listados. Guardaequipaje. Está en el casco antiguo, pero es el más alejado de la estación/Nōhi Bus Center de toda la lista."
+    },
+    {
+      "name": "eph TAKAYAMA",
+      "url": "https://www.booking.com/hotel/jp/eph-takayama.es.html?checkin=2027-05-15&checkout=2027-05-17&group_adults=4&no_rooms=2&group_children=0&selected_currency=EUR",
+      "stars": 4,
+      "score": 9,
+      "reviews": 745,
+      "priceTotalEUR": 954,
+      "roomCombo": "2 × Habitación Doble – 2 camas (22 m², 2 camas individuales; 477 € c/u), tarifa NO reembolsable",
+      "twinPriceTotalEUR": 954,
+      "taxesIncluded": "no indicado",
+      "freeCancel": "Solo en tarifa flexible: 1.004 € (502 € c/u) con cancelación gratis antes del 8 de mayo de 2027; la de 954 € es no reembolsable",
+      "breakfast": "No incluido (con desayuno: 519 €/hab. no reembolsable, 547 €/hab. flexible)",
+      "onsen": "no",
+      "coinLaundry": "no indicado",
+      "lat": 36.141407,
+      "lng": 137.253025,
+      "distM": {
+        "Estación JR Takayama / Nōhi Bus Center": 159,
+        "Sanmachi (casco antiguo)": 583,
+        "Mercado matutino de Miyagawa": 529
+      },
+      "walkMin": {
+        "Estación JR Takayama / Nōhi Bus Center": 3,
+        "Sanmachi (casco antiguo)": 9,
+        "Mercado matutino de Miyagawa": 9
+      },
+      "notes": "El listado mostraba 803 € con oferta de colaborador (\"Doble Hollywood – 2 camas\", 401 €/hab., no reembolsable, prepago); en la ficha solo dejaba seleccionar 1 unidad de esa oferta. Guardaequipaje. No lista baño público ni onsen."
+    },
+    {
+      "name": "Mercure Hida Takayama",
+      "url": "https://www.booking.com/hotel/jp/mercure-hida-takayama.es.html?checkin=2027-05-15&checkout=2027-05-17&group_adults=4&no_rooms=2&group_children=0&selected_currency=EUR",
+      "stars": 4,
+      "score": 9,
+      "reviews": 2030,
+      "priceTotalEUR": 956,
+      "roomCombo": "2 × Habitación Superior con una cama doble y una cama individual (26 m²; 478 € c/u para 2 personas), tarifa NO reembolsable — camas separadas, pero de distinto tamaño",
+      "twinPriceTotalEUR": 1084,
+      "taxesIncluded": "no indicado",
+      "freeCancel": "Solo en tarifa flexible: 1.006 € (503 € c/u) con cancelación gratis antes del 14 de mayo de 2027 y pago en el alojamiento",
+      "breakfast": "No incluido (con desayuno: superior 552 €/hab. no reembolsable, 578 €/hab. flexible)",
+      "onsen": "sí",
+      "coinLaundry": "no indicado",
+      "lat": 36.14001,
+      "lng": 137.25206,
+      "distM": {
+        "Estación JR Takayama / Nōhi Bus Center": 139,
+        "Sanmachi (casco antiguo)": 677,
+        "Mercado matutino de Miyagawa": 698
+      },
+      "walkMin": {
+        "Estación JR Takayama / Nōhi Bus Center": 2,
+        "Sanmachi (casco antiguo)": 11,
+        "Mercado matutino de Miyagawa": 11
+      },
+      "notes": "Twin de 2 camas individuales: 2 × \"Privilege con 2 camas\" (22 m²) a 542 €/hab. = 1.084 € no reembolsable (1.142 € flexible). Onsen: baños termales, baños públicos y baño al aire libre. Guardaequipaje."
+    },
+    {
+      "name": "FAV LUX Hida Takayama",
+      "url": "https://www.booking.com/hotel/jp/fav-hidatakayama-east.es.html?checkin=2027-05-15&checkout=2027-05-17&group_adults=4&no_rooms=2&group_children=0&selected_currency=EUR",
+      "stars": 4,
+      "score": 8.7,
+      "reviews": 1960,
+      "priceTotalEUR": 1052,
+      "roomCombo": "2 × Habitación de estilo japonés (34 m², 4 futones; 526 € c/u para 2 personas)",
+      "twinPriceTotalEUR": 1052,
+      "taxesIncluded": "no indicado",
+      "freeCancel": "Sí, cancelación gratis antes del 12 de mayo de 2027; se paga en el alojamiento",
+      "breakfast": "No incluido (con desayuno 559 €/hab.)",
+      "onsen": "no",
+      "coinLaundry": "no indicado",
+      "lat": 36.142707,
+      "lng": 137.251651,
+      "distM": {
+        "Estación JR Takayama / Nōhi Bus Center": 181,
+        "Sanmachi (casco antiguo)": 730,
+        "Mercado matutino de Miyagawa": 562
+      },
+      "walkMin": {
+        "Estación JR Takayama / Nōhi Bus Center": 3,
+        "Sanmachi (casco antiguo)": 12,
+        "Mercado matutino de Miyagawa": 9
+      },
+      "notes": "Hotel de habitaciones grandes pensado para grupos: en 2 habitaciones sale caro. Alternativa fuera del objetivo: los 4 en UNA habitación japonesa (4 futones, 34 m²) por 616 € o en una \"Familiar\" (2 individuales + 2 dobles grandes, 35 m²) por 639 €. El listado mostraba 893 € con oferta de colaborador (447 €/hab., prepago). Sauna y \"servicio de lavandería\" listados; no lista baño público."
+    },
+    {
+      "name": "Tokyu Stay Hida Takayama Musubinoyu",
+      "url": "https://www.booking.com/hotel/jp/tokyu-stay-hida-takayama.es.html?checkin=2027-05-15&checkout=2027-05-17&group_adults=4&no_rooms=2&group_children=0&selected_currency=EUR",
+      "stars": 4,
+      "score": 8.9,
+      "reviews": 1393,
+      "priceTotalEUR": 1060,
+      "roomCombo": "2 × Habitación Doble Superior – 2 camas no fumadores (24 m², 2 camas individuales; 530 € c/u)",
+      "twinPriceTotalEUR": 1060,
+      "taxesIncluded": "no indicado",
+      "freeCancel": "Sí, con fecha límite distinta según tarifa (antes del 9, 13 o 14 de mayo de 2027); la tarifa cara (678 €/hab.) es la de cancelación más tardía — no pude asociar cada fecha a cada precio",
+      "breakfast": "No incluido en las tarifas mostradas",
+      "onsen": "sí",
+      "coinLaundry": "no indicado",
+      "lat": 36.138698,
+      "lng": 137.251979,
+      "distM": {
+        "Estación JR Takayama / Nōhi Bus Center": 274,
+        "Sanmachi (casco antiguo)": 722,
+        "Mercado matutino de Miyagawa": 814
+      },
+      "walkMin": {
+        "Estación JR Takayama / Nōhi Bus Center": 4,
+        "Sanmachi (casco antiguo)": 12,
+        "Mercado matutino de Miyagawa": 13
+      },
+      "notes": "El listado mostraba 1.059 € (2 × twin superior) y 826 € con oferta de colaborador para dobles (413 €/hab.). Onsen: baños termales, baños públicos y baño al aire libre. Guardaequipaje. Caro para lo que aporta frente a Ouan (mismo emplazamiento, 848 €)."
+    }
+  ],
+  "tops": {
+    "dinero": [
+      {
+        "name": "Hida Takayama Washington Hotel Plaza",
+        "why": "348 € las 2 twin económicas (412 € las twin superiores de 24 m²): casi la mitad que el siguiente, nota 8,0, frente a la estación y con cancelación gratis."
+      },
+      {
+        "name": "Tabino Hotel Base Takayama Station",
+        "why": "616 € las 2 twin con impuestos incluidos (no reembolsable; 712 € flexible), pegado a la estación; habitación de 16 m² y solo 55 opiniones (8,3)."
+      },
+      {
+        "name": "hotel around TAKAYAMA, an Ascend Collection Hotel",
+        "why": "666 € las 2 twin de 24 m² (587 € si se acepta twin + doble), nota 9,0 y onsen; cancelación gratis."
+      },
+      {
+        "name": "Hida Takayama Onsen Takayama Green Hotel - KEIO GROUP HOTELS -",
+        "why": "670 € en 2 habitaciones japonesas de 36 m² con futones (780 € en twin occidental de 33 m²), onsen grande; queda al lado contrario del casco antiguo."
+      },
+      {
+        "name": "Hida Takayama Onsen Hida Hotel Plaza",
+        "why": "678 € las 2 twin de 27 m² con onsen y baño al aire libre, nota 8,8; algo más lejos de la estación (norte)."
+      }
+    ],
+    "calidadPrecio": [
+      {
+        "name": "Hida Takayama Washington Hotel Plaza",
+        "why": "Por 412 € se tienen 2 twin superiores de 24 m² a 1 minuto de la estación y con baño público: nada más de la lista se acerca a esa relación, aunque la nota (8,0) es la más baja del top."
+      },
+      {
+        "name": "hotel around TAKAYAMA, an Ascend Collection Hotel",
+        "why": "666 € por 2 twin de 24 m², nota 9,0 con 2.031 opiniones, onsen y 4 estrellas a unos 5 minutos de la estación: el mejor equilibrio si se quiere subir de nivel."
+      },
+      {
+        "name": "Hida Takayama Onsen Hida Hotel Plaza",
+        "why": "678 € por 2 twin de 27 m² y el onsen más completo (interior, al aire libre, sauna); nota 8,8 pero con pocas opiniones (199)."
+      },
+      {
+        "name": "Hida Takayama Onsen Takayama Green Hotel - KEIO GROUP HOTELS -",
+        "why": "670–780 € por habitaciones de 33–36 m² y onsen de resort; pierde por ubicación (suroeste de la estación, lejos del casco antiguo)."
+      },
+      {
+        "name": "Chisun Grand Takayama",
+        "why": "841 € flexible (816 € no reembolsable) por 2 twin de 23–27 m² a 2–3 minutos de la estación, nota 8,7 con 4.341 opiniones y spa incluido; por 7 € más, Takayama Ouan (848 €) ofrece onsen en la azotea pero habitaciones de 21 m²."
+      }
+    ],
+    "ubicacion": [
+      {
+        "name": "Hida Takayama Washington Hotel Plaza",
+        "why": "Justo delante de la estación y del Nōhi Bus Center: el más cómodo para dejar maletas a las 10:25, coger el bus de las 07:20 y el tren de las 13:35."
+      },
+      {
+        "name": "Tabino Hotel Base Takayama Station",
+        "why": "A unos 2 minutos de la estación, en la misma manzana del bus center; guardaequipaje listado."
+      },
+      {
+        "name": "Chisun Grand Takayama",
+        "why": "A 2–3 minutos de la estación y ya en el lado este, en el eje hacia Sanmachi y el mercado de Miyagawa."
+      },
+      {
+        "name": "eph TAKAYAMA",
+        "why": "Misma calle que el Chisun Grand, 2–3 minutos de la estación y nota 9,0; más caro (954–1.004 €) y sin baño público."
+      },
+      {
+        "name": "Hotel and Spa Gift TAKAYAMA",
+        "why": "A unos 4 minutos de la estación y el más adelantado hacia el casco antiguo de los hoteles \"de estación\"; baño público, pero habitaciones de 16 m²."
+      }
+    ]
+  },
+  "takaragawa": {
+    "name": "Takaragawa Onsen Ousenkaku (宝川温泉 汪泉閣), Minakami",
+    "url": "https://www.booking.com/hotel/jp/takaragawa-onsen-ousenkaku.es.html?checkin=2027-05-12&checkout=2027-05-13&group_adults=4&no_rooms=2&group_children=0&selected_currency=EUR",
+    "available": "No. Está en Booking, pero todas las habitaciones aparecen como \"No disponible en nuestra web para tus fechas\" (12–13 de mayo de 2027, 4 adultos, 2 habitaciones). La página no aclara si está agotado o si aún no ha abierto esas fechas.",
+    "priceTotalEUR": null,
+    "rooms": "Tipologías listadas (sin precio): habitaciones de estilo japonés con futones en el Anexo, Edificio principal y Edificio Este; muchas con baño compartido (económica 2 futones, estándar 4 futones, esquinera, vistas a la montaña, una de fumadores); con baño privado y aseo solo las del Edificio Este con vistas al río (estándar, Superior y Deluxe); además \"Habitación asignada al hacer el registro de entrada\" y tres tipologías para 2 o hasta 5 huéspedes con aseo privado y onsen/duchas compartidos.",
+    "meals": "No se pudo comprobar por tarifa (sin disponibilidad). La descripción dice que se sirve desayuno japonés cada mañana y cena kaiseki en el comedor, sin indicar si van incluidos en el precio.",
+    "score": 8.9,
+    "cancel": "No indicado para estas fechas: Booking solo dice que las condiciones de cancelación y prepago varían según el tipo de alojamiento.",
+    "notes": "2.299 comentarios. Coordenadas en Booking: 36.847556, 139.047287. Entrada 14:00–19:00, salida 8:00–10:00. La búsqueda por nombre exacto \"Ōsenkaku/Osenkaku\" no lo encuentra; en Booking figura como \"Ousenkaku\". Conviene reintentar más cerca de la fecha o reservar por la web del ryokan."
+  },
+  "caveats": [
+    "Precios leídos el 13 de noviembre de 2026 en Booking.com (sitio español, EUR), sin iniciar sesión; son el total de las 2 noches para las 2 habitaciones, calculado sumando el precio por habitación mostrado en la ficha de cada hotel.",
+    "priceTotalEUR es la combinación de 2 habitaciones más barata que ofrecía la ficha (a veces con cama doble compartida); twinPriceTotalEUR es el total con camas separadas en ambas habitaciones (twin occidental, futones, o triple/cama doble + individual cuando así se indica en roomCombo/notes).",
+    "Impuestos: salvo Tabino Hotel Base (\"Incluye impuestos y cargos\"), Booking solo muestra \"Se pueden aplicar otros cargos\" bajo el precio, sin desglose; por eso figura \"no indicado\". No abrí el proceso de reserva para ver el desglose.",
+    "Varios precios del listado de resultados eran más bajos que los de la ficha porque usan \"ofertas de colaborador\" (prepago, no modificables) y casi siempre para habitaciones de cama doble: Washington 254 €, around 479 €, Gift 717 €, eph 803 €, FAV LUX 893 €, Tokyu Stay 826 €, KOKO 647 €. No las he usado como precio de referencia.",
+    "Precio cambiante entre visitas: KOKO HOTEL apareció a 832 € y minutos después a 647 € en el listado. Respecto a la investigación del 12 de noviembre: Washington 304 → 305 € (doble + twin), Alpha-One 372 → 373 €, Hida Hotel Plaza 677 → 678 €, Tabino 615 → 616 € (no reembolsable), eph 951 → 954 €: variaciones de 1–3 €, probablemente por tipo de cambio.",
+    "Lavandería de monedas: ninguna ficha la menciona de forma explícita; \"Servicio de lavandería\" (Washington, around, Green, KOKO, Rickshaw, FAV LUX) y \"Lavadora\" (Tenman) no permiten saber si es autoservicio de monedas.",
+    "Onsen: \"sí\" cuando la ficha lista baños públicos y/o baños termales; \"no\" cuando la lista de servicios no menciona ninguno; \"no indicado\" cuando solo aparece spa/sauna (Chisun Grand) o la lista era muy corta (Alpha-One, Tenman).",
+    "Disponibilidad muy escasa: en casi todos los hoteles quedaban 1–5 habitaciones twin (Washington económica 2, around 2, Hida Plaza 2, Tabino 2, Chisun 1+2).",
+    "Coordenadas tomadas del atributo data-atlas-latlng de cada ficha. Distancias en línea recta (haversine) a las coordenadas ancla facilitadas; minutos a pie = metros × 1,3 / 80. La estación y el Nōhi Bus Center comparten ancla; el bus center está unos 50 m al norte del edificio de la estación.",
+    "Estrellas: recuento de iconos en la cabecera de la ficha; el 5 del Takayama Green Hotel no se reconfirmó. Rickshaw inn usa la valoración de calidad de Booking (cuadrados) y Tenman no tiene categoría.",
+    "Hoteles no abiertos (solo vistos en el listado, 2 habitaciones, sin verificar): Residence Hotel Takayama Station (812 €, 9,0, 150 m, 2 dobles; con filtro twin solo ofrecía suite), fav Hida Takayama (913 €, 8,9, 400 m), KAYA (859 €, 8,9, 200 m, 2 dobles), THE MACHIYA HOTEL (1.007 €, 9,2, futones), Wat Hotel & Spa (1.318 €), Oyado Koto No Yume (1.379 €), HOTEL AMANEK (1.546 €). Descartados por tipo: UG Hostel, K's House, Guesthouse Hanzansha (baño compartido), Temple Hotel Zenkoji (una habitación con baño compartido) y apartamentos/casas enteras.",
+    "Alojamientos de una sola unidad para 4 vistos solo en el listado (no cumplen las 2 habitaciones): Thanyaporn House (316 €, 7,9, 200 m, familiar con baño privado y 4 camas individuales), Daihachi (427 €, 9,4, 0,9 km, 2 camas + 2 futones), Ichinomatsu (895 € con desayuno).",
+    "Sin bloqueos ni captcha. Se abrieron 17 fichas de hotel en Takayama y 1 de Takaragawa."
+  ]
+}

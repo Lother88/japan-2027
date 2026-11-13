@@ -1,0 +1,65 @@
+---
+/**
+ * HotelRankings — las tres listas de una estancia (por precio, calidad-precio y ubicación).
+ *
+ * En pantallas anchas van en tres columnas. En estrechas se ve una lista cada vez y se elige
+ * con un control segmentado (patrón de pestañas: scripts/hotels.ts pone los roles del panel,
+ * el foco itinerante y las flechas). El HTML sale con las tres listas como secciones normales
+ * y la primera marcada como activa: sin JavaScript no hay control y se ven las tres seguidas
+ * (hotels.css solo oculta las inactivas bajo `html[data-js]`).
+ */
+import type { StayResearch } from '@/data/hotelResearch'
+import HotelCard from '@/components/hotels/HotelCard.astro'
+
+interface Props {
+  stay: StayResearch
+}
+
+const { stay } = Astro.props
+const panelId = (key: string) => `${stay.id}-${key}`
+const tabId = (key: string) => `${stay.id}-${key}-tab`
+const titleId = (key: string) => `${stay.id}-${key}-title`
+---
+
+<div data-ranks>
+  <div data-rank-tabs role="tablist" aria-label={`Listas de ${stay.title}`}>
+    {
+      stay.lists.map(({ ranking }, i) => (
+        <button
+          type="button"
+          role="tab"
+          id={tabId(ranking.key)}
+          data-rank={ranking.key}
+          aria-selected={i === 0 ? 'true' : 'false'}
+          aria-controls={panelId(ranking.key)}
+          tabindex={i === 0 ? 0 : -1}
+        >
+          {ranking.label}
+        </button>
+      ))
+    }
+  </div>
+  <div data-rank-panels>
+    {
+      stay.lists.map(({ ranking, entries }, i) => (
+        <section
+          data-rank-panel
+          data-rank={ranking.key}
+          data-active={i === 0 ? '' : undefined}
+          id={panelId(ranking.key)}
+          aria-labelledby={titleId(ranking.key)}
+        >
+          <header>
+            <h3 id={titleId(ranking.key)}>{ranking.label}</h3>
+            <p>{ranking.hint}</p>
+          </header>
+          <ol role="list">
+            {entries.map((entry) => (
+              <HotelCard entry={entry} stay={stay} />
+            ))}
+          </ol>
+        </section>
+      ))
+    }
+  </div>
+</div>

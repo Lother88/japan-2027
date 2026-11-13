@@ -1,0 +1,64 @@
+---
+/**
+ * HotelCard — un puesto de una lista: posición, hotel (enlace a Booking), precio total de la
+ * estancia y por habitación y noche, avisos (nota, camas, lavandería, baño termal), minutos a
+ * pie y el porqué del puesto.
+ *
+ * Avisos, como en el informe: «sin 2 × twin» cuando el precio no es de dos habitaciones con
+ * camas separadas; la lavandería de monedas siempre se indica donde es obligatoria y, en el
+ * resto, solo si la hay.
+ */
+import type { RankedHotel, StayResearch } from '@/data/hotelResearch'
+import { count, euros, score } from '@/features/hotels/format'
+import HotelLink from '@/components/hotels/HotelLink.astro'
+import WalkChips from '@/components/hotels/WalkChips.astro'
+
+interface Props {
+  entry: RankedHotel
+  stay: StayResearch
+}
+
+const { entry, stay } = Astro.props
+const hotel = entry.hotel
+
+const LAUNDRY_LABEL = { yes: 'lavandería de monedas', no: 'sin lavandería de monedas', unknown: 'lavandería sin confirmar' } as const
+const showLaundry = hotel !== undefined && (stay.laundryRequired || hotel.laundry === 'yes')
+---
+
+<li data-card>
+  <span data-card-pos>{entry.position}</span>
+  <div data-card-body>
+    <h4><HotelLink name={hotel?.name ?? entry.name} url={hotel?.url} /></h4>
+    {
+      hotel && (
+        <p data-price>
+          <b>{euros(hotel.price)}</b>
+          {hotel.perRoomNight ? <span>≈ {euros(hotel.perRoomNight)} por habitación y noche</span> : null}
+        </p>
+      )
+    }
+    {
+      hotel && (
+        <ul data-badges role="list">
+          {hotel.score !== null && (
+            <li data-badge="score">
+              <span class="sr-only">Nota </span>
+              {score(hotel.score)}
+              {hotel.reviews ? (
+                <small>
+                  ({count(hotel.reviews)}
+                  <span class="sr-only"> opiniones</span>)
+                </small>
+              ) : null}
+            </li>
+          )}
+          {!hotel.twin && hotel.price ? <li data-badge="warn">sin 2 × twin</li> : null}
+          {showLaundry && <li data-badge={hotel.laundry === 'yes' ? 'ok' : 'warn'}>{LAUNDRY_LABEL[hotel.laundry]}</li>}
+          {hotel.thermalBath && <li data-badge="ok">baño termal</li>}
+        </ul>
+      )
+    }
+    {hotel && <WalkChips anchors={stay.anchors} minutes={hotel.walkMinutes} />}
+    <p data-card-why>{entry.why}</p>
+  </div>
+</li>

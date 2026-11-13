@@ -1,8 +1,8 @@
 /**
  * Fuentes autoalojadas y recortadas: Shippori Mincho (serif) y Zen Kaku Gothic New (sans).
  *
- * Reúne los caracteres que usa la web (textos de src/data/**, .astro y .ts de src/, sin el arte
- * generado *.markup.ts, que no lleva <text>) más un juego latino fijo, y escribe por cada peso
+ * Reúne los caracteres que usa la web (textos de src/data/**, .astro, .ts y .json de src/, sin
+ * el arte generado *.markup.ts, que no lleva <text>) más un juego latino fijo, y escribe por cada peso
  * dos woff2 en public/fonts/: «-latin» (U+0000–2FFF) y «-cjk» (U+3000 en adelante). Las reglas
  * @font-face de src/styles/index.css los separan con unicode-range, así que el navegador solo
  * baja el trozo CJK de un peso si ese peso pinta algún kanji o kana.
@@ -81,12 +81,15 @@ async function* walk(dir) {
   }
 }
 
-/** Caracteres de los textos fuente: .astro y .ts de src/ (sin el arte generado). */
+/**
+ * Caracteres de los textos fuente: .astro, .ts y .json de src/ (sin el arte generado). Los
+ * .json son datos que se pintan tal cual (src/data/hoteles/: nombres de hotel, notas).
+ */
 async function collectCodePoints() {
   const points = new Set(LATIN_FIXED)
   for await (const path of walk(SRC)) {
     const ext = extname(path)
-    if (ext !== '.astro' && ext !== '.ts') continue
+    if (ext !== '.astro' && ext !== '.ts' && ext !== '.json') continue
     if (path.endsWith('.markup.ts')) continue
     for (const ch of await readFile(path, 'utf8')) {
       const cp = ch.codePointAt(0)

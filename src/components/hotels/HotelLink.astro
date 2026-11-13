@@ -1,0 +1,29 @@
+---
+/**
+ * HotelLink — nombre de un hotel enlazado a su ficha de Booking (pestaña nueva), con una
+ * flecha que lo marca como enlace externo y el aviso equivalente para lectores de pantalla.
+ * Sin URL, solo el nombre. Un nombre escrito solo en japonés lleva `lang="ja"`.
+ * La flecha es un <span> vacío pintado por hotels.css ([data-ext]): al no ser una caja atómica,
+ * no puede saltar sola de línea (un <svg> en línea sí lo hacía en las columnas estrechas).
+ */
+interface Props {
+  name: string
+  url?: string
+}
+
+const { name, url } = Astro.props
+const japanese = /[\u3040-\u30ff\u4e00-\u9fff]/.test(name) && !/[a-z]/i.test(name)
+const lang = japanese ? 'ja' : undefined
+---
+
+{
+  url ? (
+    <a data-hotel-link href={url} target="_blank" rel="noopener">
+      <span lang={lang}>{name}</span>
+      <span data-ext aria-hidden="true" />
+      <span class="sr-only"> (Booking, pestaña nueva)</span>
+    </a>
+  ) : (
+    <span lang={lang}>{name}</span>
+  )
+}

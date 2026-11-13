@@ -1,0 +1,51 @@
+---
+/**
+ * HotelStay — sección de una estancia: cabecera (fechas, noches, lavandería obligatoria y por
+ * qué manda la ubicación), la propuesta, las tres listas y dos desplegables: todos los hoteles
+ * revisados y los avisos de la búsqueda. El acento de la cabecera es el tono de la ciudad en
+ * el itinerario (--city-<slug>).
+ */
+import type { StayResearch } from '@/data/hotelResearch'
+import { cityTone } from '@/features/landing/theme'
+import { nights, stayDates } from '@/features/hotels/format'
+import HotelPick from '@/components/hotels/HotelPick.astro'
+import HotelRankings from '@/components/hotels/HotelRankings.astro'
+import HotelTable from '@/components/hotels/HotelTable.astro'
+
+interface Props {
+  stay: StayResearch
+  /** Posición de la estancia (1..total) para la entradilla «Estancia 1 de 6». */
+  index: number
+  total: number
+}
+
+const { stay, index, total } = Astro.props
+---
+
+<section data-stay id={stay.id} aria-labelledby={`${stay.id}-title`} style={`--c:${cityTone(stay.citySlug)}`}>
+  <header data-stay-head>
+    <p data-eyebrow>Estancia {index} de {total}</p>
+    <h2 id={`${stay.id}-title`}>{stay.title}</h2>
+    <p data-stay-dates>
+      <span>{stayDates(stay.checkIn, stay.checkOut)} · {nights(stay.nights)}</span>
+      {stay.laundryRequired && <strong data-badge="warn">lavandería de monedas obligatoria</strong>}
+    </p>
+    <p data-stay-why>{stay.whyLocation}</p>
+    <p data-stay-anchors>Minutos a pie hasta: {stay.anchors.map((anchor) => anchor.name).join(' · ')}.</p>
+  </header>
+  <HotelPick stay={stay} />
+  <HotelRankings stay={stay} />
+  <HotelTable stay={stay} />
+  {
+    stay.caveats.length > 0 && (
+      <details data-fold>
+        <summary>Avisos de esta búsqueda ({stay.caveats.length})</summary>
+        <ul data-caveats>
+          {stay.caveats.map((caveat) => (
+            <li>{caveat}</li>
+          ))}
+        </ul>
+      </details>
+    )
+  }
+</section>

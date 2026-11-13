@@ -1,0 +1,73 @@
+---
+/**
+ * HotelTable — desplegable con todos los hoteles revisados en una estancia, de más barato a
+ * más caro: precio de 2 × twin, combinación más barata, nota, lavandería de monedas, minutos a
+ * pie hasta cada punto y las observaciones de la ficha. La tabla es ancha: se desplaza dentro
+ * de su caja (enfocable, para moverla con el teclado) y el nombre del hotel queda fijo.
+ */
+import type { StayResearch } from '@/data/hotelResearch'
+import { euros, score } from '@/features/hotels/format'
+import HotelLink from '@/components/hotels/HotelLink.astro'
+
+interface Props {
+  stay: StayResearch
+}
+
+const { stay } = Astro.props
+const starCount = (stars: number | null) => (stars ? Math.min(5, Math.round(stars)) : 0)
+---
+
+<details data-fold>
+  <summary>Todos los hoteles revisados ({stay.candidates.length})</summary>
+  <div data-scroll tabindex="0" role="region" aria-label={`Todos los hoteles revisados: ${stay.title}`}>
+    <table data-full>
+      <thead>
+        <tr>
+          <th scope="col">Hotel</th>
+          <th scope="col" data-num>2 × twin</th>
+          <th scope="col" data-num>Combinación más barata</th>
+          <th scope="col" data-num>Nota</th>
+          <th scope="col">Lavandería de monedas</th>
+          {
+            stay.anchors.map((anchor) => (
+              <th scope="col" data-num title={anchor.name}>
+                {anchor.short}
+                <small>min a pie</small>
+              </th>
+            ))
+          }
+          <th scope="col">Habitaciones y observaciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        {
+          stay.candidates.map((hotel) => (
+            <tr>
+              <th scope="row">
+                <HotelLink name={hotel.name} url={hotel.url} />
+                {starCount(hotel.stars) > 0 && (
+                  <small data-stars>
+                    <span aria-hidden="true">{'★'.repeat(starCount(hotel.stars))}</span>
+                    <span class="sr-only">{starCount(hotel.stars)} estrellas</span>
+                  </small>
+                )}
+              </th>
+              <td data-num>{hotel.twin ? euros(hotel.price) : '—'}</td>
+              <td data-num>{euros(hotel.cheapest)}</td>
+              <td data-num>{score(hotel.score)}</td>
+              <td>{hotel.laundryText || '—'}</td>
+              {hotel.walkMinutes.map((minutes) => (
+                <td data-num>{minutes ?? '—'}</td>
+              ))}
+              <td data-notes>
+                {hotel.roomCombo && <p>{hotel.roomCombo}</p>}
+                {hotel.freeCancel && <p data-fine>Cancelación: {hotel.freeCancel}</p>}
+                {hotel.notes && <p data-fine>{hotel.notes}</p>}
+              </td>
+            </tr>
+          ))
+        }
+      </tbody>
+    </table>
+  </div>
+</details>

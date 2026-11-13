@@ -1,0 +1,30 @@
+---
+/**
+ * WalkChips — minutos a pie desde un hotel hasta los puntos de la estancia que usa el
+ * itinerario (un chip por punto, con el nombre completo en `title`). Sin dato, sin chip.
+ */
+import type { StayAnchor } from '@/data/hotelResearch'
+
+interface Props {
+  anchors: readonly StayAnchor[]
+  minutes: readonly (number | null)[]
+}
+
+const { anchors, minutes } = Astro.props
+const walks = anchors.flatMap((anchor, i) => {
+  const value = minutes[i]
+  return typeof value === 'number' ? [{ anchor, value }] : []
+})
+---
+
+{
+  walks.length > 0 && (
+    <ul data-walks role="list" aria-label="Minutos a pie">
+      {walks.map(({ anchor, value }) => (
+        <li title={anchor.name}>
+          {anchor.short} <b>{value} min</b>
+        </li>
+      ))}
+    </ul>
+  )
+}

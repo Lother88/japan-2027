@@ -1,0 +1,691 @@
+{
+  "stay": "Osaka · Namba / Shinsaibashi",
+  "checkIn": "2027-05-21",
+  "checkOut": "2027-05-25",
+  "nights": 4,
+  "searchedAt": "2026-11-13T13:52:33.052Z",
+  "anchors": [
+    {
+      "name": "Namba (línea Midōsuji)",
+      "lat": 34.6665,
+      "lng": 135.501
+    },
+    {
+      "name": "Kintetsu Osaka-Namba",
+      "lat": 34.6672,
+      "lng": 135.4985
+    },
+    {
+      "name": "Dōtonbori (Ebisubashi)",
+      "lat": 34.6687,
+      "lng": 135.5013
+    },
+    {
+      "name": "Mercado Kuromon",
+      "lat": 34.6654,
+      "lng": 135.5065
+    },
+    {
+      "name": "Shinsaibashi (estación)",
+      "lat": 34.675,
+      "lng": 135.501
+    }
+  ],
+  "candidates": [
+    {
+      "name": "Dotonbori Hotel",
+      "url": "https://www.booking.com/hotel/jp/dotonbori.es.html?checkin=2027-05-21&checkout=2027-05-25&group_adults=4&no_rooms=2&group_children=0&selected_currency=EUR",
+      "stars": 3,
+      "score": 8.7,
+      "reviews": 3681,
+      "priceTotalEUR": 884,
+      "roomCombo": "1 × Doble (1 cama doble, €400) + 1 × Twin 18 m² (2 camas individuales, €484)",
+      "twinPriceTotalEUR": 968,
+      "taxesIncluded": "no indicado",
+      "freeCancel": "sí, antes del 14 may 2027",
+      "breakfast": "no incluido (+€10/persona/día)",
+      "coinLaundry": "sí",
+      "publicBath": "no indicado",
+      "lat": 34.668614,
+      "lng": 135.498829,
+      "distM": {
+        "Namba (línea Midōsuji)": 308,
+        "Kintetsu Osaka-Namba": 160,
+        "Dōtonbori (Ebisubashi)": 226,
+        "Mercado Kuromon": 787,
+        "Shinsaibashi (estación)": 737
+      },
+      "walkMin": {
+        "Namba (línea Midōsuji)": 5,
+        "Kintetsu Osaka-Namba": 3,
+        "Dōtonbori (Ebisubashi)": 4,
+        "Mercado Kuromon": 13,
+        "Shinsaibashi (estación)": 12
+      },
+      "notes": "Lavandería de monedas confirmada en el texto de la ficha (\"lavandería automática que funciona con monedas\") y en reseñas (\"self service laundry\", \"laundry room\"). 2 × Twin 18 m² = €968 (solo 2 unidades seleccionables de ese tipo); alternativa Standard Twin 15 m² a €526 c/u = €1.052 (8 unidades). Bebidas gratis en el lobby. Está en la calle Dōtonbori al oeste de Midōsuji, pegado a Kintetsu/Namba; una reseña dice \"al lado de Dotonbori, pero sin el ruido de esa zona\", aun así pedir habitación alta/interior. Booking indica \"se pueden aplicar otros cargos\" (tasa de alojamiento de Osaka aparte)."
+    },
+    {
+      "name": "APA Hotel Namba Shinsaibashi",
+      "url": "https://www.booking.com/hotel/jp/apa-namba-shinsaibashi.es.html?checkin=2027-05-21&checkout=2027-05-25&group_adults=4&no_rooms=2&group_children=0&selected_currency=EUR",
+      "stars": 3,
+      "score": 8,
+      "reviews": 1877,
+      "priceTotalEUR": 686,
+      "roomCombo": "1 × Doble no fumadores (1 cama doble, €310) + 1 × Twin no fumadores (2 camas individuales, €376)",
+      "twinPriceTotalEUR": 752,
+      "taxesIncluded": "no indicado",
+      "freeCancel": "sí, antes del 20 may 2027 (pago en el alojamiento)",
+      "breakfast": "no incluido (con desayuno: twin €450 c/u)",
+      "coinLaundry": "sí",
+      "publicBath": "no indicado",
+      "lat": 34.669435,
+      "lng": 135.49851,
+      "distM": {
+        "Namba (línea Midōsuji)": 398,
+        "Kintetsu Osaka-Namba": 249,
+        "Dōtonbori (Ebisubashi)": 268,
+        "Mercado Kuromon": 857,
+        "Shinsaibashi (estación)": 659
+      },
+      "walkMin": {
+        "Namba (línea Midōsuji)": 6,
+        "Kintetsu Osaka-Namba": 4,
+        "Dōtonbori (Ebisubashi)": 4,
+        "Mercado Kuromon": 14,
+        "Shinsaibashi (estación)": 11
+      },
+      "notes": "Lavandería de monedas confirmada en la descripción de la ficha (\"lavadoras que funcionan con monedas\") y en reseñas (solo monedas de 100 yenes; colas; cargas pequeñas). 10 unidades disponibles del twin. Booking no muestra los m² del twin: las habitaciones APA suelen ser muy pequeñas (posible < 14 m², confirmar). Reseñas: \"cerca de Dotonbori pero con suficiente distancia para no ser ruidoso\". Oferta de colaborador a €287 para la doble (1 unidad) no contada. \"Se pueden aplicar otros cargos\"."
+    },
+    {
+      "name": "VESSEL INN NAMBA",
+      "url": "https://www.booking.com/hotel/jp/vessel-inn-namba.es.html?checkin=2027-05-21&checkout=2027-05-25&group_adults=4&no_rooms=2&group_children=0&selected_currency=EUR",
+      "stars": 4,
+      "score": 8.6,
+      "reviews": 757,
+      "priceTotalEUR": 1005,
+      "roomCombo": "1 × Doble Estándar no fumadores (€490) + 1 × Twin Estándar no fumadores 16 m² (€515)",
+      "twinPriceTotalEUR": 1030,
+      "taxesIncluded": "no",
+      "freeCancel": "sí, antes del 14 may 2027",
+      "breakfast": "no incluido (+€8/persona/día; con desayuno 2 × twin = €1.158)",
+      "coinLaundry": "sí",
+      "publicBath": "no indicado",
+      "lat": 34.668622,
+      "lng": 135.499527,
+      "distM": {
+        "Namba (línea Midōsuji)": 272,
+        "Kintetsu Osaka-Namba": 184,
+        "Dōtonbori (Ebisubashi)": 162,
+        "Mercado Kuromon": 731,
+        "Shinsaibashi (estación)": 722
+      },
+      "walkMin": {
+        "Namba (línea Midōsuji)": 4,
+        "Kintetsu Osaka-Namba": 3,
+        "Dōtonbori (Ebisubashi)": 3,
+        "Mercado Kuromon": 12,
+        "Shinsaibashi (estación)": 12
+      },
+      "notes": "Lavandería confirmada por reseñas (\"laundry room (washer and dryer) easy and cheap to use\"). Solo 2 unidades seleccionables del twin estándar de 16 m² (+1 twin esquinero 19 m² a €538). En Dōtonbori junto a Midōsuji: ubicación inmejorable, posible ruido nocturno de la zona. La tasa turística no está incluida y se paga en el hotel."
+    },
+    {
+      "name": "Sotetsu Fresa Inn Osaka Namba",
+      "url": "https://www.booking.com/hotel/jp/sotetsu-fresa-inn-osaka-namba.es.html?checkin=2027-05-21&checkout=2027-05-25&group_adults=4&no_rooms=2&group_children=0&selected_currency=EUR",
+      "stars": 3,
+      "score": 8.6,
+      "reviews": 2851,
+      "priceTotalEUR": 874,
+      "roomCombo": "2 × Doble (1 cama doble cada una, €437 c/u)",
+      "twinPriceTotalEUR": 1154,
+      "taxesIncluded": "no",
+      "freeCancel": "sí, antes del 20 may 2027 (sin pago por adelantado)",
+      "breakfast": "no incluido (con desayuno: twin €646 c/u)",
+      "coinLaundry": "sí",
+      "publicBath": "no indicado",
+      "lat": 34.664936,
+      "lng": 135.499239,
+      "distM": {
+        "Namba (línea Midōsuji)": 237,
+        "Kintetsu Osaka-Namba": 261,
+        "Dōtonbori (Ebisubashi)": 459,
+        "Mercado Kuromon": 666,
+        "Shinsaibashi (estación)": 1131
+      },
+      "walkMin": {
+        "Namba (línea Midōsuji)": 4,
+        "Kintetsu Osaka-Namba": 4,
+        "Dōtonbori (Ebisubashi)": 7,
+        "Mercado Kuromon": 11,
+        "Shinsaibashi (estación)": 18
+      },
+      "notes": "Lavandería confirmada por reseñas (\"laundry machines available on the hotel lobby floor\", \"washer/dryer combo\"). Twin 17 m² a €577 c/u (10 unidades); también \"habitaciones conectadas\" de 34 m² con 4 camas individuales por €1.154. Al sur de Dōtonbori, junto a los andenes de Midōsuji: más tranquilo que la zona del canal. Tasa turística no incluida."
+    },
+    {
+      "name": "GRIDS PREMIUM HOTEL OSAKA NAMBA",
+      "url": "https://www.booking.com/hotel/jp/grids-premium-osaka-namba.es.html?checkin=2027-05-21&checkout=2027-05-25&group_adults=4&no_rooms=2&group_children=0&selected_currency=EUR",
+      "stars": 4,
+      "score": 8.7,
+      "reviews": 4076,
+      "priceTotalEUR": 953,
+      "roomCombo": "1 × Doble Estándar 15 m² (€459, queda 1) + 1 × Twin Estándar 19 m² (€494)",
+      "twinPriceTotalEUR": 988,
+      "taxesIncluded": "no",
+      "freeCancel": "sí, antes del 18 may 2027 (sin pago por adelantado)",
+      "breakfast": "no incluido (+€14/persona/día; con desayuno twin €547 c/u)",
+      "coinLaundry": "sí",
+      "publicBath": "no indicado",
+      "lat": 34.664845,
+      "lng": 135.498784,
+      "distM": {
+        "Namba (línea Midōsuji)": 274,
+        "Kintetsu Osaka-Namba": 263,
+        "Dōtonbori (Ebisubashi)": 487,
+        "Mercado Kuromon": 708,
+        "Shinsaibashi (estación)": 1147
+      },
+      "walkMin": {
+        "Namba (línea Midōsuji)": 4,
+        "Kintetsu Osaka-Namba": 4,
+        "Dōtonbori (Ebisubashi)": 8,
+        "Mercado Kuromon": 12,
+        "Shinsaibashi (estación)": 19
+      },
+      "notes": "Lavandería de monedas confirmada por reseñas (\"the coin laundry worked great\", 2ª planta; hay quejas de colas). Solo 2 unidades seleccionables del twin estándar de 19 m² (alternativa \"Económica 2 camas\" 20 m² a €506, pero es 1 individual + 1 doble). Reseñas: \"en una calle tranquila y sin ruidos\". Tasa turística no incluida."
+    },
+    {
+      "name": "Hiyori Hotel Osaka Namba Station",
+      "url": "https://www.booking.com/hotel/jp/hiyori-hotel-osaka-namba.es.html?checkin=2027-05-21&checkout=2027-05-25&group_adults=4&no_rooms=2&group_children=0&selected_currency=EUR",
+      "stars": 4,
+      "score": 8.8,
+      "reviews": 4320,
+      "priceTotalEUR": 1130,
+      "roomCombo": "2 × Doble Moderate con ducha 16 m² (1 cama doble, €565 c/u, no reembolsable)",
+      "twinPriceTotalEUR": 1380,
+      "taxesIncluded": "sí",
+      "freeCancel": "sí en el twin, antes del 21 abr 2027 (hasta el 18 may 2027 sube a €767 c/u)",
+      "breakfast": "no incluido (+€14/persona/día)",
+      "coinLaundry": "no indicado",
+      "publicBath": "no indicado",
+      "lat": 34.662863,
+      "lng": 135.500676,
+      "distM": {
+        "Namba (línea Midōsuji)": 406,
+        "Kintetsu Osaka-Namba": 522,
+        "Dōtonbori (Ebisubashi)": 652,
+        "Mercado Kuromon": 603,
+        "Shinsaibashi (estación)": 1350
+      },
+      "walkMin": {
+        "Namba (línea Midōsuji)": 7,
+        "Kintetsu Osaka-Namba": 8,
+        "Dōtonbori (Ebisubashi)": 11,
+        "Mercado Kuromon": 10,
+        "Shinsaibashi (estación)": 22
+      },
+      "notes": "Twin = Doble Deluxe 2 camas 22 m² a €690 c/u. La ficha solo dice \"Servicio de lavandería (de pago)\"; no se buscó en reseñas, así que la lavandería de autoservicio queda sin confirmar. Al sur de la estación (lado Nankai). Caro para lo que se busca."
+    },
+    {
+      "name": "Welina Hotel Premier Osaka Namba",
+      "url": "https://www.booking.com/hotel/jp/welina-premier-osaka-namba.es.html?checkin=2027-05-21&checkout=2027-05-25&group_adults=4&no_rooms=2&group_children=0&selected_currency=EUR",
+      "stars": 3,
+      "score": 8,
+      "reviews": 384,
+      "priceTotalEUR": 674,
+      "roomCombo": "2 × Twin 16 m² (2 camas individuales, €337 c/u)",
+      "twinPriceTotalEUR": 674,
+      "taxesIncluded": "sí",
+      "freeCancel": "sí, antes del 20 may 2027 (sin pagar nada hasta el 18 may)",
+      "breakfast": "no incluido (+€8/persona/día; con desayuno 2 × twin = €796)",
+      "coinLaundry": "sí",
+      "publicBath": "no indicado",
+      "lat": 34.6648,
+      "lng": 135.504812,
+      "distM": {
+        "Namba (línea Midōsuji)": 397,
+        "Kintetsu Osaka-Namba": 636,
+        "Dōtonbori (Ebisubashi)": 540,
+        "Mercado Kuromon": 168,
+        "Shinsaibashi (estación)": 1187
+      },
+      "walkMin": {
+        "Namba (línea Midōsuji)": 6,
+        "Kintetsu Osaka-Namba": 10,
+        "Dōtonbori (Ebisubashi)": 9,
+        "Mercado Kuromon": 3,
+        "Shinsaibashi (estación)": 19
+      },
+      "notes": "Lavandería: solo por una reseña visible en la ficha (\"utilizamos las instalaciones de lavandería, fáciles de usar y eficientes\"); la ficha oficial dice solo \"Servicio de lavandería (de pago)\". 10 unidades del twin. Oferta de colaborador no reembolsable a €270 (1 unidad) no contada. Zona Sennichimae, a 2-3 min de Kuromon. Pocas reseñas (384)."
+    },
+    {
+      "name": "Kamon Hotel Namba",
+      "url": "https://www.booking.com/hotel/jp/kamon-hostel.es.html?checkin=2027-05-21&checkout=2027-05-25&group_adults=4&no_rooms=2&group_children=0&selected_currency=EUR",
+      "stars": 2,
+      "score": 8.1,
+      "reviews": 2417,
+      "priceTotalEUR": 740,
+      "roomCombo": "2 × Twin no fumadores \"Plan Eco\" sin limpieza diaria (2 camas individuales, €370 c/u)",
+      "twinPriceTotalEUR": 740,
+      "taxesIncluded": "no indicado",
+      "freeCancel": "sí, antes del 21 abr 2027 (con cancelación hasta el 19 may: €390 c/u = €780)",
+      "breakfast": "no incluido (+€7/persona/día)",
+      "coinLaundry": "sí",
+      "publicBath": "no indicado",
+      "lat": 34.666113,
+      "lng": 135.505273,
+      "distM": {
+        "Namba (línea Midōsuji)": 393,
+        "Kintetsu Osaka-Namba": 631,
+        "Dōtonbori (Ebisubashi)": 463,
+        "Mercado Kuromon": 137,
+        "Shinsaibashi (estación)": 1063
+      },
+      "walkMin": {
+        "Namba (línea Midōsuji)": 6,
+        "Kintetsu Osaka-Namba": 10,
+        "Dōtonbori (Ebisubashi)": 8,
+        "Mercado Kuromon": 2,
+        "Shinsaibashi (estación)": 17
+      },
+      "notes": "Lavandería de monedas confirmada por reseñas (\"coin laundry which was outside but covered\", \"laundry room\"). 2 estrellas, antiguo hostel reconvertido (tiene también habitaciones con literas): Booking no muestra m² del twin y conviene confirmar baño privado en la ficha antes de reservar. Twin con limpieza diaria: €390-398 c/u. Junto a Nipponbashi/Kuromon. \"Se pueden aplicar otros cargos\"."
+    },
+    {
+      "name": "Hotel -ASIATO-",
+      "url": "https://www.booking.com/hotel/jp/asiato-asiato.es.html?checkin=2027-05-21&checkout=2027-05-25&group_adults=4&no_rooms=2&group_children=0&selected_currency=EUR",
+      "stars": 3,
+      "score": 8.2,
+      "reviews": 1650,
+      "priceTotalEUR": 642,
+      "roomCombo": "2 × Doble Pequeña (1 cama pequeña por habitación, €321 c/u) — no válido para camas separadas; doble + twin = €757",
+      "twinPriceTotalEUR": 774,
+      "taxesIncluded": "sí",
+      "freeCancel": "sí, antes del 18 may 2027 (sin pago por adelantado)",
+      "breakfast": "no incluido",
+      "coinLaundry": "sí",
+      "publicBath": "no indicado",
+      "lat": 34.663644,
+      "lng": 135.506905,
+      "distM": {
+        "Namba (línea Midōsuji)": 627,
+        "Kintetsu Osaka-Namba": 864,
+        "Dōtonbori (Ebisubashi)": 761,
+        "Mercado Kuromon": 199,
+        "Shinsaibashi (estación)": 1373
+      },
+      "walkMin": {
+        "Namba (línea Midōsuji)": 10,
+        "Kintetsu Osaka-Namba": 14,
+        "Dōtonbori (Ebisubashi)": 12,
+        "Mercado Kuromon": 3,
+        "Shinsaibashi (estación)": 22
+      },
+      "notes": "Lavandería de monedas confirmada por reseñas, pero está en una caseta/contenedor fuera del edificio (\"laundry room is in a container outside of the hotel\", calurosa en verano). Twin no fumadores a €387 c/u (10 unidades), m² no indicados. Pegado al mercado Kuromon; más lejos de Kintetsu Namba."
+    },
+    {
+      "name": "Toyoko Inn Osaka Namba Nippombashi",
+      "url": "https://www.booking.com/hotel/jp/toyoko-inn-osaka-nanba-nipponbashi-osaka.es.html?checkin=2027-05-21&checkout=2027-05-25&group_adults=4&no_rooms=2&group_children=0&selected_currency=EUR",
+      "stars": 3,
+      "score": 8.2,
+      "reviews": 1198,
+      "priceTotalEUR": 512,
+      "roomCombo": "2 × Doble no fumadores (1 cama doble, €256 c/u, desayuno incluido)",
+      "twinPriceTotalEUR": 608,
+      "taxesIncluded": "no",
+      "freeCancel": "sí, antes del 20 may 2027 (pago en el alojamiento)",
+      "breakfast": "incluido",
+      "coinLaundry": "sí",
+      "publicBath": "no indicado",
+      "lat": 34.660047,
+      "lng": 135.505581,
+      "distM": {
+        "Namba (línea Midōsuji)": 831,
+        "Kintetsu Osaka-Namba": 1026,
+        "Dōtonbori (Ebisubashi)": 1039,
+        "Mercado Kuromon": 601,
+        "Shinsaibashi (estación)": 1715
+      },
+      "walkMin": {
+        "Namba (línea Midōsuji)": 14,
+        "Kintetsu Osaka-Namba": 17,
+        "Dōtonbori (Ebisubashi)": 17,
+        "Mercado Kuromon": 10,
+        "Shinsaibashi (estación)": 28
+      },
+      "notes": "BANDERA ROJA: el único twin disponible es de FUMADORES (€304 c/u, 3 unidades); no hay twin de no fumadores para estas fechas. Lavandería confirmada por reseñas (\"self laundry facilities\"; una dice que solo funcionaba 1 máquina). En Den Den Town, el más alejado de Namba Midōsuji de la lista. m² no indicados. Tasa turística no incluida."
+    },
+    {
+      "name": "Shizutetsu Hotel Prezio Osaka Shinsaibashi",
+      "url": "https://www.booking.com/hotel/jp/jing-tie-hoterupurezioda-ban-xin-zhai-qiao.es.html?checkin=2027-05-21&checkout=2027-05-25&group_adults=4&no_rooms=2&group_children=0&selected_currency=EUR",
+      "stars": 3,
+      "score": 9,
+      "reviews": 1803,
+      "priceTotalEUR": 532,
+      "roomCombo": "2 × Doble 18 m² (1 cama doble grande, €266 c/u); doble + twin = €592",
+      "twinPriceTotalEUR": 652,
+      "taxesIncluded": "no indicado",
+      "freeCancel": "sí, antes del 19 may 2027",
+      "breakfast": "no incluido (+€10/persona/día; con desayuno twin €434 c/u)",
+      "coinLaundry": "sí",
+      "publicBath": "no indicado",
+      "lat": 34.678945,
+      "lng": 135.498358,
+      "distM": {
+        "Namba (línea Midōsuji)": 1405,
+        "Kintetsu Osaka-Namba": 1306,
+        "Dōtonbori (Ebisubashi)": 1171,
+        "Mercado Kuromon": 1680,
+        "Shinsaibashi (estación)": 501
+      },
+      "walkMin": {
+        "Namba (línea Midōsuji)": 23,
+        "Kintetsu Osaka-Namba": 21,
+        "Dōtonbori (Ebisubashi)": 19,
+        "Mercado Kuromon": 27,
+        "Shinsaibashi (estación)": 8
+      },
+      "notes": "Lavandería de autoservicio confirmada por reseñas (\"washing machine to do it yourself\", \"laundry room\"; quejas de que las máquinas están siempre ocupadas). Twin de 21 m² a €326 c/u (5 unidades): el mejor tamaño/nota por precio. Zona muy tranquila al norte de Shinsaibashi (Minamisenba): NO está a pie de Namba; hay que coger Midōsuji en Shinsaibashi (1 parada a Namba) cada día. \"Se pueden aplicar otros cargos\"."
+    },
+    {
+      "name": "Park Central Sakura Hotel",
+      "url": "https://www.booking.com/hotel/jp/park-central-sakura.es.html?checkin=2027-05-21&checkout=2027-05-25&group_adults=4&no_rooms=2&group_children=0&selected_currency=EUR",
+      "stars": 3,
+      "score": 8.5,
+      "reviews": 2555,
+      "priceTotalEUR": 410,
+      "roomCombo": "2 × Doble Económica 17 m² con LITERA (no reembolsable, €205 c/u)",
+      "twinPriceTotalEUR": 420,
+      "taxesIncluded": "no",
+      "freeCancel": "no en el twin real (solo tarifa no reembolsable); la económica con litera sí, antes del 19 may 2027, a €227 c/u = €454",
+      "breakfast": "incluido en el twin real (€210 c/u)",
+      "coinLaundry": "sí",
+      "publicBath": "no indicado",
+      "lat": 34.678623,
+      "lng": 135.507718,
+      "distM": {
+        "Namba (línea Midōsuji)": 1481,
+        "Kintetsu Osaka-Namba": 1524,
+        "Dōtonbori (Ebisubashi)": 1250,
+        "Mercado Kuromon": 1475,
+        "Shinsaibashi (estación)": 735
+      },
+      "walkMin": {
+        "Namba (línea Midōsuji)": 24,
+        "Kintetsu Osaka-Namba": 25,
+        "Dōtonbori (Ebisubashi)": 20,
+        "Mercado Kuromon": 24,
+        "Shinsaibashi (estación)": 12
+      },
+      "notes": "Lavandería de monedas confirmada por reseñas (4ª planta: 2 lavadoras de 5 kg a 400 yenes y 2 secadoras; solo monedas de 100). El twin real (2 camas individuales, 17 m², desayuno incluido) solo se vende NO REEMBOLSABLE. Ubicación floja para este itinerario: zona Nagahoribashi/Matsuyamachi, lejos de Namba y del eje Midōsuji. Tasa turística no incluida."
+    },
+    {
+      "name": "Welina Hotel Premier Shinsaibashi",
+      "url": "https://www.booking.com/hotel/jp/welina-hotel-shinsaibashi.es.html?checkin=2027-05-21&checkout=2027-05-25&group_adults=4&no_rooms=2&group_children=0&selected_currency=EUR",
+      "stars": 3,
+      "score": 8.2,
+      "reviews": 674,
+      "priceTotalEUR": 714,
+      "roomCombo": "2 × Twin Estándar 16 m² (2 camas individuales, €357 c/u)",
+      "twinPriceTotalEUR": 714,
+      "taxesIncluded": "no indicado",
+      "freeCancel": "sí, antes del 20 may 2027",
+      "breakfast": "no incluido (+€8/persona/día; con desayuno 2 × twin = €832)",
+      "coinLaundry": "sí",
+      "publicBath": "no indicado",
+      "lat": 34.670105,
+      "lng": 135.502399,
+      "distM": {
+        "Namba (línea Midōsuji)": 421,
+        "Kintetsu Osaka-Namba": 481,
+        "Dōtonbori (Ebisubashi)": 186,
+        "Mercado Kuromon": 644,
+        "Shinsaibashi (estación)": 559
+      },
+      "walkMin": {
+        "Namba (línea Midōsuji)": 7,
+        "Kintetsu Osaka-Namba": 8,
+        "Dōtonbori (Ebisubashi)": 3,
+        "Mercado Kuromon": 10,
+        "Shinsaibashi (estación)": 9
+      },
+      "notes": "Lavandería de monedas por reseñas (\"a load of washing was 400 yen to wash and 100 yen for 30 minutes drying\"). Zona Sōemonchō, justo al norte del canal de Dōtonbori: una reseña avisa de ruido por la noche. Oferta de colaborador no reembolsable a €287 (1 unidad) no contada. \"Se pueden aplicar otros cargos\"."
+    },
+    {
+      "name": "Welina Hotel Shinsaibashi NAGOMI",
+      "url": "https://www.booking.com/hotel/jp/welina-dao-dun-ku-annex.es.html?checkin=2027-05-21&checkout=2027-05-25&group_adults=4&no_rooms=2&group_children=0&selected_currency=EUR",
+      "stars": 3,
+      "score": 8.5,
+      "reviews": 308,
+      "priceTotalEUR": 692,
+      "roomCombo": "2 × Standard Twin 16 m² sin servicio de limpieza (2 camas individuales, €346 c/u)",
+      "twinPriceTotalEUR": 692,
+      "taxesIncluded": "no",
+      "freeCancel": "sí, antes del 20 may 2027",
+      "breakfast": "no incluido (con desayuno 2 × twin = €818)",
+      "coinLaundry": "sí",
+      "publicBath": "no indicado",
+      "lat": 34.669773,
+      "lng": 135.507665,
+      "distM": {
+        "Namba (línea Midōsuji)": 710,
+        "Kintetsu Osaka-Namba": 886,
+        "Dōtonbori (Ebisubashi)": 594,
+        "Mercado Kuromon": 498,
+        "Shinsaibashi (estación)": 842
+      },
+      "walkMin": {
+        "Namba (línea Midōsuji)": 12,
+        "Kintetsu Osaka-Namba": 14,
+        "Dōtonbori (Ebisubashi)": 10,
+        "Mercado Kuromon": 8,
+        "Shinsaibashi (estación)": 14
+      },
+      "notes": "Lavandería de monedas confirmada por reseñas (\"coin laundry\"; las secadoras secan mal). Tarifa sin limpieza diaria. En Shimanouchi, al este de Sakaisuji: barrio más tranquilo pero a ~12 min de Namba Midōsuji. Pocas reseñas (308). Oferta de colaborador a €280 agotada/1 unidad, no contada. Tasa turística no incluida."
+    },
+    {
+      "name": "Henn na Hotel Osaka Namba",
+      "url": "https://www.booking.com/hotel/jp/henn-na-hotel-osaka-shinsaibashi.es.html?checkin=2027-05-21&checkout=2027-05-25&group_adults=4&no_rooms=2&group_children=0&selected_currency=EUR",
+      "stars": 3,
+      "score": 8.6,
+      "reviews": 2088,
+      "priceTotalEUR": 808,
+      "roomCombo": "2 × Twin Estándar no fumadores 17 m² (2 camas individuales, €404 c/u)",
+      "twinPriceTotalEUR": 808,
+      "taxesIncluded": "no",
+      "freeCancel": "sí, antes del 20 may 2027 (sin pago por adelantado)",
+      "breakfast": "no incluido (+€9/persona/día; con desayuno 2 × twin = €914)",
+      "coinLaundry": "sí",
+      "publicBath": "no indicado",
+      "lat": 34.67128,
+      "lng": 135.498656,
+      "distM": {
+        "Namba (línea Midōsuji)": 573,
+        "Kintetsu Osaka-Namba": 454,
+        "Dōtonbori (Ebisubashi)": 375,
+        "Mercado Kuromon": 971,
+        "Shinsaibashi (estación)": 466
+      },
+      "walkMin": {
+        "Namba (línea Midōsuji)": 9,
+        "Kintetsu Osaka-Namba": 7,
+        "Dōtonbori (Ebisubashi)": 6,
+        "Mercado Kuromon": 16,
+        "Shinsaibashi (estación)": 8
+      },
+      "notes": "Lavandería de monedas confirmada por reseñas (\"laundry machines\", la recepción cambia efectivo para las máquinas; pocas máquinas, a veces ocupadas). 4 unidades del twin estándar + 4 del twin Hollywood al mismo precio. En Amerikamura (Nishi-Shinsaibashi), entre Namba y Shinsaibashi: zona de bares, posible ruido de fin de semana. Tasa turística no incluida."
+    },
+    {
+      "name": "The Bridge Hotel Shinsaibashi",
+      "url": "https://www.booking.com/hotel/jp/the-bridge-shinsaibashi.es.html?checkin=2027-05-21&checkout=2027-05-25&group_adults=4&no_rooms=2&group_children=0&selected_currency=EUR",
+      "stars": 4,
+      "score": 8.9,
+      "reviews": 3092,
+      "priceTotalEUR": 776,
+      "roomCombo": "2 × Hollywood Twin 15 m² (2 camas individuales juntas, €388 c/u)",
+      "twinPriceTotalEUR": 776,
+      "taxesIncluded": "no indicado",
+      "freeCancel": "sí, antes del 14 may 2027",
+      "breakfast": "no incluido (+€11/persona/día; con desayuno 2 × twin = €954)",
+      "coinLaundry": "sí",
+      "publicBath": "no indicado",
+      "lat": 34.673773,
+      "lng": 135.49797,
+      "distM": {
+        "Namba (línea Midōsuji)": 855,
+        "Kintetsu Osaka-Namba": 732,
+        "Dōtonbori (Ebisubashi)": 641,
+        "Mercado Kuromon": 1215,
+        "Shinsaibashi (estación)": 309
+      },
+      "walkMin": {
+        "Namba (línea Midōsuji)": 14,
+        "Kintetsu Osaka-Namba": 12,
+        "Dōtonbori (Ebisubashi)": 10,
+        "Mercado Kuromon": 20,
+        "Shinsaibashi (estación)": 5
+      },
+      "notes": "Lavandería de monedas confirmada por reseñas (\"coin laundry on-site\", máquina de cambio; muchas quejas de colas). El twin barato es \"Hollywood\" (dos camas individuales pegadas, 15 m²); el twin con camas separadas de 18 m² cuesta €516 c/u = €1.032 (5 unidades). Bebidas gratis en el lobby y ramen nocturno gratis según reseñas. A 4-5 min de la estación de Shinsaibashi; Namba queda a ~14 min a pie o 1 parada. \"Se pueden aplicar otros cargos\"."
+    },
+    {
+      "name": "Dormy Inn Premium Namba ANNEX Natural Hot Spring",
+      "url": "https://www.booking.com/hotel/jp/dormy-inn-premium-namba-annex.es.html?checkin=2027-05-21&checkout=2027-05-25&group_adults=4&no_rooms=2&group_children=0&selected_currency=EUR",
+      "stars": 4,
+      "score": 8.6,
+      "reviews": 876,
+      "priceTotalEUR": 922,
+      "roomCombo": "2 × Doble no fumadores sin servicio de limpieza 16 m² (1 cama doble, €461 c/u)",
+      "twinPriceTotalEUR": 1012,
+      "taxesIncluded": "sí",
+      "freeCancel": "sí, antes del 20 may 2027",
+      "breakfast": "no incluido (+€14/persona/día)",
+      "coinLaundry": "sí",
+      "publicBath": "sí",
+      "lat": 34.671311,
+      "lng": 135.50608,
+      "distM": {
+        "Namba (línea Midōsuji)": 709,
+        "Kintetsu Osaka-Namba": 830,
+        "Dōtonbori (Ebisubashi)": 525,
+        "Mercado Kuromon": 658,
+        "Shinsaibashi (estación)": 620
+      },
+      "walkMin": {
+        "Namba (línea Midōsuji)": 12,
+        "Kintetsu Osaka-Namba": 13,
+        "Dōtonbori (Ebisubashi)": 9,
+        "Mercado Kuromon": 11,
+        "Shinsaibashi (estación)": 10
+      },
+      "notes": "Baño público termal (onsen) y sauna en el hotel. Lavandería para huéspedes confirmada por reseñas (\"guest laundry well equipped\", \"coined laundry\", una dice que es gratis). El twin de €506 c/u es \"Hollywood\" de 16 m² sin limpieza diaria (camas pegadas); el twin de camas separadas de 22 m² cuesta €616 c/u = €1.232. Ramen nocturno gratis según reseñas. En Shimanouchi, a ~12 min de Namba Midōsuji."
+    },
+    {
+      "name": "Welina Hotel Dotonbori",
+      "url": "https://www.booking.com/hotel/jp/welinahoteldotonbori.es.html?checkin=2027-05-21&checkout=2027-05-25&group_adults=4&no_rooms=2&group_children=0&selected_currency=EUR",
+      "stars": 3,
+      "score": 7.9,
+      "reviews": 119,
+      "priceTotalEUR": 674,
+      "roomCombo": "2 × Twin Económica (2 camas individuales, €337 c/u)",
+      "twinPriceTotalEUR": 674,
+      "taxesIncluded": "no",
+      "freeCancel": "sí, antes del 20 may 2027",
+      "breakfast": "no incluido (con desayuno 2 × twin = €800)",
+      "coinLaundry": "no indicado",
+      "publicBath": "no indicado",
+      "lat": 34.668155,
+      "lng": 135.507708,
+      "distM": {
+        "Namba (línea Midōsuji)": 640,
+        "Kintetsu Osaka-Namba": 849,
+        "Dōtonbori (Ebisubashi)": 589,
+        "Mercado Kuromon": 326,
+        "Shinsaibashi (estación)": 978
+      },
+      "walkMin": {
+        "Namba (línea Midōsuji)": 10,
+        "Kintetsu Osaka-Namba": 14,
+        "Dōtonbori (Ebisubashi)": 10,
+        "Mercado Kuromon": 5,
+        "Shinsaibashi (estación)": 16
+      },
+      "notes": "La ficha solo dice \"Servicio de lavandería (de pago)\" y la búsqueda de \"laundry\" / \"washing machine\" en las reseñas no devolvió resultados: lavandería de autoservicio SIN confirmar, por eso no entra en los tops. Solo 119 reseñas. Tasa turística no incluida."
+    }
+  ],
+  "tops": {
+    "dinero": [
+      {
+        "name": "Park Central Sakura Hotel",
+        "why": "2 × twin por €420 con desayuno, el más barato con diferencia y lavandería de monedas (reseñas); pero tarifa no reembolsable y lejos de Namba."
+      },
+      {
+        "name": "Shizutetsu Hotel Prezio Osaka Shinsaibashi",
+        "why": "2 × twin de 21 m² por €652 con nota 9,0 y cancelación gratis; a 8 min de Shinsaibashi (Midōsuji), no a pie de Namba."
+      },
+      {
+        "name": "Welina Hotel Premier Osaka Namba",
+        "why": "2 × twin de 16 m² por €674 con impuestos incluidos y cancelación gratis, a 6 min de Namba Midōsuji y 3 de Kuromon (lavandería solo por una reseña)."
+      },
+      {
+        "name": "Welina Hotel Shinsaibashi NAGOMI",
+        "why": "2 × twin por €692 con nota 8,5 y coin laundry confirmado en reseñas; barrio tranquilo, ~12 min a Namba."
+      },
+      {
+        "name": "Welina Hotel Premier Shinsaibashi",
+        "why": "2 × twin de 16 m² por €714 a 7 min de Namba y 3 de Dōtonbori; ojo al ruido nocturno de Sōemonchō."
+      }
+    ],
+    "calidadPrecio": [
+      {
+        "name": "Shizutetsu Hotel Prezio Osaka Shinsaibashi",
+        "why": "La mejor nota (9,0) y el twin más grande (21 m²) por solo €652; el peaje es 1 parada de metro diaria hasta Namba."
+      },
+      {
+        "name": "Henn na Hotel Osaka Namba",
+        "why": "€808 por 2 twins reales de 17 m², nota 8,6, pago en el hotel, entre Namba y Shinsaibashi (9 min a Midōsuji Namba)."
+      },
+      {
+        "name": "APA Hotel Namba Shinsaibashi",
+        "why": "€752 por 2 twins a 6 min de Midōsuji y 4 de Kintetsu Namba, lavadoras de monedas en la ficha; habitaciones pequeñas y nota 8,0."
+      },
+      {
+        "name": "Welina Hotel Premier Osaka Namba",
+        "why": "€674 con impuestos incluidos, twin de 16 m², 6 min a Namba y junto a Kuromon; pocas reseñas (8,0)."
+      },
+      {
+        "name": "The Bridge Hotel Shinsaibashi",
+        "why": "€776, nota 8,9 y muchos extras gratis (bebidas, ramen); pero twin Hollywood de 15 m² y más cerca de Shinsaibashi que de Namba."
+      }
+    ],
+    "ubicacion": [
+      {
+        "name": "Dotonbori Hotel",
+        "why": "A 5 min de los andenes de Midōsuji y 3 de Kintetsu Namba, Dōtonbori en la puerta y reseñas que lo describen sin ruido; €968 los 2 twins."
+      },
+      {
+        "name": "VESSEL INN NAMBA",
+        "why": "Aún más pegado a Midōsuji (4 min) y a Kintetsu (3 min), en el propio Dōtonbori; €1.030 y posible ruido nocturno."
+      },
+      {
+        "name": "Sotetsu Fresa Inn Osaka Namba",
+        "why": "A 4 min de Midōsuji y de Kintetsu por el lado sur, más tranquilo que el canal; lavadoras en la planta del lobby; €1.154."
+      },
+      {
+        "name": "APA Hotel Namba Shinsaibashi",
+        "why": "A 6 min de Midōsuji y 4 de Kintetsu, justo al norte del canal y lejos del ruido según reseñas, por €752."
+      },
+      {
+        "name": "GRIDS PREMIUM HOTEL OSAKA NAMBA",
+        "why": "A 4 min de Midōsuji y de Kintetsu en calle tranquila según reseñas, twin de 19 m²; €988 y Kuromon a 12 min."
+      }
+    ]
+  },
+  "caveats": [
+    "Precios leídos en Booking.com (sitio .es, EUR) el 13 nov 2026 para 4 adultos en 2 habitaciones, 21-25 may 2027; son dinámicos (en la misma sesión un mismo hotel cambió entre cargas de la página de resultados) y hay que reconfirmarlos al reservar.",
+    "priceTotalEUR = combinación más barata de 2 habitaciones para 4 adultos mostrada en la ficha (a veces 2 dobles o doble + twin); twinPriceTotalEUR = suma real de 2 habitaciones con 2 camas. Las ofertas de \"empresa colaboradora\" limitadas a 1 unidad no se han contado.",
+    "Booking no distingue lavandería de monedas de servicio de lavandería: en todas las fichas aparece solo \"Servicio de lavandería (de pago)\". coinLaundry = \"sí\" significa confirmado por texto de la ficha (Dotonbori Hotel, APA Namba Shinsaibashi) o, en el resto, por reseñas de huéspedes encontradas buscando \"laundry\" en la pestaña de comentarios; no hay confirmación oficial del hotel ni del número de máquinas. Varias reseñas mencionan colas: el lunes 24 por la mañana conviene bajar pronto.",
+    "Impuestos: \"sí\" = Booking muestra \"Incluye impuestos y cargos\"; \"no\" = la ficha avisa de que la tasa turística por persona y noche se paga aparte en el hotel; \"no indicado\" = solo aparece \"Se pueden aplicar otros cargos\". La tasa de alojamiento de Osaka se cobra por persona y noche en el alojamiento.",
+    "Las anclas son coordenadas aproximadas dadas en el encargo (no verificadas contra un mapa en esta sesión) y los minutos son línea recta × 1,3 / 80 m/min: no tienen en cuenta el cruce del canal de Dōtonbori, las bocas de metro concretas ni los pasillos subterráneos de Namba.",
+    "Las estrellas son la clasificación que muestra Booking. Los m² faltan en varias fichas (APA, Kamon, ASIATO, Toyoko Inn): posible habitación < 14 m².",
+    "En Kamon Hotel Namba (antiguo hostel) no se comprobó expresamente el baño privado del twin; verificar en la ficha antes de reservar.",
+    "\"Hollywood twin\" (The Bridge, Dormy Inn, una opción de Henn na) son dos camas individuales pegadas; si se quieren separadas hay que elegir el twin estándar, que en The Bridge y Dormy Inn es bastante más caro.",
+    "No se abrieron (límite de ~18 fichas) otros candidatos del listado como Hotel Keihan Namba Grande (2 × twin €1.242 en resultados), Hotel Vista Osaka Namba (€947), IAM Hotel (€964), Hiyori Hotel Flex Osaka Dotonbori (€998), Vessel Inn Shinsaibashi (€773) o Sotetsu Fresa Inn Shinsaibashi; sus precios son solo de la página de resultados y su lavandería no está comprobada."
+  ]
+}
