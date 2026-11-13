@@ -101,12 +101,15 @@ export const itinerary: readonly Day[] = [
     steps: [
       { time: '08:00', label: 'Meiji Jingū', type: 'visita', zoneId: 'harajuku-meiji', maps: 'Meiji Jingu' },
       { time: '10:30', label: 'Takeshita-dōri (Harajuku)', type: 'compras', zoneId: 'harajuku-meiji', maps: 'Takeshita Street' },
-      { time: '11:30', label: 'Omotesandō', type: 'compras', zoneId: 'harajuku-meiji', maps: 'Omotesando' },
+      { time: '11:30', label: 'Omotesandō', type: 'compras', zoneId: 'harajuku-meiji', maps: 'Omotesando', optional: true },
       { time: '13:00', label: 'Comida', type: 'comida' },
       { time: '14:30', label: 'Cruce de Shibuya y Hachikō', type: 'visita', zoneId: 'shibuya', maps: 'Shibuya Scramble Crossing' },
       { time: '15:30', label: 'Shibuya Parco 6F: Nintendo · Pokémon · Capcom · Jump', type: 'compras', zoneId: 'shibuya', maps: 'Shibuya PARCO' },
       { time: '18:00', label: 'Shibuya Sky al atardecer (~18:35)', type: 'visita', zoneId: 'shibuya', maps: 'Shibuya Sky', reserve: true },
-      { time: '20:00', label: 'Shinjuku de noche: Omoide Yokochō · Golden Gai · Kabukichō', type: 'noche', zoneId: 'shinjuku', maps: 'Omoide Yokocho' },
+      { time: '20:00', label: 'Shinjuku de noche: Omoide Yokochō · Golden Gai · Kabukichō', type: 'noche', zoneId: 'shinjuku', maps: 'Omoide Yokocho', optional: true },
+    ],
+    notes: [
+      'Día largo para el tercero, aún con jet lag. Si pesa, soltad por este orden: 1) Shinjuku de noche (cabe la noche del martes 25, tras Akihabara), 2) Omotesandō.',
     ],
   },
 
@@ -310,7 +313,7 @@ export const itinerary: readonly Day[] = [
           line: 'JR Hida (limited express) a Nagoya + Tōkaidō Shinkansen a Kioto',
           duration: '~3h30',
           notes: [
-            'Hida 12 de las 13:35 (Nagoya 16:09, Kioto ~17:00); el anterior sale a las 12:35',
+            'Hida 12 de las 13:35 (Nagoya 16:09, Kioto ~17:00); el anterior sale a las 12:35 y el siguiente a las 14:46',
             'Taxi de la estación de Kioto al hotel de Shichijō',
             'Horario de 2026: revisar tras el cambio de marzo de 2027',
           ],
@@ -332,15 +335,17 @@ export const itinerary: readonly Day[] = [
     steps: [
       { time: '06:00', label: 'Kiyomizu-dera', type: 'visita', zoneId: 'kiyomizu-dera', maps: 'Kiyomizu-dera' },
       { time: '07:30', label: 'Sannenzaka y Ninenzaka, antes de que abran las tiendas', type: 'visita', zoneId: 'higashiyama-sannenzaka', maps: 'Sannenzaka' },
-      { time: '09:00', label: 'Kōdai-ji', type: 'visita', zoneId: 'higashiyama-sannenzaka', maps: 'Kodai-ji' },
+      { time: '09:00', label: 'Kōdai-ji', type: 'visita', zoneId: 'higashiyama-sannenzaka', maps: 'Kodai-ji', optional: true },
       { time: '10:00', label: 'Parque Maruyama y Yasaka Jinja', type: 'visita', zoneId: 'gion', maps: 'Yasaka Shrine' },
       { time: '11:00', label: 'Nanzen-ji y el acueducto Suirokaku', type: 'visita', zoneId: 'higashiyama-norte', maps: 'Nanzen-ji' },
       { time: '12:30', label: 'Comida', type: 'comida' },
-      { time: '14:00', label: 'Camino del Filósofo', type: 'visita', zoneId: 'higashiyama-norte', maps: "Philosopher's Path" },
-      { time: '15:30', label: 'Ginkaku-ji (cierra a las 17:00)', type: 'visita', zoneId: 'higashiyama-norte', maps: 'Ginkaku-ji' },
+      { time: '14:00', label: 'Camino del Filósofo', type: 'visita', zoneId: 'higashiyama-norte', maps: "Philosopher's Path", optional: true },
+      { time: '15:30', label: 'Ginkaku-ji (cierra a las 17:00)', type: 'visita', zoneId: 'higashiyama-norte', maps: 'Ginkaku-ji', optional: true },
       { time: '17:30', label: 'Gion y Hanami-kōji al anochecer', type: 'noche', zoneId: 'gion', maps: 'Hanamikoji Street' },
     ],
-    notes: ['Día largo: unos 8–10 km a pie. Si vais cansados, se puede saltar Ginkaku-ji.'],
+    notes: [
+      'Día largo: unos 8–10 km a pie. Si vais cansados, soltad por este orden: 1) Kōdai-ji, 2) Camino del Filósofo y Ginkaku-ji juntos (queda la tarde libre hasta Gion).',
+    ],
   },
 
   // ── Día 19 — Miércoles 19 mayo 2027 — Kioto (noche 3) ────────────────────
@@ -357,9 +362,12 @@ export const itinerary: readonly Day[] = [
       { time: '10:00', label: 'Puente Togetsukyō', type: 'visita', zoneId: 'arashiyama', maps: 'Togetsukyo Bridge' },
       { time: '12:00', label: 'Comida en Arashiyama · JR a Kioto', type: 'comida' },
       { time: '13:30', label: 'Sanjūsangen-dō', type: 'visita', zoneId: 'sanjusangendo', maps: 'Sanjusangendo' },
-      { time: '15:00', label: 'Castillo Nijō (última entrada 16:00)', type: 'visita', zoneId: 'nijo', maps: 'Nijo Castle', reserve: true },
+      { time: '15:00', label: 'Castillo Nijō (última entrada 16:00)', type: 'visita', zoneId: 'nijo', maps: 'Nijo Castle', reserve: true, optional: true },
     ],
-    notes: ['Nijō hacia las 15:00: los grupos escolares ya se van.'],
+    notes: [
+      'Nijō hacia las 15:00: los grupos escolares ya se van.',
+      'Si vais cansados, lo que se suelta es Nijō: es el único desvío del día y mañana se madruga más que ningún otro.',
+    ],
   },
 
   // ── Día 20 — Jueves 20 mayo 2027 — Kioto (noche 4) ───────────────────────
@@ -376,13 +384,14 @@ export const itinerary: readonly Day[] = [
       { time: '06:00', label: 'Fushimi Inari: subida al mirador de Yotsutsuji', type: 'visita', zoneId: 'fushimi-inari', maps: 'Fushimi Inari Taisha' },
       { time: '08:00', label: 'Taxi a Kinkaku-ji (~35–40 min)', type: 'traslado' },
       { time: '09:00', label: 'Kinkaku-ji, a la hora de apertura', type: 'visita', zoneId: 'kinkakuji', maps: 'Kinkaku-ji' },
-      { time: '10:15', label: 'Ryōan-ji', type: 'visita', zoneId: 'kinkakuji', maps: 'Ryoan-ji' },
+      { time: '10:15', label: 'Ryōan-ji', type: 'visita', zoneId: 'kinkakuji', maps: 'Ryoan-ji', optional: true },
       { time: '12:30', label: 'Comida en el mercado Nishiki', type: 'comida', zoneId: 'nishiki', maps: 'Nishiki Market' },
       { time: 'tarde', label: 'Tarde libre · colada 2', type: 'descanso' },
     ],
     notes: [
       'Fushimi antes de las 6:00: imprescindible para una buena experiencia.',
       'Taxi a Kinkaku-ji: caben los cuatro.',
+      'Si vais cansados, se suelta Ryōan-ji y se adelanta la comida: la tarde libre empieza antes.',
     ],
   },
 
@@ -426,11 +435,14 @@ export const itinerary: readonly Day[] = [
           notes: ['Sin maletas: nunca se va con equipaje por Nara'],
         },
       },
-      { time: '14:45', label: 'Kōfuku-ji y el parque de Nara', type: 'visita', zoneId: 'nara-todaiji', maps: 'Kofuku-ji' },
-      { time: '15:30', label: 'Tōdai-ji y el Gran Buda (hasta 17:30)', type: 'visita', zoneId: 'nara-todaiji', maps: 'Todai-ji' },
+      { time: '14:45', label: 'Kōfuku-ji', type: 'visita', zoneId: 'nara-todaiji', maps: 'Kofuku-ji', optional: true },
+      { time: '15:30', label: 'Parque de Nara, Tōdai-ji y el Gran Buda (hasta 17:30)', type: 'visita', zoneId: 'nara-todaiji', maps: 'Todai-ji' },
       { time: '19:00', label: 'Cena en Dōtonbori', type: 'noche', zoneId: 'dotonbori', maps: 'Dotonbori' },
     ],
-    notes: ['Nara a última hora: se evitan los grupos escolares.'],
+    notes: [
+      'Nara a última hora: se evitan los grupos escolares.',
+      'Lo esencial del día es Tōdai-ji. Si se va con retraso, se acorta el mercadillo, no Nara; Kōfuku-ji es lo primero que se suelta.',
+    ],
   },
 
   // ── Día 22 — Sábado 22 mayo 2027 — Osaka (noche 2), Katsuo-ji ────────────
@@ -461,11 +473,14 @@ export const itinerary: readonly Day[] = [
           ],
         },
       },
-      { time: '09:30', label: 'Katsuo-ji', type: 'visita', zoneId: 'katsuo-ji', maps: 'Katsuo-ji' },
+      { time: '09:30', label: 'Katsuo-ji', type: 'visita', zoneId: 'katsuo-ji', maps: 'Katsuo-ji', optional: true },
       { time: '13:00', label: 'Vuelta a Namba', type: 'traslado' },
       { time: '14:30', label: 'Minami: Hōzen-ji, Shinsaibashi y Dōtonbori', type: 'compras', zoneId: 'dotonbori', maps: 'Hozenji Yokocho' },
     ],
-    notes: ['Sábado a propósito: en fin de semana hay más autobuses a Katsuo-ji.'],
+    notes: [
+      'Sábado a propósito: en fin de semana hay más autobuses a Katsuo-ji.',
+      'Es la mañana que más descanso da si se suelta: sin Katsuo-ji, mañana libre antes de Minami, y el domingo se madruga para Hiroshima.',
+    ],
   },
 
   // ── Día 23 — Domingo 23 mayo 2027 — Osaka (noche 3), Hiroshima ───────────
