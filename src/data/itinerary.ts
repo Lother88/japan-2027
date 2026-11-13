@@ -473,14 +473,11 @@ export const itinerary: readonly Day[] = [
           ],
         },
       },
-      { time: '09:30', label: 'Katsuo-ji', type: 'visita', zoneId: 'katsuo-ji', maps: 'Katsuo-ji', optional: true },
+      { time: '09:30', label: 'Katsuo-ji', type: 'visita', zoneId: 'katsuo-ji', maps: 'Katsuo-ji' },
       { time: '13:00', label: 'Vuelta a Namba', type: 'traslado' },
       { time: '14:30', label: 'Minami: Hōzen-ji, Shinsaibashi y Dōtonbori', type: 'compras', zoneId: 'dotonbori', maps: 'Hozenji Yokocho' },
     ],
-    notes: [
-      'Sábado a propósito: en fin de semana hay más autobuses a Katsuo-ji.',
-      'Es la mañana que más descanso da si se suelta: sin Katsuo-ji, mañana libre antes de Minami, y el domingo se madruga para Hiroshima.',
-    ],
+    notes: ['Sábado a propósito: en fin de semana hay más autobuses a Katsuo-ji.'],
   },
 
   // ── Día 23 — Domingo 23 mayo 2027 — Osaka (noche 3), Hiroshima ───────────
